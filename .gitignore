@@ -1,5 +1,20 @@
-_site
-.sass-cache
-.jekyll-cache
+# Local Jekyll build output
+_site/
+
+# Local cache directories
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-vendor
+
+# Bundler files (if you run bundle install locally)
+.bundle/
+vendor/
+
+# GitHub Pages specific
+# GitHub uses its own versions
+Gemfile.lock
+
+#.sass-cache
+#.jekyll-cache
+#.jekyll-metadata
+#vendor
