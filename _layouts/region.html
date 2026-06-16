@@ -1,0 +1,109 @@
+---
+layout: default
+---
+<!-- Hero -->
+{% assign hero_data = page.hero_data %}
+{%- include hero-data.html data=hero_data -%}
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+<!-- Region Summary -->
+<section aria-labelledby="region-summary-title region-summary-subtitle">
+    <div class="container my-5"> 
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 col-lg-4">
+                <img src="{{ page.summary_img_url | relative_url }}" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.summary_img_alt }}">
+            </div>
+            <div class="col-12 col-lg-8">
+                <h1 id="region-summary-title" class="block-text small fw-semibold text-uppercase mb-3">{{ page.name }}</h1> 
+                <p id="region-summary-subtitle"class="display-5 fw-bold mb-3">{{ page.summary_title }}</p> 
+                <p class="lead">{{ page.summary_lead }}</p> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Geospatial Overview -->
+<section aria-labelledby="geospatial-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <!-- Map Embed -->
+                <div class="map-container mb-5 mb-md-0">
+                    <iframe src="{{ page.google_maps_url }}"
+                    width="100%" height="512" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h5 id="geospatial-title" class="fw-bold">Key Geographical Anchor Points</h5>
+                <p class="lead">{{ page.key_points_summary }}</p>
+                <hr class="mt-0">
+                <ul class="list-group list-group-flush vstack gap-4">
+                    {%- for point in page.key_geographical_points -%}
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            {%- if point.img_url -%}
+                            <div class="flex-shrink-0">
+                                <img src="{{ point.img_url }}" class="img-fluid rounded" alt="A picture of {{ point.town }}">
+                            </div>
+                            {%- endif -%}
+                            <div class="flex-grow-1 ms-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h5 class="mb-1"><i class="fa-solid fa-location-dot"></i> {% if point.town %}<span class="fw-bold">{{ point.town }}</span>{% endif %} {% if point.land_feature %}<span class="{% if point.town %}small{% else %}fw-bold{% endif %}">{{ point.land_feature }}</span>{% endif %}</h5>
+                                    {%- if point.lat and point.long -%}
+                                    <span class="badge text-bg-light text-muted">{{ point.lat }}, {{ point.long }}</span>
+                                    {%- endif -%}
+                                </div>
+                                {%- if point.description -%}
+                                <p class="text-muted mb-1">{{ point.description }}</p>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Resource Section -->
+<section aria-labelledby="resources-title">
+    <div class="container my-5">
+        <!-- Resources Title -->
+        <h4 id="resources-title">Resources</h4>
+        <hr class="mt-0">
+
+        <!-- Related Resources -->
+        <ul id="resource-container" class="list-unstyled vstack gap-4">
+            {% assign region_resources = site.data.resources | where_exp: "item", "item.regions contains page.slug" %}
+            {%- if  region_resources.size > 0 -%}
+            {%- for resource in region_resources -%}
+            <li class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+                <div class="card-body">
+                    {% assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" %}
+                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                    <p class="card-text"><small class="text-muted fw-bold"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></small></p>
+                    <hr>
+                    <p class="card-text">{{ resource.description }}</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            {%- endfor -%}
+            {%- else -%}
+            <!-- No Associated Resources -->
+            <div class="px-4 my-2 text-center" role="alert">
+                <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
+                <div class="col-lg-4 mx-auto pb-5"> 
+                    <p class="lead mb-0">{{ page.name }} has no associated resources</p>
+                    <p>Check back later or return home</p>
+                    <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
+                </div> 
+            </div>
+            {%- endif -%}
+        </ul>
+    </div>
+</section>

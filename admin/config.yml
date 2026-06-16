@@ -1,0 +1,157 @@
+backend:
+  name: test-repo #github or git-gateway
+  repo: hnibert/ace-prototype # Path to your GitHub repository
+  branch: main # Branch to update (usually main or master)
+  site_domain: YOUR_NETLIFY_SITE.netlify.app # You will generate this in step 4
+
+media_folder: "/assets/images/uploads" # Where media files will be saved
+public_folder: "/assets/images/uploads" # Where Jekyll serves media files
+
+#Linked Collections
+collections:
+  #Posts (Collection)
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "region" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Region", name: "region", widget: "string", required: false }
+      - { label: "Image", name: "mainImageURL", widget: "image", required: false }
+      - { label: "Image Alt Text", name: "mainImageAlt", widget: "string", required: false }
+      - { 
+          label: 'Author',
+          name: 'author',
+          widget: 'relation',
+          collection: 'people',
+          display_fields: [full-name],
+          search_fields: [full-name],
+          value_field: "{{slug}}"
+        }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Updated", name: "updated", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Type", name: "type", widget: "select", options: ["Announcement", "Blog", "Featured Story", "Meet the Scientist", "News"] }
+      - { label: "Hidden", name: "hidden", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  #People (Collection)
+  - name: "people"
+    label: "People"
+    folder: "_people"
+    create: true
+    slug: "{{slug}}"
+    summary: '{{fields.full-name}}' # Makes the list view easy to scan
+    fields:
+      - { label: "First Name", name: "first-name", widget: "string" }
+      - { label: "Last Name", name: "last-name", widget: "string" }
+      - { label: "Full Name", name: "full-name", widget: "string" }
+      - { label: "Image", name: "mainImageURL", widget: "image", required: false }
+      - { label: "Image Alt Text", name: "imageAltText", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "position", name: "position", widget: "string" }
+      - { label: "Affiliation", name: "affiliation", widget: "string" }
+      - { label: "ACE Role", name: "ace-role", widget: "select", options: ["Team", "Contributor"], required: true }
+      - { 
+          label: "Research Areas", 
+          name: "research-areas", 
+          widget: "select",
+          multiple: true,
+          options: ["Fisheries Management", "Ecology", "Modeling", "Stock Assessment", "Fishing Communities", "Climate Science", "Communications", "Social Sciene", "Ecosystem-based Research", "Oceanography", "Communications"],
+          required: false 
+        }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "GitHub", name: "github", widget: "string", required: false }
+      - { label: "Scholar", name: "scholar", widget: "string", required: false }
+      - { label: "Bluesky", name: "bluesky", widget: "string", required: false }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "Orcid", name: "orcid", widget: "string", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  #Species (Collection)
+  #- name: "species"
+  #  label: "Species"
+  #  folder: "_species"
+  #  create: true
+  #  slug: "{{slug}}"
+  #  summary: '{{fields.name}}' # Makes the list view easy to scan
+  #  fields:
+  #    -
+
+  #Region (Collection)
+  - name: "regions"
+    label: "Regions"
+    folder: "_regions"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{fields.name}}"
+
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "region" }
+
+      - { label: "Region Name", name: "name", widget: "string" }
+
+      - label: "Hero"
+        name: "hero_Data"
+        widget: "object"
+        fields:
+          - { label: "ID", name: "id", widget: "string" }
+          - { label: "Is Header", name: "is_header", widget: "boolean", default: true }
+          - { label: "Hero Image", name: "img_url", widget: "image" }
+          - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Lead", name: "lead", widget: "text" }
+
+      - { label: "Summary Image", name: "summary_img_url", widget: "image" }
+      - { label: "Summary Image Alt Text", name: "summary_img_alt", widget: "string", required: false }
+      - { label: "Summary Title", name: "summary_title", widget: "string" }
+      - { label: "Summary Lead", name: "summary_lead", widget: "text" }
+
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+
+  #Communities (Collection)
+  #- name: "communities"
+  #  label: "Communities"
+  #  folder: "_communities"
+  #  create: true
+  #  slug: "{{slug}}"
+  #  summary: '{{fields.name}}' # Makes the list view easy to scan
+  #  fields:
+  #    -
+
+  #Site Data
+  - name: "site_data"
+    label: "Site Data"
+    delete: false #don't allow site data to be deleted from Decap
+    files:
+      #Resources (Site Data)
+      - name: "resources"
+        label: "Resources"
+        file: "/_data/resources.yml"
+        fields:
+          - label: "Resource"
+            name: "resource"
+            widget: "list"
+            summary: '{{fields.title}} ({{fields.type}})' # Makes the list view easy to scan
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "YYYY-MM-DD", timeFormat: false }
+              - { label: "Type", name: "type", widget: "string" }
+              - { label: "Icon Class", name: "icon", widget: "string", required: false }
+              - { label: "URL", name: "url", widget: "string", required: true }
+              - { label: "Is Available", name: "is-available", widget: "boolean", default: true }
+              - { label: "File Attachment", name: "file", widget: "file", required: false, default: null }
+              - { label: "Description", name: "description", widget: "text" }
+              
+              # Array tags using string list widgets
+              - { label: "Regions", name: "regions", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Communities", name: "communities", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Themes", name: "themes", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Species", name: "species", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Audience", name: "audience", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Topics", name: "topics", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "Authors", name: "authors", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              - { label: "User Goals", name: "user-goals", widget: "list", field: { name: "item", widget: "string" }, required: false }

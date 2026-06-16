@@ -1,0 +1,197 @@
+---
+title: News
+permalink: /news/
+layout: default
+highlight_max: 2
+---
+
+<!-- Hero -->
+{% include hero.html 
+is_header=true
+id="hero-news"
+hero_img_url="../assets/images/heroes/hero-about.jpg"
+title="ACE News" 
+lead="What happens in the Arctic impacts the world. Explore the vital news and stories defining Alaska's rapidly changing environment" %}
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+<div class="container mb-5">
+    {%- comment -%} 
+        ---
+        Get all site post where 'featured' is true, sorty by 'date' and reverse the list to get newest first.
+        Then get the first 'top_featured' post
+        ---
+    {%- endcomment -%}
+    {%- assign all_featured = site.posts | where: "featured", true | sort: "date" | reverse -%}
+    {%- assign top_featured = all_featured | first -%}
+    <!-- Featured News -->
+    <section aria-labelledby="featured-news-title">
+        <h3 id="featured-news-title" class="fw-bold">Featured News</h3>
+        <hr>
+        
+        <!-- Top Featured News -->
+        <div class="card p-4 border-0 p-md-5 mb-4 text-bg-dark text-shadow-3 bg-body-secondary position-relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.50)), url('{{ top_featured.mainImageURL | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4">{{ top_featured.title }}</h1>
+                <p class="lead my-3">{{ top_featured.excerpt }}</p>
+                <p class="lead mb-0"><a href="{{ top_featured.url | relative_url }}" class="text-decoration-none stretched-link link-light fw-bold">Read more...</a></p>
+            </div>
+        </div>
+
+        <!-- Sub-Featured News -->
+        <div class="row g-3 mb-2">
+            {%- for feature in all_featured limit: 2 offset: 1 -%}
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="row g-0 h-100 position-relative">
+                        <div class="col-lg-8">
+                            <div class="card-body h-100 d-flex flex-column h-100">
+                                <span class="align-self-start block-text text-uppercase mb-2">{{ feature.type }}</span> 
+                                <h3 class="card-title mb-0">{{ feature.title }}</h3> 
+                                <time datetime="{{ feature.date | date_to_xmlschema }}" class="mb-1">{{ feature.date | date: "%B %Y" }}</time> 
+                                <p class="card-text mb-3">{{ feature.excerpt }}</p> 
+                                <a href="{{ feature.url | relative_url }}" class="icon-link icon-link-hover gap-1 text-decoration-none stretched-link link-dark mt-auto">Read more <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <img src="{{ feature.mainImageURL | relative_url }}" class="w-100 h-100 object-fit-cover rounded-end" alt="{{ feature.mainImageAlt }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%- endfor -%}
+        </div>
+    </section>
+</div>
+{%- comment -%} 
+    ---
+    Get highlighted post where highlight is true sorted by date and reversed to get latest first 
+    ---
+{%- endcomment -%}
+{%- assign highlight_posts = site.posts | where: "highlight", true | sort: "date" | reverse -%}
+{%- if highlight_posts.size > 0 -%}
+<!-- Highlights -->
+<section aria-labelledby="highlight-news-title">
+    <div class="container mb-5">
+        <h3 id="highlight-news-title" class="fw-bold">Highlights</h3>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {%- for highlight in highlight_posts limit: page.highlight_max -%}
+            <div class="col">
+                <div class="card rounded-0 border-0 card-shadow h-100">
+                    <div class="card-body d-flex flex-column h-100">
+                        <span class="align-self-start block-text bg-ace-cape text-uppercase mb-2">{{ highlight.type }}</span> 
+                        <h3 class="card-title mb-0">{{ highlight.title }}</h3>
+                        <time datetime="#" class="mb-1">{{ highlight.date | date: "%B %Y" }}</time> 
+                        <p class="card-text">{{ highlight.excerpt }}</p>
+                        <a href="{{ highlight.url | relative_url }}" class="icon-link icon-link-hover gap-1 text-decoration-none stretched-link link-dark mt-auto">Read more <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            {%- endfor -%}
+            {%- if highlight_posts.size < page.highlight_max -%}
+             <div class="col">
+                <div class="card rounded-0 border-0 card-shadow h-100">
+                    <div class="card-body d-flex flex-column h-100">
+                        <span class="align-self-start block-text bg-ace-cape text-uppercase mb-2">NOTICE</span> 
+                        <h3 class="card-title">More highlights coming soon!</h3>
+                        <p class="card-text">Check our archives for past highlights and older stories.</p>
+                        <a href="{{ '/news/archives/' | relative_url }}" class="icon-link icon-link-hover gap-1 text-decoration-none stretched-link link-dark mt-auto">View News Archives <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
+                    </div>
+                </div>
+            </div>           
+            {%- endif -%}
+        </div>
+    </div>
+</section>
+{%- endif -%}
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Recent News -->
+            <section aria-labelledby="recent-news-title" class="mb-4">
+                <h5 id="recent-news-title" class="fw-bold">Recent News</h5>
+                <hr class="mt-0">
+                {%- comment -%} 
+                    ---
+                    Get newest post where featured is false and highlight is false sorted by date and reversed to get latest first 
+                    ---
+                {%- endcomment -%}
+                {%- assign newest_posts = site.posts | where: "featured", false | where: "highlight", false | sort: "date" | reverse -%}
+                {%- if newest_posts.size > 0 -%}
+                <ul class="list-unstyled">
+                    {%- for post in newest_posts limit: 5 -%}
+                    <li class="list-item">
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="row g-0 h-100 position-relative">
+                                    <div class="col-12 col-lg-4 d-none d-lg-block">
+                                        <img src="{{ post.mainImageURL | relative_url }}" class="w-100 h-100 object-fit-cover rounded-start" alt="{{ post.mainImageAlt }}">
+                                    </div>
+                                    <div class="col-12 col-lg-8">
+                                        <div class="card-body h-100 d-flex flex-column h-100">
+                                            <span class="align-self-start block-text text-uppercase mb-2">{{ post.type }}</span> 
+                                            <h3 class="mb-0">{{ post.title }}</h3> 
+                                            <time datetime="{{ page.updated | date_to_xmlschema }}" class="mb-1">{{ post.date | date: "%B %Y" }}</time> 
+                                            <p class="card-text mb-3">{{ post.excerpt }}</p> 
+                                            <a href="{{ post.url | relative_url }}" class="icon-link gap-1 icon-link-hover text-decoration-none stretched-link link-dark mt-auto">Read more <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>                  
+                    {%- endfor -%}
+                </ul>
+                {%- else -%}
+                <div class="alert alert-secondary" role="alert">
+                    <h4 class="alert-heading fw-semibold text-muted">No Recent News!</h4>
+                    <p>We currently do not have any recent news or announcements to share. Please check back later or visit our archives below.</p>
+                    <hr>
+                    <p class="mb-0">Subscribe to our newsletter to get notified as soon as new content is available.</p>
+                </div>                   
+                {%- endif -%}
+            </section>
+        </div>
+
+        <aside class="col-md-4">
+            <div class="sticky-top z-0" style="top: 5rem;">
+                <!-- Archives By Year -->
+                <section class="mb-4">
+                    <h5 class="fw-bold">Archives</h5> 
+                    <hr class="mt-0">
+                    <ul class="list-unstyled list-flush d-flex flex-wrap gap-3">
+                        {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" | reverse -%}
+                        {%- for year in posts_by_year -%}
+                        <li class="list-item">
+                            <a href="{{ '/news/archives/' | append: year.name | append: '/' | relative_url }}" class="btn btn-outline-secondary text-decoration-none position-relative px-4">{{ year.name }}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-ace-cove">{{ year.items.size }}
+                                    <span class="visually-hidden">{% if year.items.size > 1 %}Posts{% else %}Post{% endif %}</span>
+                                </span>
+                            </a>
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                </section>                
+
+                <!-- Find Us -->
+                <section class="mb-4">
+                    <h5 class="fw-bold">Find Us</h5> 
+                    <hr class="mt-0">
+                    <ul class="social-links list-unstyled d-flex gap-2 justify-content-start mb-0">
+                        {%- for social in site.socials -%}
+                        <li class="social-link {{ social.title | slugify }}">
+                            <a href="{{ social.url }}" class="text-decoration-none text-white p-3" aria-label="Share on {{ social.title }}"><i class="{{ social.icon }} fa-lg"></i></a>
+                        </li>
+                        {%- endfor -%}
+                        <li class="social-link rss">
+                            <a href="{{ '/feed.xml' | relative_url }}" class="text-decoration-none text-white p-3" aria-label="RSS Feed"><i class="fa-solid fa-rss fa-lg"></i></a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </aside>
+    </div>
+</div>

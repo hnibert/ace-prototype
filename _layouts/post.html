@@ -1,0 +1,314 @@
+---
+layout: default
+---
+{%- comment -%} Page Variables {%- endcomment -%}
+{%- assign page_type_slug = page.type | slugify -%}
+{%- assign author_slug = page.author | slugify -%}
+{%- assign author_item = site.people | where: "slug", author_slug | first -%}
+
+<!-- Breadcrumb -->
+{% include breadcrumbs.html %}
+
+{%- if page.mainImageURL -%}
+<header aria-labelledby="post-image">
+    <div class="container">
+        <!-- Main Image -->
+        <div class="mb-4">
+            <figure class="mb-4">
+                <div class="ratio ratio-16x9">
+                    <img src="{{ page.mainImageURL | relative_url }}" alt="{{ page.mainImageAlt | default: page.title }}" class="w-100 h-100 object-fit-cover rounded">
+                </div>
+                {%- if page.mainImageCaption -%}
+                <figcaption id="post-image" class="small text-muted text-end mt-2">
+                    {{ page.mainImageCaption }}
+                </figcaption>
+                {%- endif -%}
+            </figure>
+        </div>
+</header>
+{%- endif -%}
+
+<section aria-labelledby="post-title">
+    <div class="container pb-5 mb-5">
+        <div class="row row-cols-2 g-4">
+            <div class="col-12 col-lg-8">
+
+                <!-- Post Type -->
+                <span class="block-text text-uppercase">{{ page.type }}</span>
+
+                <!-- Title -->
+                <h1 id="post-title" class="fw-bold mb-0">
+                    {{ page.title }}
+                </h1>
+
+                <!-- Subtitle -->
+                {%- if page.subtitle -%}
+                <p class="lead">{{ page.subtitle }}</p>
+                {%- endif -%}
+
+                <!-- Region -->
+                {%- if page.region -%}
+                <p class="small fw-bold text-muted mb-1">
+                    {{ page.region }}
+                </p>
+                {%- endif -%}
+
+                <!-- Publish Date -->
+                <div class="small text-muted">
+                    <time datetime="{{ page.date | date_to_xmlschema }}">
+                        <span class="fw-semibold">Published:</span> {{ page.date | date: "%b %-d, %Y %Z" }}
+                    </time>
+                    {%- if page.showReadTime == true -%}
+                    &nbsp;•&nbsp;
+                    {% include readtime.html %}
+                    {%- endif -%}
+                </div>
+
+                <hr>
+
+                <!-- Post Content -->
+                <article class="user-content">
+                    {{ content }}
+                </article>
+
+                <hr>
+                
+                {%- if page.updated -%}
+                <!-- Lasted Updated Date -->
+                 <div class="small text-muted mb-3">
+                    <time datetime="{{ page.updated | date_to_xmlschema }}">
+                        <span class="fw-semibold">Last Updated:</span> {{ page.updated | date: "%B %-d, %Y %Z" }}
+                    </time>
+                </div>
+                {%- endif -%}
+                
+                {%- if page.author and author_item -%}
+                <!-- Meet The Author -->
+                <div class="card p-2 {% if page.post_series != blank %}mb-4{% endif %}">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex justify-content-center align-items-center">
+                            <img src="{{ author_item.imageURL | relative_url }}" class="rounded-circle shadow" width="200" height="200" alt="{{ author_item.imageAltText }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Meet the Author</h5>
+                                <h6 class="card-text">{{ author_item.full-name }}</6>
+                                <hr>
+                                <p class="card-text">{{ author_item.short-text }}</p>
+                                <a href="{{ author_item.url | relative_url }}" class="icon-link icon-link-hover gap-1 text-decoration-none">Read more <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L406.6 137.3C394.1 124.8 373.8 124.8 361.3 137.3C348.8 149.8 348.8 170.1 361.3 182.6L466.7 288L96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L466.7 352L361.3 457.4C348.8 469.9 348.8 490.2 361.3 502.7C373.8 515.2 394.1 515.2 406.6 502.7L566.6 342.7z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if page.post_series -%}
+                {%- assign series_posts = site.posts | where: "post_series", page.post_series | sort: 'series_order' -%}
+                {%- comment -%} Find the current post's index position {%- endcomment -%}
+                {%- for post in series_posts -%}
+                    {%- if post.url == page.url -%}
+                        {%- assign current_index = forloop.index0 -%}
+                        {%- break -%}
+                    {%- endif -%}
+                {%- endfor -%}
+
+                {%- assign series_progress = current_index | plus: 1 | times: 1.0 | divided_by: series_posts.size | times: 100 | round: 2 %}
+
+                {%- comment -%} Calculate adjacent series posts {%- endcomment -%}
+                {%- assign prev_index = current_index | minus: 1 -%}
+                {%- assign next_index = current_index | plus: 1 -%}
+
+                <!-- Post Series -->
+                <div class="card border-0 rounded-0 shadow-sm">
+                    <div class="card-body">
+                        <!-- Title & Meta -->
+                        <span class="block-text small text-uppercase">Series</span>
+                        <h4 class="card-title fw-bold">{{ page.post_series }}</h4>
+                        <p class="card-text mb-0">This post is part of the <em>{{ page.post_series }}</em> series.</p>
+                        <p class="card-text text-muted">{% if series_posts.size > 0 %}<span class="small">{{ series_posts | size }} Part Series</span>{% endif %}</p>
+                        
+                        <!-- Tip & Index -->
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">More from this series below</p>
+                            <p class="card-text fw-bold me-2">{% if series_posts.size > 0 %} <span class="small">Part {{ current_index | plus: 1 }}/{{ series_posts | size }}</span>{% endif %}</p>
+                        </div>
+                        
+                        <!-- Series Progress -->
+                        <div class="progress rounded-0 mb-0" role="progressbar" aria-label="Series Progress" aria-valuenow="{{ current_index }}" aria-valuemin="0" aria-valuemax="100" style="height: 4px">
+                            <div class="progress-bar rounded-0 bg-ace-cove" style="width: {{ series_progress }}%"></div>
+                        </div>
+
+                        <hr class="mt-0">
+                        
+                        <!-- Series Index -->
+                        <ul class="list-group list-group-flush">
+                            {%- for post in series_posts -%}
+                            {%- if post.url == page.url -%}
+                            <li class="list-group-item disabled bg-light">
+                                <span class="fw-semibold">Part {{ post.series_order }}:&nbsp;</span><a class="text-decoration-none link-dark disabled" tabindex="-1" aria-disabled="true" aria-current="true">{{ post.title }} <i class="fa-solid fa-map-pin"></i></a>
+                            </li>
+                            {%- else -%}
+                            <li class="list-group-item">
+                                <span class="fw-semibold">Part {{ post.series_order }}:&nbsp;</span><a href="{{ post.url | relative_url }}" class="text-decoration-none link-dark">{{ post.title }} <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a>
+                            </li>
+                            {%- endif -%}
+                            {%- endfor -%}
+                        </ul>
+
+                        <hr>
+                        
+                        <!-- Previous/Next Series Post Buttons -->    
+                        <div class="d-flex justify-content-start gap-2">
+                            {%- if prev_index >= 0 -%}
+                            {%- assign prev_post = series_posts[prev_index] -%}
+                            <a href="{{ prev_post.url | relative_url }}" class="btn btn-ace-primary" type="button"><i class="fa-solid fa-sm fa-arrow-left mt-1"></i> Previous</a>
+                            {%- endif -%}
+                            {%- if next_index < series_posts.size -%}
+                            {%- assign next_post = series_posts[next_index] -%}
+                            <a href="{{ next_post.url | relative_url }}" class="btn btn-ace-primary" type="button">Next <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+                {%- endif -%}
+            </div>
+
+            <aside class="col-12 col-lg-4">
+                <div class="sticky-md-top z-0" style="top: 5rem;">
+                    {%- if page.information-links.size > 0 -%}
+                    <!-- More Information Card -->
+                    <div class="card rounded-0 border-0 shadow-sm p-0 mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">More Information</h5>
+                            <hr>
+                            <ul class="list-group list-group-flush">
+                                {%- for link in page.information-links -%}
+                                <li class="list-group-item">
+                                    <a href="{{ link.url }}" class="text-decoration-none link-dark">{{ link.title }} <i class="fa-solid fa-chevron-right fa-sm"></i></a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
+                        </div>
+                    </div>
+                    {%- endif -%}
+
+                    {%- if page.categories -%}
+                    <!-- Category Tags -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold">Categories</h5>
+                        <hr class="mt-0">
+                        
+                        <div class="d-flex flex-wrap gap-2">
+                            {%- for category in page.categories -%}
+                            {%- assign category_slug = category | slugify -%}
+                            {%- assign category_path = '/news/archives/' | append: category_slug | append: '/' -%}
+                            <a href="{{ category_path | relative_url }}" class="text-decoration-none link-dark"><span class="badge text-bg-light border fw-semibold fs-6">{{ category | capitalize }}</span></a>
+                            {%- endfor -%}
+                        </div>                    
+                    </div>
+                    {%- endif -%}
+
+                    {%- comment -%} Build an array of post related by categories {%- endcomment -%}
+                    {%- assign filtered_posts = "" | split: "" -%}
+                    
+                    {%- comment -%} Go through each category of this page and match it against all known site categories {%- endcomment -%}
+                    {%- for category in page.categories -%}
+                        {%- for post in site.categories[category] -%}
+                            {%- if post.id != page.id -%}
+                                {%- assign filtered_posts = filtered_posts | push: post -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endfor -%}
+
+                    {%- comment -%} Build a list of post related by categories {%- endcomment -%}
+                    {%- assign filtered_posts = filtered_posts | uniq -%}
+
+                    {%- if page.showRelatedPosts == true and filtered_posts.size > 0 -%}
+                    <!-- Related News -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold">Related News</h5>
+                        <hr class="mt-0">
+                        {%- for post in filtered_posts limit: 4 -%}
+                        <div class="card border-0 rounded-0 border-bottom p-0 mb-3">
+                            <div class="row g-0 mb-3">
+                                <div class="col-4">
+                                    <img src="{{ post.mainImageURL | relative_url }}" class="img-fluid rounded h-100" alt="{{ post.mainImageAlt }}">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body py-0 mb-0">
+                                        <h6 class="card-title fw-bold"><a href="{{ post.url | relative_url }}" class="text-decoration-none link-dark stretched-link">{{ post.title }}</a></h6>
+                                        <h6 class="card-subtitle mb-2 text-body-secondary text-uppercase">{{ post.type }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%- endfor -%}
+                    </div>
+                    {%- endif -%}
+
+                    <!-- Archives By Year/Month -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold">Archives</h5> 
+                        <hr class="mt-0">
+                        <ul class="list-unstyled list-flush d-flex flex-wrap gap-3">
+                            {%- comment -%} Build a list of post and group by the liquid expression and get a name of YYYY-MM {%- endcomment -%}
+                            {%- assign posts_by_year_month = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" | reverse -%}
+                            
+                            {%- comment -%} Go through the posts_by_year_month list in reverse to stay in chronological order (newest to oldest) {%- endcomment -%}
+                            {%- for year_month in posts_by_year_month -%}
+
+                            {%- comment -%} Get the post associated with this list item, during this iteration of the loop {%- endcomment -%}
+                            {%- assign post = year_month.items.first -%}
+
+                            {%- comment -%} Assign a year, month (as a number), and month to help with url and display {%- endcomment -%}
+                            {%- assign date_year = post.date | date: "%Y" -%}
+                            {%- assign date_month_num = post.date | date: "%m" -%}
+                            {%- assign date_month = post.date | date: "%B" -%}
+
+                            {%- comment -%} Capture a proper URL for the archive of this year/month (YYYY/MM) {%- endcomment -%}
+                            {%- capture archive_url -%}/news/archives/{{ date_year}}/{{ date_month_num }}/{%- endcapture -%}
+
+                            {%- comment -%} Capture a display name as (MONTH-YYYY) {%- endcomment -%}
+                            {%- capture display_name -%}{{ date_month }} {{ date_year }}{%- endcapture -%}
+                            <li class="list-item">
+                                <a href="{{ archive_url | relative_url }}" class="btn btn-outline-secondary text-decoration-none position-relative px-4">
+                                    {{ display_name }}
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-ace-cove">
+                                        {{ year_month.items.size }}
+                                        <span class="visually-hidden">{% if year_month.items.size > 1 %}Posts{% else %}Post{% endif %}</span>
+                                    </span>
+                                </a>
+                            </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+
+                    <!-- Share/Social -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold">Share</h5> 
+                        <hr class="mt-0">
+                        <ul class="social-links list-unstyled d-flex gap-2 justify-content-start mb-0">
+                            <li class="social-link border">
+                                <button id="copy-post-url" class="btn btn-link text-decoration-none text-muted p-3" aria-label="Copy URL to clipboard"><i class="fa-solid fa-copy fa-lg"></i></button>
+                            </li>
+                            <li class="social-link border">
+                                <a href="mailto:?subject={{ page.title }}&body={{ page.url | absolute_url }}" class="text-decoration-none text-muted p-3" aria-label="Email to"><i class="fa-solid fa-paper-plane fa-lg"></i></a>
+                            </li>
+                            {%- comment -%} Loop through our social links and only show links that have a 'share_url' {%- endcomment -%}
+                            {%- for social in site.socials -%}
+                            {%- unless social.share_url == nil or social.share_url == "" -%}
+                            <li class="social-link {{ social.title | slugify }}">
+                                <a href="{{ social.share_url }}{{ page.url | absolute_url }}" class="text-decoration-none text-white p-3" aria-label="Share on {{ social.title }}"><i class="{{ social.icon }} fa-lg"></i></a>
+                            </li>
+                            {%- endunless -%}
+                            {%- endfor -%}
+                            <li class="social-link rss">
+                                <a href="{{ '/feed.xml' | relative_url }}" class="text-decoration-none text-white p-3" aria-label="RSS Feed"><i class="fa-solid fa-rss fa-lg"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

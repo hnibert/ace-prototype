@@ -1,0 +1,260 @@
+---
+layout: default
+---
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+<!--Species Content -->
+<section aria-labelledby="species-title">
+    <div class="container pb-2 mb-2">
+        <div class="row">
+
+            <!-- Species Summary -->
+            <div class="col-12 col-md-4 mb-3 mb-md-0 vstack gap-4">
+                <!-- Species Summary Card --> 
+                <div class="card">
+                    <img src="{{ page.imageURL }}" class="img-fluid mx-auto my-3 shadow" width="200" height="auto" alt="{{ page.imageAlt }}">
+                    <div class="card-body text-center">
+                        <!-- Official Name, Scientific -->
+                        <h3 id="species-title" class="card-title fw-bold species-name">{{ page.name }}</h3>
+                        <p class="card-text fst-italic">{{ page.scientific-name }}</p>
+                        
+                        <!-- Other Names -->
+                        <h6 class="card-text text-start fw-semibold">Other Names</h6>
+                        <hr class="mt-0">
+                        <p class="card-text text-start">
+                            {%- if page.other-names -%}
+                            {{ page.other-names }}
+                            {%- else -%}
+                            <p class="fst-italic text-start">No Other Names</p>
+                            {%- endif -%}
+                        </p>
+
+                        <!-- Management Structure -->
+                        <h6 class="card-text text-start fw-semibold">Management Structure</h6>
+                        <hr class="mt-0">
+                        <p class="card-text text-start">
+                            {%- if page.other-names -%}
+                            {{ page.management-structure }}
+                            {%- else -%}
+                            <p class="fst-italic text-start">No Management Structure</p>
+                            {%- endif -%}
+                        </p>
+                      
+                        <!-- Management Body -->
+                        <h6 class="card-title text-start fw-semibold">Management Body</h6>
+                        <hr class="mt-0">
+                        <div class="d-flex flex-wrap justify-content-start align-items-center">
+                            {%- if page.management-bodies.size > 0 -%}  
+                            {%- for body in page.management-bodies -%}
+                            <span class="badge bg-light text-muted border me-2">{{ body }}</span>
+                            {%- endfor -%}
+                            {%- else -%}
+                            <p class="fst-italic text-start">No Management Body</p>
+                            {%- endif -%}
+                        </div>
+
+                        {%- if page.management-body-notes -%}
+                        <!-- Management Body Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.management-body-notes }}</a></small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+
+                {%- if page.cdq-groups.size > 0 -%}
+                <!-- Community Development -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-solid fa-users"></i> Community Development</h5>
+                        <hr>
+                        <!-- Summary of CDQ -->
+                        <p class="card-text fs-6 mt-3 text-start">These entities are the cornerstone of the federal CDQ Program, managing fisheries investments to alleviate poverty and generate sustainable economic development in rural, remote Native villages.</p>
+                        
+                        <!-- Community Development Quota Group(s) -->
+                        <h6 class="card-text text-start fw-semibold">Community Development Quota Group</h6>
+                        <hr class="mt-0">
+                        <p class="card-text">Norton Sound Economic Development Corporation (NSEDC)</p>
+
+                        <!-- Community Development Quota Communities -->
+                        <h6 class="card-text text-start fw-semibold">Member Communities</h6>
+                        <hr class="mt-0">
+                        <p class="card-text">Diomede, Golovin, Nome, Wales, Brevig Mission, Teller, White Mountain, Elim, Unalakleet, Koyuk, Shaktoolik, Stebbins, St. Michael, Savoonga, Gambell</p>
+                    </div>
+                </div>
+                {%- endif -%}
+            </div>
+
+            <!-- Species Info Cards --> 
+            <div class="col-12 col-md-8 vstack gap-4">
+
+                {%- if page.ccv-label -%}
+                <!-- Climate Change Vulnerability --> 
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-regular fa-cloud"></i> Climate Change Vulnerability</h5>
+                        <hr>
+
+                        <!-- Climate Change Vulnerability Label & Reference -->
+                        <label class="fw-bold" for="change-vulnerability">{{ page.ccv-label }}<small>{{ page.ccv-reference }}</small></label>
+
+                        {%- if ccv-score -%}
+                        <!-- Climate Change Vulnerability Score -->
+                        <div id="change-vulnerability" class="progress" role="progressbar" aria-label="Climate change vulnerability scale in a progressbar" aria-valuenow="{{ page.ccv-score }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-primary" style="width: {{ page.ccv-score }}%"></div>
+                        </div>
+                        {%- endif -%}
+
+                        {%- if page.ccv-notes -%}
+                        <!-- Climate Change Vulnerability Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.ccv-notes }}</small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if page.protections -%}
+                <!-- Protections -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-solid fa-shield-halved"></i> Protections</h5>
+                        <hr>
+                        <p class="card-text">{{ page.protections }}</p>
+                        {%- if page.protection-notes -%}
+                        <!-- Protections Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.protection-notes }}</small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if page.justification -%}
+                <!-- Classification Justification -->   
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Justification for Classification</h5>
+                        <hr>
+                        <p class="card-text">{{ page.justification }}</p>
+                        {%- if page.justification-notes -%}
+                        <!-- Justification Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.justification-notes }}</small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if page.cultural-significance -%}
+                <!-- Cultural Significance -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-solid fa-landmark"></i> Cultural Significance</h5>
+                        <hr>
+                        <p class="card-text">{{ page.cultural-significance }}</p>
+                        {%- if page.cultural-significance-notes -%}
+                        <!-- Cultural Significance Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.cultural-significance-notes }}</small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if page.spatial-data -%}
+                <!-- Spatial Data -->   
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa-solid fa-location-dot"></i> Spatial Data</h5>
+                        <hr>
+                        <p class="card-text">Spatial data refers to geographically referenced information—such as maps, coordinates, and satellite imagery—that documents how, when, and where a community harvests wild resources.</p>
+                        <hr>
+                        <P class="card-text">{{ page.spatial-data }}</P>
+                        {%- if page.spatial-data-notes -%}
+                        <!-- Spatial Data Notes -->
+                        <p class="card-text fs-6 mt-3 text-start">
+                            <small><b>Note:&nbsp;</b>{{ page.spatial-data-notes }}</small>
+                        </p>
+                        {%- endif -%}
+                    </div>
+                </div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- if page.references.size > 0 -%}
+<!-- References Section -->
+<section aria-labelledby="references-title">
+    <div class="container mx-auto my-5">
+        <div class="d-flex">
+            <h4 id="references-title">References</h4>
+            <button class="btn focus-ring ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#reference-collapse" aria-expanded="false" aria-controls="reference-collapse"> 
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+
+        <hr class="mt-0">
+        
+        <!-- Reference Collapse -->
+        <div id="reference-collapse" class="collapse">
+            <!-- Reference Data Content -->
+            <ol class="vstack gap-3">
+                {%- for reference in page.references -%}
+                <li>
+                    {{ reference }}
+                </li>
+                {%- endfor -%}
+            </ol>
+        </div>
+    </div>
+</section>
+{%- endif -%}
+
+<!-- Resource Section -->
+<section aria-labelledby="resources-title">
+    <div class="container my-5">
+        <!-- Resources Title -->
+        <h4 id="resources-title">Resources</h4>
+        <hr class="mt-0">
+
+        <!-- Related Resources -->
+        <ul id="resource-container" class="list-unstyled vstack gap-4">
+            {% assign species_resources = site.data.resources | where_exp: "item", "item.species contains page.slug" %}
+            {%- if  species_resources.size > 0 -%}
+            {%- for resource in species_resources -%}
+            <li class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+                <div class="card-body">
+                    {% assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" %}
+                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                    <p class="card-text"><small class="text-muted fw-bold"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></small></p>
+                    <hr>
+                    <p class="card-text">{{ resource.description }}</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            {%- endfor -%}
+            {%- else -%}
+            <!-- No Associated Resources -->
+            <div class="px-4 my-2 text-center" role="alert">
+                <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
+                <div class="col-lg-4 mx-auto pb-5"> 
+                    <p class="lead mb-0">{{ page.name }} has no associated resources</p>
+                    <p>Check back later or return home</p>
+                    <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
+                </div> 
+            </div>
+            {%- endif -%}
+        </ul>
+    </div>
+</section>

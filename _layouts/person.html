@@ -1,0 +1,129 @@
+---
+layout: default
+---
+
+<!-- Breadcrumb -->
+{% include breadcrumbs.html %}
+
+<!-- Person Bio -->
+<section aria-labelledby="person-bio-title">
+    <div class="container mb-5">
+        <div class="row">
+            <!-- Person Card -->
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <div class="card">
+                    <div class="ratio ratio-1x1 mx-auto my-3 width200">
+                        <img src="{{ page.imageURL | relative_url }}" class="img-fluid rounded-circle shadow object-fit-cover" height="auto" width="200" alt="{{ page.imageAltText }}">
+                    </div>
+                    <div class="card-body d-flex flex-column text-center">
+                        <!-- Name -->
+                        <h5 id="person-bio-title" class="card-title fw-bold">
+                            {{ page.full-name }}
+                        </h5>
+                        
+                        <!-- Position & Affiliation -->
+                        <p class="card-text mb-0">
+                            <small class="text-secondary d-block">
+                                <span class="fw-bold">{{ page.position }}</span>
+                            </small>
+                            <small class="text-secondary d-block">
+                                {{ page.affiliation }}
+                            </small>
+                        </p>
+
+                        <!-- Email -->
+                        <p class="card-text mb-2">
+                            <a class="text-truncate" href="mailto:{{ page.email }}" target="_blank" rel="noopener noreferrer">{{ page.email }}</a>
+                        </p>
+
+                        {%- assign has_links = page.website | append: page.github | append: page.scholar | append: page.linkedin | append: page.bluesky | append: page.orcid -%}
+                        {%- if has_links != "" -%}
+                        <hr>
+
+                        <!-- Social Links -->
+                        <div class="d-flex justify-content-center align-items-center text-muted">
+                            {%- if page.website -%}<a class="link-dark mx-2" href="{{ page.website }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-lg fa-globe"></i></a>{%- endif -%}
+                            {%- if page.github -%}<a class="link-dark mx-2" href="{{ page.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-github"></i></a>{%- endif -%}
+                            {%- if page.scholar -%}<a class="link-dark mx-2" href="{{ page.scholar }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-google-scholar"></i></a>{%- endif -%}
+                            {%- if page.linkedin -%}<a class="link-dark mx-2" href="{{ page.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-linkedin"></i></a>{%- endif -%}
+                            {%- if page.bluesky -%}<a class="link-dark mx-2" href="{{ page.bluesky }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-bluesky"></i></a>{%- endif -%}
+                            {%- if page.orcid -%}<a class="link-dark mx-2" href="{{ page.orcid }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-orcid"></i></a>{%- endif -%}
+                        </div>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 vstack gap-4">
+                <!-- About Card -->   
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">About</h5>
+                        <hr>
+                        
+                        {{ content }}
+
+                        {%- if page.research-areas.size > 0 -%}
+                        <h6 class="card-title fw-semibold">Research Areas</h6>
+                        <hr class="mt-0">
+                       
+                        <div class="d-flex flex-wrap gap-2">
+                            {%- for area in page.research-areas -%}
+                            <span class="badge bg-light text-dark border text-wrap text-start fs-7">{{ area }}</span>
+                            {%- endfor -%}
+                        </div>
+                        {%- endif -%}
+                    </div>
+                </div>
+
+                <!-- Current Projects -->
+                {%- if page.roles.size > 0 -%}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Projects</h5>
+                        <hr>
+                        <ul class="list-group list-group-flush">
+                            {%- for item in page.roles -%}
+                            <li class="list-group-item"><span class="fw-semibold">{{ item.project }}</span>, {{ item.role }}</li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                </div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- assign related_resources = site.data.resources | where: "is-available", true | where_exp: "item", "item.authors contains page.slug" -%}
+{%- if related_resources.size > 0 -%}
+<!-- Resource Section -->
+<section aria-labelledby="resources-title">
+    <div class="container my-5">
+        <!-- Resources Title -->
+        <h4 id="resources-title">Resources</h4>
+        <hr class="mt-0">
+
+        <!-- Related Resources -->
+        <ul id="resource-container" class="list-unstyled vstack gap-4">
+            {%- for resource in related_resources -%}
+            <li id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+                <div class="card-body">
+                    {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
+                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></p>
+                        <p class="card-text small text-muted fw-bold m-0">{{ resource.date | date: "%b %-d, %Y" }}</p>
+                    </div>
+                    <hr>
+                    <p class="card-text">{{ resource.description }}</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+</section>
+{%- endif -%}

@@ -1,25 +1,33 @@
 ---
-permalink: /404.html
-layout: page
+permalink: /404/
+layout: default
+css-files:
+  - /assets/css/404.css
+page-content-css: "d-flex justify-content-center align-items-center"
 ---
+<!-- 404 Section -->
+<section aria-labelledby="404-title">
+  <div class="container-fluid d-flex">
+    <!-- Bubbles -->
+    <div class="bubble-container">
+        <div class="bubble var1"></div>
+        <div class="bubble var2"></div>
+        <div class="bubble var3"></div>
+        <div class="bubble var1"></div>
+        <div class="bubble var2"></div>
+        <div class="bubble var3"></div>
+        <div class="bubble var1"></div>
+    </div>
+    
+    <!-- 404 Message -->
+    <div class="card text-center border-0 bg-transparent">
+      <div class="card-body">
+        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="An animated floating blue fish" width="350" height="auto">
+        <h1 id="404-title" class="display-5 fw-bold text-body-emphasis"><bold>404!</bold><br><small class="fw-medium">Page Not Found</small></h1>
+        <p class="lead">The page you requested could not be found,<br>check the URL or find your way back home below</p>
+        <a href="{{ '/' | relative_url }}" class="btn btn-primary btn-lg px-4 me-md-2 mb-5">Back Home</a> 
+      </div>
+    </div>
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  </div>
+</section>

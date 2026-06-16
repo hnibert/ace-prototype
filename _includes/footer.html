@@ -1,0 +1,97 @@
+<footer class="container-fluid mb-0 pb-0 px-0 footer-bg position-relative">
+    <a href="#" class="back-to-top text-center text-decoration-none fw-bold text-uppercase">Back To Top</a>
+    <div class="container position-relative z-3"> 
+        <div class="row pt-5"> 
+            <!-- Sitemap -->
+            <div class="col-6 col-md-3 col-lg-2 mb-3"> 
+                <h5 class="fw-bold text-white">ACE</h5> 
+                <ul class="nav flex-column"> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/' | relative_url }}" class="nav-link p-0 link-light d-inline">Home</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/about/' | relative_url }}" class="nav-link p-0 link-light d-inline">About</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline">Tools & Data</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/people/' | relative_url }}" class="nav-link p-0 link-light d-inline">People</a>
+                    </li> 
+                </ul> 
+            </div>
+
+            <!-- Resources -->
+            <div class="col-6 col-md-3 col-lg-2 mb-3"> 
+                <h5 class="fw-bold text-white">Resources</h5> 
+                <ul class="nav flex-column"> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline">Web Applications</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline">Code Repository</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline">Presentations</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline">Publications</a>
+                    </li> 
+                    <li class="nav-item mb-2">
+                        <a href="{{ '/resources/' | relative_url }}" class="nav-link p-0 link-light d-inline z-3">Data</a>
+                    </li> 
+                </ul> 
+            </div> 
+
+            <!-- Regions -->
+            <div class="col-6 col-md-3 col-lg-2 mb-3"> 
+                <h5 class="fw-bold text-white">Regions</h5> 
+                <ul class="nav flex-column">
+                    {% for region in site.regions %}
+                    <li class="nav-item mb-2">
+                        <a href="{{ region.url | relative_url }}" class="nav-link p-0 link-light d-inline">{{ region.name }}</a>
+                    </li> 
+                    {% endfor %}
+                </ul> 
+            </div> 
+
+            <!-- Newsletter Signup -->
+            <div class="col-12 col-md-8 col-lg-5 offset-lg-1">
+                <form>
+                    <h5 class="text-white fw-bold">Subscribe to our newsletter</h5> 
+                    <p class="text-white">Monthly digest of what's new and exciting from us</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter-signup-footer" class="visually-hidden">Email address</label>
+                        <div class="input-group" aria-label="An input group to enter your email for receiving newsletters.">
+                            <input id="newsletter-signup-footer" type="email" class="form-control white-outline rounded-start" placeholder="Email address">
+                            <button class="btn btn-outline-light" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div> 
+        </div>
+
+        <!-- Social Links -->
+        <div class="d-flex justify-content-end mt-3 mb-0">
+            <ul class="list-unstyled d-flex mb-2"> 
+                <li class="me-3">
+                    <a class="link-light" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </li> 
+                <li>
+                    <a class="link-light" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                </li> 
+            </ul> 
+        </div>
+
+        <!-- Branding -->
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 mt-0 border-top"> 
+            <div class="d-flex align-items-center">
+                <a href="#" class="text-decoration-none link-light">
+                    <img src="{{ 'assets/images/logos/ace-logo-md.png' | relative_url }}" class="img-fluid me-3" width="48" height="48" alt="ACE Logo">
+                    <span class="fw-bold m-0 p-0">Alaska Climate & Ecosystems Dashboard</span> 
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wave z-0"></div>
+</footer>

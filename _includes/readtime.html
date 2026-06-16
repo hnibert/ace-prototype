@@ -1,0 +1,9 @@
+{% capture words %}{{ content | number_of_words | minus: 180 }}{% endcapture %}
+{% unless words contains '-' %}
+{% assign readTime = words | plus: 150 | divided_by: 150 %}
+{%- if readTime > 1 -%}
+<i class="fa-regular fa-clock"></i> ~{{ readTime | append: ' minutes to read' }}
+{%- else -%}
+<i class="fa-regular fa-clock"></i> ~{{ readTime | append: ' minute to read' }}
+{%- endif -%}
+{% endunless %}

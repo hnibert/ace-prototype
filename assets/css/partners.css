@@ -1,0 +1,114 @@
+/*--------------
+     PARTNERS 
+     CSS Only Infinite Scroll, provided by: https://codepen.io/ramzibach-the-styleful/pen/LYoYejb
+     TODO: target prefers reduced motion users and slow animation down to a crawl
+     @media (prefers-reduced-motion: reduce) {
+      ...
+    }
+-------------- */
+.partner-section {
+    background-color: ghostwhite;
+    min-height: 320px;
+    position: relative;
+}
+
+.partner-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background-image: url('../images/wave-cutout.svg');
+    background-repeat: repeat;
+    background-position: top;
+    background-size: auto 100%;
+    pointer-events: none !important;
+    transform: scaleY(-1);
+}
+
+.partner-wrapper {
+  width: 100%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.partner-item {
+  margin-left: 12px ;
+  margin-right: 12px;
+  display: flex;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  left: max(calc(200px * var(--partner-count)), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.partner-item img {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.partner1 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 1) * -1);
+}
+
+.partner2 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 2) * -1);
+}
+
+.partner3 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 3) * -1);
+}
+
+.partner4 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 4) * -1);
+}
+
+.partner5 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 5) * -1);
+}
+
+.partner6 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 6) * -1);
+}
+
+.partner7 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 7) * -1);
+}
+
+.partner8 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 8) * -1);
+}
+
+.partner9 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 9) * -1);
+}
+
+.partner10 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 10) * -1);
+}
+
+.partner11 {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 11) * -1);
+}

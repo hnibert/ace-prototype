@@ -1,0 +1,24 @@
+{%- assign tag_type = 'section' -%}
+{%- if include.is_header -%}
+{%- assign tag_type = 'header' -%}
+
+{%- assign label_id = include.id | slugify | append: "-title" -%}
+{%- endif -%}
+<{{ tag_type }} aria-labelledby="{{ label_id }}">
+    <div id="{{ include.id | slugify }}" class="container-fluid text-bg-dark hero-img p-0" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ include.hero_img_url }}');">
+        <div class="container col-xxl-8 px-4 py-5"> 
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5"> 
+                <div class="col-10 col-sm-8 col-lg-6"> 
+                    <img src="{{ include.brand_img_url }}" class="d-block mx-lg-auto img-fluid" alt="{{ include.brand_img_alt }}" width="420" height="420" loading="lazy"> 
+                </div> 
+                <div class="col-lg-6"> 
+                    <h1 id="{{ label_id }}" class="display-5 fw-bold lh-1 mb-3">{{ include.title }}</h1> 
+                    <p class="lead text-shadow-1">{{ include.lead }}</p> 
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start"> 
+                        <a href="{{ include.link_url | relative_url }}" class="btn btn-ace-primary btn-lg px-4 me-md-2">{{ include.link_text }}</a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
+    </div>
+</{{ tag_type }}>

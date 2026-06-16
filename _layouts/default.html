@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#329a9a">
+
+    <!-- RSS Feed (Jekyll-Feed)-->
+    {% feed_meta %}
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+    <link rel="icon" href="f{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+    <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+
+    <!-- Title -->
+    <title>{{ page.title }}</title>
+
+    <!-- Bootstrap Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
+
+    <!-- ACE Styles -->
+    <link href="{{ '/assets/css/acestyle.css' | relative_url }}" rel="stylesheet"/>
+
+    {%- comment -%} Page JS Preloads {%- endcomment -%}
+    {%- if page.js-preload-files -%}
+      {%- for js_file in page.js-preload-files -%}
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- comment -%} Layout JS Preloads {%- endcomment -%}
+    {%- if layout.js-preload-files -%}
+      {%- for js_file in layout.js-preload-files -%}
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- comment -%} Page CSS {%- endcomment -%}
+    {%- if page.css-files -%}
+      {%- for css_file in page.css-files -%}
+      <link rel="stylesheet" href="{{ css_file | relative_url }}" type="text/css">
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- comment -%} Layout CSS {%- endcomment -%}
+    {%- if layout.css-files -%}
+      {%- for css_file in layout.css-files -%}
+      <link rel="stylesheet" href="{% link {{ css_file | relative_url }} %}" type="text/css">
+      {%- endfor -%}
+    {%- endif -%}
+  </head>
+  <body>
+    
+    {% include global-nav.html %}
+    
+    <main class="page-content {{ page.page-content-css }}">
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <!-- Bootstrap, Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f202518bd0.js" crossorigin="anonymous"></script>
+    
+    {%- if page.js-postload-files -%}
+      {%- for js_file in page.js-postload-files -%}
+      <script src="{{ js_file }}" type="text/javascript"></script>
+      {%- endfor -%}
+    {%- endif -%}
+    
+    {%- if layout.js-postload-files -%}
+      {%- for js_file in layout.js-postload-files -%}
+      <script src="{{ js_file }}" type="text/javascript"></script>
+      {%- endfor -%}
+    {%- endif -%}    
+  </body>
+</html>

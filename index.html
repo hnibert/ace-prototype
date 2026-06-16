@@ -1,0 +1,212 @@
+---
+title: Home
+permalink: /
+layout: default
+css-files:
+ - /assets/css/partners.css
+---
+<!-- Hero - Call To Action -->
+{%- include hero-action.html 
+is_header=true
+id="hero-home"
+hero_img_url="assets/images/heroes/hero-home.jpg"
+brand_img_url="assets/images/logos/ace_logo.png" 
+brand_img_alt="ACE Logo" 
+title="Alaska Climate & Ecosystem Dashboard" 
+lead="Alaska’s fisheries and marine ecosystems are changing as the climate shifts, bringing new challenges for resource managers, fishing communities, and decision-makers. We are working to provide people with tools and information that supports decision-making as we navigate these changing conditions." 
+link_url="/about/" 
+link_text="Learn More" -%}
+
+<!-- About Us Section -->
+<section aria-labelledby="summary-title">
+    <div class="container">
+        <div class="col-12">
+            <div class="container border rounded p-4 my-5">
+                <div class="row row-cols-1 row-cols-lg-3 g-4">
+                    <div class="col d-flex justify-content-start mb-3 mb-lg-0">
+                        <div class="icon-square bg-body-secondary d-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 p-1"> 
+                            <i class="fa-solid fa-database"></i>
+                        </div> 
+                        <div class="d-flex flex-column"> 
+                            <h3 class="fs-2 text-body-emphasis">Multiple Disciplines</h3> 
+                            <p>Our team is a collaboration of scientists that includes physical oceanographers, ecosystem modelers, economists, social scientists, and fishery and living marine resource managers</p> 
+                            <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-dark icon-link icon-link-hover gap-1 text-decoration-none mt-auto me-auto">Our People <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                        </div> 
+                    </div>
+                    <div class="col d-flex justify-content-start mb-3 mb-lg-0">
+                        <div class="icon-square bg-body-secondary d-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 p-1"> 
+                            <i class="fa-solid fa-hexagon-nodes"></i>
+                        </div> 
+                        <div class="d-flex flex-column"> 
+                            <h3 class="fs-2 text-body-emphasis">Climate Models</h3> 
+                            <p>We use climate informed world class modeling to improve Alaska fisheries management and support the Alaska seafood industry and communities</p> 
+                            <a href="{{ '/about/' | relative_url }}" class="btn btn-outline-dark icon-link icon-link-hover gap-1 text-decoration-none mt-auto me-auto">Explore Models <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                        </div> 
+                    </div>
+                    <div class="col d-flex justify-content-start mb-3 mb-lg-0">
+                        <div class="icon-square bg-body-secondary d-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 p-1"> 
+                            <i class="fa-solid fa-people-group"></i>
+                        </div> 
+                        <div class="d-flex flex-column"> 
+                            <h3 class="fs-2 text-body-emphasis">Community Resources</h3> 
+                            <p>Through <abbr title="Climate Ecosystems and Fisheries Initiative">CEFI</abbr>, scientists and decision-makers are developing climate forecasts, scenario-planning tools, and other resources to help communities and industries adapt to a changing environment</p> 
+                            <a href="{{ '/resources/' | relative_url }}" class="btn btn-outline-dark icon-link icon-link-hover gap-1 text-decoration-none mt-auto me-auto">Search Resources  <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Region Funnels Section -->
+<section id="regions" aria-labelledby="regions-title">
+    <div class="container py-4 my-5">
+        <div class="row">
+            <!-- Title & Lead -->
+            <div class="col-12 text-center">
+                <h1 id="regions-title" class="display-5 fw-bold text-body-emphasis">Explore Regions</h1> 
+                <p class="lead">Select a region to learn more about its climate or access relevant tools and data</p>
+            </div>
+            
+            <!-- Divider -->
+            <div class="container mt-0 pt-0">
+                <hr>
+            </div>
+
+            <!-- Region Funnels -->
+            <div class="col-12">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    {%- for region in site.regions -%}
+                    <div class="col">
+                        <div class="card region-card {{ region.name | slugify | prepend: 'region-' }} mb-3 h-100 text-bg-dark card-shadow border-0">
+                            <div class="card-body d-flex justify-content-end align-items-end me-2">
+                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a href="{{ region.url | relative_url }}" class="stretched-link text-decoration-none link-light">{{ region.name }}</a></h3>
+                            </div>
+                        </div>
+                    </div>            
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Community Funnel Section -->
+<section aria-labelledby="communities-title">
+    <div class="container py-4 my-5">
+        <div class="row">
+            <!-- Title & Lead -->
+            <div class="col-12 text-center"> 
+                <p id="communities-title"class="display-5 fw-bold mb-1">Find Communities</p> 
+                <p class="lead">Select a community to view related subsistence calendars and species of concern</p>
+                <a href="{{ '/communities/' | relative_url }}" class="btn btn-outline-dark icon-link text-decoration-none"><i class="fa-solid fa-house-flag"></i> All Communities</a> 
+            </div>
+
+            <!-- Divider -->
+            <div class="container mt-0 pt-0">
+                <hr>
+            </div>
+            
+            <!-- Community Funnels -->
+            <div class="col-12">
+                <div class="row d-flex justify-content-between g-4">
+                    {%- for community in site.communities -%}
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card community-card {{ community.name | slugify | prepend: 'community-' }} text-bg-dark h-100 card-shadow border-0">
+                            <div class="card-body d-flex justify-content-start align-items-end ms-2">
+                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a class="stretched-link text-decoration-none link-light" href="{{ community.url | relative_url }}">{{ community.name }}</a></h3>
+                            </div>
+                        </div>
+                    </div>               
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Are -->
+<section aria-labelledby="people-title" aria-roledescription="carousel" aria-label="Our Team">
+    <div class="px-4 pt-5 mt-5 text-center">
+        <h1 id="people-title" class="display-5 fw-bold text-body-emphasis">Our Team</h1> 
+        <div class="col-lg-4 mx-auto"> 
+            <p class="lead mb-4">Get to know us and see how our work is shaping the future of fisheries</p>
+            <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-dark icon-link text-decoration-none"><i class="fa-solid fa-users"></i> Meet Our People</a> 
+        </div> 
+    </div>
+
+    <!-- Horizontal Rule -->
+    <div class="container mt-0 pt-0">
+        <hr>
+    </div>
+
+    <!-- People Section -->
+    <div class="container pb-5">
+        <!-- People Carousel -->
+        <div id="people-carousel" class="carousel slide carousel-fade">
+            <div id="people-container" class="carousel-inner d-flex align-items-stretch">
+                {%- assign people = site.people | where: "feature", true -%}
+                {%- assign sorted_people = people | sort: "feature-order" -%}
+                {%- for person in sorted_people -%}
+                {%- if person.feature-order -%}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="card h-100 shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <!-- Image Column -->
+                            <div class="col-md-4 d-flex justify-content-center p-4">
+                                <img src="{{ person.imageURL }}" 
+                                    class="rounded-circle shadow-sm object-fit-cover" 
+                                    width="256" 
+                                    height="256" 
+                                    alt="{{ person.imageAltText }}">
+                            </div>
+                            <!-- Content Column -->
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h3 class="card-title h4 fw-bold mb-1">{{ person.full-name }}</h3>
+                                    
+                                    <p class="card-text text-secondary small mb-3">
+                                        <span class="fw-semibold d-block text-dark">{{ person.position }}</span>
+                                        <span>{{ person.affiliation }}</span>
+                                    </p>
+
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        {%- for area in person.research-areas -%}
+                                            <span class="badge text-bg-light border text-secondary fw-normal">{{ area }}</span>
+                                        {%- endfor -%}
+                                    </div> 
+                                    <hr class="text-black-50 my-3">
+                                    <p class="card-text text-muted">
+                                        {{ person.short-text }}
+                                    </p>
+                                    <a href="{{ person.url | relative_url }}" class="icon-link text-decoration-none">Read more <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%- endif -%}
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="container text-center" role="group" aria-label="Carousel navigation">
+        <!-- Prev Button -->
+        <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="prev">
+            <i class="fa-solid fa-chevron-left"></i>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <!-- Next Button -->
+        <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="next">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!-- Partners -->
+{% include partners.html %}

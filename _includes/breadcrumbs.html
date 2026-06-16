@@ -1,0 +1,37 @@
+<nav aria-label="Breadcrumb">
+    <div class="container my-5"> 
+        {%- assign breadcrumbs = page.url | remove:'/index.html' | split: '/' | reject: '' -%}
+        <ol class="breadcrumb p-3 border-bottom"> 
+            <li class="breadcrumb-item"> 
+                <a class="link-body-emphasis text-decoration-none link-dark" href="{{ '/' | relative_url }}">
+                    <span><i class="fa-solid fa-house-chimney"></i> Home</span>
+                </a> 
+            </li>
+            {%- for crumb in breadcrumbs offset: 1 -%}
+                {%- if forloop.last -%}
+                <li class="breadcrumb-item text-capitalize active" aria-current="page">{{ crumb | replace:'-',' ' | capitalize }}</li>
+                {%- else -%}
+                {%- assign crumb_limit = forloop.index | plus: 1 -%}
+
+                {%- if crumb == 'regions' -%}
+                <li class="breadcrumb-item text-capitalize">
+                    <a href="{{ '/#regions' | relative_url }}" class="text-decoration-none link-dark">Regions</a>
+                </li>
+                {%- elsif crumb == 'species' -%}
+                <li class="breadcrumb-item text-capitalize">
+                    <a href="{{ '/communities/#species-search' | relative_url }}" class="text-decoration-none link-dark">Species</a>
+                </li>            
+                {%- else -%}
+                <li class="breadcrumb-item text-capitalize">
+                    <a href="{{ site.baseurl }}
+                    {%- for path_crumb in breadcrumbs limit: crumb_limit -%}
+                        {{ path_crumb | append: '/' }}
+                    {%- endfor -%}" class="text-decoration-none link-dark">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+                </li>
+                {%- endif -%}
+
+                {%- endif -%}
+            {%- endfor -%}
+        </ol> 
+    </div>
+</nav>

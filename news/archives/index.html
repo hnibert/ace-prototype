@@ -1,0 +1,170 @@
+---
+layout: default
+---
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+<!-- Archived Category Search -->
+{%- assign posts_categories = site.posts | map: 'categories' | flatten | uniq -%}
+<form class="container my-5" role="search" aria-labelledby="category-form-title">
+    <h2 id="category-form-title" class="visually-hidden">
+        Posts Category Search
+    </h2>
+
+    <!-- No Script Alert -->
+    <noscript>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Heads Up!</strong> Your browser has Javascript disabled! Some or all functionality of this search may not work properly!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </noscript>
+
+    <h1 class="block-text small fw-semibold text-uppercase">Archive</h1> 
+    <p class="display-5 fw-bold mb-1">Search by Category</p> 
+    <p class="lead">Explore our news archives by category</p> 
+    <hr>
+
+    <span class="fs-6 fw-semibold ms-3"><i class="fas fa-search"></i> Post Categories</span>
+    <p class="ms-3 text-muted"><small>Search for categories below</small></p>
+
+    <div class="row g-2 mb-3">
+        <!-- Search Input -->
+        <div class="col-12">
+            <div class="input-group">
+                <label class="input-group-text" for="category-search-input">Search</label>
+                <input id="category-search-input" list="category-auto-list" type="search" class="form-control" placeholder="Category" aria-label="Search Name">
+                <datalist id="category-auto-list">
+                    {%- for category in posts_categories -%}
+                    <option value="{{ category | capitalize }}"></option>
+                    {%- endfor -%}
+                </datalist>
+                <button id="category-clear-input" class="btn bg-body-secondary focus-ring" type="button" aria-label="Clears typed search input">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mt-0 pt-0">
+</form>
+
+<!-- Category Search List -->
+<section class="container mb-5" aria-labelledby="category-results-title">
+    <h2 id="category-results-title" class="visually-hidden">
+        Posts search results
+    </h2>
+
+    <!-- Category Results Summary -->
+    <div id="category-search-summary" class="mb-4" aria-live="polite" aria-atomic="true">
+        <!-- Summary Text -->
+        <p class="fw-bold"><span class="summary-count"></span><span class="summary-input"></span></p>
+    </div>
+
+    <!-- Category Search Container -->
+    <ul id="category-search-container" class="tile-container list-unstyled">
+        
+        {%- for category in posts_categories -%}
+        {%- assign category_slug = category | slugify -%}
+        {%- assign category_path = '/news/archives/' | append: category_slug | append: '/' -%}
+        {%- assign post_count = site.categories[category] | size -%}
+        <li class="card tile-item card-shadow">
+            <div class="card-body">
+                <a class="text-decoration-none link-light stretched-link species-name fs-5" href="{{ category_path | relative_url }}">{{ category | capitalize }}</a>
+                <p class="fw-light">{{ post_count }} {% if post_count.size > 1 %}Posts{% else %}Post{% endif %}</p>
+            </div>
+        </li>
+        {%- endfor -%}
+    </ul>
+
+    <!-- No Results Feedback -->
+    <div class="px-4 my-5 text-center d-none" id="no-results-feedback" role="alert">
+        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="images/other/lumpsucker.png" alt="" width="350" height="auto">
+        <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
+        <div class="col-lg-4 mx-auto pb-5"> 
+            <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
+            <p>Try checking for typos or use broader keywords</p>
+            <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container">Clear Search</button>
+        </div> 
+    </div>
+</section>
+
+<!-- Archived Year Search -->
+{%- assign posts_years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" | reverse -%}
+<form class="container my-5" role="search" aria-labelledby="year-form-title">
+    <h2 id="year-form-title" class="visually-hidden">
+        Posts Year Search
+    </h2>
+
+    <!-- No Script Alert -->
+    <noscript>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Heads Up!</strong> Your browser has Javascript disabled! Some or all functionality of this search may not work properly!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </noscript>
+
+    <h1 class="block-text small fw-semibold text-uppercase">Archive</h1> 
+    <p class="display-5 fw-bold mb-1">Search by Year</p> 
+    <p class="lead">Explore our news archives by year</p> 
+    <hr>
+
+    <span class="fs-6 fw-semibold ms-3"><i class="fas fa-search"></i> Post Years</span>
+    <p class="ms-3 text-muted"><small>Search for years below</small></p>
+
+    <div class="row g-2 mb-3">
+        <!-- Search Input -->
+        <div class="col-12">
+            <div class="input-group">
+                <label class="input-group-text" for="year-search-input">Search</label>
+                <input id="year-search-input" list="year-auto-list" type="search" inputmode="numeric" pattern="[0-9]*" class="form-control" placeholder="Year" aria-label="Search Year">
+                <datalist id="year-auto-list">
+                    {%- for year in posts_years -%}
+                    <option value="{{ year.name }}"></option>
+                    {%- endfor -%}
+                </datalist>
+                <button id="year-clear-input" class="btn bg-body-secondary focus-ring" type="button" aria-label="Clears typed search input">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mt-0 pt-0">
+</form>
+
+<!-- Search List -->
+<section class="container mb-5" aria-labelledby="search-title">
+    <h2 id="search-title" class="visually-hidden">
+        Posts search results
+    </h2>
+
+    <!-- Results Summary -->
+    <div id="search-summary" class="mb-4" aria-live="polite" aria-atomic="true">
+        <!-- Summary Text -->
+        <p class="fw-bold"><span class="summary-count"></span><span class="summary-input"></span></p>
+    </div>
+
+    <!-- Search Container -->
+    <ul id="search-container" class="tile-container list-unstyled">
+        {%- for year in posts_years -%}
+        <li class="card tile-item card-shadow">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <a class="text-decoration-none link-light stretched-link fs-5" href="{{ '/news/archives/' | append: year.name | append: '/' | relative_url }}">{{ year.name }}</a>
+                <p class="fw-light">{{ year.items.size }} {% if year.items.size > 1 %}Posts{% else %}Post{% endif %}</p>
+            </div>
+        </li>
+        {%- endfor -%}
+    </ul>
+
+    <!-- No Results Feedback -->
+    <div class="px-4 my-5 text-center d-none" id="no-results-feedback" role="alert">
+        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="images/other/lumpsucker.png" alt="" width="350" height="auto">
+        <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
+        <div class="col-lg-4 mx-auto pb-5"> 
+            <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
+            <p>Try checking for typos or use broader keywords</p>
+            <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container">Clear Search</button>
+        </div> 
+    </div>
+</section>

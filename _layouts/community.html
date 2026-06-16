@@ -1,0 +1,132 @@
+---
+layout: default
+---
+<!-- Hero -->
+{%- assign hero_data = page.hero_data -%}
+{%- include hero-data.html data=page.hero_data -%}
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+{%- if page.show_info_bar == true -%}
+<section aria-labelledby="">
+    <div class="container">
+        <div class="card border-0 border-start border-5 border-ace-channel rounded-0 rounded-end shadow-sm p-3">
+            <div class="row justify-content-start align-items-start g-3">
+                <!-- English Name -->
+                <div class="col-auto d-flex flex-column">
+                    <span class="d-block text-uppercase small fw-bold text-muted">Community</span>
+                    <h4 class="mb-0">{{ page.name }}</h4>
+                </div>
+                
+                {%- if page.native_language and page.native_name -%}
+                <!-- Native Name & Pronunciation -->
+                <div class="col d-flex flex-column border-start ps-3">
+                    <div class="d-flex gap-3">
+                        <span class="d-block text-uppercase small fw-bold text-muted">Native Name</span>
+                        <span class="badge rounded-pill bg-secondary-subtle text-secondary small fw-normal">{{ page.native_language }}</span>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <span class="fs-5 me-4" lang="{{ page.native_language_iso }}">
+                            <ruby style="ruby-align: start;">{{ page.native_name }} <rt class="text-muted small">{{ page.native_pronunciation }}</rt></ruby>
+                        </span>
+                    </div>          
+                </div>
+                {%- endif -%}
+
+                {%- if page.native_pronunciation_audio -%}
+                <!-- Pronunciation Audio -->
+                <div class="col-auto">
+                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3 icon-link" onclick="document.getElementById('audio-pronounce').play()"><svg class="bi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M187.2 100.9C174.8 94.1 159.8 94.4 147.6 101.6C135.4 108.8 128 121.9 128 136L128 504C128 518.1 135.5 531.2 147.6 538.4C159.7 545.6 174.8 545.9 187.2 539.1L523.2 355.1C536 348.1 544 334.6 544 320C544 305.4 536 291.9 523.2 284.9L187.2 100.9z"/></svg> Listen</button>
+                    <audio id="audio-pronounce" src="{{ page.native_pronunciation_audio | relative_url }}"></audio>
+                </div>
+                {%-endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+{%- endif -%}
+
+<!-- Community Summary -->
+<section aria-labelledby="community-summary-title community-summary-subtitle">
+    <div class="container my-5"> 
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 col-lg-4">
+                <img src="{{ page.summary_img_url | relative_url }}" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.summary_img_alt }}">
+            </div>
+            <div class="col-12 col-lg-8">
+                <h1 id="community-summary-title" class="block-text small fw-semibold text-uppercase">{{ page.name }}</h1>
+                <p id="community-summary-subtitle" class="display-5 fw-bold mb-3">{{ page.summary_title }}</p> 
+                <p class="lead">{{ page.summary_lead }}</p> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Subsistence Calendar -->
+<section aria-labelledby="subsistence-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="text-center">
+                    <h1 id="subsistence-title">Seasonal Harvesting Calendar</h1>
+                    <h2 class="fs-4">{{ page.calendar_subtitle }}</h2>
+                    <img src="{{ page.calendar_display_img_url | relative_url }}" class="img-fluid rounded mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.calendar_display_alt }}">
+                </div>
+                <div class="d-flex justify-content-end gap-2 border-top pt-2">
+                    <button class="btn btn-ace-primary icon-link" data-bs-toggle="modal" data-bs-target="#subsistence-calendar-modal"><svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M128 96C110.3 96 96 110.3 96 128L96 224C96 241.7 110.3 256 128 256C145.7 256 160 241.7 160 224L160 160L224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L128 96zM160 416C160 398.3 145.7 384 128 384C110.3 384 96 398.3 96 416L96 512C96 529.7 110.3 544 128 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480L160 416zM416 96C398.3 96 384 110.3 384 128C384 145.7 398.3 160 416 160L480 160L480 224C480 241.7 494.3 256 512 256C529.7 256 544 241.7 544 224L544 128C544 110.3 529.7 96 512 96L416 96zM544 416C544 398.3 529.7 384 512 384C494.3 384 480 398.3 480 416L480 480L416 480C398.3 480 384 494.3 384 512C384 529.7 398.3 544 416 544L512 544C529.7 544 544 529.7 544 512L544 416z"/></svg> View</button>
+                    {%- if page.calendar_download_url -%}
+                    <a class="btn btn-ace-primary icon-link" href="{{ page.calendar_download_url | relative_url }}" download="{{ page.name | slugify | append: '-calendar' }}" target="_blank"><svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 306.7L246.6 265.3C234.1 252.8 213.8 252.8 201.3 265.3C188.8 277.8 188.8 298.1 201.3 310.6L297.3 406.6C309.8 419.1 330.1 419.1 342.6 406.6L438.6 310.6C451.1 298.1 451.1 277.8 438.6 265.3C426.1 252.8 405.8 252.8 393.3 265.3L352 306.7L352 96zM160 384C124.7 384 96 412.7 96 448L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 448C544 412.7 515.3 384 480 384L433.1 384L376.5 440.6C345.3 471.8 294.6 471.8 263.4 440.6L206.9 384L160 384zM464 440C477.3 440 488 450.7 488 464C488 477.3 477.3 488 464 488C450.7 488 440 477.3 440 464C440 450.7 450.7 440 464 440z"/></svg> Download <small>({{ page.calendar_file_size }})</small></a>
+                    {%- endif -%}
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h3 id="subsistence-title" class="fw-bold">Subsistence Calendar</h3>
+                <p class="lead">{{ page.calendar_summary }}</p>
+                <hr class="mt-0">
+                <h4 class="fw-bold">About this Calendar</h4>
+                <p class="body-text">{{ page.calendar_about }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Resource Section -->
+<section aria-labelledby="resources-title">
+    <div class="container my-5">
+        <!-- Resources Title -->
+        <h4 id="resources-title">Resources</h4>
+        <hr class="mt-0">
+
+        <!-- Related Resources -->
+        <ul id="resource-container" class="list-unstyled vstack gap-4">
+            {%- assign region_resources = site.data.resources | where_exp: "item", "item.regions contains page.slug" -%}
+            {%- if  region_resources.size > 0 -%}
+            {%- for resource in region_resources -%}
+            <li class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+                <div class="card-body">
+                    {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
+                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                    <p class="card-text"><small class="text-muted fw-bold"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></small></p>
+                    <hr>
+                    <p class="card-text">{{ resource.description }}</p>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </li>
+            {%- endfor -%}
+            {%- else -%}
+            <!-- No Associated Resources -->
+            <div class="px-4 my-2 text-center" role="alert">
+                <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
+                <div class="col-lg-4 mx-auto pb-5"> 
+                    <p class="lead mb-0">{{ page.name }} has no associated resources</p>
+                    <p>Check back later or return home</p>
+                    <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
+                </div> 
+            </div>
+            {%- endif -%}
+        </ul>
+    </div>
+</section>
