@@ -550,7 +550,7 @@ collections:
                   collection: 'global_data',
                   file: 'resource_tags',
                   display_fields: ["theme.*.label"],
-                  search_fields: [theme.*.id, theme.*.label],
+                  search_fields: ["theme.*.id, theme.*.label"],
                   value_field: "theme.*.id",
                   multiple: true,
                   required: false
@@ -564,7 +564,7 @@ collections:
                   collection: 'global_data',
                   file: 'resource_tags',
                   display_fields: ["species.*.label"],
-                  search_fields: [species.*.id, species.*.label],
+                  search_fields: ["species.*.id, species.*.label"],
                   value_field: "species.*.id",
                   multiple: false, #This needs addressed, can you select multiple species or should you just tag it 'multi species'?
                   required: false
@@ -581,7 +581,7 @@ collections:
                   collection: 'global_data',
                   file: 'resource_tags',
                   display_fields: ["subtopics.*.label"],
-                  search_fields: [subtopics.*.id, subtopics.*.label],
+                  search_fields: ["subtopics.*.id, subtopics.*.label"],
                   value_field: "subtopics.*.id",
                   multiple: false,
                   required: true
