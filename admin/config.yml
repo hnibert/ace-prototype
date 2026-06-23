@@ -518,9 +518,10 @@ collections:
                   name: 'type',
                   widget: 'relation',
                   collection: 'global_data',
-                  display_fields: ["items.label"],
-                  search_fields: ["items.id", "items.label"],
-                  value_field: "items.id",
+                  file: 'resource_types', 
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'], 
+                  search_fields: ['items.*.id', 'items.*.label'],
                   multiple: false,
                   required: true
                 }
@@ -564,9 +565,10 @@ collections:
                   name: 'themes',
                   widget: 'relation',
                   collection: 'global_data',
-                  display_fields: ["items.label"],
-                  search_fields: ["items.id", "items.label"],
-                  value_field: "items.id",
+                  file: 'resource_themes',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
                   required: false
                 } 
@@ -577,9 +579,10 @@ collections:
                   name: 'species',
                   widget: 'relation',
                   collection: 'global_data',
-                  display_fields: ["items.label"],
-                  search_fields: ["items.id", "items.label"],
-                  value_field: "items.id",
+                  file: 'resource_species',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
                   multiple: false, #This needs addressed, can you select multiple species or should you just tag it 'multi species'?
                   required: false
                 } 
@@ -593,9 +596,10 @@ collections:
                   name: 'topics',
                   widget: 'relation',
                   collection: 'global_data',
-                  display_fields: ["items.label"],
-                  search_fields: ["items.id", "items.label"],
-                  value_field: "items.id",
+                  file: 'resource_subtopics',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
                   multiple: false,
                   required: true
                 } 
