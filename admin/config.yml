@@ -484,10 +484,10 @@ collections:
       # ============
       - name: "resources"
         label: "Resources"
-        file: "/_data/resources.yml"
+        file: "_data/resources.yml"
         fields:
           - label: "Resource"
-            name: "resource"
+            name: "resources"
             widget: "list"
             summary: '{{fields.title}} ({{fields.type}})'
             fields:
@@ -576,7 +576,7 @@ collections:
               #Subtopics
               - { 
                   label: 'Subtopics',
-                  name: 'subtopics',
+                  name: 'topics',
                   widget: 'relation',
                   collection: 'global_data',
                   file: 'resource_tags',

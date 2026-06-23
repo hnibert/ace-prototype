@@ -263,7 +263,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
         this object array is then used with Fuse.js and native JS multi-category/multi-tag filtering */
     {%- endcomment -%}
 
-    const searchIndex = JSON.parse(decodeURIComponent("{{ site.data.resources | where: 'is-available', true | jsonify | uri_escape }}"));
+    const searchIndex = JSON.parse(decodeURIComponent("{{ site.data.resources.entries | where: 'is-available', true | jsonify | uri_escape }}"));
 
     console.log(searchIndex);
 </script>

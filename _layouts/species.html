@@ -228,7 +228,7 @@ layout: default
 
         <!-- Related Resources -->
         <ul id="resource-container" class="list-unstyled vstack gap-4">
-            {% assign species_resources = site.data.resources | where_exp: "item", "item.species contains page.slug" %}
+            {% assign species_resources = site.data.resources.entries | where_exp: "item", "item.species contains page.slug" %}
             {%- if  species_resources.size > 0 -%}
             {%- for resource in species_resources -%}
             <li class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">

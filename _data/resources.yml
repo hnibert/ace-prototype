@@ -1,1101 +1,1102 @@
-#Resource
-- title: "Harvest Control Rule Explorer"
-  date: 2025-12-31
-  type: "application"
-  icon: "fa-solid fa-globe"
-  regions: []
-  communities: []
-  themes:
-  - "human-dimensions"
-  species: []
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "fishery-dependent-data"
-  authors:
-  - "kirstin-holsman"
-  user-goals: []
-  description: >-
-    Harvest Control Rules (HCRs) are pre-agreed guidelines that determine how much fishing can take place based on 
-    the current status of the fish stock. This web application allows users to visualize different HCR scenarios.
-  url: "https://kholsman.shinyapps.io/HCRshiny/"
-  is-available: true
-  file: null
-
-#Resource 
-- title: "ACLIM2 Species Distribution Models"
-  date: 2025-12-31
-  type: "application"
-  icon: "fa-solid fa-globe"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "stock-assessment-scientist"
-  topics:
-  - "species-distribution"
-  authors:
-  - "maurice-goodman"
-  user-goals: []
-  description:  >-
-    This interactive web application allows users to explore range and overlap forecasts from the 
-    Alaska Climate Integrated Modeling (ACLIM) project for a suite of eastern Bering Sea groundfish and crab species.
-  url: "https://connect.fisheries.noaa.gov/aclim2_sdms_explorer/"
-  is-available: true
-  file: null
-
+entries:
   #Resource
-- title: "ACLIM2 GitHub Repository"
-  date: 2025-12-31
-  type: "data-and-code"
-  icon: "fa fa-code"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species: []
-  audience:
-  - "stock-assessment-scientist"
-  topics:
-  - "indicators-and-monitoring"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    The ACLIM2 Github repository contains R code and Rdata files for working with netcdf-format data generated from 
-    the downscaled ROMSNPZ modeling of the ROMSNPZ Bering Sea Ocean Modeling team.
-  url: "https://github.com/kholsman/ACLIM2"
-  is-available: true
-  file: null
+  - title: "Harvest Control Rule Explorer"
+    date: 2025-12-31
+    type: "application"
+    icon: "fa-solid fa-globe"
+    regions: []
+    communities: []
+    themes:
+    - "human-dimensions"
+    species: []
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "kirstin-holsman"
+    user-goals: []
+    description: >-
+      Harvest Control Rules (HCRs) are pre-agreed guidelines that determine how much fishing can take place based on 
+      the current status of the fish stock. This web application allows users to visualize different HCR scenarios.
+    url: "https://kholsman.shinyapps.io/HCRshiny/"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Aligning fisheries terminology with diverse social benefits"
-  date: 2024-09-28
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-mangers"
-  topics:
-  - "fisheries-management"
-  authors:
-  - "sarah-wise"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Fisheries management categories such as "commercial" and "recreational" overlook key social, cultural, and food-system benefits of fishing, as well as non-market economies. 
-    While "subsistence", which is used in state and federal management contexts in Alaska, could offer a more flexible framework, careful, data-informed accounting is needed to 
-    ensure that benefits are equitably recognized and to strengthen community resilience and national benefits under growing climate and social pressures.
-  url: "https://www.sciencedirect.com/science/article/pii/S0308597X24003750"
-  is-available: true
-  file: null
+  #Resource 
+  - title: "ACLIM2 Species Distribution Models"
+    date: 2025-12-31
+    type: "application"
+    icon: "fa-solid fa-globe"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    authors:
+    - "maurice-goodman"
+    user-goals: []
+    description:  >-
+      This interactive web application allows users to explore range and overlap forecasts from the 
+      Alaska Climate Integrated Modeling (ACLIM) project for a suite of eastern Bering Sea groundfish and crab species.
+    url: "https://connect.fisheries.noaa.gov/aclim2_sdms_explorer/"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Development of climate informed management scenarios for fisheries in the eastern Bering Sea"
-  date: 2024-03-29
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-mangers"
-  topics:
-  - "fisheries-management"
-  authors:
-  - "cody-szuwalski"
-  - "jim-ianelli"
-  - "kirstin-holsman"
-  - "sarah-wise"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    This paper describes a stakeholder-driven approach that combines climate projections and social-ecological models to develop fair, 
-    climate-ready management scenarios for groundfish and crab fisheries in the eastern Bering Sea, showing that repeated, inclusive engagement 
-    and a balanced mix of fixed limits and flexible targets help decision-makers understand tradeoffs and support equitable adaptation to climate change.     
-  url: "https://academic.oup.com/icesjms/article/82/1/fsae034/7637371"
-  is-available: true
-  file: null
+    #Resource
+  - title: "ACLIM2 GitHub Repository"
+    date: 2025-12-31
+    type: "data-and-code"
+    icon: "fa fa-code"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species: []
+    audience:
+    - "stock-assessment-scientist"
+    topics:
+    - "indicators-and-monitoring"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      The ACLIM2 Github repository contains R code and Rdata files for working with netcdf-format data generated from 
+      the downscaled ROMSNPZ modeling of the ROMSNPZ Bering Sea Ocean Modeling team.
+    url: "https://github.com/kholsman/ACLIM2"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Applications of Ecosystem Risk Assessment in Federal Fisheries to Advance Ecosystem-Based Fisheries Management"
-  date: 2023-03-01
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-mangers"
-  topics:
-  - "fisheries-management"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    This report shows how ecosystem-level risk assessments can help U.S. fishery managers account for climate, human, and ecosystem interactions, prioritize key risks, 
-    and support ecosystem-based fisheries management using examples from five regional case studies.    
-  url: "https://spo.nmfs.noaa.gov/sites/default/files/TMOHC11.pdf"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Aligning fisheries terminology with diverse social benefits"
+    date: 2024-09-28
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-mangers"
+    topics:
+    - "fisheries-management"
+    authors:
+    - "sarah-wise"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Fisheries management categories such as "commercial" and "recreational" overlook key social, cultural, and food-system benefits of fishing, as well as non-market economies. 
+      While "subsistence", which is used in state and federal management contexts in Alaska, could offer a more flexible framework, careful, data-informed accounting is needed to 
+      ensure that benefits are equitably recognized and to strengthen community resilience and national benefits under growing climate and social pressures.
+    url: "https://www.sciencedirect.com/science/article/pii/S0308597X24003750"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Bottom–Up Impacts of Forecasted Climate Change on the Eastern Bering Sea Food Web"
-  date: 2021-02-03
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-mangers"
-  - "stock-assessment-scientist"
-  topics:
-  - "food-webs"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  user-goals: [] 
-  description:  >-
-    This study uses climate and food web models to show that climate-driven declines in plankton are likely to slowly reduce fish, crab, 
-    and other marine species in the eastern Bering Sea through the end of the century, with fisheries management influencing outcomes but 
-    climate impacts spreading through the entire food web. 
-  url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.624301/full"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Development of climate informed management scenarios for fisheries in the eastern Bering Sea"
+    date: 2024-03-29
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-mangers"
+    topics:
+    - "fisheries-management"
+    authors:
+    - "cody-szuwalski"
+    - "jim-ianelli"
+    - "kirstin-holsman"
+    - "sarah-wise"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      This paper describes a stakeholder-driven approach that combines climate projections and social-ecological models to develop fair, 
+      climate-ready management scenarios for groundfish and crab fisheries in the eastern Bering Sea, showing that repeated, inclusive engagement 
+      and a balanced mix of fixed limits and flexible targets help decision-makers understand tradeoffs and support equitable adaptation to climate change.     
+    url: "https://academic.oup.com/icesjms/article/82/1/fsae034/7637371"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Forecasting community reassembly using climate-linked spatio-temporal ecosystem models"
-  date: 2021-01-27
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "pollock"
-  audience:
-  - "fishery-mangers"
-  - "stock-assessment-scientist"
-  topics:
-  - "species-distribution"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  user-goals: [] 
-  description:  >-
-    This study presents a new modeling approach to predict how human activities and climate warming reshape where species overlap in the eastern Bering Sea, 
-    showing that warming shifts pollock interactions with prey, competitors, predators, and fisheries across the ecosystem. 
-  url: "https://cpo.noaa.gov/publication/forecasting-community-reassembly-using-climate-linked-spatio-temporal-ecosystem-models/"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Applications of Ecosystem Risk Assessment in Federal Fisheries to Advance Ecosystem-Based Fisheries Management"
+    date: 2023-03-01
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-mangers"
+    topics:
+    - "fisheries-management"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      This report shows how ecosystem-level risk assessments can help U.S. fishery managers account for climate, human, and ecosystem interactions, prioritize key risks, 
+      and support ecosystem-based fisheries management using examples from five regional case studies.    
+    url: "https://spo.nmfs.noaa.gov/sites/default/files/TMOHC11.pdf"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Ecosystem-based fisheries management forestalls climate-driven collapse"
-  date: 2020-09-11
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-mangers"
-  - "fishing-industry"
-  topics:
-  - "fisheries-management"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "jim-ianelli"
-  - "andre-e-punt"
-  user-goals:
-  - "understand-community-impacts" 
-  description:  >-
-    Climate change threatens fisheries and food security, and this study shows that ecosystem-based fisheries management can slow declines in eastern Bering Sea fisheries 
-    in the near term, but under high emissions many pollock and Pacific cod fisheries collapse after mid-century as warming passes a critical temperature threshold.
-  url: "https://www.nature.com/articles/s41467-020-18300-3"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Bottom–Up Impacts of Forecasted Climate Change on the Eastern Bering Sea Food Web"
+    date: 2021-02-03
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-mangers"
+    - "stock-assessment-scientist"
+    topics:
+    - "food-webs"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    user-goals: [] 
+    description:  >-
+      This study uses climate and food web models to show that climate-driven declines in plankton are likely to slowly reduce fish, crab, 
+      and other marine species in the eastern Bering Sea through the end of the century, with fisheries management influencing outcomes but 
+      climate impacts spreading through the entire food web. 
+    url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.624301/full"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Energetically relevant predator–prey body mass ratios and their relationship with predator body size"
-  date: 2018-12-27
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "stock-assessment-scientist"
-  topics:
-  - "food-webs"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "work-with-data" 
-  description:  >-
-    This study shows that predator–prey size relationships in Alaskan marine food webs vary mainly by species, 
-    and that different ways of measuring these relationships are needed for static versus dynamic ecosystem models.
-  url: "https://onlinelibrary.wiley.com/doi/full/10.1002/ece3.4715"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Forecasting community reassembly using climate-linked spatio-temporal ecosystem models"
+    date: 2021-01-27
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "pollock"
+    audience:
+    - "fishery-mangers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    user-goals: [] 
+    description:  >-
+      This study presents a new modeling approach to predict how human activities and climate warming reshape where species overlap in the eastern Bering Sea, 
+      showing that warming shifts pollock interactions with prey, competitors, predators, and fisheries across the ecosystem. 
+    url: "https://cpo.noaa.gov/publication/forecasting-community-reassembly-using-climate-linked-spatio-temporal-ecosystem-models/"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Eastern Bering Sea Climate Action Plan Through 2024"
-  date: 2023-10-01
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience: []
-  topics:
-  - "fisheries-management"
-  authors:
-  - "kirstin-holsman"
-  user-goals: []
-  description:  >-
-    Climate change is altering ocean temperatures, sea levels, and ecosystems, which puts marine life, coastal communities and industries at risk. 
-    To help, NOAA made a plan with over 50 science-based actions to support Alaska's fisheries and communities through 2024.
-  url: "https://www.fisheries.noaa.gov/s3/2023-11/EBS-RAP-Final-TM-Oct-2023.pdf"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Ecosystem-based fisheries management forestalls climate-driven collapse"
+    date: 2020-09-11
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-mangers"
+    - "fishing-industry"
+    topics:
+    - "fisheries-management"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "jim-ianelli"
+    - "andre-e-punt"
+    user-goals:
+    - "understand-community-impacts" 
+    description:  >-
+      Climate change threatens fisheries and food security, and this study shows that ecosystem-based fisheries management can slow declines in eastern Bering Sea fisheries 
+      in the near term, but under high emissions many pollock and Pacific cod fisheries collapse after mid-century as warming passes a critical temperature threshold.
+    url: "https://www.nature.com/articles/s41467-020-18300-3"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Current and future habitat suitability of northern fur seals and overlap with the commercial walleye pollock fishery in the eastern Bering Sea."
-  date: 2025-04-14
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  topics:
-  - "fisheries-management"
-  - "species-distribution"
-  - "ecosystem-based-research"
-  authors: []
-  user-goals: []
-  description:  >-
-    The aim of this study was to understand the habitat selection of northern fur seals in the eastern Bering Sea using species distribution models 
-    that combined satellite telemetry and ocean model simulations, identifying key environmental predictors like bathymetry and temperature.
-  url: "https://link.springer.com/article/10.1186/s40462-025-00545-6"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Energetically relevant predator–prey body mass ratios and their relationship with predator body size"
+    date: 2018-12-27
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "stock-assessment-scientist"
+    topics:
+    - "food-webs"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "work-with-data" 
+    description:  >-
+      This study shows that predator–prey size relationships in Alaskan marine food webs vary mainly by species, 
+      and that different ways of measuring these relationships are needed for static versus dynamic ecosystem models.
+    url: "https://onlinelibrary.wiley.com/doi/full/10.1002/ece3.4715"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Socioeconomic risk of coastal Alaskan fishing communities to climate-driven changes in Pacific cod distributions"
-  date: 2025-07-25
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "pacific-cod"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  - "fishing-industry"
-  topics:
-  - "fisheries-management"
-  - "species-distribution"
-  authors:
-  - "kirstin-holsman"
-  - "sarah-wise"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Climate-driven shifts in the distribution of Pacific cod in the Eastern Bering Sea threaten the economic and food security of fishing-reliant communities, 
-    particularly in the southern Eastern Bering Sea. This  highlights the need for adaptive, place-specific fisheries management in response to climate change. 
-    We apply a risk assessment framework integrated with statistical modelling and regionally downscaled ocean models to hindcast and project the distribution of adult 
-    and juvenile Pacific cod abundance in the Eastern Bering Sea.
-  url: "https://doi.org/10.1093/icesjms/fsaf127"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Eastern Bering Sea Climate Action Plan Through 2024"
+    date: 2023-10-01
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience: []
+    topics:
+    - "fisheries-management"
+    authors:
+    - "kirstin-holsman"
+    user-goals: []
+    description:  >-
+      Climate change is altering ocean temperatures, sea levels, and ecosystems, which puts marine life, coastal communities and industries at risk. 
+      To help, NOAA made a plan with over 50 science-based actions to support Alaska's fisheries and communities through 2024.
+    url: "https://www.fisheries.noaa.gov/s3/2023-11/EBS-RAP-Final-TM-Oct-2023.pdf"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Identifying and reducing climate uncertainty in fisheries management reference points"
-  date: 2025-09-11
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "species-distribution"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  user-goals:
-  - "work-with-data"
-  - "understand-community-impacts"
-  description:  >-
-    A new study combining environmental and economic factors into models predicts how ocean acidification and rising temperatures will affect North Pacific crab populations, 
-    highlighting key stages like juvenile growth and larval survival as most sensitive to climate stress, and suggesting that harvest limits may need to be adjusted to protect 
-    these species as stock assessments currently overlook climate change effects.
-  url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783625002607"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Current and future habitat suitability of northern fur seals and overlap with the commercial walleye pollock fishery in the eastern Bering Sea."
+    date: 2025-04-14
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    topics:
+    - "fisheries-management"
+    - "species-distribution"
+    - "ecosystem-based-research"
+    authors: []
+    user-goals: []
+    description:  >-
+      The aim of this study was to understand the habitat selection of northern fur seals in the eastern Bering Sea using species distribution models 
+      that combined satellite telemetry and ocean model simulations, identifying key environmental predictors like bathymetry and temperature.
+    url: "https://link.springer.com/article/10.1186/s40462-025-00545-6"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Unintended consequences of climate-adaptive fisheries management targets"
-  date: 2023-02-27
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "cozy-szuwalski"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Using maximum sustainable yield (MSY) or MSY based targets that are adapted to climate change for fisheries management yield worse conservation outcomes than the status quo. 
-    New management tools that go beyond MSY are needed to balance conservation and food production as climate impacts worsen.
-  url: "https://repository.library.noaa.gov/view/noaa/54816"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Socioeconomic risk of coastal Alaskan fishing communities to climate-driven changes in Pacific cod distributions"
+    date: 2025-07-25
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    - "fishing-industry"
+    topics:
+    - "fisheries-management"
+    - "species-distribution"
+    authors:
+    - "kirstin-holsman"
+    - "sarah-wise"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Climate-driven shifts in the distribution of Pacific cod in the Eastern Bering Sea threaten the economic and food security of fishing-reliant communities, 
+      particularly in the southern Eastern Bering Sea. This  highlights the need for adaptive, place-specific fisheries management in response to climate change. 
+      We apply a risk assessment framework integrated with statistical modelling and regionally downscaled ocean models to hindcast and project the distribution of adult 
+      and juvenile Pacific cod abundance in the Eastern Bering Sea.
+    url: "https://doi.org/10.1093/icesjms/fsaf127"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Capturing uncertainty when modelling environmental drivers of fish populations, with an illustrative application to Pacific Cod in the eastern Bering Sea"
-  date: 2024-01-27
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "pacific-cod"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study presents a framework for accounting for multiple uncertainties in stock assessments, applied to Pacific cod in the eastern Bering Sea, showing that climate-driven changes, 
-    particularly in recruitment, can lead to declines in biomass and catch under current harvest control rules, while adjusting for environmental scenarios may help maintain stock levels 
-    and long-term profitability.
-  url: "https://www.sciencedirect.com/science/article/pii/S0165783624000158"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Identifying and reducing climate uncertainty in fisheries management reference points"
+    date: 2025-09-11
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "species-distribution"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    user-goals:
+    - "work-with-data"
+    - "understand-community-impacts"
+    description:  >-
+      A new study combining environmental and economic factors into models predicts how ocean acidification and rising temperatures will affect North Pacific crab populations, 
+      highlighting key stages like juvenile growth and larval survival as most sensitive to climate stress, and suggesting that harvest limits may need to be adjusted to protect 
+      these species as stock assessments currently overlook climate change effects.
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783625002607"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Predicting Pacific cod thermal spawning habitat in a changing climate"
-  date: 2023-06-21
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "pacific-cod"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "species-distribution"
-  - "ecosystem-based-research"
-  authors: []
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study examines how warming temperatures are predicted to shift the thermal spawning habitat for Pacific cod in the Eastern Bering Sea, 
-    finding that suitable habitat is expected to increase and shift northward, and highlights the need to integrate experimental data with climate models 
-    to understand the impacts of warming temperatures on fish life histories under climate change.
-  url: "https://academic.oup.com/icesjms/article/82/1/fsad096/7204287"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Unintended consequences of climate-adaptive fisheries management targets"
+    date: 2023-02-27
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "cozy-szuwalski"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Using maximum sustainable yield (MSY) or MSY based targets that are adapted to climate change for fisheries management yield worse conservation outcomes than the status quo. 
+      New management tools that go beyond MSY are needed to balance conservation and food production as climate impacts worsen.
+    url: "https://repository.library.noaa.gov/view/noaa/54816"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Ensemble Projections of Future Climate Change Impacts on the Eastern Bering Sea Food Web Using a Multispecies Size Spectrum Model"
-  date: 2020-03-16
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "food-webs"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study shows that eastern Bering Sea food webs are projected to lose biomass, catches, and body size under climate change, 
-    and that uncertainty in these forecasts is driven mainly by climate variability in the near term and by differences among climate and 
-    ecosystem models in the long term.
-  url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00124/full"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Capturing uncertainty when modelling environmental drivers of fish populations, with an illustrative application to Pacific Cod in the eastern Bering Sea"
+    date: 2024-01-27
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study presents a framework for accounting for multiple uncertainties in stock assessments, applied to Pacific cod in the eastern Bering Sea, showing that climate-driven changes, 
+      particularly in recruitment, can lead to declines in biomass and catch under current harvest control rules, while adjusting for environmental scenarios may help maintain stock levels 
+      and long-term profitability.
+    url: "https://www.sciencedirect.com/science/article/pii/S0165783624000158"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Evaluating the impact of climate and demographic variation on future prospects for fish stocks: An application for northern rock sole in Alaska"
-  date: 2020-08-10
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "rock-sole"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  - "jim-ianelli"
-  - "carey-mcgilliard"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study shows that adding climate and environmental factors such as temperature, cold pool extent, 
-    and ocean pH to stock assessment models for northern rock sole in the Eastern Bering Sea does not greatly change 
-    past estimates of population size or fishing pressure, but it can strongly affect future management targets, limits, 
-    and harvest projections under climate change.
-  url: "https://www.sciencedirect.com/science/article/pii/S0967064521000278"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Predicting Pacific cod thermal spawning habitat in a changing climate"
+    date: 2023-06-21
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "ecosystem-based-research"
+    authors: []
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study examines how warming temperatures are predicted to shift the thermal spawning habitat for Pacific cod in the Eastern Bering Sea, 
+      finding that suitable habitat is expected to increase and shift northward, and highlights the need to integrate experimental data with climate models 
+      to understand the impacts of warming temperatures on fish life histories under climate change.
+    url: "https://academic.oup.com/icesjms/article/82/1/fsad096/7204287"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Projected biophysical conditions of the Bering Sea to 2100 under multiple emission scenarios"
-  date: 2019-04-24
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    Climate and regional biophysical models project that the Bering Sea could warm substantially by 2100, with shelf bottom temperatures rising by up to 5°C 
-    and large crustacean zooplankton declining under high emissions, while lower emissions would lead to roughly half these changes.
-  url: "https://academic.oup.com/icesjms/article/76/5/1280/5477847"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Ensemble Projections of Future Climate Change Impacts on the Eastern Bering Sea Food Web Using a Multispecies Size Spectrum Model"
+    date: 2020-03-16
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "food-webs"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study shows that eastern Bering Sea food webs are projected to lose biomass, catches, and body size under climate change, 
+      and that uncertainty in these forecasts is driven mainly by climate variability in the near term and by differences among climate and 
+      ecosystem models in the long term.
+    url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00124/full"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Evaluation of a coupled ocean and sea-ice model (MOM6-NEP10k) over the Bering Sea and its sensitivity to turbulence decay scales"
-  date: 2025-10-23
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species: []
-  audience: []
-  topics:
-  - "sea-ice"
-  authors: []
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study evaluates the initial MOM6-NEP hindcast simulation against long-term biophysical mooring observations on the Bering shelf, 
-    identifies the physical processes contributing to model biases, and improves the shear-driven turbulent mixing scheme used in MOM6-NEP. 
-    With these improvements, MOM6-NEP successfully reproduces the observed mean spatial pattern and interannual variability of the Bering Sea shelf bottom "cold pool" 
-    and extreme conditions of ice distribution, increasing confidence in the model's ability to simulate historical ocean conditions and predict their future changes.
-  url: "https://doi.org/10.5194/gmd-18-7681-2025"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Evaluating the impact of climate and demographic variation on future prospects for fish stocks: An application for northern rock sole in Alaska"
+    date: 2020-08-10
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "rock-sole"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    - "jim-ianelli"
+    - "carey-mcgilliard"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study shows that adding climate and environmental factors such as temperature, cold pool extent, 
+      and ocean pH to stock assessment models for northern rock sole in the Eastern Bering Sea does not greatly change 
+      past estimates of population size or fishing pressure, but it can strongly affect future management targets, limits, 
+      and harvest projections under climate change.
+    url: "https://www.sciencedirect.com/science/article/pii/S0967064521000278"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Dynamically downscaled projections of ocean acidification for the Bering Sea"
-  date: 2022-03-13
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  authors: []
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    Using high-resolution climate models, this study projects that the Bering Sea will steadily warm and become more acidic through 2100, with much stronger and longer-lasting 
-    low-carbonate conditions under high emissions (RCP 8.5) than under moderate emissions (RCP 4.5), especially on the southeastern and outer shelf, providing critical information 
-    for understanding risks to marine life and fisheries management.
-  url: "https://doi.org/10.1016/j.dsr2.2022.105055"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Projected biophysical conditions of the Bering Sea to 2100 under multiple emission scenarios"
+    date: 2019-04-24
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      Climate and regional biophysical models project that the Bering Sea could warm substantially by 2100, with shelf bottom temperatures rising by up to 5°C 
+      and large crustacean zooplankton declining under high emissions, while lower emissions would lead to roughly half these changes.
+    url: "https://academic.oup.com/icesjms/article/76/5/1280/5477847"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Updating and extending the Ecopath model of the southeastern Bering Sea"
-  date: 2025-06-01
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  - "food-webs"
-  authors: []
-  user-goals:
-  - "work-with-data"
-  - "understand-community-impacts"
-  description:  >-
-    Using high-resolution climate models, this study projects that the Bering Sea will steadily warm and become more acidic through 2100, with much stronger and longer-lasting 
-    low-carbonate conditions under high emissions (RCP 8.5) than under moderate emissions (RCP 4.5), especially on the southeastern and outer shelf, providing critical information 
-    for understanding risks to marine life and fisheries management.
-  url: "https://doi.org/10.1016/j.dsr2.2022.105055"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Evaluation of a coupled ocean and sea-ice model (MOM6-NEP10k) over the Bering Sea and its sensitivity to turbulence decay scales"
+    date: 2025-10-23
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species: []
+    audience: []
+    topics:
+    - "sea-ice"
+    authors: []
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study evaluates the initial MOM6-NEP hindcast simulation against long-term biophysical mooring observations on the Bering shelf, 
+      identifies the physical processes contributing to model biases, and improves the shear-driven turbulent mixing scheme used in MOM6-NEP. 
+      With these improvements, MOM6-NEP successfully reproduces the observed mean spatial pattern and interannual variability of the Bering Sea shelf bottom "cold pool" 
+      and extreme conditions of ice distribution, increasing confidence in the model's ability to simulate historical ocean conditions and predict their future changes.
+    url: "https://doi.org/10.5194/gmd-18-7681-2025"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Coupled modes of projected regional change in the Bering Sea from a dynamically downscaling model under CMIP6 forcing"
-  date: 2021-11-30
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  - "food-webs"
-  - "sea-ice"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "work-with-data"
-  - "understand-community-impacts"
-  description:  >-
-    Using multiple climate models, this study shows that under high greenhouse gas emissions the Bering Sea will warm much more, lose more ice, and experience larger declines 
-    in plankton and zooplankton than under low emissions, leading to system-wide changes that are about four times greater by 2100 and have important implications for the ecosystem.
-  url: "https://www.sciencedirect.com/science/article/pii/S0967064521000503?via%3Dihub"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Dynamically downscaled projections of ocean acidification for the Bering Sea"
+    date: 2022-03-13
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    authors: []
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      Using high-resolution climate models, this study projects that the Bering Sea will steadily warm and become more acidic through 2100, with much stronger and longer-lasting 
+      low-carbonate conditions under high emissions (RCP 8.5) than under moderate emissions (RCP 4.5), especially on the southeastern and outer shelf, providing critical information 
+      for understanding risks to marine life and fisheries management.
+    url: "https://doi.org/10.1016/j.dsr2.2022.105055"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Towards climate resiliency in fisheries management"
-  date: 2019-03-26
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  topics:
-  - "fisheries-management"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Climate change is reshaping marine ecosystems and fisheries, and this paper argues that climate-resilient management requires combining adaptive, dynamic, 
-    and fixed approaches to better align science, policy, and socio-economic trade-offs across space and time.
-  url: "https://academic.oup.com/icesjms/article/76/5/1368/5420302"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Updating and extending the Ecopath model of the southeastern Bering Sea"
+    date: 2025-06-01
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    - "food-webs"
+    authors: []
+    user-goals:
+    - "work-with-data"
+    - "understand-community-impacts"
+    description:  >-
+      Using high-resolution climate models, this study projects that the Bering Sea will steadily warm and become more acidic through 2100, with much stronger and longer-lasting 
+      low-carbonate conditions under high emissions (RCP 8.5) than under moderate emissions (RCP 4.5), especially on the southeastern and outer shelf, providing critical information 
+      for understanding risks to marine life and fisheries management.
+    url: "https://doi.org/10.1016/j.dsr2.2022.105055"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Species-specific ontogenetic diet shifts attenuate trophic cascades and lengthen food chains in exploited ecosystems"
-  date: 2019-01-18
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "food-webs"
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  - "andre-e-punt"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    Using Eastern Bering Sea diet data, this study shows that size- and species-specific diet shifts improve food-web models and suggest that fishing-driven trophic 
-    cascades may be weaker than previously predicted when realistic feeding behavior is included.
-  url: "https://repository.library.noaa.gov/view/noaa/21077"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Coupled modes of projected regional change in the Bering Sea from a dynamically downscaling model under CMIP6 forcing"
+    date: 2021-11-30
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    - "food-webs"
+    - "sea-ice"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "work-with-data"
+    - "understand-community-impacts"
+    description:  >-
+      Using multiple climate models, this study shows that under high greenhouse gas emissions the Bering Sea will warm much more, lose more ice, and experience larger declines 
+      in plankton and zooplankton than under low emissions, leading to system-wide changes that are about four times greater by 2100 and have important implications for the ecosystem.
+    url: "https://www.sciencedirect.com/science/article/pii/S0967064521000503?via%3Dihub"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "The collapse of eastern Bering Sea snow crab"
-  date: 2023-10-19
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  - "fishing-industry"
-  topics:
-  - "food-webs"
-  - "ecosystem-based-research"
-  authors:
-  - "cody-szuwalski"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Snow crab populations in the eastern Bering Sea collapsed after 2018, reaching record lows in 2021. A 2018–2019 heatwave likely triggered starvation by boosting energy needs 
-    while shrinking habitat and reducing food availability. The loss is among the largest warming-driven die-offs of a mobile marine species, with major ecological and economic consequences 
-    for the marine food web and the snow crab fishing industry.
-  url: "https://doi.org/10.1126/science.adf6035"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Towards climate resiliency in fisheries management"
+    date: 2019-03-26
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    topics:
+    - "fisheries-management"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Climate change is reshaping marine ecosystems and fisheries, and this paper argues that climate-resilient management requires combining adaptive, dynamic, 
+      and fixed approaches to better align science, policy, and socio-economic trade-offs across space and time.
+    url: "https://academic.oup.com/icesjms/article/76/5/1368/5420302"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "A step towards the integration of spatial dynamics in population dynamics models: Eastern Bering Sea snow crab as a case study"
-  date: 2023-08-28
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "fisheries-management"
-  - "ecosystem-based-research"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study developed a high-resolution spatiotemporal model for the snow crab population in the Eastern Bering Sea, improving the understanding of spatial dynamics, fishing impacts, 
-    and environmental drivers. By quantifying spatial and temporal variations in snow crab population dynamics for the first time, this study provides new insights for better informed management decisions.
-  url: "https://www.sciencedirect.com/science/article/abs/pii/S0304380023002144"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Species-specific ontogenetic diet shifts attenuate trophic cascades and lengthen food chains in exploited ecosystems"
+    date: 2019-01-18
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "food-webs"
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    - "andre-e-punt"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      Using Eastern Bering Sea diet data, this study shows that size- and species-specific diet shifts improve food-web models and suggest that fishing-driven trophic 
+      cascades may be weaker than previously predicted when realistic feeding behavior is included.
+    url: "https://repository.library.noaa.gov/view/noaa/21077"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Applications of Biophysical Modeling to Pacific High-Latitude Ecosystems"
-  date: 2023-10-30
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    Over several decades, NOAA’s Pacific Marine Environmental Laboratory has developed high-resolution biophysical models to understand 
-    and predict the dynamics of high-latitude Pacific ecosystems, using numerical models to study factors like ocean circulation, primary production, 
-    and fishery productivity, providing crucial insights for managing marine resources under changing environmental conditions.
-  url: "https://tos.org/oceanography/article/applications-of-biophysical-modeling-to-pacific-high-latitude-ecosystems"
-  is-available: true
-  file: null
+    #Resource
+  - title: "The collapse of eastern Bering Sea snow crab"
+    date: 2023-10-19
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    - "fishing-industry"
+    topics:
+    - "food-webs"
+    - "ecosystem-based-research"
+    authors:
+    - "cody-szuwalski"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Snow crab populations in the eastern Bering Sea collapsed after 2018, reaching record lows in 2021. A 2018–2019 heatwave likely triggered starvation by boosting energy needs 
+      while shrinking habitat and reducing food availability. The loss is among the largest warming-driven die-offs of a mobile marine species, with major ecological and economic consequences 
+      for the marine food web and the snow crab fishing industry.
+    url: "https://doi.org/10.1126/science.adf6035"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "A framework for assessing harvest strategy choice when considering multiple interacting fisheries and a changing environment: The example of eastern Bering Sea crab stocks"
-  date: 2022-04-21
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    In this study, a framework was developed to examine how changes in temperature and ocean pH affect the yield and profit of multiple crab stocks in the eastern Bering Sea, 
-    with results showing that harvest control rules aimed at maximizing profit lead to lower fishing mortality and improved conservation outcomes, particularly for Bristol Bay red king crab.
-  url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783622001151"
-  is-available: true
-  file: null
+    #Resource
+  - title: "A step towards the integration of spatial dynamics in population dynamics models: Eastern Bering Sea snow crab as a case study"
+    date: 2023-08-28
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "fisheries-management"
+    - "ecosystem-based-research"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study developed a high-resolution spatiotemporal model for the snow crab population in the Eastern Bering Sea, improving the understanding of spatial dynamics, fishing impacts, 
+      and environmental drivers. By quantifying spatial and temporal variations in snow crab population dynamics for the first time, this study provides new insights for better informed management decisions.
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0304380023002144"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Implications of climate change on the Bering Sea and other cold water systems"
-  date: 2022-06-09
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  topics:
-  - "ecosystem-based-research"
-  - "sea-ice"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  - "kirstin-holsman"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    This introduction to a special issue describes how rapid warming and sea ice loss in the Eastern Bering Sea are causing major changes in ocean conditions 
-    and shifts in fish and crab populations, creating new challenges for fisheries managers and highlighting the need for climate-informed science and modeling 
-    to support sustainable and equitable fisheries management.
-  url: "https://www.sciencedirect.com/science/article/pii/S0967064522000959"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Applications of Biophysical Modeling to Pacific High-Latitude Ecosystems"
+    date: 2023-10-30
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      Over several decades, NOAA’s Pacific Marine Environmental Laboratory has developed high-resolution biophysical models to understand 
+      and predict the dynamics of high-latitude Pacific ecosystems, using numerical models to study factors like ocean circulation, primary production, 
+      and fishery productivity, providing crucial insights for managing marine resources under changing environmental conditions.
+    url: "https://tos.org/oceanography/article/applications-of-biophysical-modeling-to-pacific-high-latitude-ecosystems"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Climate change and the future productivity and distribution of crab in the Bering Sea"
-  date: 2020-10-10
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "fishing-industry"
-  topics:
-  - "ecosystem-based-research"
-  - "species-distribution"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  - "kirstin-holsman"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Crab fisheries in the eastern Bering Sea are economically important, and this study shows that climate and predator changes are likely to reduce snow crab productivity, 
-    shift Tanner crab farther offshore, and cause red king crab to move north and shrink in range in the future.
-  url: "https://doi.org/10.1093/icesjms/fsaa140"
-  is-available: true
-  file: null
+    #Resource
+  - title: "A framework for assessing harvest strategy choice when considering multiple interacting fisheries and a changing environment: The example of eastern Bering Sea crab stocks"
+    date: 2022-04-21
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      In this study, a framework was developed to examine how changes in temperature and ocean pH affect the yield and profit of multiple crab stocks in the eastern Bering Sea, 
+      with results showing that harvest control rules aimed at maximizing profit lead to lower fishing mortality and improved conservation outcomes, particularly for Bristol Bay red king crab.
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783622001151"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Integrated Modeling to Evaluate Climate Change Impacts on Coupled Social-Ecological Systems in Alaska"
-  date: 2020-01-13
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "human-dimensions"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "fishing-industry"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  - "food-webs"
-  - "sea-ice"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  - "kirstin-holsman"
-  - "jim-ianelli"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    The Alaska Climate Integrated Modeling project is a long-term, interdisciplinary program using linked climate, biological, economic, and management models to assess 
-    how climate change will affect the eastern Bering Sea ecosystem, fisheries, and communities. Working with managers and fishing communities, ACLIM evaluates fisheries management 
-    and adaptation strategies and delivers risk-based projections to support climate-ready decision-making in the Bering Sea and other large marine ecosystems.
-  url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2019.00775/full"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Implications of climate change on the Bering Sea and other cold water systems"
+    date: 2022-06-09
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    topics:
+    - "ecosystem-based-research"
+    - "sea-ice"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    - "kirstin-holsman"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      This introduction to a special issue describes how rapid warming and sea ice loss in the Eastern Bering Sea are causing major changes in ocean conditions 
+      and shifts in fish and crab populations, creating new challenges for fisheries managers and highlighting the need for climate-informed science and modeling 
+      to support sustainable and equitable fisheries management.
+    url: "https://www.sciencedirect.com/science/article/pii/S0967064522000959"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "A regional physical-biogeochemical ocean model for marine resource applications in the Northeast Pacific"
-  date: 2025-08-26
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  - "species-distribution"
-  authors:
-  - "cody-szuwalski"
-  - "andre-e-punt"
-  - "kirstin-holsman"
-  - "jim-ianelli"
-  user-goals:
-  - "work-with-data"
-  - "understand-community-impacts"
-  description:  >-
-    This study shows that a coastwide, high-resolution ocean–ecosystem model for the Northeast Pacific can realistically capture key physical and biological patterns across multiple ecosystems over decades, 
-    making it useful and efficient for forecasting and managing marine resources under climate change.
-  url: "https://doi.org/10.5194/gmd-18-5245-2025"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Climate change and the future productivity and distribution of crab in the Bering Sea"
+    date: 2020-10-10
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "fishing-industry"
+    topics:
+    - "ecosystem-based-research"
+    - "species-distribution"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    - "kirstin-holsman"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Crab fisheries in the eastern Bering Sea are economically important, and this study shows that climate and predator changes are likely to reduce snow crab productivity, 
+      shift Tanner crab farther offshore, and cause red king crab to move north and shrink in range in the future.
+    url: "https://doi.org/10.1093/icesjms/fsaa140"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Eastern Bering Sea shelf environmental and lower trophic level responses to climate forcing: Results of dynamical downscaling from CMIP6"
-  date: 2021-10-27
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "sea-ice"
-  authors:
-  - "kirstin-holsman"
-  user-goals:
-  - "understand-community-impacts"
-  description:  >-
-    Using regional climate models driven by CMIP6 scenarios, this study finds that warming and sea ice loss in the Eastern Bering Sea weaken summer stratification, shift plankton blooms earlier, 
-    reduce overall plankton biomass, oxygen, and productivity, and increase bottom temperatures—changes that are consistent across models and emissions scenarios and are expected to affect marine ecosystems and fisheries.
-  url: "https://www.sciencedirect.com/science/article/pii/S0967064521000515"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Integrated Modeling to Evaluate Climate Change Impacts on Coupled Social-Ecological Systems in Alaska"
+    date: 2020-01-13
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "human-dimensions"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "fishing-industry"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    - "food-webs"
+    - "sea-ice"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    - "kirstin-holsman"
+    - "jim-ianelli"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      The Alaska Climate Integrated Modeling project is a long-term, interdisciplinary program using linked climate, biological, economic, and management models to assess 
+      how climate change will affect the eastern Bering Sea ecosystem, fisheries, and communities. Working with managers and fishing communities, ACLIM evaluates fisheries management 
+      and adaptation strategies and delivers risk-based projections to support climate-ready decision-making in the Bering Sea and other large marine ecosystems.
+    url: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2019.00775/full"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Estimating time-variation in confounded processes in population dynamics modeling: A case study for snow crab in the eastern Bering Sea"
-  date: 2022-03-30
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "physical-environment"
-  species:
-  - "crab"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  authors:
-  - "cody-szuwalski"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    This study presents a population dynamics model for snow crab in the eastern Bering Sea, showing that incorporating time-variation in population processes like natural mortality 
-    and catchability can lead to large discrepancies in management advice, highlighting the need for evidence-based approaches in stock assessment models.
-  url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783622000753?via%3Dihub"
-  is-available: true
-  file: null
+    #Resource
+  - title: "A regional physical-biogeochemical ocean model for marine resource applications in the Northeast Pacific"
+    date: 2025-08-26
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    - "species-distribution"
+    authors:
+    - "cody-szuwalski"
+    - "andre-e-punt"
+    - "kirstin-holsman"
+    - "jim-ianelli"
+    user-goals:
+    - "work-with-data"
+    - "understand-community-impacts"
+    description:  >-
+      This study shows that a coastwide, high-resolution ocean–ecosystem model for the Northeast Pacific can realistically capture key physical and biological patterns across multiple ecosystems over decades, 
+      making it useful and efficient for forecasting and managing marine resources under climate change.
+    url: "https://doi.org/10.5194/gmd-18-5245-2025"
+    is-available: true
+    file: null
 
-  #Resource
-- title: "Evaluating ecosystem caps on fishery yield in the context of climate stress and predation"
-  date: 2025-05-12
-  type: "publication"
-  icon: "fa fa-book"
-  regions:
-  - "eastern-bering-sea"
-  communities: []
-  themes:
-  - "marine-life"
-  species:
-  - "multiple"
-  audience:
-  - "fishery-managers"
-  - "stock-assessment-scientist"
-  topics:
-  - "ecosystem-based-research"
-  - "fisheries-management"
-  - "food-webs"
-  authors:
-  - "cheryl-barnes"
-  - "kirstin-holsman"
-  - "carey-mcgilliard"
-  - "meaghan-bryan"
-  - "alberto-rovellini"
-  user-goals:
-  - "work-with-data"
-  description:  >-
-    Ecosystem models of Gulf of Alaska groundfish suggest that catch caps could help meet food-security and management goals. However, current caps have never been limiting 
-    and likely won’t under climate change and continued low predator harvest. This points to a need for climate-responsive, ecosystem-wide caps that reflect predator–prey dynamics 
-    and are regularly reviewed.
-  url: "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/eap.70036?af=R"
-  is-available: true
-  file: null
+    #Resource
+  - title: "Eastern Bering Sea shelf environmental and lower trophic level responses to climate forcing: Results of dynamical downscaling from CMIP6"
+    date: 2021-10-27
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "sea-ice"
+    authors:
+    - "kirstin-holsman"
+    user-goals:
+    - "understand-community-impacts"
+    description:  >-
+      Using regional climate models driven by CMIP6 scenarios, this study finds that warming and sea ice loss in the Eastern Bering Sea weaken summer stratification, shift plankton blooms earlier, 
+      reduce overall plankton biomass, oxygen, and productivity, and increase bottom temperatures—changes that are consistent across models and emissions scenarios and are expected to affect marine ecosystems and fisheries.
+    url: "https://www.sciencedirect.com/science/article/pii/S0967064521000515"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Estimating time-variation in confounded processes in population dynamics modeling: A case study for snow crab in the eastern Bering Sea"
+    date: 2022-03-30
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "physical-environment"
+    species:
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    authors:
+    - "cody-szuwalski"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      This study presents a population dynamics model for snow crab in the eastern Bering Sea, showing that incorporating time-variation in population processes like natural mortality 
+      and catchability can lead to large discrepancies in management advice, highlighting the need for evidence-based approaches in stock assessment models.
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0165783622000753?via%3Dihub"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Evaluating ecosystem caps on fishery yield in the context of climate stress and predation"
+    date: 2025-05-12
+    type: "publication"
+    icon: "fa fa-book"
+    regions:
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species:
+    - "multiple"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "ecosystem-based-research"
+    - "fisheries-management"
+    - "food-webs"
+    authors:
+    - "cheryl-barnes"
+    - "kirstin-holsman"
+    - "carey-mcgilliard"
+    - "meaghan-bryan"
+    - "alberto-rovellini"
+    user-goals:
+    - "work-with-data"
+    description:  >-
+      Ecosystem models of Gulf of Alaska groundfish suggest that catch caps could help meet food-security and management goals. However, current caps have never been limiting 
+      and likely won’t under climate change and continued low predator harvest. This points to a need for climate-responsive, ecosystem-wide caps that reflect predator–prey dynamics 
+      and are regularly reviewed.
+    url: "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/eap.70036?af=R"
+    is-available: true
+    file: null
