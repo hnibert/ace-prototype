@@ -492,7 +492,7 @@ collections:
             summary: '{{fields.title}} ({{fields.type}})'
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "YYYY-MM-DD", timeFormat: false }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
 
               #- { label: "Type", name: "type", widget: "string" }
               #Resource Type
@@ -503,7 +503,7 @@ collections:
                   collection: 'global_data',
                   file: 'resource_tags',
                   display_fields: ["resource_type.*.label"],
-                  search_fields: [resource_type.*.id, resource_type.*.label],
+                  search_fields: ["resource_type.*.id, resource_type.*.label"],
                   value_field: "resource_type.*.id",
                   multiple: false,
                   required: true
