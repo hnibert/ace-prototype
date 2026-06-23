@@ -4,10 +4,9 @@ logo:
   
 backend:
   name: github #github, git-gateway, test-repo
-  #gateway_url: https://ace-authenticate.netlify.app/.netlify/git
-  identity_url: "https://netlify.app"
-  gateway_url: "https://netlify.app"
-  
+  identity_url: https://ace-authenticate.netlify.app/.netlify/identity
+  gateway_url: https://ace-authenticate.netlify.app/.netlify/git
+
   repo: hnibert/ace-prototype # Path to your GitHub repository
   branch: main # Branch to update (usually main or master)
   site_domain: ace-authenticate.netlify.app
