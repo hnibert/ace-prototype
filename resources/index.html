@@ -215,7 +215,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                 Build the actual HTML/rendered list of resources where the 'is-available' flag has been marked true
                 NOTE: This isn't necessary when finalized, the index map will be used to build these in production
             {%- endcomment -%}
-            {%- assign available_resources = site.data.resources | where: "is-available", true -%}
+            {%- assign available_resources = site.data.resources.entries | where: "is-available", true -%}
             {%- for resource in available_resources -%}
             {%- assign resource_id = "resource-" | append: forloop.index -%}
             <div id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
