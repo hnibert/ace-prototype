@@ -502,6 +502,7 @@ collections:
       - name: "resources"
         label: "Resources"
         file: "_data/resources.yml"
+        editor: { preview: false }
         fields:
           - label: "Resource"
             name: "entries"
