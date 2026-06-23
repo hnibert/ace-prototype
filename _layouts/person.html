@@ -95,7 +95,7 @@ layout: default
     </div>
 </section>
 
-{%- assign related_resources = site.data.resources | where: "is-available", true | where_exp: "item", "item.authors contains page.slug" -%}
+{%- assign related_resources = site.data.resources.entries | where: "is-available", true | where_exp: "item", "item.authors contains page.slug" -%}
 {%- if related_resources.size > 0 -%}
 <!-- Resource Section -->
 <section aria-labelledby="resources-title">
