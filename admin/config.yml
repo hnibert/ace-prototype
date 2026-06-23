@@ -233,7 +233,7 @@ collections:
     folder: "_species"
     create: true
     slug: "{{slug}}"
-    summary: "{{fields.name}}"
+    summary: "{{fields.species_name}}"
     fields:
       #Hidden
       - { label: "Layout", name: "layout", widget: "hidden", default: "species" }
@@ -315,7 +315,7 @@ collections:
     folder: "_regions"
     create: true
     slug: "{{slug}}"
-    summary: "{{fields.name}}"
+    summary: "{{fields.region_name}}"
     fields:
       #Hidden
       - { label: "Layout", name: "layout", widget: "hidden", default: "region" }
@@ -350,7 +350,7 @@ collections:
     folder: "_communities"
     create: true
     slug: "{{slug}}"
-    summary: "{{fields.name}}"
+    summary: "{{fields.community_name}}"
     fields:
       #Hidden
       - { label: "Layout", name: "layout", widget: "hidden", default: "community" }
