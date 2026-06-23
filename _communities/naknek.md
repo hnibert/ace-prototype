@@ -1,7 +1,7 @@
 ---
 #General
 layout: community
-name: Naknek
+community_name: Naknek
 
 #native name & pronunciation
 show_info_bar: true
@@ -42,5 +42,5 @@ calendar_download_url: assets/images/communities/naknek-calendar-display.png
 calendar_FileS_ize: 134 KB
 
 #Order (in navigation displays & funnels)
-order: 2
+display_order: 2
 ---

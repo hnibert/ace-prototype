@@ -4,7 +4,7 @@ layout: species
 #Genereal
 imageURL:
 imageAlt:
-name: Pacific Halibut
+species_name: Pacific Halibut
 scientific-name: 
 other-names:
 
@@ -42,6 +42,9 @@ cultural-significance-notes:
 #Spatial Data (use a '>-' block scalar indicator for text below)
 spatial-data: #>-
 spatial-data-notes:
+
+#Is this a species of concern?
+is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 # ==============================================================

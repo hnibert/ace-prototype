@@ -1,7 +1,7 @@
 ---
 #General
 layout: region
-name: Gulf of Alaska
+region_name: Gulf of Alaska
 
 #Hero
 hero_data:
@@ -21,5 +21,5 @@ summary_lead: >-
   It supports complex food webs, including phytoplankton blooms that sustain large populations of fish, marine mammals, and seabirds.
 
 #Order (in navigation displays & funnels)
-order: 2
+display_order: 2
 ---

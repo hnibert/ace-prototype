@@ -1,7 +1,7 @@
 ---
 #General
 layout: community
-name: Scammon Bay
+community_name: Scammon Bay
 
 #native name & pronunciation
 show-info-bar: true
@@ -42,5 +42,5 @@ calendar_download_url: assets/images/communities/scammon-bay-calendar-display.pn
 calendar_file_size: 145 KB
 
 #Order (in navigation displays & funnels)
-order: 3
+display_order: 3
 ---

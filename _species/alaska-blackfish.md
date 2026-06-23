@@ -2,28 +2,28 @@
 layout: species
 
 #Image
-imageURL:
-imageAlt:
+img_url:
+img_alt:
 
 #Genereal
-name: Alaska blackfish
-scientific-name: 
-other-names:
+species_name: Alaska blackfish
+scientific_name: 
+other_names:
 
 #Management
-management-structure:
-management-bodies: []
-management-body-notes:
+management_structure:
+management_bodies: []
+management_body_notes:
 
 #CDQ Community Development Group(s)
-cdq-groups: []
-cdq-communities: []
+cdq_groups: []
+cdq_communities: []
 
 #Climate Change Vulnerability
-ccv-label:
-ccv-reference:
-ccv-score:
-ccv-notes:
+ccv_label:
+ccv_reference:
+ccv_score:
+ccv_notes:
 
 #Data Tags (used in search)
 tags: subsistence, fish-invertebrates
@@ -31,22 +31,22 @@ community: togiak, scammon-bay
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
-protection-notes:
+protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: #>-
-justification-notes:
+justification_notes:
 
 #Cultural Significance (use a '>-' block scalar indicator for text below)
-cultural-significance: #>-
-cultural-significance-notes:
+cultural_significance: #>-
+cultural_significance_notes:
 
 #Spatial Data (use a '>-' block scalar indicator for text below)
-spatial-data: #>-
-spatial-data-notes:
+spatial_data: #>-
+spatial_data_notes:
 
 #Is this a species of concern?
-is-species-of-concern: true
+is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 # ==============================================================

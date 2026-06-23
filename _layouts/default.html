@@ -71,14 +71,15 @@
     
     {%- if page.js-postload-files -%}
       {%- for js_file in page.js-postload-files -%}
-      <script src="{{ js_file }}" type="text/javascript"></script>
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
       {%- endfor -%}
     {%- endif -%}
     
     {%- if layout.js-postload-files -%}
       {%- for js_file in layout.js-postload-files -%}
-      <script src="{{ js_file }}" type="text/javascript"></script>
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
       {%- endfor -%}
-    {%- endif -%}    
+    {%- endif -%}   
+
   </body>
 </html>

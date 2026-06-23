@@ -1,61 +1,37 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" aria-label="Global Navigation Bar">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{{ '/' | relative_url }}">ACE Dashboard</a>
+        <a class="navbar-brand fw-bold" href="{{ site.data.navigation.brand.url | relative_url }}">{{ site.data.navigation.brand.title }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbar-main" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <!-- HOME -->
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/' %}active{% endif %}" {% if page.url == '/' %}aria-current="page"{% endif %} href="{{ '/' | relative_url }}">Home</a>
-                </li>
-                <!-- TOOLS & DATA -->
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle {% if region_active %}active{% endif %}" role="button" data-bs-toggle="dropdown">Tools & Data</button>
-                    <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                        <li><a class="dropdown-item" href="{{ '/resources/' | relative_url }}">Resources</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ '/resources/species-distribution-models/' | relative_url }}">Species Distribution Models</a></li>
-                    </ul>
-                </li>
-                <!-- REGIONS COLLECTION -->
-                {%- if site.regions.size > 0 -%}
-                {%- assign region_active = false %}{% if page.url contains '/regions/' %}{% assign region_active = true %}{% endif -%}
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle {% if region_active %}active{% endif %}" role="button" data-bs-toggle="dropdown">Region</button>
-                    <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                        {%- for region in site.regions -%}
-                         <li><a class="dropdown-item" href="{{ region.url | relative_url }}">{{ region.name }}</a></li>
-                        {%- endfor -%}
-                    </ul>
-                </li>
-                {%- endif -%}
-                <!-- COMMUNITIES COLLECTION -->
-                {%- if site.communities.size > 0 -%}
-                {%- assign community_active = false -%}{%- if page.url contains '/communities/' -%}{%- assign community_active = true -%}{%- endif -%}
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle {% if community_active %}active{% endif %}" {% if community_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">Community</button>
-                    <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                        <li><a class="dropdown-item" href="{{ '/communities/' | relative_url }}">All</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        {%- for community in site.communities -%}
-                        <li><a class="dropdown-item" href="{{ community.url | relative_url }}">{{ community.name }}</a></li>
-                        {%- endfor -%}
-                    </ul>
-                </li>
-                {%- endif -%}
-                <!-- MORE DROPDOWN -->
-                {%- assign more_active = false -%}
-                {%- if page.url contains '/about/' or page.url contains '/people/' or page.url contains '/news/' -%}{%- assign more_active = true -%}{%- endif -%}
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle {% if more_active %}active{% endif %}" {% if more_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">More</button>
-                    <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                        <li><a class="dropdown-item" href="{{ '/about/' | relative_url }}">About</a></li>
-                        <li><a class="dropdown-item" href="{{ '/people/' | relative_url }}">People</a></li>
-                        <li><a class="dropdown-item" href="{{ '/news/' | relative_url }}">News</a></li>
-                    </ul>
-                </li>
+                {%- for nav_item in site.data.navigation.navbar -%}
+                    {%- if nav_item.dropdown != nil -%}
+                    {%- assign is_active = false %}{% if page.url contains nav_item.url %}{% assign is_active = true %}{% endif -%}
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">{{ nav_item.title }}</button>
+                        <ul class="dropdown-menu border-0" data-bs-theme="dark">
+                            {% for dropdown_item in nav_item.dropdown %}
+                                {%- if dropdown_item.collection -%}
+                                {%- assign collection = site[dropdown_item.collection] -%}
+                                {%- for collection_item in collection -%}
+                                    <li><a class="dropdown-item" href="{{ collection_item.url | relative_url }}">{{ collection_item.title }}</a></li>
+                                {%- endfor -%}
+                                {%- elsif dropdown_item.divider -%}
+                                    <li><hr class="dropdown-divider"></li>
+                                {%- else -%}
+                                    <li><a class="dropdown-item" href="{{ dropdown_item.url | relative_url }}">{{ dropdown_item.title }}</a></li>
+                                {%- endif -%}
+                            {%- endfor -%}
+                        </ul>
+                    </li>                   
+                    {%- else -%}
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url == nav_item.url %}active{% endif %}" {% if page.url == nav_item.url %}aria-current="page"{% endif %} href="{{ nav_item.url | relative_url }}">{{ nav_item.title }}</a>
+                    </li>
+                    {% endif -%}
+                {%- endfor -%}
             </ul>
         </div>
     </div>

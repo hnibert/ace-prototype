@@ -1,25 +1,31 @@
 ---
 layout: person
-first-name: Carey 
-last-name: McGilliard
-full-name: Carey McGilliard
-imageURL: assets/images/people/carey-mcgilliard.jpg
-imageAltText: A profile photo of Carey McGilliard
+full_name: Carey McGilliard
+
+main_img_url: assets/images/people/carey-mcgilliard.jpg
+main_img_alt: A profile photo of Carey McGilliard
+
 email: carey.mcgilliard@noaa.gov
 position: Research Mathematical Statistician
 affiliation: Alaska Fisheries Science Center
-research-areas: [Stock Assessment, Fisheries Management]
-ace-role: Contributor
-roles:
- - project: Gulf of Alaska Integrated Modeling (GOACLIM)
+research_areas: [Stock Assessment, Fisheries Management]
+ace_role: Contributor
+
+projects:
+ - title: Gulf of Alaska Integrated Modeling (GOACLIM)
    role: Co-Lead Principal Investigator
+
 website: null
 github: null
 scholar: https://scholar.google.com/citations?user=EGFSclQAAAAJ&hl=en
 linkedin: null
 bluesky: null
 orcid: null
+
 feature: false
+feature_order: null
+
+short_text: null
 ---
 Carey is a quantitative ecologist at the Alaska Fisheries Science Center with expertise in fisheries stock assessment, management strategy evaluation, and spatial aspects of population dynamics. She earned a PhD from the School of Aquatic and Fishery Sciences at the University of Washington, where she studied spatial stock assessment modeling and used management strategy evaluation to develop and test novel harvest control rules for use in data limited fisheries.
 

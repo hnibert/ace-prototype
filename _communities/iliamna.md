@@ -1,9 +1,9 @@
 ---
 #General
 layout: community
-name: Iliamna
+community_name: Iliamna
 
-#native name & pronunciation
+#Native Name & Pronunciation
 show_info_bar: true
 native_name: Nuch'ak'dalitnu
 native_pronunciation: Noo-chahk-dah-leet-noo
@@ -29,7 +29,7 @@ summary_lead: >-
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
-#Calendar General
+#Calendar - General
 calendar_summary: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
@@ -39,14 +39,17 @@ calendar_about: >-
   and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder
 calendar_subtitle: Iliamna
 
+#Calendar - Images
 calendar_card_img_url: assets/images/communities/iliamna-sq.jpg
 calendar_card_img_alt:
 
 calendar_display_img_url: assets/images/communities/iliamna-calendar-display.png
 calendar_display_alt:
+
+#Calendar - Downloads
 calendar_download_url: assets/images/communities/iliamna-calendar-display.png
 calendar_file_size: 132 KB
 
-#Order (in navigation displays & funnels)
-order: 1
+#Display Order (in navigation displays & funnels)
+display_order: 1
 ---

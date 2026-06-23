@@ -1,8 +1,8 @@
 ---
 layout: post
 
-#Type: Options("Featured Story", "Meet the Scientist", "Blog")
-type: "Featured Story" 
+#Type: Options("Story", "Meet the Scientist", "Blog")
+type: "Story" 
 
 #Title & Subtitle
 title:  "Science on the High Seas: Inside an Alaska Bottom Trawl Survey"
@@ -12,9 +12,9 @@ subtitle: Grit, gusts, and groundfish a biologist’s life on an Alaska trawl su
 region: Eastern Bering Sea
 
 #Main Image: This image is used to display this post on the news page and as the header image of the post itself
-mainImageURL: assets/images/media/bianca-prohaska-survey.png
-mainImageAlt: An example image alt text
-mainImageCaption: Research biologist Dr. Bianca Prohaska samples the blood from a Pacific cod on the Bering Sea bottom trawl survey. Credit NOAA Fisheries/Anna Briem. 
+main_img_url: assets/images/media/bianca-prohaska-survey.png
+main_img_alt: An example image alt text
+main_img_caption: Research biologist Dr. Bianca Prohaska samples the blood from a Pacific cod on the Bering Sea bottom trawl survey. Credit NOAA Fisheries/Anna Briem. 
 
 #Publish Date: The original time-stamp for the published date of this post
 date: 2026-04-23 21:16:05 -0700
@@ -32,16 +32,16 @@ featured: true
 highlight: false
 
 #Shows the approximate read time next to published date, mark false to hide this on post
-showReadTime: true
+show_read_time: true
 
 #Should this post show other related post?
-showRelatedPosts: false
+show_related_posts: false
 
 #Author: Could expand to support multi-authors
 author: 
 
 #'More Information' Links: shows on post pages only if links are provided
-information-links:
+information_links:
  - title: What is ACLIM?
    url: #
  - title: General Information
@@ -52,6 +52,8 @@ information-links:
 #Post Series: Is this post part of a series (leave blank to make this a normal post)
 post_series: null
 series_order: null
+
+description: null
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus vitae libero vulputate faucibus, at condimentum risus luctus. Integer facilisis, lacus ac interdum laoreet, tortor erat posuere nulla, sed elementum metus sem vel sapien.
 

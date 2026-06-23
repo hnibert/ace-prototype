@@ -16,7 +16,7 @@ layout: default
                 <!-- English Name -->
                 <div class="col-auto d-flex flex-column">
                     <span class="d-block text-uppercase small fw-bold text-muted">Community</span>
-                    <h4 class="mb-0">{{ page.name }}</h4>
+                    <h4 class="mb-0">{{ page.community_name }}</h4>
                 </div>
                 
                 {%- if page.native_language and page.native_name -%}
@@ -55,7 +55,7 @@ layout: default
                 <img src="{{ page.summary_img_url | relative_url }}" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.summary_img_alt }}">
             </div>
             <div class="col-12 col-lg-8">
-                <h1 id="community-summary-title" class="block-text small fw-semibold text-uppercase">{{ page.name }}</h1>
+                <h1 id="community-summary-title" class="block-text small fw-semibold text-uppercase">{{ page.community_name }}</h1>
                 <p id="community-summary-subtitle" class="display-5 fw-bold mb-3">{{ page.summary_title }}</p> 
                 <p class="lead">{{ page.summary_lead }}</p> 
             </div>

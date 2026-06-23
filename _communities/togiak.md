@@ -1,7 +1,7 @@
 ---
 #General
 layout: community
-name: Togiak
+community_name: Togiak
 
 #native name & pronunciation
 show_info_bar: true
@@ -42,5 +42,5 @@ calendar_download_url: assets/images/communities/togiak-calendar-display.png
 calendar_file_size: 145 KB
 
 #Order (in navigation displays & funnels)
-order: 4
+display_order: 4
 ---

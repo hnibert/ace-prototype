@@ -1,33 +1,37 @@
 ---
 layout: person
-first-name: Kirstin
-last-name: Holsman
-full-name: Kirstin Holsman
-imageURL: assets/images/people/kirstin-holsman.png
-imageAltText: A profile photo of Kirstin Holsman
+full_name: Kirstin Holsman
+
+main_img_url: assets/images/people/kirstin-holsman.png
+main_img_alt: A profile photo of Kirstin Holsman
+
 email: kirstin.holsman@noaa.gov
 position: Research Fisheries Biologist
 affiliation: Alaska Fisheries Science Center
-research-areas: [Climate Science, Modeling, Ecosystem-based Research]
-ace-role: Team
-roles:
- - project: Changing Ecosystems & Fisheries Initiative (CEFI)
+research_areas: [Climate Science, Modeling, Ecosystem-based Research]
+ace_role: Team
+
+projects:
+ - title: Changing Ecosystems & Fisheries Initiative (CEFI)
    role: Alaska Lead
- - project: Alaska Integrated Ecosystem Assessment Program (IEA)
+ - title: Alaska Integrated Ecosystem Assessment Program (IEA)
    role: Alaska Science Center Lead
- - project: Alaska Climate Integrated Modeling (ACLIM)
+ - title: Alaska Climate Integrated Modeling (ACLIM)
    role: Lead Point of Contact, Co-Lead PI
- - project: Climate-enhanced Multispecies Stock Assessment Model (CEATTLE)
+ - title: Climate-enhanced Multispecies Stock Assessment Model (CEATTLE)
    role: Lead Author
+
 website: https://www.fisheries.noaa.gov/contact/kirstin-holsman
 github: https://github.com/kholsman
 scholar: https://scholar.google.com/citations?user=m5rIIE0AAAAJ&hl=en
 linkedin: https://www.linkedin.com/in/kholsman-884474a
 bluesky: null
 orcid: null
+
 feature: true
-feature-order: 4
-short-text: >-
+feature_order: 4
+
+short_text: >-
   Driven by a passion for ocean systems, Kirstin is a quantitative climate scientist with a creative flair and enthusiasm for developing innovative solutions to complex, dynamic challenges. 
 ---
 I am a quantitative climate scientist with a creative flair and enthusiasm for developing innovative solutions to complex, dynamic challenges. Driven by a passion for ocean systems, I am dedicated to understanding the drivers of change in marine environments to help decision-makers effectively respond to climate change shocks and long-term impacts. My work integrates science-based advice with meaningful collaboration to create actionable solutions for sustainable marine resource management.

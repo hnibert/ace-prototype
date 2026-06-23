@@ -1,7 +1,7 @@
 ---
 #General
 layout: region
-name: Eastern Bering Sea
+region_name: Eastern Bering Sea
 
 #Hero
 hero_data:
@@ -62,5 +62,5 @@ key_geographical_points:
     description: "The narrowest gateway bottleneck inside the Bering Strait."
 
 #Order (in navigation displays & funnels)
-order: 1
+display_order: 1
 ---

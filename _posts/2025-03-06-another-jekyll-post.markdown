@@ -1,7 +1,7 @@
 ---
 layout: post
 
-#Type: Options("Featured Story", "Meet the Scientist", "Blog", "News")
+#Type: Options("Story", "Meet the Scientist", "Blog", "News")
 type: "Blog" 
 
 #Title & Subtitle
@@ -12,9 +12,9 @@ subtitle: Another subtitle to a another post
 region: Gulf of Alaska
 
 #Main Image: This image is used to display this post on the news page and as the header image of the post itself
-mainImageURL: assets/images/heroes/hero-people.jpg
-mainImageAlt: An example image alt text
-mainImageCaption: An example image caption
+main_img_url: assets/images/heroes/hero-people.jpg
+main_img_alt: An example image alt text
+main_img_caption: An example image caption
 
 #Publish Date: The original time-stamp for the published date of this post
 date: 2025-03-06 21:16:05 -0700
@@ -32,16 +32,16 @@ featured: false
 highlight: false
 
 #Shows the approximate read time next to published date, mark false to hide this on post
-showReadTime: true
+show_read_time: true
 
 #Should this post show other related post?
-showRelatedPosts: true
+show_related_posts: true
 
 #Author: Could expand to support multi-authors (gets slugified to check for author info for 'Meet the Author')
 author: "kirstin Holsman"
 
 #'More Information' Links: shows on post pages only if links are provided
-information-links:
+information_links:
  - title: What is ACLIM?
    url: #
  - title: General Information
@@ -52,6 +52,8 @@ information-links:
 #Post Series: Is this post part of a series (leave blank to make this a normal post)
 post_series: "Voyage through the Arctic"
 series_order: 2
+
+description: null
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

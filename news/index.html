@@ -31,7 +31,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
         <hr>
         
         <!-- Top Featured News -->
-        <div class="card p-4 border-0 p-md-5 mb-4 text-bg-dark text-shadow-3 bg-body-secondary position-relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.50)), url('{{ top_featured.mainImageURL | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="card p-4 border-0 p-md-5 mb-4 text-bg-dark text-shadow-3 bg-body-secondary position-relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.50)), url('{{ top_featured.main_img_url | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
             <div class="col-lg-6 px-0">
                 <h1 class="display-4">{{ top_featured.title }}</h1>
                 <p class="lead my-3">{{ top_featured.excerpt }}</p>
@@ -55,7 +55,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
                             </div>
                         </div>
                         <div class="col-lg-4 d-none d-lg-block">
-                            <img src="{{ feature.mainImageURL | relative_url }}" class="w-100 h-100 object-fit-cover rounded-end" alt="{{ feature.mainImageAlt }}">
+                            <img src="{{ feature.main_img_url | relative_url }}" class="w-100 h-100 object-fit-cover rounded-end" alt="{{ feature.main_img_alt }}">
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
                             <div class="card h-100">
                                 <div class="row g-0 h-100 position-relative">
                                     <div class="col-12 col-lg-4 d-none d-lg-block">
-                                        <img src="{{ post.mainImageURL | relative_url }}" class="w-100 h-100 object-fit-cover rounded-start" alt="{{ post.mainImageAlt }}">
+                                        <img src="{{ post.main_img_url | relative_url }}" class="w-100 h-100 object-fit-cover rounded-start" alt="{{ post.main_img_alt }}">
                                     </div>
                                     <div class="col-12 col-lg-8">
                                         <div class="card-body h-100 d-flex flex-column h-100">

@@ -1,7 +1,7 @@
 ---
 #General
 layout: region
-name: Arctic
+region_name: Arctic
 
 #Hero
 hero_data:
@@ -22,5 +22,5 @@ summary_lead: >-
   rapid environmental change due to warming temperatures and diminishing sea ice extent.
 
 #Order (in navigation displays & funnels)
-order: 4
+display_order: 4
 ---

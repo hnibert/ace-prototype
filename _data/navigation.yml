@@ -1,0 +1,48 @@
+brand:
+  title: ACE Dashboard
+  url: "/"
+
+navbar:
+  - title: Home
+    url: "/"
+
+  - title: Resources
+    url: "/resources/"
+
+  - title: Tools
+    url: "/tools/"
+    dropdown:
+      - title: Species Distribution Models
+        url: "/sdm/"
+
+  - title: Regions
+    url: "/regions/"
+    dropdown:
+      - collection: regions
+
+  - title: Communities
+    url: "/communities/"
+    dropdown:
+      - title: All
+        url: "/communities/"
+      - divider: true
+      - collection: communities
+
+  - title: ACE
+    url: "/ace/"
+    dropdown:
+      - title: About
+        url: "/about/"
+      - title: News
+        url: "/news/"
+      - title: People
+        url: "/people/"
+
+footer:
+  - category:
+    title: ACE
+    links:
+      - title: Home
+        url: "/"
+      - title: Home
+        url: "/"

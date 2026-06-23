@@ -16,7 +16,7 @@ layout: default
                 <img src="{{ page.summary_img_url | relative_url }}" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.summary_img_alt }}">
             </div>
             <div class="col-12 col-lg-8">
-                <h1 id="region-summary-title" class="block-text small fw-semibold text-uppercase mb-3">{{ page.name }}</h1> 
+                <h1 id="region-summary-title" class="block-text small fw-semibold text-uppercase mb-3">{{ page.region_name }}</h1> 
                 <p id="region-summary-subtitle"class="display-5 fw-bold mb-3">{{ page.summary_title }}</p> 
                 <p class="lead">{{ page.summary_lead }}</p> 
             </div>
@@ -98,7 +98,7 @@ layout: default
             <div class="px-4 my-2 text-center" role="alert">
                 <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
                 <div class="col-lg-4 mx-auto pb-5"> 
-                    <p class="lead mb-0">{{ page.name }} has no associated resources</p>
+                    <p class="lead mb-0">{{ page.region_name }} has no associated resources</p>
                     <p>Check back later or return home</p>
                     <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
                 </div> 

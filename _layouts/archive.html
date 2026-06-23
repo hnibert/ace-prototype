@@ -7,13 +7,13 @@ layout: default
 
 <div class="container mb-5">
   {%- if page.type == 'category' -%}
-  <span class="block-text small fw-semibold text-uppercase">Category</span> 
+  <span class="block-text small fw-semibold text-uppercase">{{ page.title | capitalize }}</span> 
   <h1 class="mb-1">Posts Categorized Under: {{ page.title | capitalize }}</h1> 
   {%- elsif page.type == 'year' -%}
-  <span class="block-text small fw-semibold text-uppercase">Year</span> 
+  <span class="block-text small fw-semibold text-uppercase">{{ page.date | date: "%Y" }}</span> 
   <h1 class="mb-1">News Archive for the Year {{ page.date | date: "%Y" }}</h1> 
   {%- elsif page.type == 'month' -%}
-  <span class="block-text small fw-semibold text-uppercase">Month</span> 
+  <span class="block-text small fw-semibold text-uppercase">{{ page.date | date: "%B %Y" }}</span> 
   <h1 class="mb-1">News Archive for {{ page.date | date: "%B %Y" }}</h1> 
   {%- endif -%}    
   <hr>
@@ -25,7 +25,7 @@ layout: default
             <div class="card h-100">
                 <div class="row g-0 h-100 position-relative">
                     <div class="col-12 col-lg-4 d-none d-lg-block">
-                        <img src="{{ post.mainImageURL | relative_url }}" class="w-100 h-100 object-fit-cover rounded-start" alt="{{ post.mainImageAlt }}">
+                        <img src="{{ post.main_img_url | relative_url }}" class="w-100 h-100 object-fit-cover rounded-start" alt="{{ post.main_img_alt }}">
                     </div>
                     <div class="col-12 col-lg-8">
                         <div class="card-body h-100 d-flex flex-column h-100">

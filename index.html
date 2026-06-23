@@ -77,11 +77,12 @@ link_text="Learn More" -%}
             <!-- Region Funnels -->
             <div class="col-12">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                    {%- for region in site.regions -%}
+                    {%- assign sorted_regions = site.regions | sort: "display_order" -%}
+                    {%- for region in sorted_regions -%}
                     <div class="col">
-                        <div class="card region-card {{ region.name | slugify | prepend: 'region-' }} mb-3 h-100 text-bg-dark card-shadow border-0">
+                        <div class="card region-card {{ region.region_name | slugify | prepend: 'region-' }} mb-3 h-100 text-bg-dark card-shadow border-0">
                             <div class="card-body d-flex justify-content-end align-items-end me-2">
-                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a href="{{ region.url | relative_url }}" class="stretched-link text-decoration-none link-light">{{ region.name }}</a></h3>
+                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a href="{{ region.url | relative_url }}" class="stretched-link text-decoration-none link-light">{{ region.region_name }}</a></h3>
                             </div>
                         </div>
                     </div>            
@@ -111,11 +112,12 @@ link_text="Learn More" -%}
             <!-- Community Funnels -->
             <div class="col-12">
                 <div class="row d-flex justify-content-between g-4">
-                    {%- for community in site.communities -%}
+                    {%- assign sorted_communities = site.communities | sort: "display_order" -%}
+                    {%- for community in sorted_communities -%}
                     <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card community-card {{ community.name | slugify | prepend: 'community-' }} text-bg-dark h-100 card-shadow border-0">
+                        <div class="card community-card {{ community.community_name | slugify | prepend: 'community-' }} text-bg-dark h-100 card-shadow border-0">
                             <div class="card-body d-flex justify-content-start align-items-end ms-2">
-                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a class="stretched-link text-decoration-none link-light" href="{{ community.url | relative_url }}">{{ community.name }}</a></h3>
+                                <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a class="stretched-link text-decoration-none link-light" href="{{ community.url | relative_url }}">{{ community.community_name }}</a></h3>
                             </div>
                         </div>
                     </div>               
@@ -147,24 +149,24 @@ link_text="Learn More" -%}
         <div id="people-carousel" class="carousel slide carousel-fade">
             <div id="people-container" class="carousel-inner d-flex align-items-stretch">
                 {%- assign people = site.people | where: "feature", true -%}
-                {%- assign sorted_people = people | sort: "feature-order" -%}
+                {%- assign sorted_people = people | sort: "feature_order" -%}
                 {%- for person in sorted_people -%}
-                {%- if person.feature-order -%}
+                {%- if person.feature_order -%}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <div class="card h-100 shadow-sm">
                         <div class="row g-0 align-items-center">
                             <!-- Image Column -->
                             <div class="col-md-4 d-flex justify-content-center p-4">
-                                <img src="{{ person.imageURL }}" 
+                                <img src="{{ person.main_img_url }}" 
                                     class="rounded-circle shadow-sm object-fit-cover" 
                                     width="256" 
                                     height="256" 
-                                    alt="{{ person.imageAltText }}">
+                                    alt="{{ person.main_img_alt }}">
                             </div>
                             <!-- Content Column -->
                             <div class="col-md-8">
                                 <div class="card-body p-4">
-                                    <h3 class="card-title h4 fw-bold mb-1">{{ person.full-name }}</h3>
+                                    <h3 class="card-title h4 fw-bold mb-1">{{ person.full_name }}</h3>
                                     
                                     <p class="card-text text-secondary small mb-3">
                                         <span class="fw-semibold d-block text-dark">{{ person.position }}</span>
@@ -172,13 +174,13 @@ link_text="Learn More" -%}
                                     </p>
 
                                     <div class="d-flex flex-wrap gap-2 mb-3">
-                                        {%- for area in person.research-areas -%}
+                                        {%- for area in person.research_areas -%}
                                             <span class="badge text-bg-light border text-secondary fw-normal">{{ area }}</span>
                                         {%- endfor -%}
                                     </div> 
                                     <hr class="text-black-50 my-3">
                                     <p class="card-text text-muted">
-                                        {{ person.short-text }}
+                                        {{ person.short_text }}
                                     </p>
                                     <a href="{{ person.url | relative_url }}" class="icon-link text-decoration-none">Read more <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a> 
                                 </div>

@@ -14,18 +14,18 @@ layout: default
             <div class="col-12 col-md-4 mb-3 mb-md-0 vstack gap-4">
                 <!-- Species Summary Card --> 
                 <div class="card">
-                    <img src="{{ page.imageURL }}" class="img-fluid mx-auto my-3 shadow" width="200" height="auto" alt="{{ page.imageAlt }}">
+                    <img src="{{ page.img_url }}" class="img-fluid mx-auto my-3 shadow" width="200" height="auto" alt="{{ page.img_alt }}">
                     <div class="card-body text-center">
                         <!-- Official Name, Scientific -->
-                        <h3 id="species-title" class="card-title fw-bold species-name">{{ page.name }}</h3>
-                        <p class="card-text fst-italic">{{ page.scientific-name }}</p>
+                        <h3 id="species-title" class="card-title fw-bold species-name">{{ page.species_name }}</h3>
+                        <p class="card-text fst-italic">{{ page.scientific_name }}</p>
                         
                         <!-- Other Names -->
                         <h6 class="card-text text-start fw-semibold">Other Names</h6>
                         <hr class="mt-0">
                         <p class="card-text text-start">
-                            {%- if page.other-names -%}
-                            {{ page.other-names }}
+                            {%- if page.other_names -%}
+                            {{ page.other_names }}
                             {%- else -%}
                             <p class="fst-italic text-start">No Other Names</p>
                             {%- endif -%}
@@ -35,8 +35,8 @@ layout: default
                         <h6 class="card-text text-start fw-semibold">Management Structure</h6>
                         <hr class="mt-0">
                         <p class="card-text text-start">
-                            {%- if page.other-names -%}
-                            {{ page.management-structure }}
+                            {%- if page.management_structure -%}
+                            {{ page.management_structure }}
                             {%- else -%}
                             <p class="fst-italic text-start">No Management Structure</p>
                             {%- endif -%}
@@ -46,8 +46,8 @@ layout: default
                         <h6 class="card-title text-start fw-semibold">Management Body</h6>
                         <hr class="mt-0">
                         <div class="d-flex flex-wrap justify-content-start align-items-center">
-                            {%- if page.management-bodies.size > 0 -%}  
-                            {%- for body in page.management-bodies -%}
+                            {%- if page.management_bodies.size > 0 -%}  
+                            {%- for body in page.management_bodies -%}
                             <span class="badge bg-light text-muted border me-2">{{ body }}</span>
                             {%- endfor -%}
                             {%- else -%}
@@ -55,16 +55,16 @@ layout: default
                             {%- endif -%}
                         </div>
 
-                        {%- if page.management-body-notes -%}
+                        {%- if page.management_body_notes -%}
                         <!-- Management Body Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.management-body-notes }}</a></small>
+                            <small><b>Note:&nbsp;</b>{{ page.management_body_notes }}</a></small>
                         </p>
                         {%- endif -%}
                     </div>
                 </div>
 
-                {%- if page.cdq-groups.size > 0 -%}
+                {%- if page.cdq_groups.size > 0 -%}
                 <!-- Community Development -->
                 <div class="card">
                     <div class="card-body">
@@ -90,7 +90,7 @@ layout: default
             <!-- Species Info Cards --> 
             <div class="col-12 col-md-8 vstack gap-4">
 
-                {%- if page.ccv-label -%}
+                {%- if page.ccv_label -%}
                 <!-- Climate Change Vulnerability --> 
                 <div class="card">
                     <div class="card-body">
@@ -98,19 +98,19 @@ layout: default
                         <hr>
 
                         <!-- Climate Change Vulnerability Label & Reference -->
-                        <label class="fw-bold" for="change-vulnerability">{{ page.ccv-label }}<small>{{ page.ccv-reference }}</small></label>
+                        <label class="fw-bold" for="change-vulnerability">{{ page.ccv_label }}<small>{{ page.ccv_reference }}</small></label>
 
-                        {%- if ccv-score -%}
+                        {%- if ccv_score -%}
                         <!-- Climate Change Vulnerability Score -->
-                        <div id="change-vulnerability" class="progress" role="progressbar" aria-label="Climate change vulnerability scale in a progressbar" aria-valuenow="{{ page.ccv-score }}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar bg-primary" style="width: {{ page.ccv-score }}%"></div>
+                        <div id="change-vulnerability" class="progress" role="progressbar" aria-label="Climate change vulnerability scale in a progressbar" aria-valuenow="{{ page.ccv_score }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-primary" style="width: {{ page.ccv_score }}%"></div>
                         </div>
                         {%- endif -%}
 
-                        {%- if page.ccv-notes -%}
+                        {%- if page.ccv_notes -%}
                         <!-- Climate Change Vulnerability Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.ccv-notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.ccv_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>
@@ -124,10 +124,10 @@ layout: default
                         <h5 class="card-title"><i class="fa-solid fa-shield-halved"></i> Protections</h5>
                         <hr>
                         <p class="card-text">{{ page.protections }}</p>
-                        {%- if page.protection-notes -%}
+                        {%- if page.protection_notes -%}
                         <!-- Protections Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.protection-notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.protection_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>
@@ -141,34 +141,34 @@ layout: default
                         <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Justification for Classification</h5>
                         <hr>
                         <p class="card-text">{{ page.justification }}</p>
-                        {%- if page.justification-notes -%}
+                        {%- if page.justification_notes -%}
                         <!-- Justification Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.justification-notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.justification_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>
                 </div>
                 {%- endif -%}
 
-                {%- if page.cultural-significance -%}
+                {%- if page.cultural_significance -%}
                 <!-- Cultural Significance -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-landmark"></i> Cultural Significance</h5>
                         <hr>
-                        <p class="card-text">{{ page.cultural-significance }}</p>
-                        {%- if page.cultural-significance-notes -%}
+                        <p class="card-text">{{ page.cultural_significance }}</p>
+                        {%- if page.cultural_significance_notes -%}
                         <!-- Cultural Significance Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.cultural-significance-notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.cultural_significance_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>
                 </div>
                 {%- endif -%}
 
-                {%- if page.spatial-data -%}
+                {%- if page.spatial_data -%}
                 <!-- Spatial Data -->   
                 <div class="card">
                     <div class="card-body">
@@ -176,11 +176,11 @@ layout: default
                         <hr>
                         <p class="card-text">Spatial data refers to geographically referenced information—such as maps, coordinates, and satellite imagery—that documents how, when, and where a community harvests wild resources.</p>
                         <hr>
-                        <P class="card-text">{{ page.spatial-data }}</P>
-                        {%- if page.spatial-data-notes -%}
+                        <P class="card-text">{{ page.spatial_data }}</P>
+                        {%- if page.spatial_data_notes -%}
                         <!-- Spatial Data Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.spatial-data-notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.spatial_data_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>

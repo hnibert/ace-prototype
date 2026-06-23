@@ -1,7 +1,7 @@
 ---
 layout: post
 
-#Type: Options("Featured Story", "Meet the Scientist", "Blog")
+#Type: Options("Story", "Meet the Scientist", "Blog")
 type: "Meet the Scientist" 
 
 #Title & Subtitle
@@ -12,9 +12,9 @@ subtitle: Creating interdisciplinary frameworks for a climate and community focu
 region: Eastern Bering Sea
 
 #Main Image: This image is used to display this post on the news page and as the header image of the post itself
-mainImageURL: assets/images/media/kirstin-holsman-mts.png
-mainImageAlt: Scientist wearing an orange coat and knitted beanie with a snowy landscape in the background. 
-mainImageCaption: Kirstin Holsman in Alaska. 
+main_img_url: assets/images/media/kirstin-holsman-mts.png
+main_img_alt: Scientist wearing an orange coat and knitted beanie with a snowy landscape in the background. 
+main_img_caption: Kirstin Holsman in Alaska. 
 
 #Publish Date: The original time-stamp for the published date of this post
 date: 2026-05-21 21:16:05 -0700
@@ -32,16 +32,16 @@ featured: true
 highlight: false
 
 #Shows the approximate read time next to published date, mark false to hide this on post
-showReadTime: true
+show_read_time: true
 
 #Should this post show other related post?
-showRelatedPosts: false
+show_related_posts: false
 
 #Author: Could expand to support multi-authors
 author: 
 
 #'More Information' Links: shows on post pages only if links are provided
-information-links:
+information_links:
  - title: What is ACLIM?
    url: #
  - title: General Information
@@ -52,6 +52,8 @@ information-links:
 #Post Series: Is this post part of a series (leave blank to make this a normal post)
 post_series: null
 series_order: null
+
+description: null
 ---
 Driven by a passion for ocean systems, Kirstin is a quantitative climate scientist with a creative flair and enthusiasm for developing innovative solutions to complex, dynamic challenges.
 

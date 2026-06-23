@@ -1,6 +1,6 @@
 ---
 layout: species
-name: Northern pike
+species_name: Northern pike
 tags: subsistence, fish-invertebrates
 region: togiak, iliamna
 ---
