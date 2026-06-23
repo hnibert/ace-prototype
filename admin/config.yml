@@ -3,7 +3,7 @@ logo:
   show_in_header: true
   
 backend:
-  name: github #github, git-gateway, test-repo
+  name: git-gateway #github, git-gateway, test-repo
   identity_url: https://ace-authenticate.netlify.app/.netlify/identity
   gateway_url: https://ace-authenticate.netlify.app/.netlify/git
 
