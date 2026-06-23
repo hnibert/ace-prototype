@@ -132,7 +132,7 @@ collections:
   # ============
   - name: "posts"
     label: "Posts"
-    folder: "_posts"
+    folder: "_posts/"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -162,6 +162,15 @@ collections:
       #Publishing Dates
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Updated", name: "updated", widget: "datetime" }
+
+      #Categories
+      - { label: "Categories", name: "categories", widget: "list", field: { name: "item", widget: "string" }, required: false }
+
+      #Content Flags
+      - { label: "Is Featured?", name: "featured", widget: "boolean", default: false }
+      - { label: "Is Highlight?", name: "highlight", widget: "boolean", default: false }
+      - { label: "Show Read Time?", name: "show_read_time", widget: "boolean", default: true }
+      - { label: "Show Related Posts?", name: "show_related_posts", widget: "boolean", default: true }
       
       #Author
       - { 
@@ -174,15 +183,6 @@ collections:
           value_field: "{{slug}}"
         }
 
-      #Categories
-      - { label: "Categories", name: "categories", widget: "list", field: { name: "item", widget: "string" }, required: false }
-
-      #Content Flags
-      - { label: "Is Featured?", name: "featured", widget: "boolean", default: false }
-      - { label: "Is Highlight?", name: "highlight", widget: "boolean", default: false }
-      - { label: "Show Read Time?", name: "show_read_time", widget: "boolean", default: true }
-      - { label: "Show Related Posts?", name: "show_related_posts", widget: "boolean", default: true }
-      
       #More Information Links
       - { 
           label: 'Information Links',
