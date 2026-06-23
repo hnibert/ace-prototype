@@ -100,6 +100,32 @@ collections:
             fields:
               - { name: "id", label: "ID Slug", widget: "string" }
               - { name: "label", label: "Display Label", widget: "string" }
+              
+      # Audiences
+      - name: "resource_audiences"
+        label: "Resource Audiences"
+        file: "_data/tags/resource_audiences.yml"
+        fields:
+          - name: "items"
+            label: "Resource Audiences"
+            widget: "list"
+            summary: "{{label}} ({{id}})"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
+
+      # User Goals
+      - name: "resource_goals"
+        label: "Resource Goals"
+        file: "_data/tags/resource_goals.yml"
+        fields:
+          - name: "items"
+            label: "Resource Goals"
+            widget: "list"
+            summary: "{{label}} ({{id}})"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
 
   # ============
   #  POSTS (COLLECTION)
@@ -586,7 +612,20 @@ collections:
                   required: false
                 } 
 
-              - { label: "Audience", name: "audience", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              #- { label: "Audience", name: "audience", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              #Audience
+              - { 
+                  label: 'Audience',
+                  name: 'audience',
+                  widget: 'relation',
+                  collection: 'global_data',
+                  file: 'resource_audiences',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
+                  multiple: true,
+                  required: false
+                } 
 
               #Subtopics
               - { 
@@ -599,7 +638,7 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: true
+                  required: false
                 } 
 
               #Authors
@@ -615,4 +654,17 @@ collections:
                   required: false
                 }   
 
-              - { label: "User Goals", name: "user-goals", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              #- { label: "User Goals", name: "user-goals", widget: "list", field: { name: "item", widget: "string" }, required: false }
+              #User Goals
+              - { 
+                  label: 'User Goals',
+                  name: 'user-goals',
+                  widget: 'relation',
+                  collection: 'global_data',
+                  file: 'resource_goals',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
+                  multiple: true,
+                  required: false
+                } 

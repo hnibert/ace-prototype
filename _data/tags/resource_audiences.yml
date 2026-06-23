@@ -1,1 +1,11 @@
 items:
+  - id: fishery-managers
+    label: "Fishery Managers"
+
+  - id: fishing-industry
+    label: "Fishing Industry"
+
+  - id: stock-assessment-scientist
+    label: "Stock Assessment Scientist"
+
+    

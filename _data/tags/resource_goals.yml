@@ -1,1 +1,6 @@
 items:
+  - id: work-with-data
+    label: "Work With Data"
+
+  - id: understanding-community-impacts
+    label: "Understanding Community Impacts"
