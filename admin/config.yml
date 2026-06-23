@@ -53,6 +53,7 @@ collections:
       - name: "resource_types"
         label: "Resource Types"
         file: "_data/tags/resource_types.yml"
+        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Types"
@@ -65,6 +66,7 @@ collections:
       - name: "resource_themes"
         label: "Resource Themes"
         file: "_data/tags/resource_themes.yml"
+        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Themes"
@@ -77,6 +79,7 @@ collections:
       - name: "resource_species"
         label: "Resource Species"
         file: "_data/tags/resource_species.yml"
+        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Species"
@@ -89,6 +92,7 @@ collections:
       - name: "resource_subtopics"
         label: "Resource Subtopics"
         file: "_data/tags/resource_subtopics.yml"
+        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Subtopics"
