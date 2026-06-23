@@ -289,7 +289,7 @@ a {
   border-width: 12px !important;
 }
 
-.resource-card.application {
+.resource-card.web-application {
   border-color: var(--ace-hex-channel) !important;
 }
 
