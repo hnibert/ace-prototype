@@ -24,7 +24,7 @@ layout: default
     </div>
 </section>
 
-{%- if !page.google_maps_url or page.key_geographical_points.size <= 0 -%}
+{%- if page.google_maps_url == nil or page.key_geographical_points.size <= 0 -%}
 <!-- Geospatial Overview -->
 <section aria-labelledby="geospatial-title">
     <div class="container">
