@@ -49,49 +49,53 @@ collections:
     editor: { preview: false }
     files:
 
-      #Resource Type
-      - name: "resource_type"
+      # Resource Type
+      - name: "resource_types"
         label: "Resource Types"
         file: "_data/tags/resource_types.yml"
         fields:
           - name: "items"
-          - label: "Resource Types"
-          - widget: "list"
-          - { name: "id", label: "ID Slug", widget: "string" }
-          - { name: "label", label: "Display Label", widget: "string" }
+            label: "Resource Types"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
 
-      #Theme
+      # Theme
       - name: "resource_themes"
         label: "Resource Themes"
         file: "_data/tags/resource_themes.yml"
         fields:
           - name: "items"
-          - label: "Resource Themes"
-          - widget: "list"
-          - { name: "id", label: "ID Slug", widget: "string" }
-          - { name: "label", label: "Display Label", widget: "string" }
+            label: "Resource Themes"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
 
-      #Species
+      # Species
       - name: "resource_species"
         label: "Resource Species"
         file: "_data/tags/resource_species.yml"
         fields:
           - name: "items"
-          - label: "Resource Species"
-          - widget: "list"
-          - { name: "id", label: "ID Slug", widget: "string" }
-          - { name: "label", label: "Display Label", widget: "string" }
+            label: "Resource Species"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
 
-      #Subtopics
+      # Subtopics
       - name: "resource_subtopics"
         label: "Resource Subtopics"
         file: "_data/tags/resource_subtopics.yml"
         fields:
           - name: "items"
-          - label: "Resource Subtopics"
-          - widget: "list"
-          - { name: "id", label: "ID Slug", widget: "string" }
-          - { name: "label", label: "Display Label", widget: "string" }
+            label: "Resource Subtopics"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID Slug", widget: "string" }
+              - { name: "label", label: "Display Label", widget: "string" }
 
   # ============
   #  POSTS (COLLECTION)
