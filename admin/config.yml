@@ -53,11 +53,11 @@ collections:
       - name: "resource_types"
         label: "Resource Types"
         file: "_data/tags/resource_types.yml"
-        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Types"
             widget: "list"
+            summary: "{{label}} ({{id}})"
             fields:
               - { name: "id", label: "ID Slug", widget: "string" }
               - { name: "label", label: "Display Label", widget: "string" }
@@ -66,11 +66,11 @@ collections:
       - name: "resource_themes"
         label: "Resource Themes"
         file: "_data/tags/resource_themes.yml"
-        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Themes"
             widget: "list"
+            summary: "{{label}} ({{id}})"
             fields:
               - { name: "id", label: "ID Slug", widget: "string" }
               - { name: "label", label: "Display Label", widget: "string" }
@@ -79,11 +79,11 @@ collections:
       - name: "resource_species"
         label: "Resource Species"
         file: "_data/tags/resource_species.yml"
-        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Species"
             widget: "list"
+            summary: "{{label}} ({{id}})"
             fields:
               - { name: "id", label: "ID Slug", widget: "string" }
               - { name: "label", label: "Display Label", widget: "string" }
@@ -92,11 +92,11 @@ collections:
       - name: "resource_subtopics"
         label: "Resource Subtopics"
         file: "_data/tags/resource_subtopics.yml"
-        summary: '{{fields.label}}'
         fields:
           - name: "items"
             label: "Resource Subtopics"
             widget: "list"
+            summary: "{{label}} ({{id}})"
             fields:
               - { name: "id", label: "ID Slug", widget: "string" }
               - { name: "label", label: "Display Label", widget: "string" }
