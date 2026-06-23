@@ -1,0 +1,18 @@
+items:
+  - id: pollock
+    label: "Pollock"
+
+  - id: crab
+    label: "Crab"
+
+  - id: rock-sole
+    label: "Rock Sole"
+
+  - id: salmon
+    label: "Salmon"
+
+  - id: pacific-cod
+    label: "Pacific Cod"
+
+  - id: multi
+    label: "Multiple Species"

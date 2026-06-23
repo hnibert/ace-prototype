@@ -1,0 +1,24 @@
+items:
+  - id: modeling
+    label: "Modeling"
+
+  - id: fishery-dependent-data
+    label: "Fishery-Dependent Data"
+
+  - id: indicators-monitoring
+    label: "Indicators & Monitoring"
+
+  - id: species-distribution
+    label: "Species Distribution"
+
+  - id: sea-ice
+    label: "Sea Ice"
+
+  - id: fisheries-management
+    label: "Fisheries Management"
+
+  - id: food-webs
+    label: "Food Webs"
+
+  - id: ecosystem-research
+    label: "Ecosystem-based Research"                  

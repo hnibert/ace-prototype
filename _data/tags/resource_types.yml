@@ -1,0 +1,18 @@
+items:
+  - id: code-repo
+    label: "Code Repository"
+
+  - id: data-code
+    label: "Data & Code"
+
+  - id: presentation
+    label: "Presentation"
+
+  - id: publication
+    label: "Publication"
+
+  - id: tech-doc
+    label: "Technical Documentation"
+
+  - id: web-app
+    label: "Web Application"

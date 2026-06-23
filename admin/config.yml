@@ -48,41 +48,50 @@ collections:
     delete: false
     editor: { preview: false }
     files:
-      - name: "tags"
-        label: "Resource Tags"
-        file: "_data/tags/resource_tags.yml"
-        fields: 
-          #Resource Type
-          - name: "resource_type"
-            label: "Resource Type"
-            widget: "list"
-            fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
 
-          #Theme
-          - name: "theme"
-            label: "Resource Theme"
-            widget: "list"
-            fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+      #Resource Type
+      - name: "resource_type"
+        label: "Resource Types"
+        file: "_data/tags/resource_types.yml"
+        fields:
+          - name: "items"
+          - label: "Resource Types"
+          - widget: "list"
+          - { name: "id", label: "ID Slug", widget: "string" }
+          - { name: "label", label: "Display Label", widget: "string" }
 
-          #Species
-          - name: "species"
-            label: "Resource Species"
-            widget: "list"
-            fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+      #Theme
+      - name: "resource_themes"
+        label: "Resource Themes"
+        file: "_data/tags/resource_themes.yml"
+        fields:
+          - name: "items"
+          - label: "Resource Themes"
+          - widget: "list"
+          - { name: "id", label: "ID Slug", widget: "string" }
+          - { name: "label", label: "Display Label", widget: "string" }
 
-          #Species
-          - name: "subtopics"
-            label: "Resource Subtopics"
-            widget: "list"
-            fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+      #Species
+      - name: "resource_species"
+        label: "Resource Species"
+        file: "_data/tags/resource_species.yml"
+        fields:
+          - name: "items"
+          - label: "Resource Species"
+          - widget: "list"
+          - { name: "id", label: "ID Slug", widget: "string" }
+          - { name: "label", label: "Display Label", widget: "string" }
+
+      #Subtopics
+      - name: "resource_subtopics"
+        label: "Resource Subtopics"
+        file: "_data/tags/resource_subtopics.yml"
+        fields:
+          - name: "items"
+          - label: "Resource Subtopics"
+          - widget: "list"
+          - { name: "id", label: "ID Slug", widget: "string" }
+          - { name: "label", label: "Display Label", widget: "string" }
 
   # ============
   #  POSTS (COLLECTION)
@@ -427,7 +436,7 @@ collections:
       # ============
       - name: "navigation"
         label: "Navigation & Footer"
-        file: "/_data/navigation.yml"
+        file: "_data/navigation.yml"
         fields:
           #Brand
           - name: "brand"
@@ -496,18 +505,18 @@ collections:
 
               #- { label: "Type", name: "type", widget: "string" }
               #Resource Type
-              - { 
+              - {
                   label: 'Resource Type',
                   name: 'type',
                   widget: 'relation',
                   collection: 'global_data',
-                  file: 'resource_tags',
-                  display_fields: ["resource_type.*.label"],
-                  search_fields: ["resource_type.*.id, resource_type.*.label"],
-                  value_field: "resource_type.*.id",
+                  file: 'resource_types',
+                  display_fields: ["items.label"],
+                  search_fields: ["items.id", "items.label"],
+                  value_field: "items.id",
                   multiple: false,
                   required: true
-                } 
+                }
 
               - { label: "Icon Class", name: "icon", widget: "string", required: false }
               - { label: "Resource URL", name: "url", widget: "string", required: true }
@@ -520,11 +529,11 @@ collections:
                   label: 'Regions',
                   name: 'regions',
                   widget: 'relation',
-                  multiple: true,
                   collection: 'regions',
                   display_fields: [region_name],
                   search_fields: [region_name],
                   value_field: "{{slug}}",
+                  multiple: true,
                   required: false
                 }     
                          
@@ -533,11 +542,11 @@ collections:
                   label: 'Communities',
                   name: 'communities',
                   widget: 'relation',
-                  multiple: true,
                   collection: 'communities',
                   display_fields: [community_name],
                   search_fields: [community_name],
                   value_field: "{{slug}}",
+                  multiple: true,
                   required: false
                 }   
                 
@@ -548,10 +557,10 @@ collections:
                   name: 'themes',
                   widget: 'relation',
                   collection: 'global_data',
-                  file: 'resource_tags',
-                  display_fields: ["theme.*.label"],
-                  search_fields: ["theme.*.id, theme.*.label"],
-                  value_field: "theme.*.id",
+                  file: 'resource_themes',
+                  display_fields: ["items.label"],
+                  search_fields: ["items.id", "items.label"],
+                  value_field: "items.id",
                   multiple: true,
                   required: false
                 } 
@@ -562,10 +571,10 @@ collections:
                   name: 'species',
                   widget: 'relation',
                   collection: 'global_data',
-                  file: 'resource_tags',
-                  display_fields: ["species.*.label"],
-                  search_fields: ["species.*.id, species.*.label"],
-                  value_field: "species.*.id",
+                  file: 'resource_species',
+                  display_fields: ["items.label"],
+                  search_fields: ["items.id", "items.label"],
+                  value_field: "items.id",
                   multiple: false, #This needs addressed, can you select multiple species or should you just tag it 'multi species'?
                   required: false
                 } 
@@ -580,9 +589,9 @@ collections:
                   widget: 'relation',
                   collection: 'global_data',
                   file: 'resource_tags',
-                  display_fields: ["subtopics.*.label"],
-                  search_fields: ["subtopics.*.id, subtopics.*.label"],
-                  value_field: "subtopics.*.id",
+                  display_fields: ["items.label"],
+                  search_fields: ["items.id", "items.label"],
+                  value_field: "items.id",
                   multiple: false,
                   required: true
                 } 
