@@ -149,8 +149,8 @@ collections:
           name: 'region',
           widget: 'relation',
           collection: 'regions',
-          display_fields: [region_name],
-          search_fields: [region_name],
+          display_fields: ["region_name"],
+          search_fields: ["region_name"],
           value_field: "{{slug}}"
         }
       
@@ -178,8 +178,8 @@ collections:
           name: 'author',
           widget: 'relation',
           collection: 'people',
-          display_fields: [full_name],
-          search_fields: [full_name],
+          display_fields: ["full_name"],
+          search_fields: ["full_name"],
           value_field: "{{slug}}"
         }
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 
-#Type: Options("Story", "Meet the Scientist", "Blog", "News")
+#Type: Options("Story", "Meet the Scientist", "Blog", "News", etc...)
 type: "Blog" 
 
 #Title & Subtitle
@@ -23,7 +23,9 @@ date: 2025-03-06 21:16:05 -0700
 updated: 2026-07-02 17:30
 
 #Categories: Related terms to group this post by, used by Jekyll-Archives to build category based archive pages
-categories: jekyll update
+categories: 
+  - jekyll 
+  - update
 
 #Featured: is this post a featured post? If so it will show in the Featured news section
 featured: false

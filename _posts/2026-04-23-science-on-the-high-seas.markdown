@@ -14,7 +14,8 @@ region: Eastern Bering Sea
 #Main Image: This image is used to display this post on the news page and as the header image of the post itself
 main_img_url: assets/images/media/bianca-prohaska-survey.png
 main_img_alt: An example image alt text
-main_img_caption: Research biologist Dr. Bianca Prohaska samples the blood from a Pacific cod on the Bering Sea bottom trawl survey. Credit NOAA Fisheries/Anna Briem. 
+main_img_caption: >-
+  Research biologist Dr. Bianca Prohaska samples the blood from a Pacific cod on the Bering Sea bottom trawl survey. Credit NOAA Fisheries/Anna Briem. 
 
 #Publish Date: The original time-stamp for the published date of this post
 date: 2026-04-23 21:16:05 -0700
@@ -23,7 +24,10 @@ date: 2026-04-23 21:16:05 -0700
 updated: 2026-06-08 17:30
 
 #Categories: Related terms to group this post by, used by Jekyll-Archives to build category based archive pages
-categories: Staff Surveys Alaska
+categories: 
+  - surveys 
+  - staff
+  - alaska
 
 #Featured: is this post a featured post? If so it will show in the Featured news section
 featured: true

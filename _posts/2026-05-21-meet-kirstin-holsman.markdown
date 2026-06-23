@@ -23,7 +23,8 @@ date: 2026-05-21 21:16:05 -0700
 updated: 2026-06-08 17:30
 
 #Categories: Related terms to group this post by, used by Jekyll-Archives to build category based archive pages
-categories: Staff
+categories: 
+  - staff
 
 #Featured: is this post a featured post? If so it will show in the Featured news section
 featured: true
