@@ -12,7 +12,7 @@ vendor/
 
 # GitHub Pages specific
 # GitHub uses its own versions
-Gemfile.lock
+#Gemfile.lock
 
 #.sass-cache
 #.jekyll-cache
