@@ -14,5 +14,5 @@ items:
   - id: tech-doc
     label: "Technical Documentation"
 
-  - id: web-app
+  - id: web-application
     label: "Web Application"

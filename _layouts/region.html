@@ -24,6 +24,7 @@ layout: default
     </div>
 </section>
 
+{%- if !page.google_maps_url or page.key_geographical_points.size <= 0 -%}
 <!-- Geospatial Overview -->
 <section aria-labelledby="geospatial-title">
     <div class="container">
@@ -67,6 +68,7 @@ layout: default
         </div>
     </div>
 </section>
+{%- endif -%}
 
 <!-- Resource Section -->
 <section aria-labelledby="resources-title">

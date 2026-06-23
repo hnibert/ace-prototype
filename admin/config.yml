@@ -512,7 +512,6 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
 
-              #- { label: "Type", name: "type", widget: "string" }
               #Resource Type
               - {
                   label: 'Resource Type',
@@ -559,7 +558,6 @@ collections:
                   required: false
                 }   
                 
-              #- { label: "Themes", name: "themes", widget: "list", field: { name: "item", widget: "string" }, required: false }
               #Themes
               - { 
                   label: 'Themes',
@@ -590,7 +588,6 @@ collections:
 
               - { label: "Audience", name: "audience", widget: "list", field: { name: "item", widget: "string" }, required: false }
 
-              #- { label: "SubTopics", name: "subtopics", widget: "list", field: { name: "item", widget: "string" }, required: false }
               #Subtopics
               - { 
                   label: 'Subtopics',
@@ -601,7 +598,7 @@ collections:
                   value_field: 'items.*.id',
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
-                  multiple: false,
+                  multiple: true,
                   required: true
                 } 
 

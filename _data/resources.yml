@@ -2,7 +2,7 @@ entries:
   #Resource
   - title: "Harvest Control Rule Explorer"
     date: 2025-12-31
-    type: "application"
+    type: "web-application"
     icon: "fa-solid fa-globe"
     regions: []
     communities: []
@@ -28,7 +28,7 @@ entries:
   #Resource 
   - title: "ACLIM2 Species Distribution Models"
     date: 2025-12-31
-    type: "application"
+    type: "web-application"
     icon: "fa-solid fa-globe"
     regions:
     - "eastern-bering-sea"
