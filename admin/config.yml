@@ -588,7 +588,7 @@ collections:
                   name: 'topics',
                   widget: 'relation',
                   collection: 'global_data',
-                  file: 'resource_tags',
+                  file: 'resource_subtopics',
                   display_fields: ["items.label"],
                   search_fields: ["items.id", "items.label"],
                   value_field: "items.id",
