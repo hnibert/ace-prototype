@@ -8,7 +8,7 @@ main_img_alt: A profile photo of Angela Abolhassani
 email: angela.abolhassani@noaa.gov
 position: Social Scientist
 affiliation: Alaska Fisheries Science Center
-research_areas: [Fishing Communities]
+research_areas: [Social Science, Fishing Communities]
 ace_role: Team
 
 projects:

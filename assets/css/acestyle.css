@@ -39,7 +39,7 @@ main.page-content {
 }
 
 /*--------------
-    ACE THEMING       
+  ACE THEMING       
 -------------- */
 a {
   color: var(--ace-hex-reef);
@@ -99,8 +99,24 @@ a {
   color: var(--bs-white);
 }
 
+.border-ace-deep {
+  border-color: var(--ace-hex-deep) !important;
+}
+
 .border-ace-channel {
   border-color: var(--ace-hex-channel) !important;
+}
+
+.border-ace-reef {
+  border-color: var(--ace-hex-reef) !important;
+}
+
+.border-ace-shoal {
+  border-color: var(--ace-hex-shoal) !important;
+}
+
+.border-ace-beacon {
+  border-color: var(--ace-hex-beacon) !important;
 }
 
 .dropdown-item:active {
@@ -135,6 +151,33 @@ a {
   height: 510px;
   margin-top: -60px;
   border: none;
+}
+
+/*--------------
+  TRANSITION COLUMN      
+-------------- */
+.transition-col {
+  width: 50%;
+  max-width: 50%;
+  transition:
+    width 0.35s ease-in-out,
+    max-width 0.35s ease-in-out,
+    flex-basis 0.35s ease-in-out;
+}
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 991.98px) {
+  .transition-col {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Overrides Bootstrap's 50% width when active */
+.transition-col.full-width {
+  width: 100%;
+  max-width: 100%;
+  flex-basis: 100%;
 }
 
 /*--------------

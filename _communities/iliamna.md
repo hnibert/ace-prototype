@@ -34,9 +34,11 @@ calendar_summary: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 
   and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder
+
 calendar_subtitle: Iliamna
 
 #Calendar - Images
@@ -49,6 +51,11 @@ calendar_display_alt:
 #Calendar - Downloads
 calendar_download_url: assets/images/communities/iliamna-calendar-display.png
 calendar_file_size: 132 KB
+
+#Points of Contact
+points_of_contact:
+  - sarah-wise
+  - angela-abolhassani
 
 #Display Order (in navigation displays & funnels)
 display_order: 1

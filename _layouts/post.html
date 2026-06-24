@@ -16,7 +16,7 @@ layout: default
         <div class="mb-4">
             <figure class="mb-4">
                 <div class="ratio ratio-16x9">
-                    <img src="{{ page.main_img_url | relative_url }}" alt="{{ page.main_img_alt | default: page.title }}" class="w-100 h-100 object-fit-cover rounded">
+                    <img class="w-100 h-100 object-fit-cover rounded" src="{{ page.main_img_url | relative_url }}" alt="{{ page.main_img_alt | default: page.title }}">
                 </div>
                 {%- if page.main_img_caption -%}
                 <figcaption id="post-image" class="small text-muted text-end mt-2">

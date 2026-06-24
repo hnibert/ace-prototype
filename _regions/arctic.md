@@ -21,6 +21,9 @@ summary_lead: >-
   The basin plays a critical role in global climate regulation through its influence on ocean circulation. The region supports ice-dependent marine species, and is experiencing 
   rapid environmental change due to warming temperatures and diminishing sea ice extent.
 
+#Points of Contact
+points_of_contact:
+  
 #Order (in navigation displays & funnels)
 display_order: 4
 ---

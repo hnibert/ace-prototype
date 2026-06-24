@@ -29,18 +29,33 @@ summary_lead: >-
   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
-#Calendar
+#Calendar - General
+calendar_summary: >-
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 
   and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder
+
+#Calendar - Images
 calendar_subtitle: Scammon Bay
 calendar_card_img_url: assets/images/communities/scammon-bay-sq.jpg
 calendar_card_img_alt:
+
 calendar_display_img_url: assets/images/communities/scammon-bay-calendar-display.png
 calendar_display_alt:
+
+#Calendar - Download
 calendar_download_url: assets/images/communities/scammon-bay-calendar-display.png
 calendar_file_size: 145 KB
 
-#Order (in navigation displays & funnels)
+#Points of Contact
+points_of_contact:
+  - sarah-wise
+  - angela-abolhassani
+
+#Display Order (in navigation displays & funnels)
 display_order: 3
 ---

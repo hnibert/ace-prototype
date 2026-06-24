@@ -11,7 +11,7 @@ layout: default
 <!-- Region Summary -->
 <section aria-labelledby="region-summary-title region-summary-subtitle">
     <div class="container my-5"> 
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-4">
                 <img src="{{ page.summary_img_url | relative_url }}" class="img-fluid rounded shadow-sm mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.summary_img_alt }}">
             </div>
@@ -27,20 +27,30 @@ layout: default
 {%- unless page.google_maps_url == nil or page.key_geographical_points.size <= 0 -%}
 <!-- Geospatial Overview -->
 <section aria-labelledby="geospatial-title">
-    <div class="container">
+    <div class="container mb-3">
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div id="expand-col" class="col-12 col-lg-6 transition-col">
                 <!-- Map Embed -->
-                <div class="map-container mb-5 mb-md-0">
-                    <iframe src="{{ page.google_maps_url }}"
-                    width="100%" height="512" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-container mb-2 mb-md-0">
+                    <iframe src="{{ page.google_maps_url }}" width="100%" height="512" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="d-flex justify-content-end pt-2">
+                    <button id="expand-btn" role="button" class="btn btn-ace-primary icon-link d-none d-lg-block" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);">
+                        <svg class="expand-icon bi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path d="M128 96C110.3 96 96 110.3 96 128L96 224C96 241.7 110.3 256 128 256C145.7 256 160 241.7 160 224L160 160L224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L128 96zM160 416C160 398.3 145.7 384 128 384C110.3 384 96 398.3 96 416L96 512C96 529.7 110.3 544 128 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480L160 416zM416 96C398.3 96 384 110.3 384 128C384 145.7 398.3 160 416 160L480 160L480 224C480 241.7 494.3 256 512 256C529.7 256 544 241.7 544 224L544 128C544 110.3 529.7 96 512 96L416 96zM544 416C544 398.3 529.7 384 512 384C494.3 384 480 398.3 480 416L480 480L416 480C398.3 480 384 494.3 384 512C384 529.7 398.3 544 416 544L512 544C529.7 544 544 529.7 544 512L544 416z"/>
+                        </svg> 
+                        <svg class="compress-icon bi d-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path d="M256 128C256 110.3 241.7 96 224 96C206.3 96 192 110.3 192 128L192 192L128 192C110.3 192 96 206.3 96 224C96 241.7 110.3 256 128 256L224 256C241.7 256 256 241.7 256 224L256 128zM128 384C110.3 384 96 398.3 96 416C96 433.7 110.3 448 128 448L192 448L192 512C192 529.7 206.3 544 224 544C241.7 544 256 529.7 256 512L256 416C256 398.3 241.7 384 224 384L128 384zM448 128C448 110.3 433.7 96 416 96C398.3 96 384 110.3 384 128L384 224C384 241.7 398.3 256 416 256L512 256C529.7 256 544 241.7 544 224C544 206.3 529.7 192 512 192L448 192L448 128zM416 384C398.3 384 384 398.3 384 416L384 512C384 529.7 398.3 544 416 544C433.7 544 448 529.7 448 512L448 448L512 448C529.7 448 544 433.7 544 416C544 398.3 529.7 384 512 384L416 384z"/>
+                        </svg>                        
+                        <span>Expand</span>
+                    </button>
                 </div>
             </div>
-            <div class="col-12 col-lg-6">
+            <div id="expand-col-neighbor" class="col-12 col-lg-6">
                 <h5 id="geospatial-title" class="fw-bold">Key Geographical Anchor Points</h5>
                 <p class="lead">{{ page.key_points_summary }}</p>
                 <hr class="mt-0">
-                <ul class="list-group list-group-flush vstack gap-4">
+                <ul id="location-list" class="row list-group list-group-flush">
                     {%- for point in page.key_geographical_points -%}
                     <li class="list-group-item">
                         <div class="d-flex">
@@ -70,11 +80,61 @@ layout: default
 </section>
 {%- endunless -%}
 
+{%- if page.points_of_contact.size > 0 -%}
+<!-- Points of Contact -->
+<section aria-labelledby="contacts-title">
+    <div class="container">
+        <!-- POC Title -->
+        <h4 id="contacts-title" class="fw-bold">{% if page.points_of_contact.size > 1 %}Points{% else %}Point{% endif %} of Contact</h4>
+        <hr class="mt-0">
+        <ul class="list-unstyled row d-flex justify-content-start align-items-center flex-wrap gap-3">
+            {%- for contact in page.points_of_contact -%}
+            {%- assign author_slug = contact | slugify -%}
+            {%- assign author_item = site.people | where: "slug", author_slug | first -%}
+            <li class="col list-item">
+                <div class="card shadow-sm p-2 h-100">
+                    <div class="card-body d-flex">
+                        <div>
+                            <img class="rounded-circle" width="96" height="auto" src="{{ author_item.main_img_url | relative_url }}" alt="{{ author_item.main_img_alt }}">
+                        </div>
+                        <div class="border-start ps-3 ms-3">
+                            <h5 class="fw-bold mb-0">{{ author_item.full_name }}</h5>
+                            <p class="text-muted mb-0">{{ author_item.position }}</p>
+                            <p class="text-muted fw-light mb-0">{{ author_item.affiliation }}</p>
+                            <hr class="my-2">
+                            <a href="mailto:{{ author_item.email }}" class="text-decoration-none icon-link icon-link-hover link-dark" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"><svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/></svg> {{ author_item.email }}</a>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between w-100 bg-white">
+                        {%- assign has_links = author_item.website | append: author_item.github | append: author_item.scholar | append: author_item.linkedin | append: author_item.bluesky | append: author_item.orcid -%}
+                        {%- if has_links != "" -%}
+                        <!-- Social Links -->
+                        <div class="d-flex justify-content-center align-items-center text-muted">
+                            {%- if author_item.website -%}<a class="link-dark mx-2" href="{{ author_item.website }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-lg fa-globe"></i></a>{%- endif -%}
+                            {%- if author_item.github -%}<a class="link-dark mx-2" href="{{ author_item.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-github"></i></a>{%- endif -%}
+                            {%- if author_item.scholar -%}<a class="link-dark mx-2" href="{{ author_item.scholar }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-google-scholar"></i></a>{%- endif -%}
+                            {%- if author_item.linkedin -%}<a class="link-dark mx-2" href="{{ author_item.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-linkedin"></i></a>{%- endif -%}
+                            {%- if author_item.bluesky -%}<a class="link-dark mx-2" href="{{ author_item.bluesky }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-bluesky"></i></a>{%- endif -%}
+                            {%- if author_item.orcid -%}<a class="link-dark mx-2" href="{{ author_item.orcid }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-lg fa-orcid"></i></a>{%- endif -%}
+                        </div>
+                        {%- endif -%}
+
+                        <!-- Profile Link -->
+                        <a href="{{ author_item.url | relative_url }}" class="icon-link icon-link-hover text-decoration-none fw-semibold link-dark">Profile <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
+                    </div>
+                </div>
+            </li>
+            {%- endfor -%}
+        </ul>
+    </div>    
+</section>
+{%- endif -%}
+
 <!-- Resource Section -->
 <section aria-labelledby="resources-title">
     <div class="container my-5">
         <!-- Resources Title -->
-        <h4 id="resources-title">Resources</h4>
+        <h4 id="resources-title" class="fw-bold">Related Resources</h4>
         <hr class="mt-0">
 
         <!-- Related Resources -->
@@ -100,7 +160,7 @@ layout: default
             <div class="px-4 my-2 text-center" role="alert">
                 <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
                 <div class="col-lg-4 mx-auto pb-5"> 
-                    <p class="lead mb-0">{{ page.region_name }} has no associated resources</p>
+                    <p class="lead mb-0">{{ page.region_name }} has no related resources</p>
                     <p>Check back later or return home</p>
                     <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
                 </div> 
@@ -109,3 +169,34 @@ layout: default
         </ul>
     </div>
 </section>
+
+<script>
+    const button = document.querySelector('#expand-btn');
+
+    button.addEventListener('click', () => {
+        const expandCol = document.querySelector('#expand-col');
+        const expandNeighbor = document.querySelector('#expand-col-neighbor');
+
+        const expandIcon = button.querySelector('.expand-icon');
+        const compressIcon = button.querySelector('.compress-icon');
+        const btnText = button.querySelector('span');
+
+        expandCol.classList.toggle('full-width');
+        expandNeighbor.classList.toggle('col-lg-6');
+
+        const isExpanded = expandCol.classList.contains('full-width');
+
+        if (isExpanded) {
+            expandIcon.classList.add('d-none');
+            compressIcon.classList.remove('d-none');
+
+            btnText.textContent = "Compress";
+        } else {
+            compressIcon.classList.add('d-none');
+            expandIcon.classList.remove('d-none');
+
+            btnText.textContent = "Expand";
+        }
+        //button.innerHTML = isExpanded ? `${compressIcon} Compress` : `${expandIcon} Expand`;
+    });
+</script>

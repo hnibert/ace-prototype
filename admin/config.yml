@@ -384,6 +384,19 @@ collections:
       - { label: "Summary Title", name: "summary_title", widget: "string" }
       - { label: "Summary Lead", name: "summary_lead", widget: "text" }
       
+      #Point(s) of Contact
+      - { 
+          label: 'Point(s) of Contact',
+          name: 'points_of_contact',
+          widget: 'relation',
+          collection: 'people',
+          display_fields: ["full_name"],
+          search_fields: ["full_name"],
+          value_field: "{{slug}}",
+          multiple: true,
+          required: false
+        }
+
       #Display/Rendering
       - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int" }
 
@@ -454,6 +467,19 @@ collections:
           public_folder: "/assets/images/calendars"
         }
       - { label: "Calendar File Size", name: "calendar_file_size", widget: "string", required: false } 
+
+      #Point(s) of Contact
+      - { 
+          label: 'Point(s) of Contact',
+          name: 'points_of_contact',
+          widget: 'relation',
+          collection: 'people',
+          display_fields: ["full_name"],
+          search_fields: ["full_name"],
+          value_field: "{{slug}}",
+          multiple: true,
+          required: false
+        }
 
       #Display/Rendering
       - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int", required: false }

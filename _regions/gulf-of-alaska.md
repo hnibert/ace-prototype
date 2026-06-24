@@ -20,6 +20,11 @@ summary_lead: >-
   The Gulf of Alaska is a dynamic marine ecosystem where cold subarctic waters meet nutrient-rich currents, creating ideal conditions for high biological productivity. 
   It supports complex food webs, including phytoplankton blooms that sustain large populations of fish, marine mammals, and seabirds.
 
+#Points of Contact
+points_of_contact:
+  - sarah-wise
+  - angela-abolhassani
+
 #Order (in navigation displays & funnels)
 display_order: 2
 ---

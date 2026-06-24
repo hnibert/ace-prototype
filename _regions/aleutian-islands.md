@@ -19,6 +19,9 @@ summary_title: The Subarctic Archipelago
 summary_lead: >-
   The Aleutian Islands form an extensive volcanic island chain in the Northern Pacific Ocean, extending southwest from the Alaska Peninsula. This archipelago marks the boundary between the Bering Sea and the North Pacific Ocean and plays a critical role in regional ocean circulation and climate dynamics. The islands’ complex geological activity, including frequent volcanism and seismicity, shapes diverse terrestrial and marine habitats.
 
+#Points of Contact
+points_of_contact:
+
 #Order (in navigation displays & funnels)
 display_order: 3
 ---

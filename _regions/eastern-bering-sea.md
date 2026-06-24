@@ -60,6 +60,11 @@ key_geographical_points:
     lat: 65.7547
     long: -168.9536
     description: "The narrowest gateway bottleneck inside the Bering Strait."
+    
+#Points of Contact
+points_of_contact:
+  - carey-mcgilliard
+  - meaghan-bryan
 
 #Order (in navigation displays & funnels)
 display_order: 1
