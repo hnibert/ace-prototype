@@ -30,7 +30,7 @@ tags:
     - subsistence
     - fish-invertebrates
 
-community: 
+communities: 
     - togiak
     - scammon-bay
 
