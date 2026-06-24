@@ -37,3 +37,4 @@ gem "webrick", "~> 1.9"
 
 #Jekyll Archives
 gem 'jekyll-archives'
+gem 'jekyll-seo-tag'

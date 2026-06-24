@@ -76,6 +76,7 @@ theme: null
 plugins:
   - jekyll-feed
   - jekyll-archives
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
