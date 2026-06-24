@@ -1,5 +1,7 @@
 ---
 layout: default
+js-postload-files:
+ - "/assets/scripts/components/basic-search.js"
 ---
 <!-- Hero -->
 {%- assign hero_data = page.hero_data -%}
@@ -91,6 +93,109 @@ layout: default
     </div>
 </section>
 
+{%- assign species_of_concern = site.species | where: 'is_species_of_concern', true | where_exp: "item", "item.communities contains page.slug" -%}
+{%- if species_of_concern.size > 0 -%}
+<!-- Search-Filter Component (Species of Concern Search) -->
+ <basic-search search-container="#species-search-container" 
+ search-selector-data="data-species-region" 
+ search-filter-data="data-species-tags"
+ summary-text="#species-search-summary"
+ no-results="#no-results-feedback">
+    <form class="container my-5" role="search" aria-labelledby="species-search-title">
+        <h2 id="species-search-title" class="visually-hidden">
+            Species search and filters
+        </h2>
+
+        <!-- No Script Alert -->
+        <noscript>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Heads Up!</strong> Your browser has Javascript disabled! Some or all functionality of this search filter may not work properly!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </noscript>
+
+        <span class="fs-6 fw-semibold ms-3"><i class="fa-solid fa-filter"></i> Species of Concern</span>
+        <p class="ms-3 text-muted"><small>Search and filter for species below</small></p>
+
+        <div class="row g-2 mb-3">
+            <!-- Search Input -->
+            <div class="col-12">
+                <div class="input-group">
+                    <label class="input-group-text" for="species-search-input">Search</label>
+                    <input type="search" class="form-control" placeholder="Species Name" aria-label="Search Name" data-search-input>
+                    <button type="button" class="btn bg-body-secondary focus-ring" aria-label="Clears typed search input" data-clear-input>
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+                </div>
+            </div>
+
+        <hr class="mt-0 pt-0">
+
+        <!--Search Filter Toggles -->
+        <div id="attribute-toggles" role="group" aria-label="Species attribute filters">
+            <!-- Label & Clear Button -->
+            <div class="row align-items-end justify-content-between mb-3">
+                <div class="col-auto">
+                    <span class="fw-bold small tracking-wider">Filter by Tags:</span>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn bg-body-secondary focus-ring rounded-pill" data-clear-filters>
+                        <i class="fa-solid fa-eraser" aria-hidden="true"></i> Clear Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tag/Filter Cloud -->
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap gap-2">
+                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="fish-invertebrates">Fish & Invertebrates</button>
+                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="marine-mammal">Marine Mammals</button>
+                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="subsistence">Subsistence</button>
+                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="commercial">Commercial</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</basic-search>
+
+<!-- Search List -->
+<section class="container mb-5" aria-labelledby="search-title">
+    <h2 id="search-title" class="visually-hidden">
+        Species search results
+    </h2>
+
+    <!-- Results Summary -->
+    <div id="species-search-summary" class="mb-4" aria-live="polite" aria-atomic="true">
+        <!-- Summary Text -->
+        <p class="fw-bold"><span class="summary-count"></span><span class="summary-input"></span><span class="summary-tags text-capitalize fst-italic"></span><span class="summary-role"></span></p>
+    </div>
+
+    <!-- Search Container -->
+    <ul id="species-search-container" class="tile-container list-unstyled">
+        {%- for animal in species_of_concern -%}
+        {% assign animal_tags = animal.tags | uniq %}
+        {% assign animal_regions = animal.region | uniq %}
+        <li class="card tile-item card-shadow" data-species-tags="{{ animal_tags }}" data-species-region="{{ animal_regions }}" data-search-item>
+            <div class="card-body">
+                <a class="text-decoration-none link-light stretched-link" href="{{ animal.url | relative_url }}" data-search-text>{{ animal.species_name }}</a>
+            </div>
+        </li>
+        {%- endfor -%}
+    </ul>
+
+    <!-- No Results Feedback -->
+    <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
+        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="images/other/lumpsucker.png" alt="" width="350" height="auto">
+        <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
+        <div class="col-lg-4 mx-auto pb-5"> 
+            <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
+            <p>Try checking for typos or use broader keywords</p>
+            <button type="button" class="btn btn-ace-primary mt-3" aria-controls="species-search-container" data-search-reset>Clear Search</button>
+        </div> 
+    </div>
+</section>
+{%- endif -%}
+
 <!-- Resource Section -->
 <section aria-labelledby="resources-title">
     <div class="container my-5">
@@ -121,7 +226,7 @@ layout: default
             <div class="px-4 my-2 text-center" role="alert">
                 <h5 class="fw-bold text-body-emphasis">No Resources</h5> 
                 <div class="col-lg-4 mx-auto pb-5"> 
-                    <p class="lead mb-0">{{ page.name }} has no associated resources</p>
+                    <p class="lead mb-0">{{ page.community_name }} has no associated resources</p>
                     <p>Check back later or return home</p>
                     <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
                 </div> 

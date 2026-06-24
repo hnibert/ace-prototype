@@ -26,8 +26,13 @@ ccv_score:
 ccv_notes:
 
 #Data Tags (used in search)
-tags: subsistence, fish-invertebrates
-community: togiak, scammon-bay
+tags: 
+    - subsistence
+    - fish-invertebrates
+
+community: 
+    - togiak
+    - scammon-bay
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
