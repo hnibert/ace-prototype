@@ -25,7 +25,9 @@ ccv-notes:
 
 #Data Tags (used in search)
 tags: subsistence, fish-invertebrates
-region: togiak, scammon-bay
+communities:
+    - togiak 
+    - scammon-bay
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-

@@ -53,7 +53,7 @@ lead="Access critical ecosystem data and local climate insights co-produced to p
 
 <!-- Search-Filter Component (Species of Concern Search) -->
  <basic-search search-container="#species-search-container" 
- search-selector-data="data-species-region" 
+ search-selector-data="data-species-communities" 
  search-filter-data="data-species-tags"
  summary-text="#species-search-summary"
  no-results="#no-results-feedback">
@@ -146,8 +146,8 @@ lead="Access critical ecosystem data and local climate insights co-produced to p
         {%- assign species_of_concern = site.species | where: "is_species_of_concern", true -%}
         {%- for animal in species_of_concern -%}
         {% assign animal_tags = animal.tags | uniq %}
-        {% assign animal_regions = animal.region | uniq %}
-        <li class="card tile-item card-shadow" data-species-tags="{{ animal_tags }}" data-species-region="{{ animal_regions }}" data-search-item>
+        {% assign animal_communities = animal.communities | uniq %}
+        <li class="card tile-item card-shadow" data-species-tags="{{ animal_tags }}" data-species-communities="{{ animal_communities }}" data-search-item>
             <div class="card-body">
                 <a class="text-decoration-none link-light stretched-link" href="{{ animal.url | relative_url }}" data-search-text>{{ animal.species_name }}</a>
             </div>
