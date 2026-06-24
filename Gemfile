@@ -16,6 +16,8 @@ gem "jekyll", "~> 4.4.1"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-seo-tag"
+  gem 'jekyll-archives'
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -36,5 +38,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "webrick", "~> 1.9"
 
 #Jekyll Archives
-gem 'jekyll-archives'
-gem 'jekyll-seo-tag'
+#gem 'jekyll-archives'
+#gem 'jekyll-seo-tag'
