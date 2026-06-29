@@ -1,10 +1,13 @@
 ---
-title: Tools & Data
+title: Resources
 permalink: /resources/
 layout: default
+
+js-preload-files-ext:
+ - "https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js"
+
 js-postload-files:
- - https://cdn.jsdelivr.net/npm/fuse.js@7.4.1
- - ../assets/scripts/resources.js
+ - "../assets/scripts/resources.js"
 ---
 
 <!-- Hero -->
@@ -12,7 +15,7 @@ js-postload-files:
 is_header=true
 id="hero-about"
 hero_img_url="../assets/images/heroes/hero-resources.jpg"
-title="Our Tools & Data" 
+title="Our Resources" 
 lead="Explore a wide range of tools and data available through the ACE portal, developed by our team to support diverse needs and interests. Use the interactive filters below to discover resources by resource type, region, species, topic, and more.
 <hr>
 If you have a tool or dataset you’d like to see added to the ACE portal, please contact a member of the ACE Dashboard team." -%}
@@ -42,7 +45,6 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                     <button id="clear-input" class="btn bg-clear border focus-ring" type="button" aria-label="Clears typed search input">
                         <i class="fa-solid fa-x"></i>
                     </button>
-                    <button id="apply-search" class="btn btn-ace-primary border-start focus-ring" type="button" aria-label="Apply search input">Search</button>
                 </div>
 
                 <!-- Filters Title -->
@@ -54,32 +56,14 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                     <!-- Resource Type Filters -->
                     <li class="list-group-item"> 
                         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
-                        <div id="resource-type-collapse" class="collapse show"> 
+                        <div id="resource-type-collapse" class="collapse show">
                             <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                {%- for type in site.data.tags.resource_types.items -%}
                                 <li class="list-group-item border-0">
-                                    <input id="filter-code-repo" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-code-repo">Code Respository</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-data-code" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-data-code">Data & Code</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-presentation" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-presentation">Presentation</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-publication" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-publication">Publication</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-tech-doc" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-tech-doc">Technical Documentation</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-web-app" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-web-app">Web Application</label>
-                                </li> 
+                                    <input id="filter-{{ type.id }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id }}">
+                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id }}">{{ type.label }}</label>
+                                </li>                                
+                                {%- endfor -%}
                             </ul> 
                         </div> 
                     </li>
@@ -88,23 +72,13 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                     <li class="list-group-item"> 
                         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button> 
                         <div id="region-collapse" class="collapse show"> 
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                {%- for region in site.regions -%}
                                 <li class="list-group-item border-0">
-                                    <input id="filter-eastern-bering-sea" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-eastern-bering-sea">Eastern Bering Sea</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-gulf-of-alaska" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-gulf-of-alaska">Gulf of Alaska</label>
+                                    <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="region" value="{{ region.region_name | slugify }}">
+                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
                                 </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-aleutian-islands" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-aleutian-islands">Aleutian Islands</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-arctic" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-arctic">Arctic</label>
-                                </li> 
+                                {%- endfor -%}
                             </ul> 
                         </div> 
                     </li>
@@ -114,18 +88,12 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button> 
                         <div id="theme-collapse" class="collapse show"> 
                             <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                {%- for theme in site.data.tags.resource_themes.items -%}
                                 <li class="list-group-item border-0">
-                                    <input id="filter-human-dimensions" class="form-check-input filter-checkbox" type="checkbox" value="" id="filter-theme-human">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-human-dimensions">Human Dimensions</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-physical-environment" class="form-check-input filter-checkbox" type="checkbox" value="" id="filter-theme-environment">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-physical-environment">Physical Environment</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-marine-life" class="form-check-input filter-checkbox" type="checkbox" value="" id="filter-theme-marine">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-marine-life">Marine Life</label>
-                                </li> 
+                                    <input id="filter-{{ theme.id }}" class="form-check-input filter-checkbox" type="checkbox" name="theme" value="{{ theme.id }}">
+                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id }}">{{ theme.label }}</label>
+                                </li>                                  
+                                {%- endfor -%}
                             </ul> 
                         </div> 
                     </li>
@@ -135,30 +103,12 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button> 
                         <div id="species-collapse" class="collapse"> 
                             <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                {%- for species in site.data.tags.resource_species.items -%}
                                 <li class="list-group-item border-0">
-                                    <input id="filter-pollock" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-pollock">Pollock</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-crab" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-crab">Crab</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-rock-sole" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-rock-sole">Rock Sole</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-salmon" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-salmon">Salmon</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-pacific-cod" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-pacific-cod">Pacific Cod</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-multiple-species" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-salmon">Multiple Species</label>
-                                </li>
+                                    <input id="filter-{{ species.id }}" class="form-check-input filter-checkbox" type="checkbox" name="species" value="{{ species.id }}">
+                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id }}">{{ species.label }}</label>
+                                </li>                                
+                                {%- endfor -%}
                             </ul> 
                         </div> 
                     </li>
@@ -168,38 +118,12 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button> 
                         <div id="subtopics-collapse" class="collapse"> 
                             <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                {%- for subtopic in site.data.tags.resource_subtopics.items -%}
                                 <li class="list-group-item border-0">
-                                    <input id="filter-modeling" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-modeling">Modeling</label>
+                                    <input id="filter-{{ subtopic.id }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopic" value="{{ subtopic.id }}">
+                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id }}">{{ subtopic.label }}</label>
                                 </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-fishery-dependent-data" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-fishery-dependent-data">Fishery-Dependent Data</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-indicators-monitoring" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-indicators-monitoring">Indicators & Monitoring</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-species-distribution" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-species-distribution">Species Distribution</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-sea-ice" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-sea-ice">Sea Ice</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-fisheries-management" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-fisheries-management">Fisheries Management</label>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    <input id="filter-food-webs" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-food-webs">Food Webs</label>
-                                </li> 
-                                <li class="list-group-item border-0">
-                                    <input id="filter-ecosystem-based-research" class="form-check-input filter-checkbox" type="checkbox" value="">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-ecosystem-based-research">Ecosystem-based Research</label>
-                                </li> 
+                                {%- endfor -%}
                             </ul> 
                         </div> 
                     </li> 

@@ -17,11 +17,7 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
 <!-- Breadcrumb -->
 {% include breadcrumbs.html %}
 
- <basic-search search-container="#people-search-container" 
- search-selector-data="data-people-role" 
- search-filter-data="data-people-tags"
- summary-text="#people-search-summary"
- no-results="#no-results-feedback">
+ <basic-search search-container="#people-search-container" search-selector-data="data-people-role" search-filter-data="data-people-tags" summary-text="#people-search-summary" no-results="#no-results-feedback">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
         <h2 id="filter-heading" class="visually-hidden">
@@ -83,10 +79,10 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
             <!-- All Unique Research Areas -->
             <div class="row">
                 <div class="col-12 d-flex flex-wrap gap-2">
-                    {% assign research_areas = site.people | map: 'research_areas' | flatten | uniq %}
-                    {% for area in research_areas %}
+                    {%- assign research_areas = site.people | map: 'research_areas' | uniq -%}
+                    {%- for area in research_areas -%}
                     <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="{{ area | slugify }}">{{ area }}</button>
-                    {% endfor %}
+                    {%- endfor -%}
                 </div>
             </div>
         </div>
@@ -107,8 +103,8 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
 
     <!-- Search Container -->
     <ul id="people-search-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 list-unstyled">
-        {% for person in site.people %}
-        {% assign person_areas = person.research_areas | uniq %}
+        {%- for person in site.people -%}
+        {%- assign person_areas = person.research_areas | compact | uniq -%}
         <li class="col" data-people-role="{{ person.ace_role | slugify }}" data-people-tags="{% for area in person_areas %}{{ area | slugify }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}" data-search-item>
             <div class="card card-shadow h-100">
                 <div class="ratio ratio-1x1 mx-auto my-3 width200">
@@ -146,7 +142,7 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
                 </div>
             </div>
         </li>
-        {% endfor %}
+        {%- endfor -%}
     </ul>
 
     <!-- No Results Feedback -->

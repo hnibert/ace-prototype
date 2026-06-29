@@ -1,0 +1,122 @@
+/*--------------
+  VARIABLES       
+-------------- */
+:root {
+  --land-animal-color-primary: #eb948a;
+  --land-animal-color-secondary: #B06E67;
+
+  --sea-animal-color-primary: #96dde1;
+  --sea-animal-color-secondary: #4C7779;
+
+  --plant-color-primary: #89ba3b;
+  --plant-color-secondary: #678C2C;
+}
+
+
+/*--------------
+  LEGEND COLORS   
+-------------- */
+
+.land-animal-solid {
+    background-color: var(--land-animal-color-primary);
+}
+
+.land-animal-stripe {
+      background: repeating-linear-gradient(
+    45deg,
+    var(--land-animal-color-primary),
+    var(--land-animal-color-primary) 10px,
+    var(--land-animal-color-secondary) 10px,
+    var(--land-animal-color-secondary) 20px
+    );
+}
+
+.sea-animal-solid {
+    background-color: #96dde1;
+}
+
+.sea-animal-stripe {
+      background: repeating-linear-gradient(
+    45deg,
+    var(--sea-animal-color-primary),
+    var(--sea-animal-color-primary) 10px,
+    var(--sea-animal-color-secondary) 10px,
+    var(--sea-animal-color-secondary) 20px
+    );
+}
+
+.sea-animal-mixed {
+    background:
+    repeating-linear-gradient(
+      45deg,
+      var(--sea-animal-color-primary),
+      var(--sea-animal-color-primary) 10px,
+      var(--sea-animal-color-secondary) 10px,
+      var(--sea-animal-color-secondary) 20px
+    ) bottom / 100% 50% no-repeat,
+    var(--sea-animal-color-primary);
+}
+
+.plant-color-solid {
+    background-color: #89ba3b;
+}
+
+.plant-color-stripe {
+      background: repeating-linear-gradient(
+    45deg,
+    var(--plant-color-primary),
+    var(--plant-color-primary) 10px,
+    var(--plant-color-secondary) 10px,
+    var(--plant-color-secondary) 20px
+    );
+}
+
+/*--------------
+  LEGEND LAYOUT 
+-------------- */
+
+ .legend {
+  border: 1px solid #cecece;
+  border-radius: 4px;
+  padding: 14px;
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.legend .legend-title {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  margin: 0;
+  background-color: white;
+}
+
+.legend-title h6 {
+  margin: 0;
+  padding: 0 8px;
+  font-weight: bold;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px
+}
+
+.legend-group {
+  display: block;
+}
+
+.color-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/*--------------
+  ROTATE
+-------------- */

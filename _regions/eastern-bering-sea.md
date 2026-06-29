@@ -63,8 +63,8 @@ key_geographical_points:
     
 #Points of Contact
 points_of_contact:
-  - carey-mcgilliard
-  - meaghan-bryan
+  - kirstin-holsman
+  - andre-e-punt
 
 #Order (in navigation displays & funnels)
 display_order: 1

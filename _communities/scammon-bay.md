@@ -47,6 +47,9 @@ calendar_card_img_alt:
 calendar_display_img_url: assets/images/communities/scammon-bay-calendar-display.png
 calendar_display_alt:
 
+calendar_view_img_url: assets/images/communities/scammon-view.webp
+calendar_view_alt:
+
 #Calendar - Download
 calendar_download_url: assets/images/communities/scammon-bay-calendar-display.png
 calendar_file_size: 145 KB

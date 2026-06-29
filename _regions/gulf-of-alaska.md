@@ -22,8 +22,8 @@ summary_lead: >-
 
 #Points of Contact
 points_of_contact:
-  - sarah-wise
-  - angela-abolhassani
+  - carey-mcgilliard
+  - meaghan-bryan
 
 #Order (in navigation displays & funnels)
 display_order: 2

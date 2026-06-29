@@ -37,12 +37,15 @@ collections:
   regions:
     output: true
     permalink: /:collection/:slug/
-    sort_by: order
+    sort_by: display_order
   communities:
     output: true
     permalink: /:collection/:slug/
-    sort_by: order
+    sort_by: display_order
   species:
+    output: true
+    permalink: /:collection/:slug/
+  tools:
     output: true
     permalink: /:collection/:slug/
 

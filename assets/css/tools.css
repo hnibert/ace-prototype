@@ -1,0 +1,95 @@
+/* Small Screens (bootstrap screens sm to xs and below)*/
+/* create a bottom border */
+.gap-decoration-borders .col::after {
+    content: '';
+    position: absolute;
+    margin: auto;
+
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 80%;
+    height: 1px;
+    background-color: #dee2e6;
+    pointer-events: none;
+}
+
+/* hide bottom border at the very last item */
+.gap-decoration-borders .col:nth-last-child(1)::after {
+    background-color: transparent;
+}
+
+/* Medium Screens (bootstrap medium screens to large screens) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* create a right-border */
+    .gap-decoration-borders .col::before {
+        content: '';
+        position: absolute;
+        margin: auto;
+
+        top: 0;
+        bottom: 0;
+        right: 0;
+        
+        width: 1px;
+        height: 80%;
+        background-color: #dee2e6;
+        pointer-events: none;
+    }
+
+    /* hide every 2nd right-border (even)  */
+    .gap-decoration-borders .col:nth-child(2n)::before {
+        background-color: transparent;
+    }
+
+    /* hide bottom-border for last two items */
+    .gap-decoration-borders .col:nth-last-child(-n+2)::after {
+        background-color: transparent;
+    }
+}
+
+/* Large Screens (bootstrap large screens and up) */
+@media (min-width: 992px) {
+    /* create a bottom-border */
+    .gap-decoration-borders .col::after {
+        content: '';
+        position: absolute;
+        margin: auto;
+
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 80%;
+        height: 1px;
+        background-color: #dee2e6;
+        pointer-events: none;
+    }
+
+    /* create a right-border */
+    .gap-decoration-borders .col::before {
+        content: '';
+        position: absolute;
+        margin: auto;
+
+        top: 0;
+        bottom: 0;
+        right: 0;
+        
+        width: 1px;
+        height: 80%;
+        background-color: #dee2e6;
+        pointer-events: none;
+    }
+
+    /* hide every 3rd right-borders on large screens  */
+    .gap-decoration-borders .col:nth-child(3n)::before {
+        background-color: transparent;
+    }
+
+    /* hide last 3 bottom-borders on large screens  */
+    .gap-decoration-borders .col:nth-last-child(-n+3)::after {
+        background-color: transparent;
+    }
+}

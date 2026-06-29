@@ -1,0 +1,58 @@
+---
+title: Tools
+layout: default
+css-files:
+  - /assets/css/tools.css
+---
+
+<!-- Hero -->
+{%- include hero.html 
+is_header=true
+id="hero-tools"
+hero_img_url="../assets/images/heroes/hero-resources.jpg"
+title="Tools" 
+lead="Discover interactive apps that help you understand and explore our changing ecosystem." -%}
+
+<!-- Breadcrumb -->
+{%- include breadcrumbs.html -%}
+
+<!-- Tools Grid Section -->
+<section aria-labelledby="tools-title">
+    <div class="container p-4 my-5">
+        <!-- Title & Lead -->
+        <div class="col-12 text-center">
+            <h1 id="tools-title" class="display-5 fw-bold text-body-emphasis">Our Tools</h1> 
+            <p class="lead">Browse our collection of tools to explore data, maps, and ecosystem insights</p>
+        </div>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 gap-decoration-borders">
+            {%- for tool in site.tools -%}
+            <div class="col position-relative">
+                <div class="card border-0 rounded-0 hover-highlight mb-3 h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="block-text small text-uppercase bg-ace-cape mb-2 me-auto">{{ tool.tool_type }}</span>
+                        <h3 class="card-title mb-0">{{ tool.title }}</h3>
+                        {%- if tool.external_url -%}
+                        <p class="card-text small fw-light lead icon-link gap-1 icon-link-hover text-muted mb-0">External <svg class="bi mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg></p>
+                        {%- else -%}
+                        <p class="card-text small fw-light lead icon-link gap-1 icon-link-hover text-muted mb-0">Internal <svg class="bi mt-1 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M342.6 73.4C330.1 60.9 309.8 60.9 297.3 73.4L169.3 201.4C156.8 213.9 156.8 234.2 169.3 246.7C181.8 259.2 202.1 259.2 214.6 246.7L288 173.3L288 384C288 401.7 302.3 416 320 416C337.7 416 352 401.7 352 384L352 173.3L425.4 246.7C437.9 259.2 458.2 259.2 470.7 246.7C483.2 234.2 483.2 213.9 470.7 201.4L342.7 73.4zM160 416C160 398.3 145.7 384 128 384C110.3 384 96 398.3 96 416L96 480C96 533 139 576 192 576L448 576C501 576 544 533 544 480L544 416C544 398.3 529.7 384 512 384C494.3 384 480 398.3 480 416L480 480C480 497.7 465.7 512 448 512L192 512C174.3 512 160 497.7 160 480L160 416z"/></svg></p>
+                        {%- endif -%}
+                        <hr class="mt-auto">
+                        <p class="card-text mb-0">{{ tool.description }}</p>
+
+                        {%- comment -%} 
+                            Create a link to either a external url or internal url based on if tool.external_url has a value
+                        {%- endcomment -%}
+
+                        {%- if tool.external_url -%}
+                            <a href="{{ tool.external_url }}" class="icon-link gap-1 icon-link-hover text-decoration-none stretched-link link-dark ms-auto mt-auto" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" target="_blank" rel="noopener noreferrer">Open Tool <svg class="bi mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg></a> 
+                        {%- else -%}
+                            <a href="{{ tool.url | relative_url }}" class="icon-link gap-1 icon-link-hover text-decoration-none stretched-link link-dark ms-auto mt-auto">Learn more <svg class="bi mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a> 
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>

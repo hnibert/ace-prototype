@@ -5,6 +5,7 @@ layout: default
 js-postload-files:
  - "/assets/scripts/components/basic-search.js"
 ---
+
 <!-- Hero -->
 {%- include hero.html 
 is_header=true
@@ -157,7 +158,7 @@ lead="Access critical ecosystem data and local climate insights co-produced to p
 
     <!-- No Results Feedback -->
     <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
-        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="images/other/lumpsucker.png" alt="" width="350" height="auto">
+        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
         <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
         <div class="col-lg-4 mx-auto pb-5"> 
             <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>

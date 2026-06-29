@@ -12,8 +12,11 @@ navbar:
   - title: Tools
     url: "/tools/"
     dropdown:
-      - title: Species Distribution Models
-        url: "/sdm/"
+      - title: All
+        url: "/tools/"
+      - divider: true
+      - title: SDM Explorers
+        url: "/tools/sdm-explorers/"
 
   - title: Regions
     url: "/regions/"

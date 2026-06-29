@@ -1,5 +1,228 @@
 entries:
   #Resource
+  - title: "Pacific Cod Species Distribution Model Explorer: Dutch Harbor, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how Pacific cod distribution in proximity to Dutch Harbor, Alaska may change under low- and high-emissions futures.
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/e544fa5fde8f4231994bc3738cf742e6"
+    is-available: true
+    file: null
+
+  #Resource
+  - title: "Walleye Pollock Species Distribution Model Explorer: Nome, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "pollock"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how walleye pollock distribution in proximity to Nome, Alaska may change under low- and high-emissions futures.
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/31a14177522946cf8921b5e04c1dfd5d"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Walleye Pollock Species Distribution Model Explorer: Dutch Harbor, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "pollock"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how walleye pollock distribution in proximity to Dutch Harbor, Alaska may change under low- and high-emissions futures.
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/8c54d3ba201a4c0fb0be3aec8b861a26"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Snow Crab Species Distribution Model Explorer: St. Paul, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how snow crab distribution in proximity to St. Paul, Alaska may change under low- and high-emissions futures.
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/8c54d3ba201a4c0fb0be3aec8b861a26"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Red King Crab Species Distribution Model Explorer: Nome, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "crab"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how red king crab distribution in proximity to Nome, Alaska may change under low- and high-emissions futures.
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/84f84f396c26458a8cb807e70dd30d7c"
+    is-available: true
+    file: null 
+
+  #Resource
+  - title: "Pacific Cod Species Distribution Model Explorer: St. Paul, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how Pacific cod distribution in proximity to St. Paul, Alaska may change under low- and high-emissions futures. 
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/59cfa07011844f3ba8399a611e374d3a"
+    is-available: true
+    file: null
+
+    #Resource
+  - title: "Pacific Cod Species Distribution Model Explorer: Nome, Alaska"
+    date: 2026-05-01
+    type: "web-application"
+    icon: "fa-solid fa-globe"
+    regions: 
+    - "eastern-bering-sea"
+    communities: []
+    themes:
+    - "marine-life"
+    species: 
+    - "pacific-cod"
+    audience:
+    - "fishery-managers"
+    - "stock-assessment-scientist"
+    topics:
+    - "species-distribution"
+    - "fisheries-management"
+    - "fishery-dependent-data"
+    authors:
+    - "maurice-goodman"
+    user-goals:
+    - "work-with-data"
+    description: >-
+      This application displays future projections from species distribution models (SDMs) for the Bering Sea. 
+      SDMs combine environmental and species data to project where species may occur under different climate scenarios. 
+      Explore how Pacific cod distribution in proximity to Nome, Alaska may change under low- and high-emissions futures. 
+
+    url: "https://gis.psmfc.org/portal/apps/dashboards/a20473ededaf445192d03ca79ae2ab83"
+    is-available: true
+    file: null 
+
+  #Resource
   - title: "Harvest Control Rule Explorer"
     date: 2025-12-31
     type: "web-application"

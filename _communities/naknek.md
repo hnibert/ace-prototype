@@ -48,6 +48,9 @@ calendar_card_img_alt:
 calendar_display_img_url: assets/images/communities/naknek-calendar-display.png
 calendar_display_alt:
 
+calendar_view_img_url: assets/images/communities/naknek-view.webp
+calendar_view_alt:
+
 #Calendar - Downloads
 calendar_download_url: assets/images/communities/naknek-calendar-display.png
 calendar_file_size: 134 KB
