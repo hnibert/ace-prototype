@@ -214,6 +214,8 @@ collections:
     slug: "{{full_name}}"
     summary: '{{fields.full_name}}'
     fields:
+      #Hidden
+      - { label: "Layout", name: "layout", widget: "hidden", default: "person" }
 
       #Name
       - { label: "Full Name", name: "full_name", widget: "string", required: true }
@@ -266,10 +268,6 @@ collections:
       - { label: "Short Text", name: "short_text", widget: "text", required: false }
       - { label: "Content", name: "body", widget: "markdown" }
 
-      #Hidden
-      - { label: "Layout", name: "layout", widget: "hidden", default: "person" }
-
-
   # ============
   #  SPECIES (COLLECTION)
   # ============
@@ -277,7 +275,8 @@ collections:
     label: "Species"
     folder: "_species"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "species_name"
+    slug: "{{species_name}}"
     summary: '{{fields.species_name}}'
     fields:
       #Hidden
@@ -359,7 +358,8 @@ collections:
     label: "Regions"
     folder: "_regions"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "region_name"
+    slug: "{{region_name}}"
     summary: '{{fields.region_name}}'
     fields:
       #Hidden
@@ -407,12 +407,13 @@ collections:
     label: "Communities"
     folder: "_communities"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "community_name"
+    slug: "{{community_name}}"
     summary: '{{fields.community_name}}'
     fields:
       #Hidden
       - { label: "Layout", name: "layout", widget: "hidden", default: "community" }
-
+          
       #General
       - { label: "Community Name", name: "community_name", widget: "string", required: true }
       
