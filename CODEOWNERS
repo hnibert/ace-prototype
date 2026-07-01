@@ -1,0 +1,12 @@
+# Global owner for everything in the repository
+*       @hnibert
+
+# Lock down the JavaScript folder 
+_assets/scripts/   @hnibert
+
+# Lock down Jekyll configuration
+_config.yml   @hnibert
+
+# Lock down dependency tracking files
+Gemfile       @hnibert
+package.json  @hnibert
