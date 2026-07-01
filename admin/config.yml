@@ -214,8 +214,6 @@ collections:
     slug: "{{full_name}}"
     summary: '{{fields.full_name}}'
     fields:
-      #Hidden
-      - { label: "Layout", name: "layout", widget: "hidden", default: "person" }
 
       #Name
       - { label: "Full Name", name: "full_name", widget: "string", required: true }
@@ -267,7 +265,10 @@ collections:
       #Content
       - { label: "Short Text", name: "short_text", widget: "text", required: false }
       - { label: "Content", name: "body", widget: "markdown" }
-      
+
+      #Hidden
+      - { label: "Layout", name: "layout", widget: "hidden", default: "person" }
+
 
   # ============
   #  SPECIES (COLLECTION)
