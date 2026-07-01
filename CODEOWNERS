@@ -9,4 +9,3 @@ _config.yml   @hnibert
 
 # Lock down dependency tracking files
 Gemfile       @hnibert
-package.json  @hnibert
