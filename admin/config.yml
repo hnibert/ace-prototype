@@ -307,7 +307,8 @@ collections:
       - { label: "CCV Notes", name: "ccv_notes", widget: "text", required: false }
 
       #Data Tags (used in search)
-      - { label: "Tags", name: "tags", widget: "list", required: true }
+      #TODO: Link to collection of species tags with relation widget
+      - { label: "Tags", name: "tags", widget: "list", required: false }
       
       #Communities (used in search)
       - { 
@@ -317,7 +318,8 @@ collections:
           collection: 'communities',
           display_fields: [community_name],
           search_fields: [community_name],
-          value_field: "{{slug}}"
+          value_field: "{{slug}}",
+          required: false
         }
 
       #Protections
@@ -400,7 +402,7 @@ collections:
         }
 
       #Display/Rendering
-      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int", required: false }
+      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int" }
 
   #Communities (Collection)
   - name: "communities"
@@ -436,12 +438,12 @@ collections:
         name: "hero_Data"
         widget: "object"
         fields:
-          - { label: "ID", name: "id", widget: "string" }
+          - { label: "ID", name: "id", widget: "string", required: false }
           - { name: "is_header", widget: "hidden", default: "true", meta: true }
-          - { label: "Hero Image", name: "img_url", widget: "image" }
+          - { label: "Hero Image", name: "img_url", widget: "image", required: false }
           - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Lead", name: "lead", widget: "text" }
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Lead", name: "lead", widget: "text", required: false }
 
       #Summary
       - { label: "Summary Image", name: "summary_img_url", widget: "image", required: true }
@@ -455,10 +457,10 @@ collections:
       - { label: "Calendar Subtitle", name: "calendar_subtitle", widget: "string", required: false }
 
       #Calendar - Images
-      - { label: "Calendar Card Image URL", name: "calendar_card_img_url", widget: "image" }
+      - { label: "Calendar Card Image URL", name: "calendar_card_img_url", widget: "image", required: false }
       - { label: "Calendar Card Image Alt Text", name: "calendar_card_img_alt", widget: "string", required: false }  
 
-      - { label: "Calendar Display Image URL", name: "calendar_display_img_url", widget: "image" }
+      - { label: "Calendar Display Image URL", name: "calendar_display_img_url", widget: "image", required: false }
       - { label: "Calendar Display Image Alt Text", name: "calendar_display_alt", widget: "string", required: false }  
 
       #Calendar - Downloads
@@ -467,8 +469,10 @@ collections:
           name: "calendar_download_url",
           widget: "file",
           media_folder: "/assets/images/calendars",
-          public_folder: "/assets/images/calendars"
+          public_folder: "/assets/images/calendars", 
+          required: false
         }
+        
       - { label: "Calendar File Size", name: "calendar_file_size", widget: "string", required: false } 
 
       #Point(s) of Contact
