@@ -191,7 +191,7 @@ css-files:
         {%- for animal in species_of_concern -%}
         {% assign animal_tags = animal.tags | uniq %}
         {% assign animal_regions = animal.region | uniq %}
-        <li class="card tile-item card-shadow" data-species-tags="{{ animal_tags }}" data-species-region="{{ animal_regions }}" data-search-item>
+        <li class="card tile-item hover-shadow" data-species-tags="{{ animal_tags }}" data-species-region="{{ animal_regions }}" data-search-item>
             <div class="card-body">
                 <a class="text-decoration-none link-light stretched-link" href="{{ animal.url | relative_url }}" data-search-text>{{ animal.species_name }}</a>
             </div>

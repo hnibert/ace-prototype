@@ -33,7 +33,7 @@ media_folder: "/assets/images/media" # Where media files will be saved
 public_folder: "/assets/images/media" # Where Jekyll serves media files
 
 #Allow editorial workflows
-publish_mode: editorial_workflow
+#publish_mode: editorial_workflow
 
 #Local read/write (true if testing locally, false otherwise)
 #local_backend: true

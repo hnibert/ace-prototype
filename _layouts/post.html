@@ -7,7 +7,7 @@ layout: default
 {%- assign author_item = site.people | where: "slug", author_slug | first -%}
 
 <!-- Breadcrumb -->
-{% include breadcrumbs.html %}
+{%- include breadcrumbs.html -%}
 
 {%- if page.main_img_url -%}
 <header aria-labelledby="post-image">
@@ -251,16 +251,16 @@ layout: default
                         <h5 class="fw-bold">Archives</h5> 
                         <hr class="mt-0">
                         <ul class="list-unstyled list-flush d-flex flex-wrap gap-3">
-                            {%- comment -%} Build a list of post and group by the liquid expression and get a name of YYYY-MM {%- endcomment -%}
+                            {%- comment -%} Build a list of post and group by the liquid expression for post.date, format date time and reverse the list (newest to oldest) {%- endcomment -%}
                             {%- assign posts_by_year_month = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" | reverse -%}
                             
                             {%- comment -%} Go through the posts_by_year_month list in reverse to stay in chronological order (newest to oldest) {%- endcomment -%}
                             {%- for year_month in posts_by_year_month -%}
 
-                            {%- comment -%} Get the post associated with this list item, during this iteration of the loop {%- endcomment -%}
+                            {%- comment -%} Get the post associated with this list item, during each (.first) iteration of the loop {%- endcomment -%}
                             {%- assign post = year_month.items.first -%}
 
-                            {%- comment -%} Assign a year, month (as a number), and month to help with url and display {%- endcomment -%}
+                            {%- comment -%} Assign a year, month (as a number), and month to help with url and display text {%- endcomment -%}
                             {%- assign date_year = post.date | date: "%Y" -%}
                             {%- assign date_month_num = post.date | date: "%m" -%}
                             {%- assign date_month = post.date | date: "%B" -%}

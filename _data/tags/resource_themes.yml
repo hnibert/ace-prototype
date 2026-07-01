@@ -1,3 +1,5 @@
+group: themes
+
 items:
   - id: human-dimensions
     label: "Human Dimensions"

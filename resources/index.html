@@ -7,13 +7,23 @@ js-preload-files-ext:
  - "https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js"
 
 js-postload-files:
- - "../assets/scripts/resources.js"
+ - "/assets/scripts/components/advanced-search.js"
 ---
+
+{%- comment -%}
+    /*This creates a search index object of all 'is-available' resources,
+    this object array is then used with minisearch.js  */
+{%- endcomment -%}
+<!-- Search Index Array -->
+<script>
+    window.searchIndex = JSON.parse(decodeURIComponent("{{ site.data.resources.entries | where: 'is-available', true | jsonify | uri_escape }}"));
+    console.log(window.searchIndex);
+</script>
 
 <!-- Hero -->
 {%- include hero.html 
 is_header=true
-id="hero-about"
+id="hero-resources"
 hero_img_url="../assets/images/heroes/hero-resources.jpg"
 title="Our Resources" 
 lead="Explore a wide range of tools and data available through the ACE portal, developed by our team to support diverse needs and interests. Use the interactive filters below to discover resources by resource type, region, species, topic, and more.
@@ -35,129 +45,147 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <form class="">
-                <!-- Search Title -->
-                <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
-                <hr>
+            <advanced-search search-container="#resource-search-container" summary-text="" no-results="" result-template="#resource-card-template">
+                <search>
+                    <form>
+                        <!-- Search Title -->
+                        <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
+                        <hr>
 
-                <div class="input-group mb-4">
-                    <input id="search-input" type="search" class="form-control" placeholder="Search" aria-label="Search">
-                    <button id="clear-input" class="btn bg-clear border focus-ring" type="button" aria-label="Clears typed search input">
-                        <i class="fa-solid fa-x"></i>
-                    </button>
-                </div>
+                        <div class="input-group mb-4">
+                            <input id="search-input" type="search" class="form-control" placeholder="Search" aria-label="Search" data-search-input>
+                            <button id="clear-input" class="btn bg-clear border focus-ring" type="button" aria-label="Clears typed search input" data-clear-input>
+                                <i class="fa-solid fa-x"></i>
+                            </button>
+                        </div>
 
-                <!-- Filters Title -->
-                <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Resources</h1>
-                <hr>
+                        <!-- Filters Title -->
+                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Resources</h1>
+                        <hr>
 
-                <!-- Filters List -->
-                <ul class="list-unstyled list-group ps-0">
-                    <!-- Resource Type Filters -->
-                    <li class="list-group-item"> 
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
-                        <div id="resource-type-collapse" class="collapse show">
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                {%- for type in site.data.tags.resource_types.items -%}
-                                <li class="list-group-item border-0">
-                                    <input id="filter-{{ type.id }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id }}">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id }}">{{ type.label }}</label>
-                                </li>                                
-                                {%- endfor -%}
-                            </ul> 
-                        </div> 
-                    </li>
-                    
-                    <!-- Resource Region Filters -->
-                    <li class="list-group-item"> 
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button> 
-                        <div id="region-collapse" class="collapse show"> 
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
-                                {%- for region in site.regions -%}
-                                <li class="list-group-item border-0">
-                                    <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="region" value="{{ region.region_name | slugify }}">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
-                                </li> 
-                                {%- endfor -%}
-                            </ul> 
-                        </div> 
-                    </li>
+                        <!-- Filters List -->
+                        <ul class="list-unstyled list-group ps-0">
+                            <!-- Resource Type Filters -->
+                            <li class="list-group-item"> 
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
+                                <div id="resource-type-collapse" class="collapse show">
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                        {%- for type in site.data.tags.resource_types.items -%}
+                                        <li class="list-group-item border-0">
+                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
+                                        </li>                                
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li>
+                            
+                            <!-- Resource Region Filters -->
+                            <li class="list-group-item"> 
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button> 
+                                <div id="region-collapse" class="collapse show"> 
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                        {%- for region in site.regions -%}
+                                        <li class="list-group-item border-0">
+                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="region" value="{{ region.region_name | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
+                                        </li> 
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li>
 
-                    <!-- Resource Theme Filters -->
-                    <li class="list-group-item"> 
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button> 
-                        <div id="theme-collapse" class="collapse show"> 
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                {%- for theme in site.data.tags.resource_themes.items -%}
-                                <li class="list-group-item border-0">
-                                    <input id="filter-{{ theme.id }}" class="form-check-input filter-checkbox" type="checkbox" name="theme" value="{{ theme.id }}">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id }}">{{ theme.label }}</label>
-                                </li>                                  
-                                {%- endfor -%}
-                            </ul> 
-                        </div> 
-                    </li>
+                            <!-- Resource Theme Filters -->
+                            <li class="list-group-item"> 
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button> 
+                                <div id="theme-collapse" class="collapse show"> 
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                        {%- for theme in site.data.tags.resource_themes.items -%}
+                                        <li class="list-group-item border-0">
+                                            <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="theme" data-search-category="{{ site.data.tags.resource_types.group }}" value="{{ theme.id | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id | slugify }}">{{ theme.label }}</label>
+                                        </li>                                  
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li>
 
-                    <!-- Resource Species Filters -->
-                    <li class="list-group-item"> 
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button> 
-                        <div id="species-collapse" class="collapse"> 
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                {%- for species in site.data.tags.resource_species.items -%}
-                                <li class="list-group-item border-0">
-                                    <input id="filter-{{ species.id }}" class="form-check-input filter-checkbox" type="checkbox" name="species" value="{{ species.id }}">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id }}">{{ species.label }}</label>
-                                </li>                                
-                                {%- endfor -%}
-                            </ul> 
-                        </div> 
-                    </li>
+                            <!-- Resource Species Filters -->
+                            <li class="list-group-item"> 
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button> 
+                                <div id="species-collapse" class="collapse"> 
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                        {%- for species in site.data.tags.resource_species.items -%}
+                                        <li class="list-group-item border-0">
+                                            <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="species" value="{{ species.id | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id | slugify }}">{{ species.label }}</label>
+                                        </li>                                
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li>
 
-                    <!-- Resource Subtopic Filters -->
-                    <li class="list-group-item"> 
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button> 
-                        <div id="subtopics-collapse" class="collapse"> 
-                            <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
-                                {%- for subtopic in site.data.tags.resource_subtopics.items -%}
-                                <li class="list-group-item border-0">
-                                    <input id="filter-{{ subtopic.id }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopic" value="{{ subtopic.id }}">
-                                    <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id }}">{{ subtopic.label }}</label>
-                                </li>
-                                {%- endfor -%}
-                            </ul> 
-                        </div> 
-                    </li> 
-                </ul>
-                <button id="clear-all-filters" class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button"><i class="fa-solid fa-eraser"></i> Clear Filters</button>
-            </form>
+                            <!-- Resource Subtopic Filters -->
+                            <li class="list-group-item"> 
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button> 
+                                <div id="subtopics-collapse" class="collapse"> 
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                        {%- for subtopic in site.data.tags.resource_subtopics.items -%}
+                                        <li class="list-group-item border-0">
+                                            <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopic" value="{{ subtopic.id | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id | slugify }}">{{ subtopic.label }}</label>
+                                        </li>
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li> 
+                        </ul>
+                        <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button"><i class="fa-solid fa-eraser"></i> Clear Filters</button>
+                    </form>
+                </search>
+            </advanced-search>
         </div>
 
         <!-- Results Column -->
-        <div class="col-12 col-lg-9 vstack gap-4">
+        <div class="col-12 col-lg-9">
+            <h2 id="search-results-title" class="fs-5 fw-semibold">Results</h2>
+            <hr>
             {%- comment -%}
                 **DISPLAY PURPOSES ONLY**
                 Build the actual HTML/rendered list of resources where the 'is-available' flag has been marked true
                 NOTE: This isn't necessary when finalized, the index map will be used to build these in production
             {%- endcomment -%}
             {%- assign available_resources = site.data.resources.entries | where: "is-available", true -%}
-            {%- for resource in available_resources -%}
-            {%- assign resource_id = "resource-" | append: forloop.index -%}
-            <div id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
-                <div class="card-body">
-                    {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
-                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></p>
-                        <p class="card-text small text-muted fw-bold m-0">{{ resource.date | date: "%b %-d, %Y" }}</p>
+
+            <ul id="resource-search-container" class="list-unstyled vstack gap-4">
+                {%- for resource in available_resources -%}
+                {%- assign resource_id = "resource-" | append: forloop.index -%}
+                <li id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+                    <div class="card-body">
+                        {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
+                        <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></p>
+                            <p class="card-text small text-muted fw-bold m-0">{{ resource.date | date: "%b %-d, %Y" }}</p>
+                        </div>
+                        <hr>
+                        <p class="card-text">{{ resource.description }}</p>
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
                     </div>
-                    <hr>
-                    <p class="card-text">{{ resource.description }}</p>
-                    <div class="d-flex justify-content-end">
-                        <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            {%- endfor -%}
+                </li>
+                {%- endfor -%}
+            </ul>
+
+            <hr>
+            <!-- Pagination Controls -->
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item"><button id="previous-page" class="page-link link-dark" aria-label="Previous page">Previous</button></li>
+                    <li class="page-item"><button id="next-page" class="page-link link-dark" aria-label="Next page">Next</button></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -179,15 +207,3 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
         </div>
     </div>
 </template>
-
-<!-- Search Index Array -->
-<script id="search-index">
-    {%- comment -%}
-        /*This creates a search index object of all 'is-available' resources,
-        this object array is then used with Fuse.js and native JS multi-category/multi-tag filtering */
-    {%- endcomment -%}
-
-    const searchIndex = JSON.parse(decodeURIComponent("{{ site.data.resources.entries | where: 'is-available', true | jsonify | uri_escape }}"));
-
-    console.log(searchIndex);
-</script>

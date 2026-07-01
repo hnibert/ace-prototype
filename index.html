@@ -78,7 +78,7 @@ link_text="Learn More" -%}
                     {%- assign sorted_regions = site.regions | sort: "display_order" -%}
                     {%- for region in sorted_regions -%}
                     <div class="col">
-                        <div class="card region-card {{ region.region_name | slugify | prepend: 'region-' }} mb-3 h-100 text-bg-dark card-shadow border-0">
+                        <div class="card region-card {{ region.region_name | slugify | prepend: 'region-' }} mb-3 h-100 text-bg-dark hover-shadow border-0">
                             <div class="card-body d-flex justify-content-end align-items-end me-2">
                                 <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a href="{{ region.url | relative_url }}" class="stretched-link text-decoration-none link-light">{{ region.region_name }}</a></h3>
                             </div>
@@ -113,7 +113,7 @@ link_text="Learn More" -%}
                     {%- assign sorted_communities = site.communities | sort: "display_order" -%}
                     {%- for community in sorted_communities -%}
                     <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card community-card {{ community.community_name | slugify | prepend: 'community-' }} text-bg-dark h-100 card-shadow border-0">
+                        <div class="card community-card {{ community.community_name | slugify | prepend: 'community-' }} text-bg-dark h-100 hover-shadow border-0">
                             <div class="card-body d-flex justify-content-start align-items-end ms-2">
                                 <h3 class="card-title text-uppercase fw-bold text-shadow-1"><a class="stretched-link text-decoration-none link-light" href="{{ community.url | relative_url }}">{{ community.community_name }}</a></h3>
                             </div>

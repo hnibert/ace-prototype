@@ -3,7 +3,7 @@ title: People
 permalink: /people/
 layout: default
 js-postload-files:
- - "/assets/scripts/components/basic-search.js"
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Hero -->
@@ -106,7 +106,7 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
         {%- for person in site.people -%}
         {%- assign person_areas = person.research_areas | compact | uniq -%}
         <li class="col" data-people-role="{{ person.ace_role | slugify }}" data-people-tags="{% for area in person_areas %}{{ area | slugify }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}" data-search-item>
-            <div class="card card-shadow h-100">
+            <div class="card hover-shadow h-100">
                 <div class="ratio ratio-1x1 mx-auto my-3 width200">
                     <a href="{{ person.url | relative_url }}" class="text-decoration-none"><img src="{{ person.main_img_url | relative_url }}" class="img-fluid rounded-circle shadow object-fit-cover" height="auto" width="200" alt="{{ person.main_img_alt }}"></a>
                 </div>

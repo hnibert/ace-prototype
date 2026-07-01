@@ -1,7 +1,7 @@
 ---
 layout: default
 js-postload-files:
- - "/assets/scripts/components/basic-search.js"
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Breadcrumb -->
@@ -71,7 +71,7 @@ js-postload-files:
         {%- assign category_slug = category | slugify -%}
         {%- assign category_path = '/news/archives/' | append: category_slug | append: '/' -%}
         {%- assign post_count = site.categories[category] | size -%}
-        <li class="card tile-item card-shadow" data-search-item>
+        <li class="card tile-item hover-shadow" data-search-item>
             <div class="card-body">
                 <a class="text-decoration-none link-light stretched-link species-name fs-5" href="{{ category_path | relative_url }}" data-search-text>{{ category | capitalize }}</a>
                 <p class="fw-light">{{ post_count }} {% if post_count.items.size > 1 %}Posts{% else %}Post{% endif %}</p>
@@ -144,7 +144,7 @@ js-postload-files:
     <!-- Search Container -->
     <ul id="year-search-container" class="tile-container list-unstyled">
         {%- for year in posts_years -%}
-        <li class="card tile-item card-shadow" data-search-item>
+        <li class="card tile-item hover-shadow" data-search-item>
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <a class="text-decoration-none link-light stretched-link fs-5" href="{{ '/news/archives/' | append: year.name | append: '/' | relative_url }}" data-search-text>{{ year.name }}</a>
                 <p class="fw-light">{{ year.items.size }} {% if year.items.size > 1 %}Posts{% else %}Post{% endif %}</p>

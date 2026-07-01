@@ -3,7 +3,7 @@ title: All Communities
 permalink: /communities/
 layout: default
 js-postload-files:
- - "/assets/scripts/components/basic-search.js"
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Hero -->
@@ -38,7 +38,7 @@ lead="Access critical ecosystem data and local climate insights co-produced to p
                 <div class="row g-3"> 
                     {%- for community in site.communities -%}
                     <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 card-shadow">
+                        <div class="card h-100 hover-shadow">
                             <img src="{{ community.calendar_card_img_url | relative_url }}" class="img-fluid mx-auto my-3" width="300" height="auto" alt="{{ community.calendar_card_img_alt | relative_url }}">
                             <div class="card-body text-center">
                                 <h3 class="card-title fw-bold"><a class="stretched-link text-decoration-none link-dark" href="{{ community.url | relative_url }}">{{ community.community_name }}</a></h3>
@@ -148,7 +148,7 @@ lead="Access critical ecosystem data and local climate insights co-produced to p
         {%- for animal in species_of_concern -%}
         {% assign animal_tags = animal.tags | uniq %}
         {% assign animal_communities = animal.communities | uniq %}
-        <li class="card tile-item card-shadow" data-species-tags="{{ animal_tags }}" data-species-communities="{{ animal_communities }}" data-search-item>
+        <li class="card tile-item hover-shadow" data-species-tags="{{ animal_tags }}" data-species-communities="{{ animal_communities }}" data-search-item>
             <div class="card-body">
                 <a class="text-decoration-none link-light stretched-link" href="{{ animal.url | relative_url }}" data-search-text>{{ animal.species_name }}</a>
             </div>

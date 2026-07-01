@@ -79,7 +79,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
         <div class="row row-cols-1 row-cols-md-2 g-4">
             {%- for highlight in highlight_posts limit: page.highlight_max -%}
             <div class="col">
-                <div class="card rounded-0 border-0 card-shadow h-100">
+                <div class="card rounded-0 border-0 hover-shadow h-100">
                     <div class="card-body d-flex flex-column h-100">
                         <span class="align-self-start block-text bg-ace-cape text-uppercase mb-2">{{ highlight.type }}</span> 
                         <h3 class="card-title mb-0">{{ highlight.title }}</h3>
@@ -92,7 +92,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
             {%- endfor -%}
             {%- if highlight_posts.size < page.highlight_max -%}
              <div class="col">
-                <div class="card rounded-0 border-0 card-shadow h-100">
+                <div class="card rounded-0 border-0 hover-shadow h-100">
                     <div class="card-body d-flex flex-column h-100">
                         <span class="align-self-start block-text bg-ace-cape text-uppercase mb-2">NOTICE</span> 
                         <h3 class="card-title">More highlights coming soon!</h3>

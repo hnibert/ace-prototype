@@ -97,7 +97,7 @@ customElements.define('basic-search', class extends HTMLElement {
             });
         }
 
-        /* FILTER CLOUD */
+        /* FILTER TOGGLES */
         if (this.hasFilters) {
             this.searchFilterElements.forEach(toggle => {
                 toggle.addEventListener('click', () => {
@@ -164,7 +164,6 @@ customElements.define('basic-search', class extends HTMLElement {
 
     /*================
      * MAIN SEARCH METHODS
-     *  for the code is dark and the types are full of terrors
      =================*/
      executeSearch() {
         //get current values from search input field and select dropdown if they are used

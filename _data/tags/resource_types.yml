@@ -1,3 +1,5 @@
+group: type
+
 items:
   - id: code-repo
     label: "Code Repository"

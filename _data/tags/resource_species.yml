@@ -1,3 +1,5 @@
+group: search_species
+
 items:
   - id: pollock
     label: "Pollock"

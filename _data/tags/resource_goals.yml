@@ -1,3 +1,5 @@
+group: user-goals
+
 items:
   - id: work-with-data
     label: "Work With Data"
