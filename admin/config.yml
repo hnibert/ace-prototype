@@ -210,6 +210,7 @@ collections:
     label: "People"
     folder: "_people"
     create: true
+    identifier_field: "full_name"
     slug: "{{slug}}"
     summary: '{{fields.full_name}}'
     fields:
