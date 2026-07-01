@@ -72,7 +72,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
                                         {%- for type in site.data.tags.resource_types.items -%}
                                         <li class="list-group-item border-0">
-                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
+                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="{{ site.data.tags.resource_types.group }}" value="{{ type.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
                                         </li>                                
                                         {%- endfor -%}
@@ -87,7 +87,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
                                         {%- for region in site.regions -%}
                                         <li class="list-group-item border-0">
-                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="region" value="{{ region.region_name | slugify }}" data-search-filter>
+                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="{{ site.data.tags.resource_types.group }}" value="{{ region.region_name | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
                                         </li> 
                                         {%- endfor -%}
