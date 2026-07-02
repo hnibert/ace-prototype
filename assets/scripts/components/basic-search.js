@@ -115,10 +115,11 @@ customElements.define('basic-search', class extends HTMLElement {
 
         /* NO RESULTS SETUP */
         //hide the no results element by default
-        if (this.noResultsElement) {}
+        if (this.noResultsElement)
             this.noResultsElement.style.display = 'none';
 
         //run an initial search in case fields contain default values on load
+        //TODO: add url parameter checks to set defaults
         //this.executeSearch();
     }
 

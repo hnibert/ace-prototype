@@ -12,15 +12,15 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         this.RESET_SEARCH = '[data-search-reset]';
 
+        /* raw search list after modifying to add id */
+        this.searchDocs = []; 
+
         /* Flags */
         this.hasSearchInput = false;
         this.hasFilters = false;
     }
 
     connectedCallback() {
-        /* Setup MiniSearch JS */
-
-
         //setup this component
         this.setupComponent();
     }
@@ -31,14 +31,52 @@ customElements.define('advanced-search', class extends HTMLElement {
          */
         
         //supporting element selectors
+        this.searchDataSelector = this.getAttribute('search-data');
+
+        //warn if search data is null or it wasn't defined
+        if (!this.searchDataSelector) {
+            console.warn('advanced-search: Missing "search-data" attribute!');
+            return;
+        }
+
+        //search container attribute
         this.searchContainerSelector = this.getAttribute('search-container');
+
+        //results template selector
         this.resultTemplateSelector = this.getAttribute('result-template');
-        this.summaryTextSelector = this.getAttribute('summary-text');
+
+        //no results selector
         this.noResultsSelector = this.getAttribute('no-results');
 
         /*
          *  Cached Expected Elements (Expected to exist inside this component)
          */
+
+        //script holding raw json text string for search
+        this.searchIndexElement = document.querySelector(this.searchDataSelector);
+
+        if (!this.searchIndexElement) {
+            console.warn(`advanced-search: Could not find script element with ID "${this.searchDataSelector}".`);
+            return;            
+        } else {
+            try {
+                //parse the given raw string into a js object array
+                const parsedJSON = JSON.parse(this.searchIndexElement.textContent);
+
+                //add an id key to each entry in parsedJSON
+                this.searchDocs = parsedJSON.map((item, index) => ({
+                    ...item, 
+                    id: index
+                }));
+
+
+                //setup minisearch.js with our searchDocs array
+                this.initializeSearch();
+
+            } catch(error) {
+                console.error('advanced-search: Failed to parse JSON data.', error);
+            }
+        }
 
         //search input element
         this.searchInputElement = this.querySelector(this.SEARCH_INPUT);
@@ -70,9 +108,6 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         //result template element
         this.resultTemplateElement= document.querySelector(this.resultTemplateSelector);
-
-        //search summary text i.e "{X} Results Found For '{input}' under '{categoryFilters}'"
-        this.summaryTextElement = document.querySelector(this.summaryTextSelector);
 
         //no results feedback
         this.noResultsElement = document.querySelector(this.noResultsSelector);
@@ -116,5 +151,9 @@ customElements.define('advanced-search', class extends HTMLElement {
                 });
             }
         }
+    }
+
+    initializeSearch() {
+        console.log("Component initialized with static docs:", this.searchDocs);
     }
 });

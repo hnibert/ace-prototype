@@ -14,10 +14,9 @@ js-postload-files:
     This creates a search index object of all 'is-available' resources,
     this object array is then used with minisearch.js
 {%- endcomment -%}
-<!-- Search Index Array -->
-<script>
-    window.searchIndex = JSON.parse(decodeURIComponent("{{ site.data.resources.entries | where: 'is-available', true | jsonify | uri_escape }}"));
-    console.log(window.searchIndex);
+<!-- Search Index Array type="application/json"-->
+<script id="search-data-raw" type="application/json">
+  {{ site.data.resources.entries | where: 'is-available', true | jsonify }}
 </script>
 
 <!-- Hero -->
@@ -45,7 +44,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <advanced-search search-container="#resource-search-container" summary-text="" no-results="" result-template="#resource-card-template">
+            <advanced-search search-container="#resource-search-container" no-results="#no-results-feedback" result-template="#resource-card-template" search-data="#search-data-raw">
                 <search>
                     <form>
                         <!-- Search Title -->
@@ -146,9 +145,12 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             </advanced-search>
         </div>
 
-        <!-- Results Column -->
+        <!-- Resource List, Summaries & Control -->
         <div class="col-12 col-lg-9">
-            <h2 id="search-results-title" class="fs-5 fw-semibold">Results</h2>
+            <div class="d-flex justify-content-between">
+                <h2 id="search-results-title" class="fs-5 fw-semibold mb-0">Results</h2>
+                <p id="page-results-summary" class="text-muted small mb-0">X of Y Results</p>
+            </div>
             <hr>
             {%- comment -%}
                 **DISPLAY PURPOSES ONLY**
@@ -156,7 +158,6 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                 NOTE: This isn't necessary when finalized, the index map will be used to build these in production
             {%- endcomment -%}
             {%- assign available_resources = site.data.resources.entries | where: "is-available", true -%}
-
             <ul id="resource-search-container" class="list-unstyled vstack gap-4">
                 {%- for resource in available_resources -%}
                 {%- assign resource_id = "resource-" | append: forloop.index -%}
@@ -178,14 +179,29 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                 {%- endfor -%}
             </ul>
 
+            <!-- No Results Feedback -->
+            <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
+                <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
+                <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
+                <div class="col-lg-4 mx-auto pb-5"> 
+                    <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
+                    <p>Try checking for typos or use broader keywords</p>
+                    <button type="button" class="btn btn-ace-primary mt-3" aria-controls="species-search-container" data-search-reset>Clear Search</button>
+                </div> 
+            </div>
+
             <hr>
             <!-- Pagination Controls -->
-            <nav aria-label="Pagination">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item"><button id="previous-page" class="page-link link-dark" aria-label="Previous page">Previous</button></li>
-                    <li class="page-item"><button id="next-page" class="page-link link-dark" aria-label="Next page">Next</button></li>
-                </ul>
-            </nav>
+            <div class="d-flex justify-content-between align-items-start">
+                <p id="page-index-summary" class="text-muted mt-0">Showing X of Y Pages</p>
+                <nav class="mt-0" aria-label="Pagination">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item"><button id="previous-page" class="page-link link-dark" aria-label="Previous page">Previous</button></li>
+                        <li class="page-item"><button id="next-page" class="page-link link-dark" aria-label="Next page">Next</button></li>
+                    </ul>
+                </nav>           
+            </div>
+
         </div>
     </div>
 </div>
