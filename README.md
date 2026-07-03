@@ -1,14 +1,22 @@
-# ACE Portal
+<p align="center">
+  <img src="https://github.com/hnibert/ace-prototype/blob/main/assets/images/logos/ace_logo.png" alt="Project Logo" width="200">
+</p>
+
+<h1 align="center">ACE Portal | Jekyll Prototype</h1>
 
 [![Deployment Status](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml/badge.svg)](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hnibert/ace-prototype)
+![GitHub last commit](https://img.shields.io/github/last-commit/hnibert/ace-prototype)
+![GitHub repo size](https://img.shields.io/github/repo-size/hnibert/ace-prototype)
 
-[![GitHub Contributions](https://demolab.com)](https://github.com/hnibert/ace-prototype/)
 
 ## About
 
 Alaska’s fisheries and marine ecosystems are changing as the climate shifts, bringing new challenges for resource managers, 
 fishing communities, and decision-makers. We are working to provide people with tools and information that supports 
 decision-making as we navigate these changing conditions.
+
+**Live Site:** [ACE Portal - Jekyll Prototype](https://hnibert.github.io/ace-prototype/)
 
 ## Features
 
