@@ -5,10 +5,10 @@
 <h1 align="center">ACE Portal | Jekyll Prototype</h1>
 
 [![Deployment Status](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml/badge.svg)](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml)
+![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade/https%3A%2F%2Fhnibert.github.io%2Face-prototype%2F) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/t/hnibert/ace-prototype)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hnibert/ace-prototype)
 ![GitHub repo size](https://img.shields.io/github/repo-size/hnibert/ace-prototype)
-![GitHub language count](https://img.shields.io/github/languages/count/hnibert/ace-prototype)
 
 ## About
 
