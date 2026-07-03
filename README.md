@@ -19,7 +19,7 @@ decision-making as we navigate these changing conditions.
 
 ## Features
 
-The ACE Portal is a Jekyll website hosted on GitHub Pages and managed with Decap CMS which combines the speed of 
+The `ACE Portal` is a Jekyll website hosted on GitHub Pages and managed with Decap CMS which combines the speed of 
 static hosting with a dynamic web editor. This stack operates with zero server maintenance, zero database dependencies, 
 and absolute zero hosting costs.
   
