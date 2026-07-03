@@ -2,7 +2,7 @@
 
 [![Deployment Status](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml/badge.svg)](https://github.com/hnibert/ace-prototype/actions/workflows/jekyll.yml)
 
-[![GitHub Contributions](https://herokuapp.com)](https://github.com/hnibert/ace-prototype/)
+[![GitHub Contributions](https://demolab.com)](https://github.com/hnibert/ace-prototype/)
 
 ## About
 
