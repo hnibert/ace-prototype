@@ -71,7 +71,7 @@ static hosting with a dynamic web editor. This stack operates with zero server m
 
 ---
 
-This site is built on a serverless "[Jamstack](https://jamstack.org/)" designed for high performance, security, and a streamlined editorial workflow.
+This site is built on a serverless [Jamstack](https://jamstack.org/). Designed for high performance, security, and a streamlined editorial workflow.
 
 - **Static site generator:** Jekyll
 - **Hosting:** GitHub Pages
