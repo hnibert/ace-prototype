@@ -23,61 +23,40 @@ The `ACE Portal` is a Jekyll website hosted on GitHub Pages and managed with Dec
 static hosting with a dynamic web editor. This stack operates with zero server maintenance, zero database dependencies, 
 and absolute zero hosting costs.
   
-  ### Hosting & Performance Features (GitHub Pages & Jekyll)
+## Hosting & Performance
 
-  - **Serverless Infrastructure:** Built on completely static HTML, CSS, and JS.
+- **Static & Serverless:** Fast, secure hosting on GitHub Pages.
 
-  - **Lightning-Fast Deliverability:** Delivered globally using GitHub's built-in CDN networks.
+- **Automatic Deployments:** Updates publish via GitHub Actions.
 
-  - **Automated Builds:** Triggered instantly via GitHub Actions whenever content changes.
+- **Custom Domains & SSL:** Free HTTPS support included.
 
-  - **Custom Domain Support:** Includes free SSL certificates automatically provisioned by GitHub.
+- **SEO & Markdown:** Built-in Markdown and SEO tools.
 
-  - **Native Markdown Processing:** Compiles standard Markdown into styled web pages natively.
+## Content Management
 
-  - **SEO Optimized Foundations:** Handled via plugins like `jekyll-seo-tag` for automated metadata.
+- **Git-Based CMS:** Content is stored directly in the repository.
 
-  ### Content Management Features (Decap CMS)
+- **Visual Editor & Live Preview:** Edit with instant previews.
 
-  - **Git-Backed Architecture:** Saves updates directly into the repository as file commits.
+- **Custom Collections:** Organize posts, species, regions, and more.
 
-  - **No Database Needed:** Relies entirely on structured text files and YAML front-matter.
+- **Media Management:** Supports local assets and Cloudinary.
 
-  - **Rich Text Editing:** Features a clean, distraction-free WYSIWYG or raw Markdown editor.
+## Developer Features
 
-  - **Real-Time Split Preview:** Displays how content will look directly alongside the editor.
+- **Easy Configuration:** Managed through `config.yml`.
 
-  - **Dynamic Collections:** Organizes custom types like posts, species, regions, etc.
+- **Flexible Content Blocks:** Create reusable, modular page layouts.
 
-  - **Complex Media Handling:** Links directly to local asset folders or scales up to Cloudinary.
+- **Editorial Workflow:** Draft, review, and publish content.
 
-  - **Global Search:** Allows editors to query items using titles, slugs, or nested entry data.
+- **Git Version History:** Every change is tracked.
 
-  ### Developer & Editorial Control Features
-
-  - **Flexible UI Customization:** Configured completely inside a human-readable config.yml file.
-
-  - **Robust Input Widgets:** Includes data types like strings, dates, maps, lists, and relations.
-
-  - **Variable Layout Blocks:** Enables complex page building through nested repeatable widgets.
-
-  - **Secure GitHub OAuth:** Limits CMS panel access exclusively to authorized repository contributors.
-  
-  - **Editorial Workflow System:** Moves posts securely through Draft, In Review, and Ready stages before publishing.
-
-  - **Full Revision History:** Leverages native Git history to trace every single edit to its author.
-
-### DecapBridge Authentication Features
-
-  - **No GitHub Account Required:** External clients can log into the CMS via email without needing a GitHub profile.
-
-  - **Single Sign-On (SSO):** Supports zero-config "Login with Google" and "Login with Microsoft" OAuth flows via PKCE.
-
-  - **Self-Service Resets:** Users can manage their own forgotten passwords without manual administrative intervention.
-
-  - **Email Invitation System:** Allows administrators to dispatch quick email access links to new contributors.
-
-  - **Centralized Access Dashboard:** Grants admins a portal to monitor, invite, or instantly revoke collaborator permissions.
+## DecapBridge Authentication
+No GitHub Account Required: Contributors can sign in with email.
+Google & Microsoft Login: Built-in SSO support.
+User Management: Invite and manage contributors from one dashboard.
 
 ## Tech Stack
 
