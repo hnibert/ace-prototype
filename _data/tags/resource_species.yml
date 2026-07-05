@@ -1,5 +1,3 @@
-group: search_species
-
 items:
   - id: pollock
     label: "Pollock"
@@ -16,5 +14,5 @@ items:
   - id: pacific-cod
     label: "Pacific Cod"
 
-  - id: multi
+  - id: multiple
     label: "Multiple Species"

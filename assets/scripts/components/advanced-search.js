@@ -5,15 +5,32 @@ customElements.define('advanced-search', class extends HTMLElement {
         /* Selectors */
         this.SEARCH_INPUT = '[data-search-input]';
         this.CLEAR_INPUT = '[data-clear-input]';
-        
         this.FILTER_TOGGLE = '[data-search-filter]';
-        this.DATA_SEARCH_CATEGORY = '[data-search-category]';
         this.CLEAR_ALL_FILTERS = '[data-clear-all-filters]';
-
+        this.CLEAR_FILTERS_GROUP = '[data-clear-group-filters]';
         this.RESET_SEARCH = '[data-search-reset]';
 
-        /* raw search list after modifying to add id */
+        /* Constants */
+        this.debounceTime = 500;
+
+        //raw search list after modifying to add id
         this.searchDocs = []; 
+
+        //results list
+        this.results = [];
+
+        /* Active Filters */
+        this.activeFilters = {
+            type: [],
+            regions: [],
+            themes: [],
+            search_species: [],
+            subtopics: [],
+        };
+
+        //pagination
+        this.totalPages = 1;
+        this.currentPage = 1;
 
         /* Flags */
         this.hasSearchInput = false;
@@ -21,6 +38,18 @@ customElements.define('advanced-search', class extends HTMLElement {
     }
 
     connectedCallback() {
+        //initialize minisearch with our options
+        this.miniSearch = new window.MiniSearch({
+            fields: ['title', 'description'], //fields to search/index for text input
+            storeFields: ['title', 'type', 'description', 'date', 'url', 'region', 'theme', 'search_species', 'subtopics'], //fields to return (we include the tag categories because we need to use them in filter during searches)
+            searchOptions: {
+                boost: { title: 2 },    // boost title for matching
+                prefix: true,           // matches terms that start with the query
+                prefixLength: 3,        // first 3 characters must be exact
+                fuzzy: 0.2              // enable fuzzy matching
+            }
+        });
+
         //setup this component
         this.setupComponent();
     }
@@ -42,11 +71,26 @@ customElements.define('advanced-search', class extends HTMLElement {
         //search container attribute
         this.searchContainerSelector = this.getAttribute('search-container');
 
-        //results template selector
+        //results template selector attribute
         this.resultTemplateSelector = this.getAttribute('result-template');
 
-        //no results selector
+        //no results selector attribute
         this.noResultsSelector = this.getAttribute('no-results');
+
+        //get results per page for pagination attribute - parse it as an int and set it to base-10
+        this.resultsPerPage = parseInt(this.getAttribute('results-per-page'), 10);
+
+        //page index summary attribute
+        this.pageIndexSummarySelector = this.getAttribute('page-summary');
+
+        //page results summary attribute
+        this.pageResultSummarySelector = this.getAttribute('results-summary');
+
+        //page controls (next/prev btns container)
+        this.pageControlsSelector = this.getAttribute('page-controls');
+
+        //page progress bar attribute
+        this.pageProgressSelector = this.getAttribute('pagination-progress');
 
         /*
          *  Cached Expected Elements (Expected to exist inside this component)
@@ -59,19 +103,19 @@ customElements.define('advanced-search', class extends HTMLElement {
             console.warn(`advanced-search: Could not find script element with ID "${this.searchDataSelector}".`);
             return;            
         } else {
+            /* parse the JSON we get from searchIndexElement */
             try {
                 //parse the given raw string into a js object array
                 const parsedJSON = JSON.parse(this.searchIndexElement.textContent);
 
-                //add an id key to each entry in parsedJSON
+                //add an 'id' key to each entry in parsedJSON - minisearch needs id keys
                 this.searchDocs = parsedJSON.map((item, index) => ({
                     ...item, 
                     id: index
                 }));
 
-
                 //setup minisearch.js with our searchDocs array
-                this.initializeSearch();
+                this.initializeSearch(this.searchDocs);
 
             } catch(error) {
                 console.error('advanced-search: Failed to parse JSON data.', error);
@@ -88,10 +132,15 @@ customElements.define('advanced-search', class extends HTMLElement {
         this.searchFilterElements = Array.from(this.querySelectorAll(this.FILTER_TOGGLE));
 
         //clear toggle category btns
-        //...
+        this.clearToggleGroupElements = Array.from(this.querySelectorAll(this.CLEAR_FILTERS_GROUP));
 
+        //hide the clear toggle group buttons by default
+        this.clearToggleGroupElements.forEach(clearBtn => { 
+            clearBtn.classList.add("hide");
+        });
+        
         //clear all toggles btn
-        this.clearAllTogglesBtnElement = this.querySelector(this.CLEAR_FILTERS);
+        this.clearAllTogglesBtnElement = this.querySelector(this.CLEAR_ALL_FILTERS);
 
         /*
          * Set flags based on what expected input elements were found
@@ -112,15 +161,43 @@ customElements.define('advanced-search', class extends HTMLElement {
         //no results feedback
         this.noResultsElement = document.querySelector(this.noResultsSelector);
 
+        //hide no results element by default
+        this.noResultsElement.style.display = "none";
+
+        //page summary elements
+        this.pageIndexSummaryText = document.querySelector(this.pageIndexSummarySelector);
+        this.pageResultSummaryText = document.querySelector(this.pageResultSummarySelector);
+
+        //prev/next page btns
+        this.pageNextBtn = document.querySelector(`${this.pageControlsSelector} [data-page-next]`);
+        this.pagePreviousBtn = document.querySelector(`${this.pageControlsSelector} [data-page-previous]`);
+
+        //progress bar
+        this.pageProgressBar = document.querySelector(this.pageProgressSelector);
+
+        //setup listeners
+        this.setupListeners();
+    }
+
+    setupListeners() {
         /*
          * Setup Listeners based on input flags
          */
 
         /* TEXT SEARCH */
         if (this.hasSearchInput) {
-            //search text input
+            //search text input with a debounce 
+            //https://www.geeksforgeeks.org/javascript/debouncing-in-javascript/
+
+            //define a timer
+            let timer;
+
             this.searchInputElement.addEventListener('input', () => {
-                this.executeSearch();
+                //clear timer
+                clearTimeout(timer);
+                
+                //set timer & perform search after wait
+                timer = setTimeout(() => {this.executeSearch(); }, this.debounceTime);
             });
 
             //clear search input btn
@@ -135,25 +212,399 @@ customElements.define('advanced-search', class extends HTMLElement {
         if (this.hasFilters) {
             //filter toggle btns
             this.searchFilterElements.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    this.updateActiveFilters();
+                toggle.addEventListener('click', (e) => {
+                    this.updateActiveFilters(e);
                     this.executeSearch();
                 });
             });
 
             //clear filter category btns
-            //...
+            this.clearToggleGroupElements.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    this.clearFilterCategory(e);
+                });
+            });
 
             //clear all filters
-            if (this.clearFiltersBtnElement) {
-                this.clearFiltersBtnElement.addEventListener('click', () => {
+            if (this.clearAllTogglesBtnElement) {
+                this.clearAllTogglesBtnElement.addEventListener('click', () => {
                     this.clearAllFilters();
                 });
             }
         }
+
+        /* PAGINATION BUTTONS */
+
+        //next page btn
+        if (this.pageNextBtn) {
+            this.pageNextBtn.addEventListener('click', () => {
+                this.goToNextPage();
+            });
+        }
+
+        //previous page btn
+        if (this.pagePreviousBtn) {
+            this.pagePreviousBtn.addEventListener('click', () => {
+                this.goToPreviousPage();
+            });
+        }
+
+        //run the 'default' search to bring up results immediately on page load
+        //TODO: url parameters to set default search
+        //https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+        //https://sentry.io/answers/how-to-get-values-from-urls-in-javascript/
+        this.executeSearch();
     }
 
-    initializeSearch() {
-        console.log("Component initialized with static docs:", this.searchDocs);
+    /* 
+        MINISEARCH JS METHODS
+    */
+    initializeSearch(searchDocuments) {
+        //console.log("Component started with search docs:", this.searchDocs);
+
+        //check we receieved an array to build the minisearch index map with
+        if (Array.isArray(searchDocuments)) {
+            this.miniSearch.addAll(searchDocuments);
+        }
+    }
+
+    executeSearch() {
+        //get the input text and normalize it
+        const query = this.searchInputElement.value.toLowerCase().trim();
+
+        //console.log(query);
+        //console.log("---Current Active Filters:", this.activeFilters);
+
+        if (query === "") {
+            //skip minisearch and just match tags
+            this.results = this.searchDocs.filter(item => {
+                return this.checkResultAgainstActiveFilters(item);
+            });
+        } else {
+            //use minisearch + match tags
+            this.results = this.miniSearch.search(query, {
+                //use the filter option to match tags, check each result for tag matches
+                //each 'result' is an object with all its key/values from searchDocs
+                filter: (result) => {
+                    return this.checkResultAgainstActiveFilters(result);
+                }
+            });
+        }
+
+        //console.log(this.results);
+
+        //toggle no results UI
+        this.toggleNoResults();
+
+        //update pagination info
+        this.updatePaginationResults(this.results);
+    }
+
+    checkResultAgainstActiveFilters(result) {
+        //go through each entry in activeFilters object - destructure each as 'category' and 'tags'
+        return Object.entries(this.activeFilters).every(([category, activeTags]) => {
+            //skip empty categories and return true for this result
+            if (activeTags.length === 0)
+                return true;
+
+            //get the category tag array form this result
+            //these match up between active filters entries and resource keys in each result
+            const resultTagCategory = result[category];
+
+            //check to make sure this field is an array, if it is see if there are any tag matches in that array
+            if (Array.isArray(resultTagCategory)) {
+                //return ture/false if this array has _some_ tags that match active filters category tags
+                return resultTagCategory.some(tag => activeTags.includes(tag));
+            }
+
+            //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
+            return activeTags.includes(resultTagCategory);
+        });
+    }
+
+    /* 
+        INPUT METHODS
+    */
+    clearSearchInput() {
+        //set text input value to empty
+        this.searchInputElement.value = "";
+
+        //re-run search with empty value
+        this.executeSearch();
+    }
+
+    /* 
+        FILTER METHODS
+    */
+    updateActiveFilters(e) {
+        //get the name and value from the toggle btn
+        const { name, value } = e.currentTarget; 
+
+        //get the category in active filters array by name given from the toggle btn name attrb
+        const currentCategory = this.activeFilters[name];
+
+        //get the index of the tag in its category (if it exist, otherwise it will be -1)
+        const tagIndex = currentCategory.indexOf(value);
+
+        //add or remove the tag to its given category
+        if (tagIndex > -1) {
+            //remove this tag from active category filters
+            currentCategory.splice(tagIndex, 1);
+        } else {
+            //add this tag to active category filters
+            currentCategory.push(value);
+        }
+
+        //toggle the clear toggle
+        this.toggleClearGroupButton(currentCategory.length, name);
+    }
+
+    clearFilterCategory(e) {
+        //get the name (category) from the clicked toggle
+        const { name } = e.currentTarget;
+
+        //get the category in active filters array by name given from the toggle btn name attrb
+        const currentCategory = this.activeFilters[name];
+
+        const categoryBtns = this.searchFilterElements.filter(toggle => {
+            return toggle.name === name;
+        });
+
+        //set all toggles to unchecked
+        categoryBtns.forEach(toggle => {
+            toggle.checked = false;
+        });
+
+        //clear the current category in active filters manually
+        currentCategory.length = 0;
+
+        //toggle clear category btn
+        this.toggleClearGroupButton(currentCategory.length, name);
+
+        //re-run the search with new parameters
+        this.executeSearch();
+    }
+
+    clearAllFilters() {
+        //uncheck all toggle elements
+        this.searchFilterElements.forEach(toggle => {
+            toggle.checked = false;
+        });
+
+        //loop through all entries in active filters and empty them
+        Object.keys(this.activeFilters).forEach(category => {
+            //clear each category 
+            this.activeFilters[category].length = 0;
+
+            //toggle the categories clear button
+            this.toggleClearGroupButton(0, category);
+        });
+
+        //re-run the search
+        this.executeSearch();
+    }
+
+    /* 
+        PAGINATION METHODS
+        https://www.geeksforgeeks.org/javascript/create-a-pagination-using-html-css-and-javascript/?_x_tr_hist=true
+    */ 
+    updatePaginationResults(results) {
+        if (!Array.isArray(results))
+            return;
+
+        //recalculate total pages based on new results length and round to the largest int
+        this.totalPages = Math.ceil(results.length / this.resultsPerPage);
+
+        //reset current page
+        this.currentPage = 1;
+
+        //render the first page of results
+        this.displayPage(this.currentPage);
+    }
+
+    displayPage(page) {
+        //calculate start and end index for results to display on this page
+        const startIndex = (page - 1) * this.resultsPerPage;
+        const endIndex = Math.min(startIndex +  this.resultsPerPage, this.results.length);
+
+        //get the items to display for this page
+        const pageItems = this.results.slice(startIndex, endIndex);
+
+        //render a batch of results as page items
+        this.renderPageResults(pageItems, startIndex, endIndex);
+    }
+
+    renderPageResults(results, startIndex, endIndex) {
+        //clear any html in the search container
+        this.searchContainerElement.innerHTML = '';
+
+        //page document fragment
+        const pageFragment = new DocumentFragment();
+
+        //loop through results and render them using a template
+        results.forEach(result => {
+            //clone template contents
+            const resultCard = this.resultTemplateElement.content.cloneNode(true);
+
+            //save a normalized version of type
+            const itemType = result.type.toLowerCase().trim();
+
+            //set card class type for styling
+            resultCard.querySelector("[data-serach-item]").classList.add(itemType);
+
+            //set title and title href
+            const titleElement = resultCard.querySelector("[data-item-title]");
+            titleElement.textContent = result.title;
+            titleElement.href = result.url;
+
+            //set type text
+            resultCard.querySelector("[data-item-type]").textContent = result.type;
+
+            //set type icon
+            const iconElement = resultCard.querySelector("[data-item-icon]");
+            const iconClasses = this.getResourceTypeIcon(itemType).split(",");
+
+            //set icon classes on icon
+            iconClasses.forEach(iconClass => { 
+                iconElement.classList.add(iconClass);
+            });
+
+            //set date label
+            //https://jordanbrennan.hashnode.dev/so-many-native-javascript-date-formats
+            //https://codingnomads.com/formatting-dates-and-times-javascript-intl
+            const [year, month, day] =  result.date.split("-");
+            const usDate = new Date(`${month}-${day}-${year}`);
+            const displayDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            //set the data text
+            resultCard.querySelector("[data-item-date]").textContent = displayDateFormatter.format(usDate);
+
+            //set description text
+            resultCard.querySelector("[data-item-description]").textContent = result.description;
+
+            //set url href
+            resultCard.querySelector("[data-item-link]").href = result.url;
+
+            //append result card to page fragment
+            pageFragment.appendChild(resultCard);
+        });
+
+        //append the page fragment to the search container
+        this.searchContainerElement.appendChild(pageFragment);
+
+        //update pagination controls
+        this.updatePaginationControls();
+
+        //update pagination UI
+        this.updatePaginationSummary(startIndex, endIndex);
+    }
+
+    getResourceTypeIcon(type)
+    {
+        switch(type)
+        {
+            case "web-application":
+                return "fa-solid,fa-globe";
+                break;
+
+            case "data-code":
+                return "fa-solid,fa-database";
+                break;
+
+            case "publication":
+                return "fa-solid,fa-newspaper";
+                break;
+
+            case "code-repo":
+                return "fa-brands,fa-github";
+                break;
+
+            case "presentation":
+                return "fa-solid,fa-person-chalkboard";
+                break;
+
+            default:
+                return "fa-regular,fa-circle-question";
+                break;
+        }
+    }
+
+    goToNextPage() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+            this.displayPage(this.currentPage);
+        }
+    }
+
+    goToPreviousPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.displayPage(this.currentPage);
+        }
+    }
+
+    /* 
+        UI METHODS
+    */ 
+    toggleClearGroupButton(count, name) {
+        const clearGroupBtn = this.getClearToggleGroupBtn(name);
+
+        //check if we need to show the clear category button
+        if (count > 0) {
+            if (clearGroupBtn.classList.contains("hide")) {
+                clearGroupBtn.classList.remove("hide");
+                clearGroupBtn.removeAttribute("disabled");
+            }
+        } else {
+            clearGroupBtn.classList.add("hide");
+            clearGroupBtn.setAttribute("disabled", "");
+        }
+    }
+
+    toggleNoResults() {
+        if (this.results.length === 0) {
+            this.noResultsElement.style.display = "";
+        } else {
+            this.noResultsElement.style.display = "none";
+        }
+    }
+
+    updatePaginationSummary(startIndex, endIndex) {
+        const resultsLength = this.results.length;
+
+        //Showing (X - Y) of (Z) results
+        if (this.pageResultSummaryText)
+            this.pageResultSummaryText.textContent = (resultsLength >= 1) ? `Showing (${startIndex + 1} - ${endIndex}) of (${resultsLength}) results` : "No Results";
+
+        //Page X of Y
+        if (this.pageIndexSummaryText)
+            this.pageIndexSummaryText.textContent = (resultsLength >= 1) ? `Page ${this.currentPage} of ${this.totalPages}` : "";
+
+        //pagination progress bar
+        if (this.pageProgressBar) {
+            const progressFill = this.pageProgressBar.querySelector(".progress-bar");
+            const progress = Math.floor((resultsLength >= 1) ? (this.currentPage / this.totalPages) * 100 : 0);
+
+            this.pageProgressBar.setAttribute("aria-valuenow", progress);
+            progressFill.style.width = `${progress}%`;
+        }
+    }
+
+    updatePaginationControls() {
+        this.pagePreviousBtn.disabled = this.currentPage === 1; 
+        this.pageNextBtn.disabled = this.currentPage === this.totalPages;
+    }
+
+    /* 
+        UTIL METHODS
+    */    
+    resetSearch() {
+        this.clearSearchInput();
+        this.clearAllFilters();
+    }
+
+    getClearToggleGroupBtn(groupName) {
+        //return a button that has a name value that matches the group value, otherwise return null
+        return this.clearToggleGroupElements.find(clearBtn => clearBtn.name === groupName) ?? null;
     }
 });

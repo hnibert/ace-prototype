@@ -4,10 +4,11 @@ permalink: /resources/
 layout: default
 
 js-preload-files-ext:
- - "https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js"
+ - url: "https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js"
+   defer: false
 
 js-postload-files:
- - "/assets/scripts/components/advanced-search.js"
+ - "/assets/scripts/components/advanced-search.min.js"
 ---
 
 {%- comment -%}
@@ -44,7 +45,10 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <advanced-search search-container="#resource-search-container" no-results="#no-results-feedback" result-template="#resource-card-template" search-data="#search-data-raw">
+            <advanced-search search-data="#search-data-raw" search-container="#resource-search-container" 
+            no-results="#no-results-feedback" result-template="#resource-card-template"
+            results-per-page="5" page-summary="#page-index-summary" results-summary="#page-results-summary" 
+            page-controls="#page-controls" pagination-progress="#pagination-progress">
                 <search>
                     <form>
                         <!-- Search Title -->
@@ -65,13 +69,20 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                         <!-- Filters List -->
                         <ul class="list-unstyled list-group ps-0">
                             <!-- Resource Type Filters -->
-                            <li class="list-group-item"> 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-nowrap fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="type" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear
+                                    </button> 
+                                </div>
                                 <div id="resource-type-collapse" class="collapse show">
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
                                         {%- for type in site.data.tags.resource_types.items -%}
-                                        <li class="list-group-item border-0">
-                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="{{ site.data.tags.resource_types.group }}" value="{{ type.id | slugify }}" data-search-filter>
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
                                         </li>                                
                                         {%- endfor -%}
@@ -80,13 +91,20 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                             </li>
                             
                             <!-- Resource Region Filters -->
-                            <li class="list-group-item"> 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button> 
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="regions" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear
+                                    </button>
+                                </div>                             
                                 <div id="region-collapse" class="collapse show"> 
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
                                         {%- for region in site.regions -%}
-                                        <li class="list-group-item border-0">
-                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="{{ site.data.tags.resource_types.group }}" value="{{ region.region_name | slugify }}" data-search-filter>
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="regions" value="{{ region.region_name | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
                                         </li> 
                                         {%- endfor -%}
@@ -96,12 +114,19 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
                             <!-- Resource Theme Filters -->
                             <li class="list-group-item"> 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button> 
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="themes" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear
+                                    </button>
+                                </div>
                                 <div id="theme-collapse" class="collapse show"> 
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
                                         {%- for theme in site.data.tags.resource_themes.items -%}
-                                        <li class="list-group-item border-0">
-                                            <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="theme" data-search-category="{{ site.data.tags.resource_types.group }}" value="{{ theme.id | slugify }}" data-search-filter>
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="themes" value="{{ theme.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id | slugify }}">{{ theme.label }}</label>
                                         </li>                                  
                                         {%- endfor -%}
@@ -110,13 +135,20 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                             </li>
 
                             <!-- Resource Species Filters -->
-                            <li class="list-group-item"> 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button> 
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="search_species" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear
+                                    </button>
+                                </div>
                                 <div id="species-collapse" class="collapse"> 
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
                                         {%- for species in site.data.tags.resource_species.items -%}
-                                        <li class="list-group-item border-0">
-                                            <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="species" value="{{ species.id | slugify }}" data-search-filter>
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="search_species" value="{{ species.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id | slugify }}">{{ species.label }}</label>
                                         </li>                                
                                         {%- endfor -%}
@@ -125,13 +157,20 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                             </li>
 
                             <!-- Resource Subtopic Filters -->
-                            <li class="list-group-item"> 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button> 
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="subtopics" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear
+                                    </button>                                
+                                </div>
                                 <div id="subtopics-collapse" class="collapse"> 
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
                                         {%- for subtopic in site.data.tags.resource_subtopics.items -%}
-                                        <li class="list-group-item border-0">
-                                            <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopic" value="{{ subtopic.id | slugify }}" data-search-filter>
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopics" value="{{ subtopic.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id | slugify }}">{{ subtopic.label }}</label>
                                         </li>
                                         {%- endfor -%}
@@ -139,7 +178,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                                 </div> 
                             </li> 
                         </ul>
-                        <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button"><i class="fa-solid fa-eraser"></i> Clear Filters</button>
+                        <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button" data-clear-all-filters><i class="fa-solid fa-eraser"></i> Clear All Filters</button>
                     </form>
                 </search>
             </advanced-search>
@@ -149,55 +188,38 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
         <div class="col-12 col-lg-9">
             <div class="d-flex justify-content-between">
                 <h2 id="search-results-title" class="fs-5 fw-semibold mb-0">Results</h2>
-                <p id="page-results-summary" class="text-muted small mb-0">X of Y Results</p>
+                <p id="page-results-summary" class="text-muted small mb-0">Showing (X - Y) of (Z) results</p>
             </div>
-            <hr>
-            {%- comment -%}
-                **DISPLAY PURPOSES ONLY**
-                Build the actual HTML/rendered list of resources where the 'is-available' flag has been marked true
-                NOTE: This isn't necessary when finalized, the index map will be used to build these in production
-            {%- endcomment -%}
-            {%- assign available_resources = site.data.resources.entries | where: "is-available", true -%}
+            <hr class="mb-0">
+            <!-- Pagination Progress Bar -->
+            <div id="pagination-progress" class="progress rounded-0 positon-relative bg-white sticky-top mb-4 z-1" role="progressbar" aria-label="Pagination Progress" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="height: 4px; top: 56px;">
+                <div class="progress-bar rounded-0 bg-ace-gradient" style="width: 0% "></div>
+            </div>
+
+            <!-- Results List -->
             <ul id="resource-search-container" class="list-unstyled vstack gap-4">
-                {%- for resource in available_resources -%}
-                {%- assign resource_id = "resource-" | append: forloop.index -%}
-                <li id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
-                    <div class="card-body">
-                        {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
-                        <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
-                        <div class="d-flex justify-content-between">
-                            <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></p>
-                            <p class="card-text small text-muted fw-bold m-0">{{ resource.date | date: "%b %-d, %Y" }}</p>
-                        </div>
-                        <hr>
-                        <p class="card-text">{{ resource.description }}</p>
-                        <div class="d-flex justify-content-end">
-                            <a href="{{ resource.url }}" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </li>
-                {%- endfor -%}
+
             </ul>
 
             <!-- No Results Feedback -->
             <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
                 <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
                 <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
-                <div class="col-lg-4 mx-auto pb-5"> 
+                <div class="mx-auto pb-5"> 
                     <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
-                    <p>Try checking for typos or use broader keywords</p>
+                    <p>Try using broader keywords or less filters</p>
                     <button type="button" class="btn btn-ace-primary mt-3" aria-controls="species-search-container" data-search-reset>Clear Search</button>
                 </div> 
             </div>
 
             <hr>
             <!-- Pagination Controls -->
-            <div class="d-flex justify-content-between align-items-start">
-                <p id="page-index-summary" class="text-muted mt-0">Showing X of Y Pages</p>
+            <div id="page-controls" class="d-flex justify-content-between align-items-start">
+                <p id="page-index-summary" class="text-muted mt-0">Page X of Y</p>
                 <nav class="mt-0" aria-label="Pagination">
                     <ul class="pagination justify-content-end">
-                        <li class="page-item"><button id="previous-page" class="page-link link-dark" aria-label="Previous page">Previous</button></li>
-                        <li class="page-item"><button id="next-page" class="page-link link-dark" aria-label="Next page">Next</button></li>
+                        <li class="page-item"><button class="page-link link-dark" aria-label="Previous page" data-page-previous>Previous</button></li>
+                        <li class="page-item"><button class="page-link link-dark" aria-label="Next page" data-page-next>Next</button></li>
                     </ul>
                 </nav>           
             </div>
@@ -208,18 +230,18 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
 <!-- Templates -->
 <template id="resource-card-template">
-    <div id="" class="card resource-card rounded-0 rounded-end border-0 border-start shadow-sm">
+    <li class="card resource-card rounded-0 rounded-end border-0 border-start shadow-sm" data-serach-item>
         <div class="card-body">
-            <h5 class="card-title"><a href="#" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark"></a></h5>
+            <h5 class="card-title"><a href="#" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark" data-item-title></a></h5>
             <div class="d-flex justify-content-between">
-                <p class="card-text small text-muted fw-bold m-0"><i class=""></i> <span class="text-capitalize"></span></p>
-                <p class="card-text small text-muted fw-bold m-0"></p>
+                <p class="card-text small text-muted fw-bold m-0"><i class="" data-item-icon></i> <span class="text-capitalize" data-item-type></span></p>
+                <p class="card-text small text-muted fw-bold m-0" data-item-date></p>
             </div>
             <hr>
-            <p class="card-text"></p>
+            <p class="card-text" data-item-description></p>
             <div class="d-flex justify-content-end">
-                <a href="" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto">Open<i class="fa-solid fa-chevron-right"></i></a>
+                <a href="#" class="btn btn-sm btn-outline-dark text-decoration-none mb-0 mt-auto" data-item-link>Open<i class="fa-solid fa-chevron-right"></i></a>
             </div>
         </div>
-    </div>
+    </li>
 </template>

@@ -29,7 +29,7 @@
     {%- if page.js-preload-files -%}
       <!-- Internal JS Files-->
       {%- for js_file in page.js-preload-files -%}
-      <script src="{{ js_file | relative_url }}" type="text/javascript" defer></script>
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
       {%- endfor -%}
     {%- endif -%}
 
@@ -37,7 +37,7 @@
     {%- if layout.js-preload-files -%}
       <!-- Internal JS Files-->
       {%- for js_file in layout.js-preload-files -%}
-      <script src="{{ js_file | relative_url }}" type="text/javascript" defer></script>
+      <script src="{{ js_file | relative_url }}" type="text/javascript"></script>
       {%- endfor -%}
     {%- endif -%}
 
@@ -45,7 +45,7 @@
     {%- if page.js-preload-files-ext -%}
       <!-- External JS Files-->
       {%- for js_file in page.js-preload-files-ext -%}
-      <script src="{{ js_file }}" type="text/javascript" defer></script>
+      <script src="{{ js_file.url }}" type="text/javascript" {% if js_file.defer == true %} defer{% endif %}></script>
       {%- endfor -%}
     {%- endif -%}
 
@@ -53,7 +53,7 @@
     {%- if layout.js-preload-files-ext -%}
       <!-- External JS Files-->
       {%- for js_file in layout.js-preload-files-ext -%}
-      <script src="{{ js_file }}" type="text/javascript" defer></script>
+      <script src="{{ js_file.url }}" type="text/javascript" {% if js_file.defer == true %} defer{% endif %}></script>
       {%- endfor -%}
     {%- endif -%}
 
@@ -92,7 +92,6 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f202518bd0.js" crossorigin="anonymous"></script>
     
-    
     {%- if page.js-postload-files -%}
     <!-- Internal JS Files-->
     {%- for js_file in page.js-postload-files -%}
@@ -122,6 +121,5 @@
       <script src="{{ js_file }}" type="text/javascript"></script>
       {%- endfor -%}
     {%- endif -%}
-
   </body>
 </html>

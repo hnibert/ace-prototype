@@ -631,17 +631,30 @@ collections:
                   required: false
                 } 
 
-              #Species
+              #Search Species (Broad Species Search i.e 'cod' or 'crab')
               - { 
                   label: 'Species',
-                  name: 'species',
+                  name: 'search_species',
                   widget: 'relation',
                   collection: 'global_data',
                   file: 'resource_species',
                   value_field: 'items.*.id',
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
-                  multiple: false, #This needs addressed, can you select multiple species or should you just tag it 'multi species'?
+                  multiple: false, 
+                  required: false
+                } 
+
+              #Species
+              - { 
+                  label: 'Species',
+                  name: 'species',
+                  widget: 'relation',
+                  collection: 'global_data',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
+                  multiple: true,
                   required: false
                 } 
 
@@ -662,7 +675,7 @@ collections:
               #Subtopics
               - { 
                   label: 'Subtopics',
-                  name: 'topics',
+                  name: 'subtopics',
                   widget: 'relation',
                   collection: 'global_data',
                   file: 'resource_subtopics',
@@ -678,11 +691,11 @@ collections:
                   label: 'Authors',
                   name: 'authors',
                   widget: 'relation',
-                  multiple: true,
                   collection: 'people',
                   display_fields: [full_name],
                   search_fields: [full_name],
                   value_field: "{{slug}}",
+                  multiple: true,
                   required: false
                 }   
 

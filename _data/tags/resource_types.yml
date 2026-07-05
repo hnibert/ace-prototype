@@ -1,10 +1,8 @@
-group: type
-
 items:
   - id: code-repo
     label: "Code Repository"
 
-  - id: data-code
+  - id: data-and-code
     label: "Data & Code"
 
   - id: presentation

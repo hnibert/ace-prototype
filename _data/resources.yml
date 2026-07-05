@@ -9,12 +9,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species: 
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subsubtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -41,12 +42,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species:
     - "pollock"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -73,12 +75,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species:
     - "pollock"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -105,12 +108,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -136,12 +140,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -168,12 +173,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species: 
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -200,12 +206,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species: 
+    species: []
+    search_species:
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "fisheries-management"
     - "fishery-dependent-data"
@@ -232,10 +239,11 @@ entries:
     themes:
     - "human-dimensions"
     species: []
+    search_species: []
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "fishery-dependent-data"
     authors:
@@ -258,11 +266,12 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     authors:
     - "maurice-goodman"
@@ -285,9 +294,10 @@ entries:
     themes:
     - "physical-environment"
     species: []
+    search_species: []
     audience:
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "indicators-and-monitoring"
     authors:
     - "kirstin-holsman"
@@ -310,11 +320,12 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-mangers"
-    topics:
+    subtopics:
     - "fisheries-management"
     authors:
     - "sarah-wise"
@@ -338,11 +349,12 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-mangers"
-    topics:
+    subtopics:
     - "fisheries-management"
     authors:
     - "cody-szuwalski"
@@ -369,11 +381,12 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-mangers"
-    topics:
+    subtopics:
     - "fisheries-management"
     authors:
     - "kirstin-holsman"
@@ -396,12 +409,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-mangers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "food-webs"
     - "ecosystem-based-research"
     authors:
@@ -426,12 +440,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "pollock"
     audience:
     - "fishery-mangers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "ecosystem-based-research"
     authors:
@@ -454,12 +469,13 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-mangers"
     - "fishing-industry"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "ecosystem-based-research"
     authors:
@@ -485,11 +501,12 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "food-webs"
     - "ecosystem-based-research"
     authors:
@@ -513,10 +530,11 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience: []
-    topics:
+    subtopics:
     - "fisheries-management"
     authors:
     - "kirstin-holsman"
@@ -538,11 +556,12 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "species-distribution"
     - "ecosystem-based-research"
@@ -565,13 +584,14 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
     - "fishing-industry"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "species-distribution"
     authors:
@@ -598,12 +618,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "species-distribution"
     - "ecosystem-based-research"
@@ -631,12 +652,13 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "ecosystem-based-research"
     authors:
@@ -661,12 +683,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "ecosystem-based-research"
     authors:
@@ -692,12 +715,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "pacific-cod"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "species-distribution"
     - "ecosystem-based-research"
     authors: []
@@ -721,12 +745,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "food-webs"
     - "ecosystem-based-research"
     authors:
@@ -752,12 +777,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "rock-sole"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "ecosystem-based-research"
     authors:
@@ -786,12 +812,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     authors:
     - "kirstin-holsman"
@@ -815,8 +842,9 @@ entries:
     themes:
     - "physical-environment"
     species: []
+    search_species: []
     audience: []
-    topics:
+    subtopics:
     - "sea-ice"
     authors: []
     user-goals:
@@ -840,12 +868,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     authors: []
@@ -869,12 +898,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     - "food-webs"
@@ -900,12 +930,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     - "food-webs"
@@ -932,11 +963,12 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
-    topics:
+    subtopics:
     - "fisheries-management"
     authors:
     - "kirstin-holsman"
@@ -959,12 +991,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "food-webs"
     - "ecosystem-based-research"
     authors:
@@ -989,13 +1022,14 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
     - "fishing-industry"
-    topics:
+    subtopics:
     - "food-webs"
     - "ecosystem-based-research"
     authors:
@@ -1020,12 +1054,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "fisheries-management"
     - "ecosystem-based-research"
     authors:
@@ -1050,12 +1085,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     authors:
     - "kirstin-holsman"
@@ -1079,12 +1115,13 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     authors:
@@ -1109,11 +1146,12 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "sea-ice"
     authors:
@@ -1140,12 +1178,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "fishing-industry"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "species-distribution"
     authors:
@@ -1171,13 +1210,14 @@ entries:
     communities: []
     themes:
     - "human-dimensions"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "fishing-industry"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     - "food-webs"
@@ -1207,12 +1247,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     - "species-distribution"
@@ -1241,12 +1282,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "sea-ice"
     authors:
@@ -1270,12 +1312,13 @@ entries:
     communities: []
     themes:
     - "physical-environment"
-    species:
+    species: []
+    search_species:
     - "crab"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     authors:
@@ -1299,12 +1342,13 @@ entries:
     communities: []
     themes:
     - "marine-life"
-    species:
+    species: []
+    search_species:
     - "multiple"
     audience:
     - "fishery-managers"
     - "stock-assessment-scientist"
-    topics:
+    subtopics:
     - "ecosystem-based-research"
     - "fisheries-management"
     - "food-webs"
