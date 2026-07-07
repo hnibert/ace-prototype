@@ -41,12 +41,12 @@ customElements.define('advanced-search', class extends HTMLElement {
         //initialize minisearch with our options
         this.miniSearch = new window.MiniSearch({
             fields: ['title', 'description'], //fields to search/index for text input
-            storeFields: ['title', 'type', 'description', 'date', 'url', 'region', 'theme', 'search_species', 'subtopics'], //fields to return (we include the tag categories because we need to use them in filter during searches)
+            storeFields: ['title', 'type', 'description', 'date', 'url', 'regions', 'themes', 'search_species', 'subtopics'], //fields to return (we include the tag categories because we need to use them in filter during searches)
             searchOptions: {
                 boost: { title: 2 },    // boost title for matching
                 prefix: true,           // matches terms that start with the query
-                prefixLength: 3,        // first 3 characters must be exact
-                fuzzy: 0.2                // enable fuzzy matching
+                //prefixLength: 3,      // first 3 characters must be exact
+                fuzzy: 2                // enable fuzzy matching
             }
         });
 
