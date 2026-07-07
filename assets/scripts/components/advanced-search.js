@@ -11,7 +11,7 @@ customElements.define('advanced-search', class extends HTMLElement {
         this.RESET_SEARCH = '[data-search-reset]';
 
         /* Constants */
-        this.debounceTime = 500;
+        this.debounceTime = 500; //debounce for 500 ms
 
         //raw search list after modifying to add id
         this.searchDocs = []; 
@@ -25,7 +25,7 @@ customElements.define('advanced-search', class extends HTMLElement {
             regions: [],
             themes: [],
             search_species: [],
-            subtopics: [],
+            subtopics: []
         };
 
         //pagination
@@ -46,7 +46,7 @@ customElements.define('advanced-search', class extends HTMLElement {
                 boost: { title: 2 },    // boost title for matching
                 prefix: true,           // matches terms that start with the query
                 prefixLength: 3,        // first 3 characters must be exact
-                fuzzy: 0.2              // enable fuzzy matching
+                fuzzy: 0.2                // enable fuzzy matching
             }
         });
 
@@ -54,6 +54,9 @@ customElements.define('advanced-search', class extends HTMLElement {
         this.setupComponent();
     }
 
+    /* 
+        SETUP METHODS
+    */
     setupComponent() {
         /* 
          *  Get Provided Attributes 
@@ -184,6 +187,13 @@ customElements.define('advanced-search', class extends HTMLElement {
          * Setup Listeners based on input flags
          */
 
+        //handle enter key on form
+        this.querySelector('form').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+
         /* TEXT SEARCH */
         if (this.hasSearchInput) {
             //search text input with a debounce 
@@ -199,6 +209,7 @@ customElements.define('advanced-search', class extends HTMLElement {
                 //set timer & perform search after wait
                 timer = setTimeout(() => {this.executeSearch(); }, this.debounceTime);
             });
+
 
             //clear search input btn
             if (this.clearInputBtnElement) {
@@ -249,15 +260,19 @@ customElements.define('advanced-search', class extends HTMLElement {
             });
         }
 
+        //get url parameters to set default search from if any exist
+        //see: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+        //see: https://sentry.io/answers/how-to-get-values-from-urls-in-javascript/
+        if (window.location.search) {
+            this.setDefaultSearchFromURL();
+        }
+
         //run the 'default' search to bring up results immediately on page load
-        //TODO: url parameters to set default search
-        //https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-        //https://sentry.io/answers/how-to-get-values-from-urls-in-javascript/
         this.executeSearch();
     }
 
     /* 
-        MINISEARCH JS METHODS
+        MINISEARCH / SEARCH JS METHODS
     */
     initializeSearch(searchDocuments) {
         //console.log("Component started with search docs:", this.searchDocs);
@@ -291,7 +306,8 @@ customElements.define('advanced-search', class extends HTMLElement {
             });
         }
 
-        //console.log(this.results);
+        //build/update the search parameters endpoint
+        this.buildURLEndpoint();
 
         //toggle no results UI
         this.toggleNoResults();
@@ -309,17 +325,41 @@ customElements.define('advanced-search', class extends HTMLElement {
 
             //get the category tag array form this result
             //these match up between active filters entries and resource keys in each result
-            const resultTagCategory = result[category];
+            const resultCategoryTags = result[category];
 
             //check to make sure this field is an array, if it is see if there are any tag matches in that array
-            if (Array.isArray(resultTagCategory)) {
+            if (Array.isArray(resultCategoryTags)) {
                 //return ture/false if this array has _some_ tags that match active filters category tags
-                return resultTagCategory.some(tag => activeTags.includes(tag));
+                return resultCategoryTags.some(tag => activeTags.includes(tag));
             }
 
             //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
-            return activeTags.includes(resultTagCategory);
+            return activeTags.includes(resultCategoryTags);
         });
+    }
+
+    setDefaultSearchFromURL() {
+        //https://www.greatfrontend.com/questions/quiz/how-do-you-get-the-query-string-values-of-the-current-page-in-javascript
+        const searchQueryString = decodeURIComponent(window.location.search);
+        const searchParameters = new URLSearchParams(searchQueryString);
+
+        //set the input value from the 'query' parameter if it exist, otherwise keep it empty
+        this.searchInputElement.value = searchParameters.get("query") || "";
+
+        //go through each active filters category key and check if search parameters has a match
+        Object.keys(this.activeFilters).forEach(category => {
+            //does search parameters have this category key?
+            if (searchParameters.has(category)) {
+                //get the string value from that category parameter
+                const value = searchParameters.get(category);
+
+                //assign an array of values split on ',' if value exist, otherwise assign an empty array
+                this.activeFilters[category] = value ? value.split(",") : [];
+            }
+        });
+
+        //with active filters updated from the URL go ahead and update the checkboxes
+        this.setFilterToggles();
     }
 
     /* 
@@ -359,6 +399,29 @@ customElements.define('advanced-search', class extends HTMLElement {
         this.toggleClearGroupButton(currentCategory.length, name);
     }
 
+    setFilterToggles() {
+        //go through all active filter entries - for each category and its tags
+        Object.entries(this.activeFilters).forEach(([category, tags]) => {
+            //get all toggles with a matching category name from toggles array
+            const categoryBtns = this.searchFilterElements.filter(toggle => {
+                return toggle.name === category;
+            });
+
+            //go through each tag in tags
+            tags.forEach(tag => {
+                //go through each toggle btn
+                categoryBtns.forEach((toggle) => {
+                    //check if the toggles value is equal to the tag and check it if true
+                    if (toggle.value === tag)
+                        toggle.checked = true;
+                });
+            }); 
+            
+            //toggle the clear toggle
+            this.toggleClearGroupButton(tags.length, category);
+        });
+    }
+
     clearFilterCategory(e) {
         //get the name (category) from the clicked toggle
         const { name } = e.currentTarget;
@@ -366,6 +429,7 @@ customElements.define('advanced-search', class extends HTMLElement {
         //get the category in active filters array by name given from the toggle btn name attrb
         const currentCategory = this.activeFilters[name];
 
+        //get all toggles with a matching name from toggles array
         const categoryBtns = this.searchFilterElements.filter(toggle => {
             return toggle.name === name;
         });
@@ -381,7 +445,7 @@ customElements.define('advanced-search', class extends HTMLElement {
         //toggle clear category btn
         this.toggleClearGroupButton(currentCategory.length, name);
 
-        //re-run the search with new parameters
+        //re-run the search
         this.executeSearch();
     }
 
@@ -406,7 +470,7 @@ customElements.define('advanced-search', class extends HTMLElement {
 
     /* 
         PAGINATION METHODS
-        https://www.geeksforgeeks.org/javascript/create-a-pagination-using-html-css-and-javascript/?_x_tr_hist=true
+        see: https://www.geeksforgeeks.org/javascript/create-a-pagination-using-html-css-and-javascript/?_x_tr_hist=true
     */ 
     updatePaginationResults(results) {
         if (!Array.isArray(results))
@@ -470,8 +534,8 @@ customElements.define('advanced-search', class extends HTMLElement {
             });
 
             //set date label
-            //https://jordanbrennan.hashnode.dev/so-many-native-javascript-date-formats
-            //https://codingnomads.com/formatting-dates-and-times-javascript-intl
+            //see: https://jordanbrennan.hashnode.dev/so-many-native-javascript-date-formats
+            //see: https://codingnomads.com/formatting-dates-and-times-javascript-intl
             const [year, month, day] =  result.date.split("-");
             const usDate = new Date(`${month}-${day}-${year}`);
             const displayDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -507,7 +571,7 @@ customElements.define('advanced-search', class extends HTMLElement {
                 return "fa-solid,fa-globe";
                 break;
 
-            case "data-code":
+            case "data-and-code":
                 return "fa-solid,fa-database";
                 break;
 
@@ -606,5 +670,56 @@ customElements.define('advanced-search', class extends HTMLElement {
     getClearToggleGroupBtn(groupName) {
         //return a button that has a name value that matches the group value, otherwise return null
         return this.clearToggleGroupElements.find(clearBtn => clearBtn.name === groupName) ?? null;
+    }
+
+    /* 
+        URL - SEARCH PARAMETER METHODS
+    */    
+    //see: https://gomakethings.com/articles/how-to-build-a-query-string-from-an-object-of-data-with-vanilla-js/
+    buildURLQuery(data) {
+        //don't add empty parameters
+        //see: https://stackoverflow.com/questions/62989310/how-to-remove-empty-query-params-using-urlsearchparams?rq=3
+        let searchParameters = new URLSearchParams(data);
+        let emptyNullKeys = [];
+
+        //go through search param entries and check for emtpy values
+        //value has to be before key...
+        searchParameters.forEach((value, key) => {
+            if (value === '') {
+                emptyNullKeys.push(key);
+            }
+        });
+
+        //delete empty keys from search params
+        emptyNullKeys.forEach(key => {
+            searchParameters.delete(key);
+        });
+
+	    return searchParameters.toString();
+    }
+
+    buildURLEndpoint() {
+        //get base path
+        const basePath = window.location.pathname;
+
+        //normalize search query and current page number
+        const query = this.searchInputElement.value.toLowerCase().trim();
+        //const page = this.currentPage || 1; 
+
+        //build a new object containing all our search parameters together
+        const finalParameterObject = {
+            query, //get the search query
+            ...this.activeFilters //clone active filters object ot here
+            //page
+        };
+
+        //build a new url query with all the info it needs
+        const newQueries = `${this.buildURLQuery(finalParameterObject)}`;
+
+        //build the final endpoint
+        const endpoint = `${basePath}?${newQueries}`;
+
+        //update the address bar without reloading
+        window.history.replaceState(null, '', endpoint);
     }
 });

@@ -6,6 +6,11 @@
       ...
     }
 -------------- */
+
+:root {
+  --partner-count: 11;
+}
+
 .partner-section {
     background-color: ghostwhite;
     min-height: 320px;
@@ -43,6 +48,10 @@
   );
 }
 
+.partner-wrapper:hover .partner-item {
+  animation-play-state: paused;
+}
+
 @keyframes scrollLeft {
   to {
     left: -200px;
@@ -61,6 +70,7 @@
   animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  transform: animation-play-state 0.35s ease;
 }
 
 .partner-item img {
@@ -69,6 +79,11 @@
   object-fit: contain;
 }
 
+.partner-logo {
+  animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - var(--index)) * -1);
+}
+
+/*
 .partner1 {
   animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 1) * -1);
 }
@@ -112,3 +127,4 @@
 .partner11 {
   animation-delay: calc(30s / var(--partner-count) * (var(--partner-count) - 11) * -1);
 }
+  */
