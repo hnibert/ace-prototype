@@ -1,6 +1,6 @@
 # Schema Drift Report
 
-- Generated: 2026-07-09 15:50:30
+- Generated: 2026-07-09 16:13:32
 - Repository: C:/Users/jean.lee/Work/GitHub/ace-prototype
 - Collections scanned: posts, people, species, regions, communities
 
@@ -11,7 +11,7 @@
 - Missing required fields: 0
 - Unused fields: 28
 - Taxonomy inconsistencies: 3
-- Duplicate concepts: 32
+- Duplicate concepts: 1
 
 ## Inconsistent field names
 
@@ -114,38 +114,7 @@
 
 ## Duplicate concepts represented by different values
 
-- posts: field 'updated' uses similar values 2026-06-08 17:30 | 2026-07-02 17:30
-- posts: field 'updated' uses similar values 2026-06-08 17:30 | 2026-07-02 17:30
-- posts: field 'updated' uses similar values 2026-06-08 17:30 | 2026-07-02 17:30
-- posts: field 'series_order' uses similar values 1 | 2
 - people: field 'projects' uses similar values {"title" => "Alaska Climate Integrated Modeling (ACLIM)", "role" => "Lead Principal Investigator"} | {"title" => "Alaska Climate Integrated Modeling (ACLIM)", "role" => "Lead Principle Investigator"}
-- people: field 'feature_order' uses similar values 2 | 3
-- people: field 'feature_order' uses similar values 1 | 2
-- people: field 'feature_order' uses similar values 2 | 4
-- people: field 'feature_order' uses similar values 2 | 5
-- people: field 'feature_order' uses similar values 1 | 3
-- people: field 'feature_order' uses similar values 3 | 4
-- people: field 'feature_order' uses similar values 3 | 5
-- people: field 'feature_order' uses similar values 1 | 4
-- people: field 'feature_order' uses similar values 1 | 5
-- people: field 'feature_order' uses similar values 4 | 5
-- regions: field 'display_order' uses similar values 3 | 4
-- regions: field 'display_order' uses similar values 1 | 3
-- regions: field 'display_order' uses similar values 2 | 3
-- regions: field 'display_order' uses similar values 1 | 4
-- regions: field 'display_order' uses similar values 2 | 4
-- regions: field 'display_order' uses similar values 1 | 2
-- communities: field 'calendar_file_size' uses similar values 132 KB | 134 KB
-- communities: field 'calendar_file_size' uses similar values 132 KB | 145 KB
-- communities: field 'calendar_file_size' uses similar values 132 KB | 145 KB
-- communities: field 'calendar_file_size' uses similar values 134 KB | 145 KB
-- communities: field 'calendar_file_size' uses similar values 134 KB | 145 KB
-- communities: field 'display_order' uses similar values 1 | 2
-- communities: field 'display_order' uses similar values 1 | 3
-- communities: field 'display_order' uses similar values 1 | 4
-- communities: field 'display_order' uses similar values 2 | 3
-- communities: field 'display_order' uses similar values 2 | 4
-- communities: field 'display_order' uses similar values 3 | 4
 
 ## Recommendations for normalizing the schema
 

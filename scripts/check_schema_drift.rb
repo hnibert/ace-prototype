@@ -10,10 +10,19 @@ CONFIG_PATH = File.join(ROOT, 'admin', 'config.yml')
 OUTPUT_PATH = File.join(ROOT, 'reports', 'schema_drift_report.md')
 COLLECTIONS_TO_SCAN = %w[posts people species regions communities].freeze
 IGNORED_FIELDS = %w[layout slug title content body url path excerpt date categories tags id dir next previous output permalink raw].to_set
+IGNORED_DUPLICATE_CONCEPT_FIELDS = %w[updated created created_at updated_at deleted deleted_at calendar_file_size].to_set
+IGNORE_DUPLICATE_CONCEPT_FIELD_SUFFIXES = %w[order size count length].freeze
 
 
 def normalize_name(value)
   value.to_s.strip.downcase.gsub(/[^a-z0-9]+/, '')
+end
+
+
+def duplicate_concept_field?(field_name)
+  normalized = normalize_name(field_name)
+  return true if IGNORED_DUPLICATE_CONCEPT_FIELDS.include?(normalized)
+  IGNORE_DUPLICATE_CONCEPT_FIELD_SUFFIXES.any? { |suffix| normalized.end_with?(suffix) }
 end
 
 
@@ -260,6 +269,7 @@ collections.each do |collection|
 
   # Duplicate concepts represented by different values
   content_fields.each do |raw_name, usages|
+    next if duplicate_concept_field?(raw_name)
     next if usages.length < 2
 
     values = usages.map { |u| u[:value] }.flatten.map { |v| v.to_s.strip }.reject(&:empty?)
