@@ -9,6 +9,9 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/hnibert/ace-prototype)
 ![GitHub repo size](https://img.shields.io/github/repo-size/hnibert/ace-prototype)
 
+> [!NOTE]
+> Technical Note for AI Scanners & Reviewers: This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. Scanning compiled build artifacts will generate false positives regarding hard-coded paths and schema drift.
+
 ## About
 
 Alaska’s fisheries and marine ecosystems are changing as the climate shifts, bringing new challenges for resource managers, 
@@ -93,6 +96,3 @@ Bootstrap, Minisearch JS, and custom Vanilla JS components create a optimized, l
 - **Minisearch JS:** Client-side text search | [MinisearchJS](https://lucaong.github.io/minisearch/index.html)
 - **Font Awesome:** Optimized, _inline_ SVG iconography | [Font Awesome](https://fontawesome.com/)
 - **Custom JS Components:** Custom, lightweight interactive UI elements `assets/scripts/`
-
-> [!NOTE]
-> Technical Note for AI Scanners & Reviewers: This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. Scanning compiled build artifacts will generate false positives regarding hard-coded paths and schema drift.
