@@ -6,7 +6,7 @@ css-files:
  - /assets/css/partners.css
 
 js-postload-files:
- - "/assets/scripts/components/search-funnel.js"
+ - "/assets/scripts/components/search-funnel.min.js"
 ---
 <!-- Hero - Call To Action -->
 {%- include hero-action.html 
@@ -28,7 +28,7 @@ link_text="Learn More" -%}
                 <search-funnel>
                     <form id="search-funnel-form">
                         <!-- Search Title -->
-                        <div class="d-flex text-center position-absolute top-0 start-50 translate-middle  z-3">
+                        <div class="d-flex text-center position-absolute top-0 start-50 translate-middle z-3">
                             <div class="search-title position-relative rounded-pill py-2 px-4 mx-auto">
                                 <h2 id="search-funnel-title" class="fs-5 fw-bold m-0">Search Your Way</h2>
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="position-absolute top-100 start-50 translate-middle mt-1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -307,83 +307,86 @@ link_text="Learn More" -%}
 
 <!-- Who We Are -->
 <section aria-labelledby="people-title" aria-roledescription="carousel" aria-label="Our Team">
-    <div class="px-4 pt-5 mt-5 text-center">
-        <h1 id="people-title" class="display-5 fw-bold text-body-emphasis">Our Team</h1> 
-        <div class="col-lg-4 mx-auto"> 
-            <p class="lead mb-4">Get to know us and see how our work is shaping the future of fisheries</p>
-            <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-dark icon-link text-decoration-none"><i class="fa-solid fa-users"></i> Meet Our People</a> 
-        </div> 
-    </div>
 
-    <!-- Horizontal Rule -->
-    <div class="container mt-0 pt-0">
-        <hr>
-    </div>
+    <div class="container">
 
-    <!-- People Section -->
-    <div class="container pb-5">
-        <!-- People Carousel -->
-        <div id="people-carousel" class="carousel slide carousel-fade">
-            <div id="people-container" class="carousel-inner d-flex align-items-stretch">
-                {%- assign people = site.people | where: "feature", true -%}
-                {%- assign sorted_people = people | sort: "feature_order" -%}
-                {%- for person in sorted_people -%}
-                {%- if person.feature_order -%}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <div class="card h-100 shadow-sm">
-                        <div class="row g-0 align-items-center">
-                            <!-- Image Column -->
-                            <div class="col-md-4 d-flex justify-content-center p-4">
-                                <img src="{{ person.main_img_url }}" 
-                                    class="rounded-circle shadow-sm object-fit-cover" 
-                                    width="256" 
-                                    height="256" 
-                                    alt="{{ person.main_img_alt }}">
-                            </div>
-                            <!-- Content Column -->
-                            <div class="col-md-8">
-                                <div class="card-body p-4">
-                                    <h3 class="card-title h4 fw-bold mb-1">{{ person.full_name }}</h3>
-                                    
-                                    <p class="card-text text-secondary small mb-3">
-                                        <span class="fw-semibold d-block text-dark">{{ person.position }}</span>
-                                        <span>{{ person.affiliation }}</span>
-                                    </p>
+        <div class="px-4 pt-5 mt-5 text-center">
+            <h1 id="people-title" class="display-5 fw-bold text-body-emphasis">Our Team</h1> 
+            <div class="col-lg-4 mx-auto"> 
+                <p class="lead mb-4">Get to know us and see how our work is shaping the future of fisheries</p>
+                <a href="{{ '/people/' | relative_url }}" class="btn btn-outline-dark icon-link text-decoration-none"><i class="fa-solid fa-users"></i> Meet Our People</a> 
+            </div> 
+        </div>
 
-                                    <div class="d-flex flex-wrap gap-2 mb-3">
-                                        {%- for area in person.research_areas -%}
-                                            <span class="badge text-bg-light border text-secondary fw-normal">{{ area }}</span>
-                                        {%- endfor -%}
-                                    </div> 
-                                    <hr class="text-black-50 my-3">
-                                    <p class="card-text text-muted">
-                                        {{ person.short_text }}
-                                    </p>
-                                    <a href="{{ person.url | relative_url }}" class="icon-link text-decoration-none">Read more <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a> 
+        <!-- Horizontal Rule -->
+        <div class="container mt-0 pt-0">
+            <hr>
+        </div>
+
+        <!-- People Section -->
+        <div class="container pb-5">
+
+            <!-- People Carousel -->
+            <div id="people-carousel" class="carousel slide carousel-fade">
+                <div id="people-container" class="carousel-inner d-flex align-items-stretch">
+                    {%- assign people = site.people | where: "feature", true -%}
+                    {%- assign sorted_people = people | sort: "feature_order" -%}
+                    {%- for person in sorted_people -%}
+                    {%- if person.feature_order -%}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="card h-100 shadow-sm">
+                            <div class="row g-0 align-items-center">
+                                <!-- Image Column -->
+                                <div class="col-md-4 d-flex justify-content-center p-4">
+                                    <img src="{{ person.main_img_url }}" class="rounded-circle shadow-sm object-fit-cover" width="256" height="256" alt="{{ person.main_img_alt }}">
+                                </div>
+
+                                <!-- Content Column -->
+                                <div class="col-md-8">
+                                    <div class="card-body p-4">
+                                        <h3 class="card-title h4 fw-bold mb-1">{{ person.full_name }}</h3>
+                                        
+                                        <p class="card-text text-secondary small mb-3">
+                                            <span class="fw-semibold d-block text-dark">{{ person.position }}</span>
+                                            <span>{{ person.affiliation }}</span>
+                                        </p>
+
+                                        <div class="d-flex flex-wrap gap-2 mb-3">
+                                            {%- for area in person.research_areas -%}
+                                                <span class="badge text-bg-light border text-secondary fw-normal">{{ area }}</span>
+                                            {%- endfor -%}
+                                        </div> 
+                                        <hr class="text-black-50 my-3">
+                                        <p class="card-text text-muted">
+                                            {{ person.short_text }}
+                                        </p>
+                                        <a href="{{ person.url | relative_url }}" class="icon-link text-decoration-none">Read more <i class="fa-solid fa-sm fa-arrow-right mt-1"></i></a> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {%- endif -%}
+                    {%- endfor -%}
                 </div>
-                {%- endif -%}
-                {%- endfor -%}
             </div>
+
         </div>
-    </div>
 
-    <!-- Carousel Controls -->
-    <div class="container text-center" role="group" aria-label="Carousel navigation">
-        <!-- Prev Button -->
-        <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="prev">
-            <i class="fa-solid fa-chevron-left"></i>
-            <span class="visually-hidden">Previous</span>
-        </button>
+        <!-- Carousel Controls -->
+        <div class="container text-center" role="group" aria-label="Carousel navigation">
+            <!-- Prev Button -->
+            <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="prev">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
 
-        <!-- Next Button -->
-        <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="next">
-            <i class="fa-solid fa-chevron-right"></i>
-            <span class="visually-hidden">Next</span>
-        </button>
+            <!-- Next Button -->
+            <button class="btn btn-outline-dark" type="button" data-bs-target="#people-carousel" data-bs-slide="next">
+                <i class="fa-solid fa-chevron-right"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </section>
 

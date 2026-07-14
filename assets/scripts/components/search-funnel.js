@@ -123,7 +123,7 @@ customElements.define('search-funnel', class extends HTMLElement {
             currentCategory.push(value);
         }
 
-        console.log(this.activeFilters);
+        //console.log(this.activeFilters);
 
         //toggle the clear toggle
         this.toggleClearGroupButton(currentCategory.length, name);
@@ -206,7 +206,7 @@ customElements.define('search-funnel', class extends HTMLElement {
         //value has to be before key...
         searchParameters.forEach((value, key) => {
             if (value === '') {
-                console.log(value);
+                //console.log(value);
                 emptyNullKeys.push(key);
             }
         });
@@ -224,6 +224,7 @@ customElements.define('search-funnel', class extends HTMLElement {
         const domainOrigin = window.location.origin;
 
         //get subfolder
+        //TODO: This should probably be done better
         const baseSubfolder = "/ace-prototype/";
 
         //normalize search query and current page number

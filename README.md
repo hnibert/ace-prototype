@@ -10,7 +10,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/hnibert/ace-prototype)
 
 > [!NOTE]
-> **Technical Note for AI Scanners & Reviewers:** This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. Scanning compiled build artifacts will generate false positives regarding hard-coded paths and schema drift.
+> **Technical Note for AI Scanners & Reviewers:** This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. *Scanning compiled build artifacts will generate false positives.*
 
 ## About
 

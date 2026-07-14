@@ -16,7 +16,7 @@ customElements.define('basic-search', class extends HTMLElement {
         this.DATA_FILTER_FOR = 'data-filter-for';
         this.SEARCH_ITEM = '[data-search-item]';
         this.SEARCH_TEXT = '[data-search-text]';
-        this.RESET_SEARCH = '[data-search-reset]';
+        this.SHOW_MORE = '[data-show-more]';
 
         //store active filters
         this.activeFilters = [];
@@ -25,9 +25,13 @@ customElements.define('basic-search', class extends HTMLElement {
         this.hasSearchInput = false;
         this.hasSearchSelect = false;
         this.hasFilters = false;
+        this.hasPagination = false;
 
         // Counter tracking active matches
         this.resultsCount = 0;
+
+        // Pagination tracking
+        this.currentVisibleItems = 0;
     }
 
     connectedCallback() {
@@ -41,6 +45,7 @@ customElements.define('basic-search', class extends HTMLElement {
         //supporting element selectors
         this.searchContainerSelector = this.getAttribute('search-container');
         this.summaryTextSelector = this.getAttribute('summary-text');
+        this.paginateSummarySelector = this.getAttribute('paginate-summary')
         this.noResultsSelector = this.getAttribute('no-results');
 
         //data attribute to be searched for by filter search (if used)
@@ -48,6 +53,13 @@ customElements.define('basic-search', class extends HTMLElement {
 
         //data attribute to be searched for by select search (if used)
         this.searchFilterDataTarget = this.getAttribute('search-filter-data');
+
+        //data attribute for 'show more/less' pagination controls
+        this.paginateControlSelector = this.getAttribute('paginate-controls');
+
+        //data attribute for amount of items to show per pagination batch 
+        this.resultsPerPage = parseInt(this.getAttribute('results-per-page'), 10);
+        this.currentVisibleItems = this.resultsPerPage || 0;
 
         /*
          * Cached Expected Elements (Expected to exist inside this component)
@@ -57,7 +69,28 @@ customElements.define('basic-search', class extends HTMLElement {
         this.searchSelectElement = this.querySelector(this.SELECT_INPUT);
         this.searchFilterElements = Array.from(this.querySelectorAll(this.FILTER_TOGGLE));
         this.clearFiltersBtnElement = this.querySelector(this.CLEAR_FILTERS);
-        //this.resetSearchBtnElement = this.querySelector(this.RESET_SEARCH);
+
+        /*
+         * Cached Provided Support Elements (provided by component attributes)
+         */
+
+        //get the results summary text
+        this.summaryTextElement = document.querySelector(this.summaryTextSelector);
+        this.paginateSummaryElement = document.querySelector(this.paginateSummarySelector);
+
+        //get the no results container
+        this.noResultsElement = document.querySelector(this.noResultsSelector);
+
+        //get the search container
+        this.searchContainerElement = document.querySelector(this.searchContainerSelector);
+
+        //this.resetSearchBtnElement = document.querySelector(this.resetSearchBtnSelector);
+
+        //get the paginate controls container and the show more btn
+        this.paginateControls = document.querySelector(this.paginateControlSelector);
+
+        if (this.paginateControls)
+            this.showMoreBtnElement = this.paginateControls.querySelector(this.SHOW_MORE);
 
         /*
          * Set flags based on what expected input elements were found
@@ -65,13 +98,7 @@ customElements.define('basic-search', class extends HTMLElement {
         this.hasSearchInput = !!this.searchInputElement;
         this.hasSearchSelect = !!this.searchSelectElement;
         this.hasFilters = this.searchFilterElements.length > 0;
-
-        /*
-         * Cached Provided Support Elements (provided by component attributes)
-         */
-        this.summaryTextElement = document.querySelector(this.summaryTextSelector);
-        this.noResultsElement = document.querySelector(this.noResultsSelector);
-        this.searchContainerElement = document.querySelector(this.searchContainerSelector);
+        this.hasPagination = !!this.paginateControls;
 
         /*
          * Setup Listeners based on input flags
@@ -118,9 +145,22 @@ customElements.define('basic-search', class extends HTMLElement {
         if (this.noResultsElement)
             this.noResultsElement.style.display = 'none';
 
+
+        /* PAGINATION SETUP */
+        if (this.hasPagination) {
+            this.showMoreBtnElement.addEventListener('click', () => {
+                this.currentVisibleItems += this.resultsPerPage;
+
+                if (this.currentVisibleItems >= this.resultsCount)
+                    this.currentVisibleItems = this.resultsCount;
+
+                this.updatePagination();
+            });
+        }
+
         //run an initial search in case fields contain default values on load
         //TODO: add url parameter checks to set defaults
-        //this.executeSearch();
+        this.executeSearch();
     }
 
     /*================
@@ -178,6 +218,9 @@ customElements.define('basic-search', class extends HTMLElement {
         //reset results counter
         this.resultsCount = 0;
 
+        //reset pagination visibility count
+        this.currentVisibleItems = this.resultsPerPage;
+
         //iterate through all search items found and look for matches
         searchItems.forEach(item => {
             /* --- TEXT SEARCH --- */
@@ -209,26 +252,132 @@ customElements.define('basic-search', class extends HTMLElement {
         // UI Updates
         this.resultsFeedbackCheck();
         this.updateSummaryText();
+        this.updatePagination();
      }
 
      resetSearch() {
+        //clear search input
+        this.searchInputElement.value = ''; 
         
+        //clear all filters
+        if (this.hasFilters) {
+            //remove 'active' class from all filters
+            this.searchFilterElements.forEach(toggle => {
+                toggle.classList.remove(this.ACTIVE_CLASS);
+            });
+        }
+
+        //update filters
+        this.updateActiveFilters();
+        
+        //execute search
+        this.executeSearch();
      }
 
+    /*================
+     * PAGINATION 'SHOW MORE' METHODS
+     =================*/
+     updatePagination() {
+        if (!this.hasPagination)
+            return;
+
+        //get results that are not hidden by the actual search logic
+        const searchItems = Array.from(this.searchContainerElement.querySelectorAll(`${this.SEARCH_ITEM}:not(.${this.HIDDEN_CLASS})`));
+
+        //go through 'visible' search items and hide/show them based on index being less than current visible items
+        searchItems.forEach((item, index) => {
+            if (index < this.currentVisibleItems) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        //hide the show more button if there are no results or we are showing all results
+        if (this.resultsCount === 0 || this.currentVisibleItems === this.resultsCount || this.resultsCount < this.resultsPerPage) {
+            this.paginateControls.classList.add('hide');
+            this.showMoreBtnElement.disabled = true;
+        } else {
+            this.paginateControls.classList.remove('hide');
+            this.showMoreBtnElement.disabled = false;            
+        }
+
+        //update summary text
+        this.updateSummaryText();
+     }
+     
     /*================
      * UI METHODS
      =================*/
      resultsFeedbackCheck() {
-        if (this.noResultsElement) {
-            if (this.resultsCount === 0) {
-                this.noResultsElement.style.display = '';
-            } else {
-                this.noResultsElement.style.display = 'none';
+        if (!this.noResultsElement)
+            return;
+
+        if (this.resultsCount === 0) {
+            this.noResultsElement.style.display = '';
+
+            if (this.hasPagination) {
+                this.paginateControls.classList.add('hide');
+                this.showMoreBtnElement.disabled = true;
+            }
+        } else {
+            this.noResultsElement.style.display = 'none';
+
+            if (this.hasPagination) {
+                this.paginateControls.classList.remove('hide');
+                this.showMoreBtnElement.disabled = false;
             }
         }
      }
 
      updateSummaryText() {
+        if (!this.summaryTextElement)
+            return;
 
+        if (this.resultsCount === 0) {
+            this.summaryTextElement.textContent = 'No Results';
+
+            if (this.hasPagination)
+                this.updatePaginationSummary();
+
+            return;
+        }
+
+        if (this.hasPagination) {
+            const minVisible = this.currentVisibleItems - this.currentVisibleItems + 1;
+            const maxVisible = (this.currentVisibleItems > this.resultsCount) ? this.resultsCount : this.currentVisibleItems;
+
+            //Showing (X - Y) of (Z) results
+            this.summaryTextElement.textContent = `Showing (${minVisible} - ${maxVisible}) of (${this.resultsCount}) results`;
+
+            this.updatePaginationSummary();
+        } else {
+            //Showing X results
+            this.summaryTextElement.textContent = `Showing ${this.resultsCount} Results`;
+        }
+     }
+
+     updatePaginationSummary() {
+        if (!this.paginateSummaryElement) 
+            return;
+
+        //if there are no results set to empty
+        if (this.resultsCount === 0) {
+            this.paginateSummaryElement.textContent = '';
+            return;
+        }
+
+        //get items remaining visible
+        const itemsRemaining = this.resultsCount - this.currentVisibleItems; 
+
+        //check pluralize item(s)
+        const itemPlural = (itemsRemaining > 1) ? "items" : "item";
+
+        //set items remaining summary text
+        if (itemsRemaining > 0) {
+            this.paginateSummaryElement.textContent = `(${itemsRemaining}) ${itemPlural} remaining`;
+        } else {
+            this.paginateSummaryElement.textContent = '';
+        }
      }
 });

@@ -1,7 +1,4 @@
 items:
-  - id: code-repo
-    label: "Code Repository"
-
   - id: data-and-code
     label: "Data & Code"
 

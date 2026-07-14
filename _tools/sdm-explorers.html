@@ -19,7 +19,7 @@ description: >-
 external_url: null
 
 js-postload-files:
- - "/assets/scripts/components/basic-search.min.js"
+ - "/assets/scripts/components/basic-search.js"
 ---
 
 <!-- Hero -->
@@ -33,7 +33,7 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
 <!-- Breadcrumb -->
 {%- include breadcrumbs.html -%}
 
-<basic-search search-container="#sdm-search-container" search-selector-data="data-sdm-location" search-filter-data="data-sdm-species" summary-text="#sdm-search-summary" no-results="#no-results-feedback">
+<basic-search search-container="#sdm-search-container" search-selector-data="data-sdm-location" search-filter-data="data-sdm-species" summary-text="#results-summary" no-results="#no-results-feedback">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
         <h2 id="filter-heading" class="visually-hidden">
@@ -99,7 +99,7 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
                 <div class="col-12 d-flex flex-wrap gap-2">
                     {%- assign species = site.data.sdm_explorers.entries | map: 'species' | compact | uniq -%}
                     {%- for animal in species -%}
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="{{ animal | slugify }}">{{ animal }}</button>
+                    <button type="button" class="btn rounded-pill bg-body-secondary" data-bs-toggle="button" data-search-filter data-filter-for="{{ animal | slugify }}">{{ animal }}</button>
                     {%- endfor -%}
                 </div>
             </div>
@@ -108,92 +108,91 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
 </basic-search>
 
 <!-- Search List -->
-<section class="container mb-5" aria-labelledby="search-title">
-    <h2 id="search-title" class="visually-hidden">
-        SDM Search Results
-    </h2>
+<section aria-labelledby="search-title">
+    <div  class="container pb-5 mb-5">
 
-    <!-- Results Summary -->
-    <div id="sdm-search-summary" class="mb-4" aria-live="polite" aria-atomic="true">
-        <!-- Summary Text -->
-        <p class="fw-bold"><span class="summary-count"></span><span class="summary-input"></span><span class="summary-tags text-capitalize fst-italic"></span><span class="summary-role"></span></p>
-    </div>
+        <!-- Results/Pagination Summary -->
+        <h2 id="search-title" class="visually-hidden">SDM Search Results</h2>
+        <p id="results-summary" class="text-muted small mb-0"></p>
+        <hr>
 
-    <!-- Search Container -->
-    <ul id="sdm-search-container" class="list-unstyled vstack gap-4">
-        {%- for sdm in site.data.sdm_explorers.entries -%}
-        <li class="card resource-card border-ace-channel border-0 border-start rounded-0 rounded-end shadow-sm" data-sdm-location="{{ sdm.location | slugify | replace: '-alaska', '' }}" data-sdm-species="{{ sdm.species | slugify }}" data-search-item>
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <!-- Title -->
-                    <h5 class="card-title"><a href="{{ sdm.external_url }}" class="text-decoration-none link-dark" data-search-text>{{ sdm.title }}</a></h5>
-                    
-                    <!-- App Languages -->
-                    {%- if sdm.version -%}
-                    <div class="d-flex justify-content-start gap-1">
-                        <div class="d-flex flex-column">
-                            <!-- Version -->
-                            <span class="badge rounded-pill bg-secondary-subtle flex-nowrap text-secondary small fw-normal">Version {{ sdm.version }}</span>
+        <!-- Search Container -->
+        <ul id="sdm-search-container" class="list-unstyled vstack gap-4 py-2">
+            {%- for sdm in site.data.sdm_explorers.entries -%}
+            <li class="card resource-card border-ace-channel border-0 border-start rounded-0 rounded-end shadow-sm" data-sdm-location="{{ sdm.location | slugify | replace: '-alaska', '' }}" data-sdm-species="{{ sdm.species | slugify }}" data-search-item>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <!-- Title -->
+                        <h5 class="card-title"><a href="{{ sdm.external_url }}" class="text-decoration-none link-dark" data-search-text>{{ sdm.title }}</a></h5>
+                        
+                        <!-- App Languages -->
+                        {%- if sdm.version -%}
+                        <div class="d-flex justify-content-start gap-1">
+                            <div class="d-flex flex-column">
+                                <!-- Version -->
+                                <span class="badge rounded-pill bg-secondary-subtle flex-nowrap text-secondary small fw-normal">Version {{ sdm.version }}</span>
+                            </div>
                         </div>
+                        {%- endif -%}
                     </div>
-                    {%- endif -%}
-                </div>
 
-                <!-- Location / Species -->
-                <div class="d-flex justify-content-between mt-2">
-                    <div class="d-flex justify-content-start align-items-center">
-                        {%- if sdm.location -%}
-                        <p class="card-text small text-muted fw-bold icon-link m-0">
+                    <!-- Location / Species -->
+                    <div class="d-flex justify-content-between mt-2">
+                        <div class="d-flex justify-content-start align-items-center">
+                            {%- if sdm.location -%}
+                            <p class="card-text small text-muted fw-bold icon-link m-0">
+                                <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/>
+                                </svg>
+                                <span class="text-capitalize">{{ sdm.location }}</span>
+                            </p>
+                            {%- endif -%}
+
+                            {%- if sdm.species -%}
+                            <span class="text-muted">&nbsp;•&nbsp;</span>
+                            <p class="card-text small text-muted fw-bold m-0">{{ sdm.species }}</p>
+                            {%- endif -%}
+                        </div>
+
+                        {%- if sdm.languages.size > 0 -%}
+                        <!-- Languages / Tech -->
+                        <div class="d-flex flex-wrap justify-content-start gap-2 my-0">
+                            {%- for language in sdm.languages -%}
+                            <span class="badge bg-light text-dark border text-wrap text-start fs-7">{{ language }}</span>
+                            {%- endfor -%}
+                        </div>
+                        {%- endif -%}
+                    </div>   
+
+                    <hr class="mt-2">
+
+                    <p class="card-text">{{ sdm.description }}</p>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        {%- if sdm.download_url -%}
+                        <a href="{{ sdm.download_url }}" class="btn btn-sm btn-outline-dark icon-link text-decoration-none" download>Download {%- if sdm.download_size -%}&nbsp;(135Kb){%- endif -%}
                             <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                <path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/>
+                                <path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 306.7L246.6 265.3C234.1 252.8 213.8 252.8 201.3 265.3C188.8 277.8 188.8 298.1 201.3 310.6L297.3 406.6C309.8 419.1 330.1 419.1 342.6 406.6L438.6 310.6C451.1 298.1 451.1 277.8 438.6 265.3C426.1 252.8 405.8 252.8 393.3 265.3L352 306.7L352 96zM160 384C124.7 384 96 412.7 96 448L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 448C544 412.7 515.3 384 480 384L433.1 384L376.5 440.6C345.3 471.8 294.6 471.8 263.4 440.6L206.9 384L160 384zM464 440C477.3 440 488 450.7 488 464C488 477.3 477.3 488 464 488C450.7 488 440 477.3 440 464C440 450.7 450.7 440 464 440z"/>
                             </svg>
-                            <span class="text-capitalize">{{ sdm.location }}</span>
-                        </p>
+                        </a>
                         {%- endif -%}
-
-                        {%- if sdm.species -%}
-                        <span class="text-muted">&nbsp;•&nbsp;</span>
-                        <p class="card-text small text-muted fw-bold m-0">{{ sdm.species }}</p>
-                        {%- endif -%}
+                        <a href="{{ sdm.external_url }}" class="btn btn-sm btn-outline-dark icon-link icon-link-hover gap-0 text-decoration-none" target="_blank" rel="noopener noreferrer">Open<svg class="bi mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
                     </div>
-
-                    {%- if sdm.languages.size > 0 -%}
-                    <!-- Languages / Tech -->
-                    <div class="d-flex flex-wrap justify-content-start gap-2 my-0">
-                        {%- for language in sdm.languages -%}
-                        <span class="badge bg-light text-dark border text-wrap text-start fs-7">{{ language }}</span>
-                        {%- endfor -%}
-                    </div>
-                    {%- endif -%}
-                </div>   
-
-                <hr class="mt-2">
-
-                <p class="card-text">{{ sdm.description }}</p>
-
-                <div class="d-flex justify-content-end gap-2">
-                    {%- if sdm.download_url -%}
-                    <a href="{{ sdm.download_url }}" class="btn btn-sm btn-outline-dark icon-link text-decoration-none" download>Download {%- if sdm.download_size -%}&nbsp;(135Kb){%- endif -%}
-                        <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                            <path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 306.7L246.6 265.3C234.1 252.8 213.8 252.8 201.3 265.3C188.8 277.8 188.8 298.1 201.3 310.6L297.3 406.6C309.8 419.1 330.1 419.1 342.6 406.6L438.6 310.6C451.1 298.1 451.1 277.8 438.6 265.3C426.1 252.8 405.8 252.8 393.3 265.3L352 306.7L352 96zM160 384C124.7 384 96 412.7 96 448L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 448C544 412.7 515.3 384 480 384L433.1 384L376.5 440.6C345.3 471.8 294.6 471.8 263.4 440.6L206.9 384L160 384zM464 440C477.3 440 488 450.7 488 464C488 477.3 477.3 488 464 488C450.7 488 440 477.3 440 464C440 450.7 450.7 440 464 440z"/>
-                        </svg>
-                    </a>
-                    {%- endif -%}
-                    <a href="{{ sdm.external_url }}" class="btn btn-sm btn-outline-dark icon-link icon-link-hover gap-0 text-decoration-none" target="_blank" rel="noopener noreferrer">Open<svg class="bi mt-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
                 </div>
-            </div>
-        </li>        
-        {%- endfor -%}
-    </ul>
+            </li>        
+            {%- endfor -%}
+        </ul>
 
-    <!-- No Results Feedback -->
-    <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
-        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ '/assets/images/other/lumpsucker.png' | relative_url }}" alt="Illustration of a lumpsucker" width="350" height="auto">
-        <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
-        <div class="col-lg-4 mx-auto pb-5"> 
-            <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
-            <p>Try checking for typos or use broader keywords.</p>
-            <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
-        </div> 
+        <!-- No Results -->
+        <div id="no-results-feedback" class="px-4 my-2 text-center" role="alert">
+            <h5 class="fw-bold text-body-emphasis">No Results Found</h5> 
+            <div class="col mx-auto pb-5"> 
+                <p class="lead mb-0">{{ page.region_name }} has no resource matching your query</p>
+                <p>Try checking for typos or use broader keywords.</p>
+                <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+            </div> 
+        </div>
+
+        <hr>
     </div>
 </section>

@@ -8,12 +8,14 @@ js-preload-files-ext:
    defer: false
 
 js-postload-files:
- - "/assets/scripts/components/advanced-search.js"
+ - "/assets/scripts/components/advanced-search.min.js"
 ---
 
 {%- comment -%}
     This creates a search index object of all 'is-available' resources,
     this object array is then used with minisearch.js
+    TODO: Move to a root level file like 'search-resources.json' then use a fetch to get it
+    this would be better for large amounts of resources and if other pages need to be able to search all resources
 {%- endcomment -%}
 <!-- Search Index Array type="application/json"-->
 <script id="search-data-raw" type="application/json">
@@ -189,7 +191,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             <!-- Results Title & Summary -->
             <div class="d-flex justify-content-between">
                 <h2 id="search-results-title" class="fs-5 fw-semibold mb-0">Results</h2>
-                <p id="page-results-summary" class="text-muted small mb-0">Showing (X - Y) of (Z) results</p>
+                <output id="page-results-summary" class="text-muted small mb-0"></output>
             </div>
 
             <hr class="mb-0">
@@ -206,7 +208,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
             <!-- No Results Feedback -->
             <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
-                <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
+                <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ '/assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
                 <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
                 <div class="mx-auto pb-5"> 
                     <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
@@ -218,7 +220,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             <hr>
             <!-- Pagination Controls -->
             <div id="page-controls" class="d-flex justify-content-between align-items-start">
-                <p id="page-index-summary" class="text-muted mt-0">Page X of Y</p>
+                <output id="page-index-summary" class="text-muted mt-0"></output>
                 <nav class="mt-0" aria-label="Pagination">
                     <ul class="pagination justify-content-end">
                         <li class="page-item"><button class="page-link link-dark" aria-label="Previous page" data-page-previous>Previous</button></li>

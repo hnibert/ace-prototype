@@ -1,9 +1,11 @@
 ---
 layout: default
+js-postload-files:
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Breadcrumb -->
-{% include breadcrumbs.html %}
+{%- include breadcrumbs.html -%}
 
 <!-- Person Bio -->
 <section aria-labelledby="person-bio-title">
@@ -97,22 +99,84 @@ layout: default
 
 {%- assign related_resources = site.data.resources.entries | where: "is-available", true | where_exp: "item", "item.authors contains page.slug" -%}
 {%- if related_resources.size > 0 -%}
+<basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3">
+    <!-- Search-Filter Component -->
+    <form class="container my-5" role="search" aria-labelledby="filter-heading">
+        <h2 id="filter-heading" class="visually-hidden">
+            Resource Search and Filters
+        </h2>
+
+        <!-- No Script Alert -->
+        <noscript>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Heads Up!</strong> Your browser has Javascript disabled! Some or all functionality of this search filter may not work properly!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </noscript>
+
+        <span class="fs-6 fw-semibold ms-3"><i class="fa-solid fa-filter"></i> Related Resources</span>
+        <p class="ms-3 text-muted"><small>Search and filter related resources below</small></p>
+
+        <div class="row g-2 mb-3">
+            <!-- Search Input -->
+            <div class="col-12">
+                <div class="input-group">
+                    <label class="input-group-text" for="search-input">Search</label>
+                    <input id="search-input" type="search" class="form-control" placeholder="Search titles" aria-label="Search titles" data-search-input>
+                    <button id="clear-input" class="btn bg-body-secondary focus-ring" type="button" aria-label="Clears typed search input" data-clear-input>
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-0 pt-0">
+
+        <!--Search Filter Toggles -->
+        <div role="group" aria-label="People attribute filters">
+            <!-- Label & Clear Button -->
+            <div class="row align-items-end justify-content-between mb-3">
+                <div class="col-auto">
+                    <span class="fw-bold small tracking-wider">Filter by Type:</span>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn bg-body-secondary focus-ring rounded-pill" data-clear-filters>
+                        <i class="fa-solid fa-eraser" aria-hidden="true"></i> Clear Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Species Filters -->
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap gap-2">
+                    {%- assign resource_types = site.data.tags.resource_types.items -%}
+                    {%- for type in resource_types -%}
+                    <button type="button" class="btn rounded-pill bg-body-secondary" data-bs-toggle="button" data-search-filter data-filter-for="{{ type.id | slugify }}">{{ type.label }}</button>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </form>
+</basic-search>
+
 <!-- Resource Section -->
 <section aria-labelledby="resources-title">
-    <div class="container my-5">
-        <!-- Resources Title -->
-        <h4 id="resources-title">Resources</h4>
-        <hr class="mt-0">
+    <div class="container pb-5 my-5">
+        
+        <!-- Results/Pagination Summary -->
+        <h2 id="resources-title" class="visually-hidden">Related Resources</h2>
+        <output id="results-summary" class="text-muted small mb-0"></output>
+        <hr>
 
         <!-- Related Resources -->
-        <ul id="resource-container" class="list-unstyled vstack gap-4">
+        <ul id="resource-container" class="list-unstyled vstack gap-4 py-2">
             {%- for resource in related_resources -%}
-            <li id="{{ resource_id }}" class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm">
+            <li class="card resource-card {{ resource.type | slugify }} rounded-0 rounded-end border-0 border-start shadow-sm" data-resource-type="{{ resource.type | slugify }}" data-search-item>
                 <div class="card-body">
-                    {%- assign resource_type = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
-                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark">{{ resource.title }}</a></h5>
+                    {%- assign resource_type_display = resource.type | replace: "-" , " " | replace: "and" , "&" -%}
+                    <h5 class="card-title"><a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark" data-search-text>{{ resource.title }}</a></h5>
                     <div class="d-flex justify-content-between">
-                        <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type }}</span></p>
+                        <p class="card-text small text-muted fw-bold m-0"><i class="{{ resource.icon }}"></i> <span class="text-capitalize">{{ resource_type_display }}</span></p>
                         <p class="card-text small text-muted fw-bold m-0">{{ resource.date | date: "%b %-d, %Y" }}</p>
                     </div>
                     <hr>
@@ -124,6 +188,27 @@ layout: default
             </li>
             {%- endfor -%}
         </ul>
+
+        <!-- No Results Feedback -->
+        <div id="no-results-feedback" class="px-4 my-2 text-center" role="alert">
+            <h5 class="fw-bold text-body-emphasis">No Results Found</h5> 
+            <div class="col mx-auto pb-5"> 
+                <p class="lead mb-0">{{ page.full_name }} has no resource matching your query</p>
+                <p>Try checking for typos or use broader keywords.</p>
+                <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+            </div> 
+        </div>
+
+        <hr>
+        <!-- Remaining Results Summary -->
+        <output id="results-remaining-summary" class="text-muted small my-0"></output>
+
+        <!-- Show More Button -->
+        <div id="paginate-controls" class="d-flex justify-content-center pb-4 pt-0">
+            <div class="d-grid gap-2 col-3 mx-auto">
+                <button class="btn btn-ace-primary btn-lg rounded-pill" data-show-more>Show More</button>
+            </div>
+        </div>
     </div>
 </section>
 {%- endif -%}

@@ -28,6 +28,10 @@ feature: true
 feature_order: 3
 
 short_text: >- 
-  Heather is a Communications Specialist at the University of Washington, where she supports the ACLIM and GOACLIM projects. She earned her Bachelor of Fine Arts degree, with a focus in painting and drawing, from the Columbus College of Art & Design in 2010, and her Master of Fine Arts from the University of Washington in 2016. 
+  Heather is a Communications Specialist at the University of Washington, where she supports the ACLIM and GOACLIM projects. 
+  She earned her Bachelor of Fine Arts degree from the Columbus College of Art & Design, 
+  and her Master of Fine Arts from the University of Washington. 
 ---
-Heather is a Communications Specialist at the University of Washington, where she supports the ACLIM and GOACLIM projects. She earned her Bachelor of Fine Arts degree, with a focus in painting and drawing, from the Columbus College of Art & Design in 2010, and her Master of Fine Arts from the University of Washington in 2016.
+Heather is a Communications Specialist at the University of Washington, where she supports the ACLIM and GOACLIM projects. 
+She earned her Bachelor of Fine Arts degree, with a focus in painting and drawing, from the Columbus College of Art & Design in 2010, 
+and her Master of Fine Arts from the University of Washington in 2016.

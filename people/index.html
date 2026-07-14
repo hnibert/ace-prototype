@@ -7,17 +7,17 @@ js-postload-files:
 ---
 
 <!-- Hero -->
-{% include hero.html 
+{%- include hero.html 
 is_header=true
 id="hero-people"
 hero_img_url="../assets/images/heroes/hero-people.jpg"
 title="Meet Our People" 
-lead="Our team is a collaboration of scientists that includes physical oceanographers, ecosystem modelers, economists, social scientists, and fishery and living marine resource managers" %}
+lead="Our team is a collaboration of scientists that includes physical oceanographers, ecosystem modelers, economists, social scientists, and fishery and living marine resource managers" -%}
 
 <!-- Breadcrumb -->
-{% include breadcrumbs.html %}
+{%- include breadcrumbs.html -%}
 
- <basic-search search-container="#people-search-container" search-selector-data="data-people-role" search-filter-data="data-people-tags" summary-text="#people-search-summary" no-results="#no-results-feedback">
+ <basic-search search-container="#people-search-container" search-selector-data="data-people-role" search-filter-data="data-people-tags" summary-text="#results-summary" no-results="#no-results-feedback" paginate-button="#show-more-less-btn" results-per-page="4">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
         <h2 id="filter-heading" class="visually-hidden">
@@ -81,7 +81,7 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
                 <div class="col-12 d-flex flex-wrap gap-2">
                     {%- assign research_areas = site.people | map: 'research_areas' | uniq -%}
                     {%- for area in research_areas -%}
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="{{ area | slugify }}">{{ area }}</button>
+                    <button type="button" class="btn rounded-pill bg-body-secondary" data-bs-toggle="button" data-search-filter data-filter-for="{{ area | slugify }}">{{ area }}</button>
                     {%- endfor -%}
                 </div>
             </div>
@@ -90,69 +90,69 @@ lead="Our team is a collaboration of scientists that includes physical oceanogra
 </basic-search>
 
 <!-- Search List -->
-<section class="container mb-5" aria-labelledby="search-title">
-    <h2 id="search-title" class="visually-hidden">
-        People search results
-    </h2>
+<section aria-labelledby="search-title">
+    <div class="container pb-5 mb-5">
 
-    <!-- Results Summary -->
-    <div id="people-search-summary" class="mb-4" aria-live="polite" aria-atomic="true">
-        <!-- Summary Text -->
-        <p class="fw-bold"><span class="summary-count"></span><span class="summary-input"></span><span class="summary-tags text-capitalize fst-italic"></span><span class="summary-role"></span></p>
-    </div>
+        <!-- Results/Pagination Summary -->
+        <h2 id="search-title" class="visually-hidden">SDM Search Results</h2>
+        <output id="results-summary" class="text-muted small mb-0" aria-live="polite" aria-atomic="true"></output>
+        <hr>
 
-    <!-- Search Container -->
-    <ul id="people-search-container" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 list-unstyled">
-        {%- for person in site.people -%}
-        {%- assign person_areas = person.research_areas | compact | uniq -%}
-        <li class="col" data-people-role="{{ person.ace_role | slugify }}" data-people-tags="{% for area in person_areas %}{{ area | slugify }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}" data-search-item>
-            <div class="card hover-shadow h-100">
-                <div class="ratio ratio-1x1 mx-auto my-3 width200">
-                    <a href="{{ person.url | relative_url }}" class="text-decoration-none"><img src="{{ person.main_img_url | relative_url }}" class="img-fluid rounded-circle shadow object-fit-cover" height="auto" width="200" alt="{{ person.main_img_alt }}"></a>
-                </div>
-                <div class="card-body d-flex flex-column text-center">
-                    <!-- Name -->
-                    <h5 class="card-title fw-bold">
-                        <a href="{{ person.url | relative_url }}" class="text-decoration-none link-dark" data-search-text>{{ person.full_name }}</a>
-                    </h5>
-                    
-                    <!-- Position & Affiliation -->
-                    <p class="card-text mb-0">
-                        <small class="text-secondary d-block">
-                            <span class="fw-bold">{{ person.position }}</span>
-                        </small>
-                        <small class="text-secondary d-block">
-                            {{ person.affiliation }}
-                        </small>
-                    </p>
+        <!-- Search Container -->
+        <ul id="people-search-container" class="list-unstyled row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 py-2">
+            {%- for person in site.people -%}
+            {%- assign person_areas = person.research_areas | compact | uniq -%}
+            <li class="col" data-people-role="{{ person.ace_role | slugify }}" data-people-tags="{% for area in person_areas %}{{ area | slugify }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}" data-search-item>
+                <div class="card hover-shadow h-100">
+                    <div class="ratio ratio-1x1 mx-auto my-3 width200">
+                        <a href="{{ person.url | relative_url }}" class="text-decoration-none"><img src="{{ person.main_img_url | relative_url }}" class="img-fluid rounded-circle shadow object-fit-cover" height="auto" width="200" alt="{{ person.main_img_alt }}"></a>
+                    </div>
+                    <div class="card-body d-flex flex-column text-center">
+                        <!-- Name -->
+                        <h5 class="card-title fw-bold">
+                            <a href="{{ person.url | relative_url }}" class="text-decoration-none link-dark" data-search-text>{{ person.full_name }}</a>
+                        </h5>
+                        
+                        <!-- Position & Affiliation -->
+                        <p class="card-text mb-0">
+                            <small class="text-secondary d-block">
+                                <span class="fw-bold">{{ person.position }}</span>
+                            </small>
+                            <small class="text-secondary d-block">
+                                {{ person.affiliation }}
+                            </small>
+                        </p>
 
-                    <!-- Email -->
-                    <p class="card-text mb-2">
-                        <a class="text-truncate" href="mailto:{{ person.email }}" target="_blank" rel="noopener noreferrer">{{ person.email }}</a>
-                    </p>
-                    
-                    <hr class="text-muted my-3">
+                        <!-- Email -->
+                        <p class="card-text mb-2">
+                            <a class="text-truncate" href="mailto:{{ person.email }}" target="_blank" rel="noopener noreferrer">{{ person.email }}</a>
+                        </p>
+                        
+                        <hr class="text-muted my-3">
 
-                    <!-- Research Areas -->
-                    <div class="d-flex flex-wrap justify-content-start gap-2 my-0">
-                        {% for area in person.research_areas %}
-                        <span class="badge bg-light text-dark border text-wrap text-start fs-7">{{ area }}</span>
-                        {% endfor %}
+                        <!-- Research Areas -->
+                        <div class="d-flex flex-wrap justify-content-start gap-2 my-0">
+                            {% for area in person.research_areas %}
+                            <span class="badge bg-light text-dark border text-wrap text-start fs-7">{{ area }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        {%- endfor -%}
-    </ul>
+            </li>
+            {%- endfor -%}
+        </ul>
 
-    <!-- No Results Feedback -->
-    <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
-        <img class="d-block mx-auto mb-5 img-fluid floating-404" src="images/other/lumpsucker.png" alt="" width="350" height="auto">
-        <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
-        <div class="col-lg-4 mx-auto pb-5"> 
-            <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
-            <p>Try checking for typos or use broader keywords.</p>
-            <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
-        </div> 
+        <!-- No Results Feedback -->
+        <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
+            <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
+            <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
+            <div class="col-lg-4 mx-auto pb-5"> 
+                <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
+                <p>Try checking for typos or use broader keywords.</p>
+                <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+            </div> 
+        </div>
+
+        <hr>
     </div>
 </section>

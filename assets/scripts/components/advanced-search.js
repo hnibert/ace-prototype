@@ -417,7 +417,7 @@ customElements.define('advanced-search', class extends HTMLElement {
                 });
             }); 
             
-            //toggle the clear toggle
+            //toggle the clear toggle btn
             this.toggleClearGroupButton(tags.length, category);
         });
     }

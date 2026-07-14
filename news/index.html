@@ -6,12 +6,12 @@ highlight_max: 2
 ---
 
 <!-- Hero -->
-{% include hero.html 
+{%- include hero.html 
 is_header=true
 id="hero-news"
 hero_img_url="../assets/images/heroes/hero-about.jpg"
 title="ACE News" 
-lead="What happens in the Arctic impacts the world. Explore the vital news and stories defining Alaska's rapidly changing environment" %}
+lead="What happens in the Arctic impacts the world. Explore the vital news and stories defining Alaska's rapidly changing environment" -%}
 
 <!-- Breadcrumb -->
 {%- include breadcrumbs.html -%}
@@ -118,7 +118,7 @@ lead="What happens in the Arctic impacts the world. Explore the vital news and s
             <hr>
             <p class="lead"><a href="{{ '/news/archives/' | relative_url }}" class="stretched-link">Explore our Archives</a> to search by category or date.</p>
         </div>
-        <img class="position-absolute start-75 grayscale rotate-10 opacity-1" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
+        <img class="position-absolute start-75 grayscale rotate-10 opacity-1" src="{{ '/assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
     </div>
 </div>
 
