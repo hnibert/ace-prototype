@@ -19,7 +19,7 @@ description: >-
 external_url: null
 
 js-postload-files:
- - "/assets/scripts/components/basic-search.js"
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Hero -->
@@ -33,12 +33,60 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
 <!-- Breadcrumb -->
 {%- include breadcrumbs.html -%}
 
+<!-- SDM Summary -->
+<section aria-labelledby="sdm-summary-title">
+    <div class="container mb-5">
+        <h3 id="sdm-summary-title" class="after-line border-ace-cape">What are Species Distribution Models?</h3>
+        <p class="lead">Species distribution models (SDMs) link environmental information with data on how common (and how abundant) different species are to discern the types of environments each species is associated with under contemporary conditions. 
+            Then, scientists use projections of future environmental conditions from climate models to estimate where the conditions that a species is common and abundant are likely to be in the future.</p>
+
+        <div class="row g-4 pt-3">
+            <div class="col-12 col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-ttile">Predictive Modeling</h5>
+                        <hr>
+                        <p class="card-text">Scientists project using different possible scenarios, which represent alternative possible pathways for global greenhouse gas emissions. 
+                        SDMs use historical relationships of distribution and environmental conditions to predict distributions, but environmental conditions don't explain all of the variability in where we observe organisms, 
+                        so other conditions can impact where fish or crab species actually occur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                 <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-ttile">Regional Distributions</h5>
+                        <hr>
+                        <p class="card-text">SDMs are used to project changes in the distributions of several groundfish and crabs in the Bering Sea, including walleye pollock, Pacific cod, snow crab, red king crab, and others. 
+                        Browse these distribution shifts in relation to coastal communities and fishing ports using the links below, or check out the results in more detail using the <a href="https://connect.fisheries.noaa.gov/aclim2_sdms_explorer/" target="_blank" rel="noopener noreferrer nofollow">ACLIM2 SDMs explorer.</a></p>
+                    </div>
+                </div>               
+            </div>
+
+            <div class="col-12 mt-5">
+                <div class="alert alert-light border-0 border-start border-12 border-ace-reef rounded-0 rounded-end hover-shadow d-flex align-items-center position-relative overflow-hidden" role="alert">
+                    <svg class="svg-icon-4x mb-4" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path d="M272 112C272 85.5 293.5 64 320 64C346.5 64 368 85.5 368 112C368 138.5 346.5 160 320 160C293.5 160 272 138.5 272 112zM224 256C224 238.3 238.3 224 256 224L320 224C337.7 224 352 238.3 352 256L352 512L384 512C401.7 512 416 526.3 416 544C416 561.7 401.7 576 384 576L256 576C238.3 576 224 561.7 224 544C224 526.3 238.3 512 256 512L288 512L288 288L256 288C238.3 288 224 273.7 224 256z"/>
+                    </svg>
+                    <div class="ms-4">
+                        <h4 class="alert-heading fw-bold">Would you like to know more?</h4>
+                        <hr>
+                        <p class="lead"><a href="https://repository.library.noaa.gov/view/noaa/67160" class="stretched-link" target="_blank" rel="noopener noreferrer nofollow">Read the full paper</a> for a detailed explanation of the SDM methodology.</p>
+                    </div>
+                    <img class="position-absolute start-75 grayscale rotate-10 opacity-1" src="{{ '/assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
+                </div>                
+            </div>
+        </div>
+    </div>
+</section>
+
 <basic-search search-container="#sdm-search-container" search-selector-data="data-sdm-location" search-filter-data="data-sdm-species" summary-text="#results-summary" no-results="#no-results-feedback">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
-        <h2 id="filter-heading" class="visually-hidden">
-            SDM Search and Filters
-        </h2>
+        <!-- Resources Title -->
+        <h4 id="filter-heading" class="fw-bold">Species Distribution Models</h4>
+        <hr class="mt-0">
 
         <!-- No Script Alert -->
         <noscript>
@@ -48,7 +96,7 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
             </div>
         </noscript>
 
-        <span class="fs-6 fw-semibold ms-3"><i class="fa-solid fa-filter"></i> Species Distribution Models</span>
+        <span class="fs-6 fw-semibold ms-3"><i class="fa-solid fa-filter"></i> Search Species Distribution Models</span>
         <p class="ms-3 text-muted"><small>Search and filter for SDMs below</small></p>
 
         <div class="row g-2 mb-3">
@@ -113,7 +161,7 @@ lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
 
         <!-- Results/Pagination Summary -->
         <h2 id="search-title" class="visually-hidden">SDM Search Results</h2>
-        <p id="results-summary" class="text-muted small mb-0"></p>
+        <output id="results-summary" class="text-muted small mb-0"></output>
         <hr>
 
         <!-- Search Container -->
