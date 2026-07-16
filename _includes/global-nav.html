@@ -8,7 +8,11 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {%- for nav_item in site.data.navigation.navbar -%}
                     {%- if nav_item.dropdown != nil -%}
-                    {%- assign is_active = false %}{% if page.url contains nav_item.url %}{% assign is_active = true %}{% endif -%}
+                        {%- assign is_active = false -%}
+                    {%- if page.url contains nav_item.url -%}
+                        {%- assign is_active = true -%}
+                    {%- endif -%}
+                    <script>console.log('--{{ page.url }} : {{ is_active }}');</script>
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">{{ nav_item.title }}</button>
                         <ul class="dropdown-menu border-0" data-bs-theme="dark">
@@ -28,9 +32,9 @@
                     </li>                   
                     {%- else -%}
                     <li class="nav-item">
-                        <a class="nav-link {% if page.url == nav_item.url %}active{% endif %}" {% if page.url == nav_item.url %}aria-current="page"{% endif %} href="{{ nav_item.url | relative_url }}">{{ nav_item.title }}</a>
+                        <a class="nav-link {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} href="{{ nav_item.url | relative_url }}">{{ nav_item.title }}</a>
                     </li>
-                    {% endif -%}
+                    {%- endif -%}
                 {%- endfor -%}
             </ul>
         </div>

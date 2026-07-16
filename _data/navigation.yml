@@ -32,14 +32,14 @@ navbar:
       - collection: communities
 
   - title: ACE
-    url: "/ace/"
+    url: null
     dropdown:
       - title: About
         url: "/about/"
-      - title: News
-        url: "/news/"
       - title: People
         url: "/people/"
+      - title: News
+        url: "/news/"
 
 footer:
   show_rssfeed: true
