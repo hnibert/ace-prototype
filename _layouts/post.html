@@ -294,7 +294,7 @@ layout: default
                             <li class="social-link border">
                                 <a href="mailto:?subject={{ page.title }}&body={{ page.url | absolute_url }}" class="text-decoration-none text-muted p-3" aria-label="Email to"><i class="fa-solid fa-paper-plane fa-lg"></i></a>
                             </li>
-                            {%- comment -%} Loop through our social links and only show links that have a 'share_url' {%- endcomment -%}
+                            {%- comment -%} Loop through global '_config' social links and only show links that have a 'share_url' {%- endcomment -%}
                             {%- for social in site.socials -%}
                             {%- unless social.share_url == nil or social.share_url == "" -%}
                             <li class="social-link {{ social.title | slugify }}">

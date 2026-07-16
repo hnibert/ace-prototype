@@ -42,10 +42,54 @@ navbar:
         url: "/people/"
 
 footer:
-  - category:
-    title: ACE
+  show_rssfeed: true
+  show_newsletter: true
+  categories:
+  - title: ACE
     links:
       - title: Home
         url: "/"
-      - title: Home
-        url: "/"
+        external: false
+      - title: Resources
+        url: "/resources/"
+        external: false
+      - title: All Tools
+        url: "/tools/"
+        external: false 
+      - title: About Us
+        url: "/about/"
+        external: false
+      - title: Our People
+        url: "/people/"
+        external: false 
+      - title: News
+        url: "/news/"
+        external: false
+    collection: null
+
+  - title: Resources
+    links:
+      - title: Web Applications
+        url: "/resources/?type=web-application"
+        external: false
+      - title: Technical Documentation
+        url: "/resources/?type=tech-doc"
+        external: false
+      - title: Data & Code
+        url: "/resources/?type=data-and-code"
+        external: false
+      - title: Presentations
+        url: "/resources/?type=presentation"
+        external: false
+      - title: Publications
+        url: "/resources/?type=publication"
+        external: false  
+    collection: null
+
+  - title: Regions
+    links: null
+    collection: regions
+
+  - title: Communities
+    links: null
+    collection: communities

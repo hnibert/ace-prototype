@@ -12,7 +12,7 @@
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">{{ nav_item.title }}</button>
                         <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                            {% for dropdown_item in nav_item.dropdown %}
+                            {% for dropdown_item in nav_item.dropdown -%}
                                 {%- if dropdown_item.collection -%}
                                 {%- assign collection = site[dropdown_item.collection] -%}
                                 {%- for collection_item in collection -%}

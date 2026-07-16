@@ -7,23 +7,29 @@ description: >-
   supports decision-making as we navigate these changing conditions.
 baseurl: "/ace-prototype" # the subpath of your site, e.g. /ace-prototype 
 url: "https://hnibert.github.io" # the base hostname & protocol for your site, e.g. http://example.com 
-twitter_username: ""
-github_username:  ""
+#twitter_username: ""
+#github_username:  ""
 
 #Socials Links (add share URL to show link in posts 'share' sections)
 socials:
  - title: GitHub
    icon: fa-brands fa-github
-   url:
+   share_url: null
+   url: https://github.com/hnibert/ace-prototype
 
  - title: Instagram
    icon: fa-brands fa-instagram
-   url:
+   share_url: null
+   url: null
 
  - title: Facebook
    icon: fa-brands fa-facebook
    share_url: https://www.facebook.com/sharer/sharer.php?u=
-   url: 
+   url: null
+
+
+#Newsletter
+#...
 
 #Timezone
 #Jekyll will calculate all post times relative to this specific timezone at build time
@@ -37,11 +43,11 @@ collections:
   regions:
     output: true
     permalink: /:collection/:slug/
-    sort_by: display_order
+    sort_by: display_order #sort by the front matter field 'display_order'
   communities:
     output: true
     permalink: /:collection/:slug/
-    sort_by: display_order
+    sort_by: display_order #sort by the front matter field 'display_order'
   species:
     output: true
     permalink: /:collection/:slug/
