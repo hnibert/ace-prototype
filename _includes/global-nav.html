@@ -12,7 +12,6 @@
                     {%- if page.url contains nav_item.url -%}
                         {%- assign is_active = true -%}
                     {%- endif -%}
-                    <script>console.log('--{{ page.url }} : {{ is_active }}');</script>
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">{{ nav_item.title }}</button>
                         <ul class="dropdown-menu border-0" data-bs-theme="dark">
