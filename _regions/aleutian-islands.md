@@ -1,6 +1,7 @@
 ---
-#General
 layout: region
+
+#General
 region_name: Aleutian Islands
 
 #Hero

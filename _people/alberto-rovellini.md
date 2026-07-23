@@ -1,5 +1,6 @@
 ---
 layout: person
+
 full_name: Alberto Rovellini
 
 main_img_url: assets/images/people/alberto-rovellini.jpg

@@ -39,8 +39,9 @@ customElements.define('basic-search', class extends HTMLElement {
     }
 
     setupComponent() {
-
-        /* Get Provided Attributes */
+        /*
+         * Get Provided Attributes
+         */
 
         //supporting element selectors
         this.searchContainerSelector = this.getAttribute('search-container');
@@ -59,7 +60,12 @@ customElements.define('basic-search', class extends HTMLElement {
 
         //data attribute for amount of items to show per pagination batch 
         this.resultsPerPage = parseInt(this.getAttribute('results-per-page'), 10);
+
+        //set current visible items to given results per page or 0
         this.currentVisibleItems = this.resultsPerPage || 0;
+
+        //get the reset search button selector
+        this.resetSearchSelector = this.getAttribute('reset-search');
 
         /*
          * Cached Expected Elements (Expected to exist inside this component)
@@ -84,7 +90,8 @@ customElements.define('basic-search', class extends HTMLElement {
         //get the search container
         this.searchContainerElement = document.querySelector(this.searchContainerSelector);
 
-        //this.resetSearchBtnElement = document.querySelector(this.resetSearchBtnSelector);
+        //get the reset search button element
+        this.resetSearchBtnElement = document.querySelector(this.resetSearchSelector);
 
         //get the paginate controls container and the show more btn
         this.paginateControls = document.querySelector(this.paginateControlSelector);
@@ -100,6 +107,11 @@ customElements.define('basic-search', class extends HTMLElement {
         this.hasFilters = this.searchFilterElements.length > 0;
         this.hasPagination = !!this.paginateControls;
 
+        //setup listeners
+        this.setupListeners();
+    }
+
+    setupListeners() {
         /*
          * Setup Listeners based on input flags
          */
@@ -145,6 +157,12 @@ customElements.define('basic-search', class extends HTMLElement {
         if (this.noResultsElement)
             this.noResultsElement.style.display = 'none';
 
+        /* RESET SEARCH SETUP */
+        if (this.resetSearchBtnElement) {
+            this.resetSearchBtnElement.addEventListener('click', () => {
+                this.resetSearch();
+            });
+        }
 
         /* PAGINATION SETUP */
         if (this.hasPagination) {
@@ -304,6 +322,10 @@ customElements.define('basic-search', class extends HTMLElement {
 
         //update summary text
         this.updateSummaryText();
+     }
+
+     showAllResults() {
+
      }
      
     /*================

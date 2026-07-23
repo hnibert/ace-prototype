@@ -27,6 +27,8 @@ socials:
    share_url: https://www.facebook.com/sharer/sharer.php?u=
    url: null
 
+#build settings
+show_beta_features: false
 
 #Newsletter
 #...

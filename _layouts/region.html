@@ -1,7 +1,7 @@
 ---
 layout: default
 js-postload-files:
- - "/assets/scripts/components/basic-search.min.js"
+ - "/assets/scripts/components/basic-search.js"
 ---
 
 <!-- Hero -->
@@ -134,8 +134,8 @@ js-postload-files:
 {%- endif -%}
 
 {%- assign region_resources = site.data.resources.entries | where_exp: "item", "item.regions contains page.slug" -%}
-{%- if  region_resources.size > 0 -%}
-<basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3">
+{%- if region_resources.size > 0 -%}
+<basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" reset-search="#reset-search" paginate-controls="#paginate-controls" results-per-page="3">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
         <!-- Resources Title -->
@@ -229,7 +229,7 @@ js-postload-files:
             <div class="col mx-auto pb-5"> 
                 <p class="lead mb-0">{{ page.region_name }} has no resource matching your query</p>
                 <p>Try checking for typos or use broader keywords.</p>
-                <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+                <button id="reset-search" type="button" class="btn btn-ace-primary mt-3" aria-controls="species-container">Clear Search</button>
             </div> 
         </div>
 
@@ -237,7 +237,6 @@ js-postload-files:
         <!-- Remaining Results Summary -->
         <div class="d-flex justify-content-between">
             <output id="results-remaining-summary" class="text-muted small my-0"></output>
-            <button class="btn text-muted btn-sm">Show All</button>
         </div>
 
         <!-- Show More Button -->

@@ -6,9 +6,10 @@ customElements.define('search-funnel', class extends HTMLElement {
         this.SEARCH_INPUT = '[data-search-input]';
         this.CLEAR_INPUT = '[data-clear-input]';
         this.FILTER_TOGGLE = '[data-search-filter]';
-        this.FILTER_TAB_BTN = '[data-search-tab]'; 
+        //this.FILTER_TAB_BTN = '[data-search-tab]'; 
         this.SUBMIT_SEARCH = '[data-submit-search]';
         this.CLEAR_FILTERS_GROUP = '[data-clear-group-filters]';
+        this.TAB_TAG_BADGE = '[data-tag-badge]';
 
         /* Active Filters */
         this.activeFilters = {
@@ -41,7 +42,15 @@ customElements.define('search-funnel', class extends HTMLElement {
         //submit search btn
         this.submitSearchBtnElement = this.querySelector(this.SUBMIT_SEARCH);
 
-        //toggle search btns (need to be checkbox toggles i.e type=checkbox)
+        //tab group badges
+        this.tabGroupBadgeElements = Array.from(this.querySelectorAll(this.TAB_TAG_BADGE));
+
+        //hide the tab group badges by default
+        this.tabGroupBadgeElements.forEach(badge => { 
+            badge.classList.add("hide");
+        });
+
+        //toggle search btns
         this.searchFilterElements = Array.from(this.querySelectorAll(this.FILTER_TOGGLE));
 
         //clear toggle category btns
@@ -125,8 +134,8 @@ customElements.define('search-funnel', class extends HTMLElement {
 
         //console.log(this.activeFilters);
 
-        //toggle the clear toggle
-        this.toggleClearGroupButton(currentCategory.length, name);
+        //toggle group related ui updates
+        this.groupUIUpdate(currentCategory.length, name);
 
         //update search query
         this.updateSubmitURL();
@@ -151,8 +160,8 @@ customElements.define('search-funnel', class extends HTMLElement {
         //clear the current category in active filters manually
         currentCategory.length = 0;
 
-        //toggle clear category btn
-        this.toggleClearGroupButton(currentCategory.length, name);
+        //toggle group related ui updates
+        this.groupUIUpdate(currentCategory.length, name);
 
         //update search parameters url
         this.updateSubmitURL();
@@ -177,18 +186,39 @@ customElements.define('search-funnel', class extends HTMLElement {
     /* 
         UI METHODS
     */ 
-    toggleClearGroupButton(count, name) {
+    groupUIUpdate(count, name) {
         const clearGroupBtn = this.getClearToggleGroupBtn(name);
+        const tagGroupBadge = this.getTabGroupBadge(name);
 
-        //check if we need to show the clear category button
+        //check count to determine when to show relevant elements for this category/group
         if (count > 0) {
-            if (clearGroupBtn.classList.contains("hide")) {
-                clearGroupBtn.classList.remove("hide");
-                clearGroupBtn.removeAttribute("disabled");
+            //handle clear group btn display (show items)
+            if (clearGroupBtn) {
+                if (clearGroupBtn.classList.contains("hide")) {
+                    clearGroupBtn.classList.remove("hide");
+                    clearGroupBtn.removeAttribute("disabled");
+                }
+            }
+
+            //handle group badge display & count
+            if (tagGroupBadge) {
+                if (tagGroupBadge.classList.contains("hide"))
+                    tagGroupBadge.classList.remove("hide");
+
+                tagGroupBadge.textContent = count;
             }
         } else {
-            clearGroupBtn.classList.add("hide");
-            clearGroupBtn.setAttribute("disabled", "");
+            //handle clear group btn display (hide items)
+            if (clearGroupBtn) {
+                clearGroupBtn.classList.add("hide");
+                clearGroupBtn.setAttribute("disabled", "");
+            }
+
+            //handle group badge display & count
+            if (tagGroupBadge) {
+                tagGroupBadge.classList.add("hide");
+                tagGroupBadge.textContent = "0";
+            }
         }
     }
 
@@ -206,7 +236,6 @@ customElements.define('search-funnel', class extends HTMLElement {
         //value has to be before key...
         searchParameters.forEach((value, key) => {
             if (value === '') {
-                //console.log(value);
                 emptyNullKeys.push(key);
             }
         });
@@ -256,5 +285,10 @@ customElements.define('search-funnel', class extends HTMLElement {
     getClearToggleGroupBtn(groupName) {
         //return a button that has a name value that matches the group value, otherwise return null
         return this.clearToggleGroupElements.find(clearBtn => clearBtn.name === groupName) ?? null;
+    }
+
+    getTabGroupBadge(groupName) {
+        //return a badge that has a name value that matches the group value, otherwise return null
+        return this.tabGroupBadgeElements.find(badge => badge.dataset.groupName === groupName) ?? null;        
     }
 });

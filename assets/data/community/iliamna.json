@@ -1,0 +1,4 @@
+---
+permalink: /assets/data/community/iliamna.json
+---
+{{ site.data.community.iliamna | jsonify }}

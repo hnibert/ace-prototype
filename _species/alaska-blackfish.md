@@ -54,13 +54,6 @@ spatial_data_notes:
 is_species_of_concern: true
 
 #References (use a '- |' for each entry)
-# ==============================================================
-# ⚠️ HOW TO ADD A NEW CITATION (PLEASE READ BEFORE EDITING!)
-# ==============================================================
-# 1. Start with a dash, a space, and a vertical bar:  - |
-# 2. Indent all the text underneath using two SPACES (do NOT use the Tab key).
-# 3. Keep all HTML tags like <em> and <a> exactly as they are.
-
 references:
 # - |
 # citation goes here with html structure

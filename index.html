@@ -42,9 +42,10 @@ link_text="Learn More" -%}
                         </div>
 
                         <!-- Search Toggle Tabs -->
-                        <ul class="nav justify-content-center mt-4 gap-2">
+                        <ul class="nav justify-content-center pt-2 mt-4 gap-2">
                             <li class="nav-item" role="presentation">
-                                <button id="search-type-tab" class="nav-link search-link type link-dark fw-semibold active" data-bs-toggle="tab" data-bs-target="#type-tab-pane" type="button" role="tab" aria-controls="type-tab-pane" aria-selected="true" data-search-tab>
+                                <button id="search-type-tab" class="nav-link search-link type link-dark fw-semibold position-relative active" data-bs-toggle="tab" data-bs-target="#type-tab-pane" type="button" role="tab" aria-controls="type-tab-pane" aria-selected="true">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-deep hide" data-group-name="type" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
                                     <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
                                         <i class="fa-solid fa-anchor fa-2xl mx-auto"></i>
                                         <small>Type</small>
@@ -52,7 +53,8 @@ link_text="Learn More" -%}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button id="search-region-tab" class="nav-link search-link region link-dark fw-semibold" data-bs-toggle="tab" data-bs-target="#region-tab-pane" type="button" role="tab" aria-controls="region-tab-pane" aria-selected="false" data-search-tab>
+                                <button id="search-region-tab" class="nav-link search-link region link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#region-tab-pane" type="button" role="tab" aria-controls="region-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-channel hide" data-group-name="regions" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
                                     <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
                                         <i class="fa-solid fa-map-location fa-2xl mx-auto"></i>
                                         <small>Region</small>
@@ -60,7 +62,8 @@ link_text="Learn More" -%}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button id="search-theme-tab" class="nav-link search-link theme link-dark fw-semibold" data-bs-toggle="tab" data-bs-target="#theme-tab-pane" type="button" role="tab" aria-controls="theme-tab-pane" aria-selected="false" data-search-tab>
+                                <button id="search-theme-tab" class="nav-link search-link theme link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#theme-tab-pane" type="button" role="tab" aria-controls="theme-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-reef hide" data-group-name="themes" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
                                     <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
                                         <i class="fa-solid fa-swatchbook fa-2xl mx-auto"></i>
                                         <small>Theme</small>
@@ -68,7 +71,8 @@ link_text="Learn More" -%}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button id="search-species-tab" class="nav-link search-link species link-dark fw-semibold" data-bs-toggle="tab" data-bs-target="#species-tab-pane" type="button" role="tab" aria-controls="species-tab-pane" aria-selected="false" data-search-tab>
+                                <button id="search-species-tab" class="nav-link search-link species link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#species-tab-pane" type="button" role="tab" aria-controls="species-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-cape hide" data-group-name="search_species" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
                                     <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
                                         <i class="fa-solid fa-fish fa-2xl mx-auto"></i>
                                         <small>Species</small>
@@ -76,7 +80,8 @@ link_text="Learn More" -%}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button id="search-subtopic-tab" class="nav-link search-link subtopic link-dark fw-semibold" data-bs-toggle="tab" data-bs-target="#subtopic-tab-pane" type="button" role="tab" aria-controls="subtopic-tab-pane" aria-selected="false" data-search-tab>
+                                <button id="search-subtopic-tab" class="nav-link search-link subtopic link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#subtopic-tab-pane" type="button" role="tab" aria-controls="subtopic-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-beacon hide" data-group-name="subtopics" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
                                     <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
                                         <i class="fa-solid fa-book-bookmark fa-2xl mx-auto"></i>
                                         <small>Subtopic</small>

@@ -48,7 +48,6 @@ collections:
     delete: false
     editor: { preview: false }
     files:
-
       # Resource Type
       - name: "resource_types"
         label: "Resource Types"
@@ -59,8 +58,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
 
       # Theme
       - name: "resource_themes"
@@ -72,8 +71,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
 
       # Species
       - name: "resource_species"
@@ -85,8 +84,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
 
       # Subtopics
       - name: "resource_subtopics"
@@ -98,8 +97,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
               
       # Audiences
       - name: "resource_audiences"
@@ -111,8 +110,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
 
       # User Goals
       - name: "resource_goals"
@@ -124,8 +123,8 @@ collections:
             widget: "list"
             summary: "{{label}} ({{id}})"
             fields:
-              - { name: "id", label: "ID Slug", widget: "string" }
-              - { name: "label", label: "Display Label", widget: "string" }
+              - { name: "id", label: "ID Slug", widget: "string", hint: "A slugified ID to be used behind-the-scenes, should never change after creation!" }
+              - { name: "label", label: "Display Label", widget: "string", hint: "The display name for this tag - used across the UI for display only." }
 
   # ============
   #  POSTS (COLLECTION)
@@ -140,9 +139,9 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
 
       #General
-      - { label: "Type", name: "type", widget: "select", options: ["Announcement", "Blog", "Story", "Meet the Scientist", "News"] }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["Announcement", "Blog", "Story", "Meet the Scientist", "News"], hint: "Select the type of post." }
+      - { label: "Title", name: "title", widget: "string", hint: "The title of this post." }
+      - { label: "Subtitle", name: "subtitle", widget: "string", hint: "The subtitle of this post." }
 
       - { 
           label: 'Region',
@@ -151,26 +150,27 @@ collections:
           collection: 'regions',
           display_fields: ["region_name"],
           search_fields: ["region_name"],
-          value_field: "{{slug}}"
+          value_field: "{{slug}}",
+          hint: "The region associated with this post."
         }
       
       #Main Image
-      - { label: "Image", name: "main_img_url", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "main_img_alt", widget: "string", required: false }
-      - { label: "Image Caption", name: "main_img_caption", widget: "string", required: false }
+      - { label: "Image", name: "main_img_url", widget: "image", required: false, hint: "The main fetured image of this post." }
+      - { label: "Image Alt Text", name: "main_img_alt", widget: "string", required: false, hint: "The alt text for the main featured image of this post" }
+      - { label: "Image Caption", name: "main_img_caption", widget: "string", required: false, hint: "An optional caption for this image - displayed under the image." }
       
       #Publishing Dates
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Updated", name: "updated", widget: "datetime" }
+      - { label: "Date", name: "date", widget: "datetime", hint: "The date time this post was originally written." }
+      - { label: "Updated", name: "updated", widget: "datetime", hint: "The date time this post was last edited." }
 
       #Categories
-      - { label: "Categories", name: "categories", widget: "list", field: { name: "item", widget: "string" }, required: false }
+      - { label: "Categories", name: "categories", widget: "list", field: { name: "item", widget: "string" }, required: false, hint: "Categories this post falls under - used for archiving posts." }
 
       #Content Flags
-      - { label: "Is Featured?", name: "featured", widget: "boolean", default: false }
-      - { label: "Is Highlight?", name: "highlight", widget: "boolean", default: false }
-      - { label: "Show Read Time?", name: "show_read_time", widget: "boolean", default: true }
-      - { label: "Show Related Posts?", name: "show_related_posts", widget: "boolean", default: true }
+      - { label: "Is Featured?", name: "featured", widget: "boolean", default: false, hint: "Is this a 'featured' post? Will show under Featured in News page." }
+      - { label: "Is Highlight?", name: "highlight", widget: "boolean", default: false, hint: "Is this a 'Highlight' post? Will show under Highlights in News page." }
+      - { label: "Show Read Time?", name: "show_read_time", widget: "boolean", default: true, hint: "Should this post show a read-time estimate in the header?" }
+      - { label: "Show Related Posts?", name: "show_related_posts", widget: "boolean", default: true, hint: "Should 'Related Posts' be shown in the aside of this post?" }
       
       #Author
       - { 
@@ -180,7 +180,8 @@ collections:
           collection: 'people',
           display_fields: ["full_name"],
           search_fields: ["full_name"],
-          value_field: "{{slug}}"
+          value_field: "{{slug}}",
+          hint: "The author of this post."
         }
 
       #More Information Links
@@ -192,15 +193,16 @@ collections:
           fields: [
             { label: 'Link Title', name: 'title', widget: 'string' },
             { label: 'URL / Path', name: 'url', widget: 'string' }
-          ]
+          ],
+          hint: "Additional informational links (if any) to show with this post. Not shown if no links provided."
         }           
       
       #Post Series
-      - { label: "Post Series", name: "post_series", widget: "string", required: false }
-      - { label: "Series Order", name: "series_order", widget: "number", value_type: "int", required: false }
+      - { label: "Post Series", name: "post_series", widget: "string", required: false, hint: "If this post is part of a series, put the series name here - case sensitive!" }
+      - { label: "Series Order", name: "series_order", widget: "number", value_type: "int", required: false, hint: "What order is this post in its series?" }
       
       #Content
-      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "A short description or summary of this post." }
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ============
@@ -218,27 +220,28 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "person" }
 
       #Name
-      - { label: "Full Name", name: "full_name", widget: "string", required: true }
+      - { label: "Full Name", name: "full_name", widget: "string", required: true, hint: "The First and Last name of this person." }
 
       #Profile Picture
-      - { label: "Image", name: "main_img_url", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "main_img_alt", widget: "string", required: false }
+      - { label: "Image", name: "main_img_url", widget: "image", required: false, hint: "The profile picture for this person. Uses a default avatar if not provided." }
+      - { label: "Image Alt Text", name: "main_img_alt", widget: "string", required: false, hint: "The alt text for this person's profile picture." }
 
       #General Info
-      - { label: "Email", name: "email", widget: "string", required: false }
-      - { label: "position", name: "position", widget: "string" }
-      - { label: "Affiliation", name: "affiliation", widget: "string" }
+      - { label: "Email", name: "email", widget: "string", required: false, hint: "An email address for this person." }
+      - { label: "position", name: "position", widget: "string", hint: "The title or position of this person." }
+      - { label: "Affiliation", name: "affiliation", widget: "string", hint: "The organizational affiliation of this person." }
 
       - { 
           label: "Research Areas", 
           name: "research_areas", 
           widget: "select",
           multiple: true,
-          options: ["Fisheries Management", "Ecology", "Modeling", "Stock Assessment", "Fishing Communities", "Climate Science", "Communications", "Social Sciene", "Ecosystem-based Research", "Oceanography", "Communications"],
-          required: false 
+          options: ["Fisheries Management", "Ecology", "Modeling", "Stock Assessment", "Fishing Communities", "Climate Science", "Communications", "Social Science", "Ecosystem-based Research", "Oceanography", "Communications"],
+          required: false,
+          hint: "Areas of expertise this person has."
         }
 
-      - { label: "ACE Role", name: "ace_role", widget: "select", options: ["Team", "Contributor"], required: true }
+      - { label: "ACE Role", name: "ace_role", widget: "select", options: ["Team", "Contributor"], required: true, hint: "What role does this person have on the ACE project?" }
 
       #Projects
       - { 
@@ -249,23 +252,24 @@ collections:
           fields: [
             { label: 'Title', name: 'title', widget: 'string' },
             { label: 'Role', name: 'role', widget: 'string' }
-          ]
+          ],
+          hint: "What projects are this person associated with?"
         }  
       
       #Social Links
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "GitHub", name: "github", widget: "string", required: false }
       - { label: "Scholar", name: "scholar", widget: "string", required: false }
-      - { label: "Bluesky", name: "bluesky", widget: "string", required: false }
       - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "Bluesky", name: "bluesky", widget: "string", required: false }
       - { label: "Orcid", name: "orcid", widget: "string", required: false }
 
       #Feature
-      - { label: "Is Featured?", name: "featured", widget: "boolean", default: false }
-      - { label: "Featured Order", name: "feature_order", widget: "number", value_type: "int", required: false }
+      - { label: "Is Featured?", name: "feature", widget: "boolean", default: false, hint: "Is this person featured on the front page 'Who we are' carousels?" }
+      - { label: "Featured Order", name: "feature_order", widget: "number", value_type: "int", required: false, hint: "What order does this person appear in the 'Who we are' carousel?" }
 
       #Content
-      - { label: "Short Text", name: "short_text", widget: "text", required: false }
+      - { label: "Short Text", name: "short_text", widget: "text", required: false, hint: "A short blurb about this person to be used in carousels and cards." }
       - { label: "Content", name: "body", widget: "markdown" }
 
   # ============
@@ -283,32 +287,32 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "species" }
 
       #Image
-      - { label: "Image", name: "img_url", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "img_alt", widget: "string", required: false }
+      - { label: "Image", name: "img_url", widget: "image", required: false, hint: "An image of this species." }
+      - { label: "Image Alt Text", name: "img_alt", widget: "string", required: false, hint: "Alt text for the image of this species." }
 
       #General
-      - { label: "Species Name", name: "species_name", widget: "string", required: true }
-      - { label: "Scientific Name", name: "scientific_name", widget: "string", required: false }
-      - { label: "Other Names", name: "other_names", widget: "text", required: false }
+      - { label: "Species Name", name: "species_name", widget: "string", required: true, hint: "The common name of this species." }
+      - { label: "Scientific Name", name: "scientific_name", widget: "string", required: false, hint: "The scientific name of this species." }
+      - { label: "Other Names", name: "other_names", widget: "text", required: false, hint: "Other local or native names associated with this species." }
 
       #Management
-      - { label: "Management Structure", name: "management_structure", widget: "string", required: false }
-      - { label: "Management Bodies", name: "management_bodies", widget: "list", required: false }
-      - { label: "Management Body Notes", name: "management_body_notes", widget: "text", required: false }
+      - { label: "Management Structure", name: "management_structure", widget: "string", required: false, hint: "The management structure for this species." }
+      - { label: "Management Bodies", name: "management_bodies", widget: "list", required: false, hint: "Known management bodies for this species." }
+      - { label: "Management Body Notes", name: "management_body_notes", widget: "text", required: false, hint: "Additional management notes for this species."  }
 
       #CDQ Community Development Group(s)
-      - { label: "CDQ Groups", name: "cdq_groups", widget: "list", required: false }
-      - { label: "CDQ Communities", name: "cdq_communities", widget: "list", required: false }
+      - { label: "CDQ Groups", name: "cdq_groups", widget: "list", required: false, hint: "Community Development Group(s) for this species."  }
+      - { label: "CDQ Communities", name: "cdq_communities", widget: "list", required: false, hint: "Communities associated with the CDQs for this species." }
 
       #Climate Change Vulnerability
-      - { label: "CCV Label", name: "ccv_label", widget: "string", required: false }
-      - { label: "CCV Reference", name: "ccv_reference", widget: "string", required: false }
-      - { label: "CCV Score", name: "ccv_score", widget: "number", value_type: "int", min: 0, max: 100, required: false }
-      - { label: "CCV Notes", name: "ccv_notes", widget: "text", required: false }
+      - { label: "CCV Label", name: "ccv_label", widget: "string", required: false, hint: "The label for Climate Change Vulnerability used for this species. i.e. Low-Mid, High, etc." }
+      - { label: "CCV Reference", name: "ccv_reference", widget: "string", required: false, hint: "The reference/citation for the label of Climate Change Vulnerability." }
+      - { label: "CCV Score", name: "ccv_score", widget: "number", value_type: "int", min: 0, max: 100, required: false, hint: "The percentage related to the label for this species Climate Change Vulnerability - used to fill progress bar representing vulnerability." }
+      - { label: "CCV Notes", name: "ccv_notes", widget: "text", required: false, hint: "Additional notes related to this species Climate Change Vulnerability." }
 
-      #Data Tags (used in search)
+      #Tags (used in search)
       #TODO: Link to collection of species tags with relation widget
-      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Tags that describe this species - used in search logic." }
       
       #Communities (used in search)
       - { 
@@ -319,29 +323,31 @@ collections:
           display_fields: [community_name],
           search_fields: [community_name],
           value_field: "{{slug}}",
-          required: false
+          required: false,
+          hint: "Communities associated with this species - used in search logic."
         }
 
       #Protections
-      - { label: "Protections", name: "protections", widget: "text", required: false }
-      - { label: "Protection Notes", name: "protection_notes", widget: "text", required: false }
+      - { label: "Protections", name: "protections", widget: "text", required: false, hint: "Any protections or acts associated with this species." }
+      - { label: "Protection Notes", name: "protection_notes", widget: "text", required: false, hint: "Additional notes related to this species Protections." }
 
       #Justification for Classification
-      - { label: "Justification for Classification", name: "justification", widget: "text", required: false }
-      - { label: "Justification Notes", name: "justification_notes", widget: "text", required: false }
+      - { label: "Justification for Classification", name: "justification", widget: "text", required: false, hint: "Justification for Classification of this species." }
+      - { label: "Justification Notes", name: "justification_notes", widget: "text", required: false, hint: "Additional notes related to this species Justification for Classification." }
 
       #Cultural Significance
-      - { label: "Cultural Significance", name: "cultural_significance", widget: "text", required: false }
-      - { label: "Cultural Significance Notes", name: "cultural_significance_notes", widget: "text", required: false }
+      - { label: "Cultural Significance", name: "cultural_significance", widget: "text", required: false, hint: "The Cultural Significance of this species." }
+      - { label: "Cultural Significance Notes", name: "cultural_significance_notes", widget: "text", required: false, hint: "Additional notes on this species Cultural Significance." }
 
       #Spatial Data
-      - { label: "Spatial Data", name: "spatial_data", widget: "text", required: false }
-      - { label: "Spatial Data Notes", name: "spatial_data_notes", widget: "text", required: false }
+      - { label: "Spatial Data", name: "spatial_data", widget: "text", required: false, hint: "Any available Spatial Data on this species." }
+      - { label: "Spatial Data Notes", name: "spatial_data_notes", widget: "text", required: false, hint: "Additional notes of this species Spatial Data."  }
 
       #Is this a species of concern?
-      - { label: "Is Species of Concern?", name: "is_species_of_concern", widget: "boolean", default: false }
+      - { label: "Is Species of Concern?", name: "is_species_of_concern", widget: "boolean", default: false, hint: "Is this a Species of Concern? Used for rendering lists of Species of Concern." }
 
       #Refernces
+      #TODO: Turn this into an object with fields to fill out rather than HTML entry
       - {
           label: "References",
           name: "references",
@@ -350,7 +356,8 @@ collections:
             label: "Citation HTML Structure",
             name: "citation",
             widget: "text"
-          }
+          },
+          hint: "List of HTML-based citations to be used as a reference for this species."
         }
 
   # ============
@@ -375,18 +382,18 @@ collections:
         name: "hero_Data"
         widget: "object"
         fields:
-          - { label: "ID", name: "id", widget: "string", required: false }
-          - { name: "is_header", widget: "hidden", default: "true", meta: true }
-          - { label: "Hero Image", name: "img_url", widget: "image", required: false }
-          - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false }
-          - { label: "Title", name: "title", widget: "string", required: false }
-          - { label: "Lead", name: "lead", widget: "text", required: false }
+          - { label: "ID", name: "id", widget: "string", required: false, hint: "A unique ID to use for this header" }
+          - { name: "is_header", widget: "hidden", default: "true", meta: true } #hidden + meta - is always true in this case
+          - { label: "Hero Image", name: "img_url", widget: "image", required: false, hint: "The URL for the image to be used in this hero image." }
+          - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false, hint: "The alt text for the image used in the hero image." }
+          - { label: "Title", name: "title", widget: "string", required: false, hint: "The title displayed within the hero image area - leave blank to show no title." }
+          - { label: "Lead", name: "lead", widget: "text", required: false, hint: "The lead displayed within the hero image area - leave blank to show no lead." }
 
       #Summary
-      - { label: "Summary Image", name: "summary_img_url", widget: "image", required: false }
-      - { label: "Summary Image Alt Text", name: "summary_img_alt", widget: "string", required: false }
-      - { label: "Summary Title", name: "summary_title", widget: "string", required: false }
-      - { label: "Summary Lead", name: "summary_lead", widget: "text", required: false }
+      - { label: "Summary Image", name: "summary_img_url", widget: "image", required: false, hint: "The URL for the image to be used in the summary section for this region." }
+      - { label: "Summary Image Alt Text", name: "summary_img_alt", widget: "string", required: false, hint: "The URL for the image to be used in the summary section for this region." }
+      - { label: "Summary Title", name: "summary_title", widget: "string", required: false, hint: "The title for the summary section of this region." }
+      - { label: "Summary Lead", name: "summary_lead", widget: "text", required: false, hint: "The lead for the summary section of this region." }
       
       #Point(s) of Contact
       - { 
@@ -398,13 +405,16 @@ collections:
           search_fields: ["full_name"],
           value_field: "{{slug}}",
           multiple: true,
-          required: false
+          required: false,
+          hint: "Point(s) of Contact for this region - leave blank to show none."
         }
 
       #Display/Rendering
-      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int" }
+      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int", hint: "The order this region is displayed when rendered alongside other regions in the UI." }
 
-  #Communities (Collection)
+  # ============
+  #  COMMUNITIES (COLLECTION)
+  # ============
   - name: "communities"
     label: "Communities"
     folder: "_communities"
@@ -417,63 +427,88 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "community" }
 
       #General
-      - { label: "Community Name", name: "community_name", widget: "string", required: true }
+      - { label: "Community Name", name: "community_name", widget: "string", required: true, hint: "The official name of this community." }
       
       #Info Bar
-      - { label: "Show Info Bar?", name: "show_info_bar", widget: "boolean", default: false, required: false }
-      - { label: "Native Name", name: "native_name", widget: "string", required: false }
-      - { label: "Native Pronunciation", name: "native_pronunciation", widget: "string", required: false }
+      - { label: "Show Info Bar?", name: "show_info_bar", widget: "boolean", default: false, required: false, hint: "Display the info bar at the top of this community page?" }
+
+        #Native Language Info
+      - { label: "Native Name", name: "native_name", widget: "string", required: false, hint: "The native name for this community." }
+      - { label: "Native Pronunciation", name: "native_pronunciation", widget: "string", required: false, hint: "The pronunciation of the native name for this community." }
       
-      #Pronunciation Audio
       - {
           label: "Pronunciation Audio",
           name: "native_pronunciation_audio",
           widget: "file",
           media_folder: "/assets/audio/pronunciation",
-          public_folder: "/assets/audio/pronunciation"
+          public_folder: "/assets/audio/pronunciation",
+          hint: "The associated audio file for the pronunciation of this communities native name."
         }
+
+      - { label: "Native Language", name: "native_language", widget: "string", required: false, hint: "The dominant language spoken in this community." }
+      - { label: "Native Language ISO Code", name: "native_language_iso", widget: "string", required: false, hint: "An official ISO 639-3 three-letter standard ISO code. i.e. Dena’ina is tfn." }
 
       #Hero
       - label: "Hero"
         name: "hero_Data"
         widget: "object"
         fields:
-          - { label: "ID", name: "id", widget: "string", required: false }
-          - { name: "is_header", widget: "hidden", default: "true", meta: true }
-          - { label: "Hero Image", name: "img_url", widget: "image", required: false }
-          - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false }
-          - { label: "Title", name: "title", widget: "string", required: false }
-          - { label: "Lead", name: "lead", widget: "text", required: false }
+          - { label: "ID", name: "id", widget: "string", required: false, hint: "A unique ID to use for this header" }
+          - { name: "is_header", widget: "hidden", default: "true", meta: true } #hidden + meta - is always true in this case
+          - { label: "Hero Image", name: "img_url", widget: "image", required: false, hint: "The URL for the image to be used in this hero image." }
+          - { label: "Hero Image Alt Text", name: "img_alt", widget: "string", required: false, hint: "The alt text for the image used in the hero image." }
+          - { label: "Title", name: "title", widget: "string", required: false, hint: "The title displayed within the hero image area - leave blank to show no title." }
+          - { label: "Lead", name: "lead", widget: "text", required: false, hint: "The lead displayed within the hero image area - leave blank to show no lead." }
 
       #Summary
-      - { label: "Summary Image", name: "summary_img_url", widget: "image", required: true }
-      - { label: "Summary Image Alt Text", name: "summary_img_alt", widget: "string", required: false }
-      - { label: "Summary Title", name: "summary_title", widget: "string", required: true }
-      - { label: "Summary Lead", name: "summary_lead", widget: "text", required: true }
+      - { label: "Summary Image", name: "summary_img_url", widget: "image", required: false, hint: "The URL for the image to be used in the summary section for this community." }
+      - { label: "Summary Image Alt Text", name: "summary_img_alt", widget: "string", required: false, hint: "The URL for the image to be used in the summary section for this community." }
+      - { label: "Summary Title", name: "summary_title", widget: "string", required: false, hint: "The title for the summary section of this community." }
+      - { label: "Summary Lead", name: "summary_lead", widget: "text", required: false, hint: "The lead for the summary section of this community." }
 
       #Calendar - General
-      - { label: "Calendar Summary", name: "calendar_summary", widget: "text", required: false }
-      - { label: "Calendar About", name: "calendar_about", widget: "text", required: false }
-      - { label: "Calendar Subtitle", name: "calendar_subtitle", widget: "string", required: false }
+      - { label: "Calendar Summary", name: "calendar_summary", widget: "text", required: false, hint: "Summary text for this communities subsistence calendar." }
+      - { label: "Calendar About", name: "calendar_about", widget: "text", required: false, hint: "About text for this communities subsistence calendar - typically taken from the calendar graphic for accessibility." }
 
       #Calendar - Images
-      - { label: "Calendar Card Image URL", name: "calendar_card_img_url", widget: "image", required: false }
-      - { label: "Calendar Card Image Alt Text", name: "calendar_card_img_alt", widget: "string", required: false }  
+      - { label: "Calendar Card Image URL", name: "calendar_card_img_url", widget: "image", required: false } #deprecated
+      - { label: "Calendar Card Image Alt Text", name: "calendar_card_img_alt", widget: "string", required: false } #deprecated
 
-      - { label: "Calendar Display Image URL", name: "calendar_display_img_url", widget: "image", required: false }
-      - { label: "Calendar Display Image Alt Text", name: "calendar_display_alt", widget: "string", required: false }  
+      - { label: "Calendar Display Image URL", name: "calendar_display_img_url", widget: "image", required: false, hint: "The URL for the display image of this calendar - used to show the calendar next to its description." }
+      - { label: "Calendar Display Image Alt Text", name: "calendar_display_alt", widget: "string", required: false, hint: "The alt text for the Calendar Display Image." }  
+
+      - { label: "Calendar View Image URL", name: "calendar_view_img_url", widget: "image", required: false, hint: "The URL for a high-resolution webp image of the calendar used in the calendar view modal." }
+      - { label: "Calendar View Image Alt Text", name: "calendar_view_alt", widget: "string", required: false, hint: "The alt text for the Calendar View Image." }  
+
+      #Calendar - Legend
+      - label: "Calendar Legend"
+        name: "calendar_legend"
+        widget: "object"
+        fields:
+          - { label: "Show Legend", name: "show_legned", widget: "boolean", default: true, hint: "Render the legend for this calendar?" }
+          - { label: "Show Land Key", name: "show_land_key", widget: "boolean", default: true, hint: "Show the Land Animal key in this legend?" }
+          - { label: "Show Sea Key", name: "show_sea_key", widget: "boolean", default: true, hint: "Show the Sea & River Animal key in this legend?" }
+          - { label: "Show Plant Key", name: "show_plant_key", widget: "boolean", default: true, hint: "Show the Plant key in this legend?" }
+          - { label: "Show Traditional Harvest Key", name: "show_traditional_harvest_key", widget: "boolean", default: false, hint: "Show the Traditional Harvest key in this legend?" }
+          - { label: "Show Changing Conditions Key", name: "show_changing_conditions_key", widget: "boolean", default: false, hint: "Show the Changing Conditions key in this legend?" }
+          - { label: "Show Variable Key", name: "show_variable_key", widget: "boolean", default: false, hint: "Show the Variable key in this legend?" }
+
+      #Calendar - SVG
+      - label: "Calendar SVG Data"
+        name: "calendar_svg_paths"
+        widget: "list"
+        fields:
+          - { label: "Month Short Name", name: "month", widget: "string", required: false, hint: "The shortname for the month this path represents i.e. MAR for March - use caps, must match Adobe Illustrator path id names!" }
+          - { label: "Path Data", name: "data", widget: "string", required: false, hint: "The raw path data for this shape i.e. (d='*') where '*' is the path data." }
 
       #Calendar - Downloads
-      - {
-          label: "Calendar File Download",
-          name: "calendar_download_url",
-          widget: "file",
-          media_folder: "/assets/images/calendars",
-          public_folder: "/assets/images/calendars", 
-          required: false
-        }
-        
-      - { label: "Calendar File Size", name: "calendar_file_size", widget: "string", required: false } 
+      - label: "Calendar Downloads"
+        name: "calendar_downloads"
+        widget: "list"
+        fields:
+          - { label: "Label", name: "label", widget: "string", required: false, hint: "The label to show for this download link." }
+          - { label: "Download URL", name: "download_url", widget: "string", required: false, hint: "The URL to the file for this download." }
+          - { label: "File Size", name: "file_size", widget: "string", required: false, hint: "The file size of the file to download - i.e. 10 MB" }
 
       #Point(s) of Contact
       - { 
@@ -485,24 +520,25 @@ collections:
           search_fields: ["full_name"],
           value_field: "{{slug}}",
           multiple: true,
-          required: false
+          required: false,
+          hint: "Point(s) of Contact for this community - leave blank to show none."
         }
 
       #Display/Rendering
-      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int", required: false }
+      - { label: "Display Order", name: "display_order", widget: "number", min: 0, value_type: "int", required: false, hint: "The order this community is displayed when rendered alongside other communities in the UI." }
 
   # ============
   #  SITE DATA
   # ============
   - name: "site_data"
     label: "Site Data"
-    delete: false #don't allow site data to be deleted from Decap
+    delete: false #don't allow site data to be deleted from CMS
     files:
       # ============
       #  NAVIGATION (SITE DATA)
       # ============
       - name: "navigation"
-        label: "Navigation & Footer"
+        label: "Navigation"
         file: "_data/navigation.yml"
         fields:
           #Brand
@@ -510,51 +546,76 @@ collections:
             label: "Brand"
             widget: "object"
             fields:
-              - { name: "title", label: "Title", widget: "string" }
-              - { name: "url", label: "URL", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
 
           #Global Navbar
           - name: "navbar"
-            label: "Navbar Links"
+            label: "Navbar Config"
             widget: "list"
             fields:
-              - { name: "title", label: "Link Title", widget: "string" }
-              - { name: "url", label: "URL Path", widget: "string" }
+              #Single Nav Item
+              - { label: "Link Title", name: "title", widget: "string" }
+              - { label: "URL Path", name: "url", widget: "string" }
+
+              #Dropdown Nav Item
               - name: "dropdown"
                 label: "Dropdown Items"
                 widget: "list"
                 required: false
                 types:
+                  #Standard link within a dropdown
                   - name: "standard_link"
                     label: "Standard Link"
                     widget: "object"
                     fields:
-                      - { name: "title", label: "Title", widget: "string" }
-                      - { name: "url", label: "URL", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+
+                  #Group of links for a Collection (list all items in a collection)
                   - name: "collection_reference"
                     label: "Collection Reference"
                     widget: "object"
                     fields:
-                      - { name: "collection", label: "Collection Name", widget: "string" }
+                      - { label: "Collection Name", name: "collection", widget: "string" }
+                  
+                  #Divider for the dropdown menu
                   - name: "menu_divider"
                     label: "Menu Divider"
                     widget: "object"
                     fields:
-                      - { name: "divider", label: "Is Divider?", widget: "boolean", default: true }
+                      - { label: "Is Divider?", name: "divider", widget: "boolean", default: true }
 
           #Footer
           - name: "footer"
-            label: "Footer Categories"
-            widget: "list"
+            label: "Footer"
+            widget: "object"
             fields:
-              - { name: "title", label: "Category Title", widget: "string" }
-              - name: "links"
-                label: "Links"
+              #Display options
+              - { label: "Show RSS Feed", name: "show_rssfeed", widget: "boolean", default: true, hint: "Should the RSS feed announcement be displayed in the footer?" }
+              - { label: "Show Newsletter", name: "show_newsletter", widget: "boolean", default: true, hint: "Should the Newsletter sign-up be displayed in the footer?" }
+
+              #Footer Categories
+              - name: "categories"
+                label: "Categories"
                 widget: "list"
                 fields:
-                  - { name: "title", label: "Link Title", widget: "string" }
-                  - { name: "url", label: "URL Path", widget: "string" }
-                  
+                  #Name of footer category
+                  - { label: "Title", name: "title", widget: "string" }
+
+                  #Standard link within a category
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+                      - { label: "External Link?", name: "external", widget: "boolean", default: false }
+
+                  #Group of links for a Collection (list all items in a collection)
+                  - { label: "Collection", name: "collection", widget: "string", required: false }
+ 
       # ============
       #  RESOURCES (SITE DATA)
       # ============
@@ -568,8 +629,8 @@ collections:
             widget: "list"
             summary: '{{fields.title}} ({{fields.type}})'
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Title", name: "title", widget: "string", hint: "The title of this resource, shorter is better - used in search logic." }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, hint: "The date this resource was published - used in search logic." }
 
               #Resource Type
               - {
@@ -582,14 +643,11 @@ collections:
                   display_fields: ['items.*.label'], 
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: false,
-                  required: true
+                  required: true,
+                  hint: "The type associated with this resource (see resource_types)  - used in search logic."
                 }
 
-              - { label: "Icon Class", name: "icon", widget: "string", required: false }
-              - { label: "Resource URL", name: "url", widget: "string", required: true }
-              - { label: "Is Available", name: "is-available", widget: "boolean", default: true }
-              - { label: "File Attachment", name: "file", widget: "file", required: false, default: null }
-              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon Class", name: "icon", widget: "string", required: false } #deprecated - JS will replace this 
               
               #Regions
               - { 
@@ -601,7 +659,8 @@ collections:
                   search_fields: [region_name],
                   value_field: "{{slug}}",
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Associated regions for this resource (see _regions collection) - used in search logic."
                 }     
                          
               #Communities
@@ -614,7 +673,8 @@ collections:
                   search_fields: [community_name],
                   value_field: "{{slug}}",
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Associated communities for this resource (see _community collection) - used in search logic."
                 }   
                 
               #Themes
@@ -628,21 +688,8 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: false
-                } 
-
-              #Search Species (Broad Species Search i.e 'cod' or 'crab')
-              - { 
-                  label: 'Species',
-                  name: 'search_species',
-                  widget: 'relation',
-                  collection: 'global_data',
-                  file: 'resource_species',
-                  value_field: 'items.*.id',
-                  display_fields: ['items.*.label'],
-                  search_fields: ['items.*.id', 'items.*.label'],
-                  multiple: false, 
-                  required: false
+                  required: false,
+                  hint: "Associated themes for this resource (see resource_themes) - used in search logic."
                 } 
 
               #Species
@@ -655,8 +702,24 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Listing of species related to this resource - used for building related species lists."
                 } 
+
+              #Search Species (Broad Species Search i.e 'cod' or 'crab')
+              - { 
+                  label: 'Search Species (Broad)',
+                  name: 'search_species',
+                  widget: 'relation',
+                  collection: 'global_data',
+                  file: 'resource_species',
+                  value_field: 'items.*.id',
+                  display_fields: ['items.*.label'],
+                  search_fields: ['items.*.id', 'items.*.label'],
+                  multiple: false, 
+                  required: false,
+                  hint: "Associated search species for this resource in a broad sense. i.e. crab, cod, multi, etc. (see resource_species) - used in search logic."
+                }
 
               #Audience
               - { 
@@ -669,7 +732,8 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Associated audiences for this resource (see resource_audiences) - used in search logic."
                 } 
 
               #Subtopics
@@ -683,7 +747,8 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Associated subtopics for this resource (see resource_subtopics) - used in search logic."
                 } 
 
               #Authors
@@ -696,13 +761,14 @@ collections:
                   search_fields: [full_name],
                   value_field: "{{slug}}",
                   multiple: true,
-                  required: false
+                  required: false,
+                  hint: "Associated authors for this resource (see _people collection)"
                 }   
 
               #User Goals
               - { 
                   label: 'User Goals',
-                  name: 'user-goals',
+                  name: 'user_goals',
                   widget: 'relation',
                   collection: 'global_data',
                   file: 'resource_goals',
@@ -710,5 +776,11 @@ collections:
                   display_fields: ['items.*.label'],
                   search_fields: ['items.*.id', 'items.*.label'],
                   multiple: true,
-                  required: false
-                } 
+                  required: false,
+                  hint: "Associated user goals for this resource (see resource_goals)"
+                }
+
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Resource URL", name: "url", widget: "string", required: true, hint: "The URL to this resource." } #Should add ability to link externaly or internaly
+              - { label: "Is Available?", name: "is_available", widget: "boolean", default: false, hint: "Is this resource available to the site?" }
+              - { label: "File Attachment", name: "file", widget: "file", required: false, default: null, hint: "Any downloadable file associated with this resource." }

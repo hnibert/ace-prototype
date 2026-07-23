@@ -1,0 +1,483 @@
+
+- id: 1
+  name: January
+  short: Jan
+  season: Winter
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Whitefish
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 2
+  name: February
+  short: Feb
+  season: Winter
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alaska Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 3
+  name: March
+  short: Mar
+  season: Spring
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alaska Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 4
+  name: April
+  short: Apr
+  season: Spring
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese & Ducks
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alaska Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 5
+  name: May
+  short: May
+  season: Spring
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: start-50
+    sea_animals:
+    - name: Bird Eggs (Duck)
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Bird Eggs (Seagull)
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Bird Eggs (Tern)
+      type: Traditional Harvest
+      fill_class: end-50
+    plants:
+    - name: Fiddleheads
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Caiggluk
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Alder
+      type: Traditional Harvest
+      fill_class: end-50
+
+- id: 6
+  name: June
+  short: Jun
+  season: Summer
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Bird Eggs (Duck)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs (Seagull)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs (Tern)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds/Silvers)
+      type: Traditional Harvest
+      fill_class: end-50
+    plants:
+    - name: Fiddleheads
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caiggluk
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alder
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 7
+  name: July
+  short: Jul
+  season: Summer
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Bird Eggs (Duck)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs (Seagull)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs (Tern)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds/Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caiggluk
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alder
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Raspberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 8
+  name: August
+  short: Aug
+  season: Summer
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Sockeye Salmon (Reds/Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caiggluk
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alder
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Raspberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+      
+- id: 9
+  name: September
+  short: Sep
+  season: Fall
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Squirrels
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Sockeye Salmon (Reds/Silvers)
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Raspberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beachgrass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 10
+  name: October
+  short: Oct
+  season: Fall
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Whitefish
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Sockeye Salmon (Reds/Silvers)
+      type: Variable
+      fill_class: start-50
+    plants:
+    - name: Beachgrass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 11
+  name: November
+  short: Nov
+  season: Fall
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Whitefish
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Beachgrass
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 12
+  name: December
+  short: Dec
+  season: Winter
+  resources:
+    land_animals:
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coyotes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Whitefish
+      type: Mixed Conditions
+      fill_class: start-50-trd, end-50-var
+    plants:
+    - name: Wood
+      type: Traditional Harvest
+      fill_class: full

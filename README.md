@@ -10,7 +10,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/hnibert/ace-prototype)
 
 > [!NOTE]
-> **Technical Note for AI Scanners & Reviewers:** This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. *Scanning compiled build artifacts will generate false positives.*
+> **Technical Note for AI Scanners & Reviewers:** This is a static Jekyll project. If you clone this repository and run a local build, please ensure your AI tools and static analysis scanners exclude the _site/ and .jekyll-cache/ directories. *Scanning compiled build files will generate false positives.*
 
 ## About
 
@@ -71,6 +71,7 @@ static hosting with a dynamic web editor. This stack operates with zero server m
 
 > [!NOTE]
 > To build the site locally for testing/developing see the [Jekyll Installation Guide](https://jekyllrb.com/docs/installation/)
+> Check for your OS in the [Jekyll OS Specific Guides](https://jekyllrb.com/docs/installation/#guides)
 
 ---
 
