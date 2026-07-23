@@ -19,7 +19,7 @@ js-postload-files:
 {%- endcomment -%}
 <!-- Search Index Array type="application/json"-->
 <script id="search-data-raw" type="application/json">
-  {{ site.data.resources.entries | where: 'is-available', true | jsonify }}
+  {{ site.data.resources.entries | where: 'is_available', true | jsonify }}
 </script>
 
 <!-- Hero -->
