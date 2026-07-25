@@ -647,8 +647,6 @@ collections:
                   hint: "The type associated with this resource (see resource_types)  - used in search logic."
                 }
 
-              - { label: "Icon Class", name: "icon", widget: "string", required: false } #deprecated - JS will replace this 
-              
               #Regions
               - { 
                   label: 'Regions',

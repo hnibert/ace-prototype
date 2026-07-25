@@ -2,7 +2,7 @@
 layout: default
 js-postload-files:
  - "/assets/scripts/components/basic-search.min.js"
- - "/assets/scripts/components/calendar-viewer.js"
+ - "/assets/scripts/components/calendar-viewer.min.js"
  
 css-files:
  - "/assets/css/community.css"
@@ -216,7 +216,7 @@ css-files:
         <div class="col mx-auto pb-5"> 
             <p class="lead mb-0">{{ page.community_name }} has no species matching your query</p>
             <p>Try checking for typos or use broader keywords.</p>
-            <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+            <button type="button" class="btn btn-ace-primary mt-3" aria-controls="species-container">Clear Search</button>
         </div> 
     </div>
 </section>
@@ -274,7 +274,7 @@ css-files:
 
 {%- assign community_resources = site.data.resources.entries | where_exp: "item", "item.communities contains page.slug" -%}
 {%- if community_resources.size > 0 -%}
-<basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3">
+<basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3" reset-search="#reset-search">
     <!-- Search-Filter Component -->
     <form class="container my-5" role="search" aria-labelledby="filter-heading">
         <!-- Resources Title -->
@@ -368,7 +368,7 @@ css-files:
             <div class="col mx-auto pb-5"> 
                 <p class="lead mb-0">{{ page.community_name }} has no resource matching your query</p>
                 <p>Try checking for typos or use broader keywords.</p>
-                <button type="button" class="btn btn-ace-primary mt-3 reset-search" aria-controls="species-container" data-search-reset>Clear Search</button>
+                <button id="reset-search" type="button" class="btn btn-ace-primary mt-3" aria-controls="species-container">Reset Search</button>
             </div> 
         </div>
 
@@ -424,7 +424,8 @@ css-files:
             </div>
 
             <div class="modal-body">
-                <calendar-viewer calendar-data="{{ '/assets/data/community/iliamna.json' | relative_url }}" class="mb-0">
+                {%- capture community_data -%}/assets/data/community/{{ page.community_name | escape | slugify }}.json{%- endcapture -%}                
+                <calendar-viewer calendar-data="{{ community_data | relative_url }}" class="mb-0">
 
                     <!-- Calendar View Image -->
                     <div class="image-viewer" data-calendar-view>

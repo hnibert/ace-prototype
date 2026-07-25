@@ -95,6 +95,9 @@ customElements.define('advanced-search', class extends HTMLElement {
         //page progress bar attribute
         this.pageProgressSelector = this.getAttribute('pagination-progress');
 
+        //get the reset search button selector
+        this.resetSearchSelector = this.getAttribute('reset-search');
+
         /*
          *  Cached Expected Elements (Expected to exist inside this component)
          */
@@ -166,6 +169,11 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         //hide no results element by default
         this.noResultsElement.style.display = "none";
+
+        //get the reset search button element
+        this.resetSearchBtnElement = document.querySelector(this.resetSearchSelector);
+
+        console.log(this.resetSearchBtnElement);
 
         //page summary elements
         this.pageIndexSummaryText = document.querySelector(this.pageIndexSummarySelector);
@@ -242,6 +250,13 @@ customElements.define('advanced-search', class extends HTMLElement {
                     this.clearAllFilters();
                 });
             }
+        }
+
+        /* RESER SEARCH BUTTON */
+        if (this.resetSearchBtnElement) {
+            this.resetSearchBtnElement.addEventListener('click', () => {
+                this.resetSearch();
+            });
         }
 
         /* PAGINATION BUTTONS */
@@ -663,7 +678,10 @@ customElements.define('advanced-search', class extends HTMLElement {
         UTIL METHODS
     */    
     resetSearch() {
-        this.clearSearchInput();
+        //set text input value to empty
+        this.searchInputElement.value = "";
+
+        //clear all filters and allow it to execute the search again
         this.clearAllFilters();
     }
 

@@ -50,7 +50,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             <advanced-search search-data="#search-data-raw" search-container="#resource-search-container" 
             no-results="#no-results-feedback" result-template="#resource-card-template"
             results-per-page="5" page-summary="#page-index-summary" results-summary="#page-results-summary" 
-            page-controls="#page-controls" pagination-progress="#pagination-progress">
+            page-controls="#page-controls" pagination-progress="#pagination-progress" reset-search="#reset-search">
                 <search>
                     <form>
                         <!-- Search Title -->
@@ -213,7 +213,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                 <div class="mx-auto pb-5"> 
                     <p class="lead mb-4">It looks like we're sailing in uncharted waters—no results found!</p>
                     <p>Try using broader keywords or less filters</p>
-                    <button type="button" class="btn btn-ace-primary mt-3" aria-controls="species-search-container" data-search-reset>Clear Search</button>
+                    <button id="reset-search" type="button" class="btn btn-ace-primary mt-3" aria-controls="species-search-container">Reset Search</button>
                 </div> 
             </div>
 

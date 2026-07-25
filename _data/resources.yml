@@ -3,7 +3,6 @@ entries:
   - title: "Pacific Cod Species Distribution Model Explorer: Dutch Harbor, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -35,7 +34,6 @@ entries:
   - title: "Walleye Pollock Species Distribution Model Explorer: Nome, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -67,7 +65,6 @@ entries:
   - title: "Walleye Pollock Species Distribution Model Explorer: Dutch Harbor, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -99,7 +96,6 @@ entries:
   - title: "Snow Crab Species Distribution Model Explorer: St. Paul, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -130,7 +126,6 @@ entries:
   - title: "Red King Crab Species Distribution Model Explorer: Nome, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -162,7 +157,6 @@ entries:
   - title: "Pacific Cod Species Distribution Model Explorer: St. Paul, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -194,7 +188,6 @@ entries:
   - title: "Pacific Cod Species Distribution Model Explorer: Nome, Alaska"
     date: 2026-05-01
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: 
     - "eastern-bering-sea"
     communities: []
@@ -226,7 +219,6 @@ entries:
   - title: "Harvest Control Rule Explorer"
     date: 2025-12-31
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions: []
     communities: []
     themes:
@@ -253,7 +245,6 @@ entries:
   - title: "ACLIM2 Species Distribution Models"
     date: 2025-12-31
     type: "web-application"
-    icon: "fa-solid fa-globe"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -280,7 +271,6 @@ entries:
   - title: "ACLIM2 GitHub Repository"
     date: 2025-12-31
     type: "data-and-code"
-    icon: "fa fa-code"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -307,7 +297,6 @@ entries:
   - title: "Aligning fisheries terminology with diverse social benefits"
     date: 2024-09-28
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -336,7 +325,6 @@ entries:
   - title: "Development of climate informed management scenarios for fisheries in the eastern Bering Sea"
     date: 2024-03-29
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -368,7 +356,6 @@ entries:
   - title: "Applications of Ecosystem Risk Assessment in Federal Fisheries to Advance Ecosystem-Based Fisheries Management"
     date: 2023-03-01
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -396,7 +383,6 @@ entries:
   - title: "Bottom–Up Impacts of Forecasted Climate Change on the Eastern Bering Sea Food Web"
     date: 2021-02-03
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -427,7 +413,6 @@ entries:
   - title: "Forecasting community reassembly using climate-linked spatio-temporal ecosystem models"
     date: 2021-01-27
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -456,7 +441,6 @@ entries:
   - title: "Ecosystem-based fisheries management forestalls climate-driven collapse"
     date: 2020-09-11
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -488,7 +472,6 @@ entries:
   - title: "Energetically relevant predator–prey body mass ratios and their relationship with predator body size"
     date: 2018-12-27
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -517,7 +500,6 @@ entries:
   - title: "Eastern Bering Sea Climate Action Plan Through 2024"
     date: 2023-10-01
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -543,7 +525,6 @@ entries:
   - title: "Current and future habitat suitability of northern fur seals and overlap with the commercial walleye pollock fishery in the eastern Bering Sea."
     date: 2025-04-14
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -571,7 +552,6 @@ entries:
   - title: "Socioeconomic risk of coastal Alaskan fishing communities to climate-driven changes in Pacific cod distributions"
     date: 2025-07-25
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -605,7 +585,6 @@ entries:
   - title: "Identifying and reducing climate uncertainty in fisheries management reference points"
     date: 2025-09-11
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -639,7 +618,6 @@ entries:
   - title: "Unintended consequences of climate-adaptive fisheries management targets"
     date: 2023-02-27
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -670,7 +648,6 @@ entries:
   - title: "Capturing uncertainty when modelling environmental drivers of fish populations, with an illustrative application to Pacific Cod in the eastern Bering Sea"
     date: 2024-01-27
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -702,7 +679,6 @@ entries:
   - title: "Predicting Pacific cod thermal spawning habitat in a changing climate"
     date: 2023-06-21
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -732,7 +708,6 @@ entries:
   - title: "Ensemble Projections of Future Climate Change Impacts on the Eastern Bering Sea Food Web Using a Multispecies Size Spectrum Model"
     date: 2020-03-16
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -764,7 +739,6 @@ entries:
   - title: "Evaluating the impact of climate and demographic variation on future prospects for fish stocks: An application for northern rock sole in Alaska"
     date: 2020-08-10
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -799,7 +773,6 @@ entries:
   - title: "Projected biophysical conditions of the Bering Sea to 2100 under multiple emission scenarios"
     date: 2019-04-24
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -828,7 +801,6 @@ entries:
   - title: "Evaluation of a coupled ocean and sea-ice model (MOM6-NEP10k) over the Bering Sea and its sensitivity to turbulence decay scales"
     date: 2025-10-23
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -855,7 +827,6 @@ entries:
   - title: "Dynamically downscaled projections of ocean acidification for the Bering Sea"
     date: 2022-03-13
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -885,7 +856,6 @@ entries:
   - title: "Updating and extending the Ecopath model of the southeastern Bering Sea"
     date: 2025-06-01
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -917,7 +887,6 @@ entries:
   - title: "Coupled modes of projected regional change in the Bering Sea from a dynamically downscaling model under CMIP6 forcing"
     date: 2021-11-30
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -950,7 +919,6 @@ entries:
   - title: "Towards climate resiliency in fisheries management"
     date: 2019-03-26
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -978,7 +946,6 @@ entries:
   - title: "Species-specific ontogenetic diet shifts attenuate trophic cascades and lengthen food chains in exploited ecosystems"
     date: 2019-01-18
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1009,7 +976,6 @@ entries:
   - title: "The collapse of eastern Bering Sea snow crab"
     date: 2023-10-19
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1041,7 +1007,6 @@ entries:
   - title: "A step towards the integration of spatial dynamics in population dynamics models: Eastern Bering Sea snow crab as a case study"
     date: 2023-08-28
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1072,7 +1037,6 @@ entries:
   - title: "Applications of Biophysical Modeling to Pacific High-Latitude Ecosystems"
     date: 2023-10-30
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1102,7 +1066,6 @@ entries:
   - title: "A framework for assessing harvest strategy choice when considering multiple interacting fisheries and a changing environment: The example of eastern Bering Sea crab stocks"
     date: 2022-04-21
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1133,7 +1096,6 @@ entries:
   - title: "Implications of climate change on the Bering Sea and other cold water systems"
     date: 2022-06-09
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1165,7 +1127,6 @@ entries:
   - title: "Climate change and the future productivity and distribution of crab in the Bering Sea"
     date: 2020-10-10
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1197,7 +1158,6 @@ entries:
   - title: "Integrated Modeling to Evaluate Climate Change Impacts on Coupled Social-Ecological Systems in Alaska"
     date: 2020-01-13
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1234,7 +1194,6 @@ entries:
   - title: "A regional physical-biogeochemical ocean model for marine resource applications in the Northeast Pacific"
     date: 2025-08-26
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1299,7 +1258,6 @@ entries:
   - title: "Estimating time-variation in confounded processes in population dynamics modeling: A case study for snow crab in the eastern Bering Sea"
     date: 2022-03-30
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
@@ -1329,7 +1287,6 @@ entries:
   - title: "Evaluating ecosystem caps on fishery yield in the context of climate stress and predation"
     date: 2025-05-12
     type: "publication"
-    icon: "fa fa-book"
     regions:
     - "eastern-bering-sea"
     communities: []
