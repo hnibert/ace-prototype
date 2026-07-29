@@ -4,6 +4,7 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         /* Selectors */
         this.SEARCH_INPUT = '[data-search-input]';
+        this.DATE_RANGE = '[data-date-range]';
         this.CLEAR_INPUT = '[data-clear-input]';
         this.FILTER_TOGGLE = '[data-search-filter]';
         this.CLEAR_ALL_FILTERS = '[data-clear-all-filters]';
@@ -19,13 +20,18 @@ customElements.define('advanced-search', class extends HTMLElement {
         //results list
         this.results = [];
 
-        /* Active Filters */
+        /* Active Filters (category/tags) */
         this.activeFilters = {
             type: [],
             regions: [],
             themes: [],
             search_species: [],
             subtopics: []
+        };
+
+        this.activeDates = {
+            fromDate: 0,
+            toDate: 0
         };
 
         //pagination
@@ -35,6 +41,7 @@ customElements.define('advanced-search', class extends HTMLElement {
         /* Flags */
         this.hasSearchInput = false;
         this.hasFilters = false;
+        this.hasDateRange = false;
     }
 
     connectedCallback() {
@@ -134,6 +141,9 @@ customElements.define('advanced-search', class extends HTMLElement {
         //clear search input btn
         this.clearInputBtnElement = this.querySelector(this.CLEAR_INPUT);
 
+        //date range slider element
+        this.dateRangeElement = this.querySelector(this.DATE_RANGE);
+
         //toggle search btns (need to be checkbox toggles i.e type=checkbox)
         this.searchFilterElements = Array.from(this.querySelectorAll(this.FILTER_TOGGLE));
 
@@ -152,6 +162,7 @@ customElements.define('advanced-search', class extends HTMLElement {
          * Set flags based on what expected input elements were found
          */
         this.hasSearchInput = !!this.searchInputElement;
+        this.hasDateRange = !!this.dateRangeElement;
         this.hasFilters = this.searchFilterElements.length > 0;
 
         /*
@@ -172,8 +183,6 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         //get the reset search button element
         this.resetSearchBtnElement = document.querySelector(this.resetSearchSelector);
-
-        console.log(this.resetSearchBtnElement);
 
         //page summary elements
         this.pageIndexSummaryText = document.querySelector(this.pageIndexSummarySelector);
@@ -225,6 +234,16 @@ customElements.define('advanced-search', class extends HTMLElement {
                     this.clearSearchInput();
                 });
             }
+        }
+
+        /* DATE RANGE INPUT */
+        if (this.hasDateRange) {
+            this.dateRangeElement.addEventListener('range-slider:change', (e) => {
+                this.activeDates.fromDate = e.detail.min;
+                this.activeDates.toDate = e.detail.max;
+                console.log(`--Date Range Change Event: Min(${e.detail.min}) : Max(${e.detail.max})`);
+                this.executeSearch();
+            });
         }
 
         /* FILTER TOGGLES */
@@ -308,7 +327,19 @@ customElements.define('advanced-search', class extends HTMLElement {
         if (query === "") {
             //skip minisearch and just match tags
             this.results = this.searchDocs.filter(item => {
-                return this.checkResultAgainstActiveFilters(item);
+                //categry and tag match check
+                const hasTagMatch = this.checkResultAgainstActiveFilters(item);
+
+                //date match check
+                const hasDateMatch = this.checkResultsAgainstActiveDates(item);
+
+                if (hasTagMatch && hasDateMatch) {
+                    return true;
+                }
+
+                return false;
+                //categry and tag match check
+                //return this.checkResultAgainstActiveFilters(item);
             });
         } else {
             //use minisearch + match tags
@@ -316,7 +347,19 @@ customElements.define('advanced-search', class extends HTMLElement {
                 //use the filter option to match tags, check each result for tag matches
                 //each 'result' is an object with all its key/values from searchDocs
                 filter: (result) => {
-                    return this.checkResultAgainstActiveFilters(result);
+                    //categry and tag match check
+                    const hasTagMatch = this.checkResultAgainstActiveFilters(result);
+
+                    //date match check
+                    const hasDateMatch = this.checkResultsAgainstActiveDates(result);
+
+                    if (hasTagMatch && hasDateMatch) {
+                        return true;
+                    }
+
+                    return false;
+                    //categry and tag match check
+                    //return this.checkResultAgainstActiveFilters(result);
                 }
             });
         }
@@ -351,6 +394,21 @@ customElements.define('advanced-search', class extends HTMLElement {
             //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
             return activeTags.includes(resultCategoryTags);
         });
+    }
+
+    checkResultsAgainstActiveDates(result) {
+        //apply year date range filter
+        const date = new Date(result.date).getFullYear();
+
+        //console.log(`${result.title}: ${date}`);
+        
+        if (this.activeDates.fromDate && date < new Date(this.activeDates.fromDate))
+            return false;
+
+        if (this.activeDates.toDate && date > new Date(this.activeDates.toDate))
+            return false;
+        
+        return true;
     }
 
     setDefaultSearchFromURL() {
