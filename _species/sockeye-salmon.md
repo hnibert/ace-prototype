@@ -6,7 +6,7 @@ communities:
     - togiak 
     - scammon-bay
     - iliamna
-    -  naknek
+    - naknek
     
 #Is this a species of concern?
 is_species_of_concern: true

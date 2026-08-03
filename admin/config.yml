@@ -51,7 +51,7 @@ collections:
       # Resource Type
       - name: "resource_types"
         label: "Resource Types"
-        file: "_data/tags/resource_types.yml"
+        file: "_data/tags/resources/resource_types.yml"
         fields:
           - name: "items"
             label: "Resource Types"
@@ -64,7 +64,7 @@ collections:
       # Theme
       - name: "resource_themes"
         label: "Resource Themes"
-        file: "_data/tags/resource_themes.yml"
+        file: "_data/tags/resources/resource_themes.yml"
         fields:
           - name: "items"
             label: "Resource Themes"
@@ -77,7 +77,7 @@ collections:
       # Species
       - name: "resource_species"
         label: "Resource Species"
-        file: "_data/tags/resource_species.yml"
+        file: "_data/tags/resources/resource_species.yml"
         fields:
           - name: "items"
             label: "Resource Species"
@@ -90,7 +90,7 @@ collections:
       # Subtopics
       - name: "resource_subtopics"
         label: "Resource Subtopics"
-        file: "_data/tags/resource_subtopics.yml"
+        file: "_data/tags/resources/resource_subtopics.yml"
         fields:
           - name: "items"
             label: "Resource Subtopics"
@@ -103,7 +103,7 @@ collections:
       # Audiences
       - name: "resource_audiences"
         label: "Resource Audiences"
-        file: "_data/tags/resource_audiences.yml"
+        file: "_data/tags/resources/resource_audiences.yml"
         fields:
           - name: "items"
             label: "Resource Audiences"
@@ -116,7 +116,7 @@ collections:
       # User Goals
       - name: "resource_goals"
         label: "Resource Goals"
-        file: "_data/tags/resource_goals.yml"
+        file: "_data/tags/resources/resource_goals.yml"
         fields:
           - name: "items"
             label: "Resource Goals"

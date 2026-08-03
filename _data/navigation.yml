@@ -17,6 +17,8 @@ navbar:
       - divider: true
       - title: SDM Explorers
         url: "/tools/sdm-explorers/"
+      - title: Species Catalog
+        url: "/species/"
 
   - title: Regions
     url: "/regions/"

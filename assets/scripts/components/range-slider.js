@@ -31,8 +31,8 @@ customElements.define('range-slider', class extends HTMLElement {
         this.acceptedKeys = ["Enter", "Backspace", "ArrowUp", "ArrowDown", "Delete", "Space"];
 
         //check for given min/max value attributes
-        this.maximumValue = this.getAttribute('max') || null;
-        this.minimumValue = this.getAttribute('min') || null;
+        this.maximumValue = parseInt(this.getAttribute('max')) || null;
+        this.minimumValue = parseInt(this.getAttribute('min')) || null;
     }
 
     connectedCallback() {
@@ -62,6 +62,13 @@ customElements.define('range-slider', class extends HTMLElement {
         //get the max range number input
         this.maxNumInputElement = this.querySelector("input[type='number'].max-range");
 
+        //set last emitted values to the default values by default
+        if (this.minNumInputElement)
+            this.lastEmittedValues.min = this.minNumInputElement.value;
+
+        if (this.maxNumInputElement)
+            this.lastEmittedValues.max = this.maxNumInputElement.value;
+
         //get the min range thumb input
         this.minRangeInputElement = this.querySelector(".range input[type='range'].min-input");
 
@@ -83,7 +90,7 @@ customElements.define('range-slider', class extends HTMLElement {
             Set Min/Max ranges for all inputs
             NOTE: can be done with liquid/manually but this ensures they're all the same
         */
-        if (this.maximumValue !== null && this.maxValue !== null ) {
+        if (this.maximumValue !== null && this.minimumValue !== null ) {
             if (this.minNumInputElement) {
                 this.minNumInputElement.min = this.minimumValue;
                 this.minNumInputElement.max = this.maximumValue;
@@ -104,12 +111,8 @@ customElements.define('range-slider', class extends HTMLElement {
                 this.maxRangeInputElement.max = this.maximumValue;
             }
 
-            //set default min/max values to last emitted values
-            this.lastEmittedValues.min = this.minimumValue;
-            this.lastEmittedValues.max = this.maxValue;
-
             //get max range of the slider 
-            this.maxRange = parseInt(this.minimumValue) - parseInt(this.maximumValue);
+            this.maxRange = parseInt(this.maximumValue) - parseInt(this.minimumValue);
         }        
     }
 
@@ -378,7 +381,7 @@ customElements.define('range-slider', class extends HTMLElement {
         const rangeValues = this.getNumberInputRangeValues();
 
         //check for changes to values
-        if (this.lastEmittedValues.min !== rangeValues.min || this.lastEmittedValues.max !== rangeValues.max) {
+        if (parseInt(this.lastEmittedValues.min) !== parseInt(rangeValues.min) || parseInt(this.lastEmittedValues.max) !== parseInt(rangeValues.max)) {
             //save the new values to last emitted
             this.lastEmittedValues.min = rangeValues.min;
             this.lastEmittedValues.max = rangeValues.max;

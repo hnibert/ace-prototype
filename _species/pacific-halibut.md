@@ -4,9 +4,12 @@ layout: species
 #Genereal
 imageURL:
 imageAlt:
+
 species_name: Pacific Halibut
 scientific-name: 
 other-names:
+
+species_type:
 
 #Management
 management-structure:

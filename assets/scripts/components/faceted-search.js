@@ -1,162 +1,140 @@
-customElements.define('advanced-search', class extends HTMLElement { 
-    constructor () {
-        super();
+class AdvancedSearch {
+    constructor(options = {}) {
+        console.log("---New Faceted Search---");
+        console.log(`FS Options: ${Object.keys(options)}`);
 
-        /* Selectors */
+        //filter toggle constants
         this.SEARCH_INPUT = '[data-search-input]';
-        this.DATE_RANGE = '[data-date-range]';
         this.CLEAR_INPUT = '[data-clear-input]';
+
+        //filter toggle constants
         this.FILTER_TOGGLE = '[data-search-filter]';
         this.CLEAR_ALL_FILTERS = '[data-clear-all-filters]';
         this.CLEAR_FILTERS_GROUP = '[data-clear-group-filters]';
-        this.RESET_SEARCH = '[data-search-reset]';
 
-        /* Constants */
-        this.debounceTime = 500; //debounce for 500 ms
+        this.PAGE_NEXT = '[data-page-next]';
+        this.PAGE_PREV = '[data-page-previous]';
 
-        //raw search list after modifying to add id
-        this.searchDocs = []; 
+        //search data 
+        this.searchDataSelector = options.searchData ?? '';
 
-        //results list
-        this.results = [];
+        //template element selector
+        this.resultTemplateSelector = options.resultTemplate ?? null;
 
-        /* Active Filters (category/tags) */
-        this.activeFilters = {
-            type: [],
-            regions: [],
-            themes: [],
-            search_species: [],
-            subtopics: []
-        };
+        //filter fields (maps to activeFields)
+        this.filterFields = options.filterFields ?? null;
 
-        this.activeDates = {
-            fromDate: 0,
-            toDate: 0
-        };
+        //active fields (created from filterFields)
+        this.activeFilters = this.filterFields ?? null;
 
-        //pagination
-        this.totalPages = 1;
+        console.log("Active Filters Object:");
+        console.log(this.activeFilters);
+
+        //minisearch config options
+        this.msFields = options.searchConfig?.msFields ?? [];
+        this.msStoreFields = options.searchConfig?.msStoreFields ?? [];
+        this.msBoostFields = options.searchConfig?.msBoostFields ??  null;
+
+        //custom logic methods
+        this.filterLogic = options.filterLogic ?? null;
+        this.renderLogic = options.filterLogic ?? null;
+
+        //container selectors
+        this.searchContainerSelector = options.containers?.searchContainer ?? '';
+        this.resultsContainerSelector  = options.containers?.resultsContainer ?? '';
+
+        //pagination selector & options
+        this.paginationControlSelector = options.pagination?.paginationControls ?? '';
+        this.paginationProgressSelector = options.pagination?.paginationProgressBar ?? '';
+        this.resultsPerPage = options.pagination?.resultsPagePer ?? 3;
         this.currentPage = 1;
 
-        /* Flags */
-        this.hasSearchInput = false;
-        this.hasFilters = false;
-        this.hasDateRange = false;
+        //summary text selectors
+        this.pageIndexSummarySelector = options.summary?.pageIndexSummary ?? '';
+        this.pageResultSummarySelector = options.summary?.pageResultSummary ?? '';
+        this.noResultsSelector = options.summary?.noResultsFeedback ?? '';
+
+        //get summary text elements
+        this.getSummaryElements();
+
+        //get custom search filter logic
+        this.searchFilterMethod = options.filterLogic ?? null;
+        console.log(this.searchFilterMethod);
+
+        //get custom  template render method
+        this.renderTemplateMethod = options.renderLogic ?? null;
+        console.log(this.renderTemplateMethod);
+
+        //setup minisearch and the component
+        this.initialize();
     }
 
-    connectedCallback() {
-        //initialize minisearch with our options
-        this.miniSearch = new window.MiniSearch({
-            fields: ['title', 'description'], //fields to search/index for text input
-            storeFields: ['title', 'type', 'description', 'date', 'url', 'regions', 'themes', 'search_species', 'subtopics'], //fields to return (we include the tag categories because we need to use them in filter during searches)
-            searchOptions: {
-                boost: { title: 2 },    // boost title for matching
-                prefix: true,           // matches terms that start with the query
-                //prefixLength: 3,      // first 3 characters must be exact
-                fuzzy: 2                // enable fuzzy matching
-            }
-        });
+    initialize() {
+        if (typeof MiniSearch !== 'undefined') {
+            console.log("MiniSearch is available!");
 
-        //setup this component
+            //initialize minisearch with our options
+            this.miniSearch = new window.MiniSearch({
+                fields: this.msFields,           //fields to search/index for text input
+                storeFields: this.msStoreFields, //fields to return for results
+                searchOptions: {
+                    boost: this.msBoostFields,   // boost object for matching text
+                    prefix: true,                // matches terms that start with the query
+                    //prefixLength: 3,           // first 3 characters must be exact
+                    fuzzy: 2                     // enable fuzzy matching
+                }
+            });
+        } else {
+            console.error("Error: MiniSearch is not loaded on this page!");
+        }
+
+        console.log("Faceted Search: Initialized");
+        console.log(`--Minisearch: ${this.miniSearch}\nFields: ${this.msFields}\nStore Fields: ${this.msStoreFields}\nBoost Fields: ${Object.entries(this.msBoostFields)}`);
+
+        //setup component elements
         this.setupComponent();
     }
 
     /* 
-        SETUP METHODS
+        SETUP ELEMENT METHODS
     */
     setupComponent() {
-        /* 
-         *  Get Provided Attributes 
-         */
-        
-        //supporting element selectors
-        this.searchDataSelector = this.getAttribute('search-data');
-
-        //warn if search data is null or it wasn't defined
-        if (!this.searchDataSelector) {
-            console.warn('advanced-search: Missing "search-data" attribute!');
-            return;
-        }
-
-        //search container attribute
-        this.searchContainerSelector = this.getAttribute('search-container');
-
-        //results template selector attribute
-        this.resultTemplateSelector = this.getAttribute('result-template');
-
-        //no results selector attribute
-        this.noResultsSelector = this.getAttribute('no-results');
-
-        //get results per page for pagination attribute - parse it as an int and set it to base-10
-        this.resultsPerPage = parseInt(this.getAttribute('results-per-page'), 10);
-
-        //page index summary attribute
-        this.pageIndexSummarySelector = this.getAttribute('page-summary');
-
-        //page results summary attribute
-        this.pageResultSummarySelector = this.getAttribute('results-summary');
-
-        //page controls (next/prev btns container)
-        this.pageControlsSelector = this.getAttribute('page-controls');
-
-        //page progress bar attribute
-        this.pageProgressSelector = this.getAttribute('pagination-progress');
-
-        //get the reset search button selector
-        this.resetSearchSelector = this.getAttribute('reset-search');
-
-        /*
-         *  Cached Expected Elements (Expected to exist inside this component)
-         */
+        console.log("Faceted Search: Started Component Setup\n---");
 
         //script holding raw json text string for search
         this.searchIndexElement = document.querySelector(this.searchDataSelector);
 
-        if (!this.searchIndexElement) {
-            console.warn(`advanced-search: Could not find script element with ID "${this.searchDataSelector}".`);
-            return;            
-        } else {
-            /* parse the JSON we get from searchIndexElement */
-            try {
-                //parse the given raw string into a js object array
-                const parsedJSON = JSON.parse(this.searchIndexElement.textContent);
+        //setup minisearch with the given json data
+        this.setupSearchDocuments();
 
-                //add an 'id' key to each entry in parsedJSON - minisearch needs id keys
-                this.searchDocs = parsedJSON.map((item, index) => ({
-                    ...item, 
-                    id: index
-                }));
+        //get the result template element
+        this.resultTemplate = this.resultTemplateSelector ? document.querySelector(this.resultTemplateSelector) : null;
+        console.log(`Results Template: ${this.resultTemplate.id}`);
 
-                //setup minisearch.js with our searchDocs array
-                this.initializeSearch(this.searchDocs);
-
-            } catch(error) {
-                console.error('advanced-search: Failed to parse JSON data.', error);
-            }
+        //get the search container element
+        this.searchContainerElement = this.searchContainerSelector ? document.querySelector(this.searchContainerSelector) : null;
+        console.log(`Search Container: ${this.searchContainerElement.id}`);
+        
+        //get elements expected in the search container
+        if (this.searchContainerElement) {
+            this.getSearchElements();
         }
 
-        //search input element
-        this.searchInputElement = this.querySelector(this.SEARCH_INPUT);
+        //get the results container element
+        this.resultsContainerElement = this.resultsContainerSelector ? document.querySelector(this.resultsContainerSelector) : null;
+        console.log(`Results Container: ${this.resultsContainerElement.id}`);
 
-        //clear search input btn
-        this.clearInputBtnElement = this.querySelector(this.CLEAR_INPUT);
+        //get the pagination controls element
+        this.paginationControlsElement = this.paginationControlSelector ? document.querySelector(this.paginationControlSelector) : null;
+        console.log(`Pagination Controls: ${this.paginationControlsElement.id}`);
 
-        //date range slider element
-        this.dateRangeElement = this.querySelector(this.DATE_RANGE);
+        //get elements expected in the pagination controls
+        if (this.paginationControlsElement) {
+            this.getPaginationElements();
+        }
 
-        //toggle search btns (need to be checkbox toggles i.e type=checkbox)
-        this.searchFilterElements = Array.from(this.querySelectorAll(this.FILTER_TOGGLE));
-
-        //clear toggle category btns
-        this.clearToggleGroupElements = Array.from(this.querySelectorAll(this.CLEAR_FILTERS_GROUP));
-
-        //hide the clear toggle group buttons by default
-        this.clearToggleGroupElements.forEach(clearBtn => { 
-            clearBtn.classList.add("hide");
-        });
-        
-        //clear all toggles btn
-        this.clearAllTogglesBtnElement = this.querySelector(this.CLEAR_ALL_FILTERS);
+        //get summary elements
+        this.getSummaryElements();
 
         /*
          * Set flags based on what expected input elements were found
@@ -165,47 +143,82 @@ customElements.define('advanced-search', class extends HTMLElement {
         this.hasDateRange = !!this.dateRangeElement;
         this.hasFilters = this.searchFilterElements.length > 0;
 
-        /*
-         * Cached Provided Support Elements (provided by component attributes)
-         */
-
-        //the container to build inside of
-        this.searchContainerElement = document.querySelector(this.searchContainerSelector);
-
-        //result template element
-        this.resultTemplateElement= document.querySelector(this.resultTemplateSelector);
-
-        //no results feedback
-        this.noResultsElement = document.querySelector(this.noResultsSelector);
-
-        //hide no results element by default
-        this.noResultsElement.style.display = "none";
-
-        //get the reset search button element
-        this.resetSearchBtnElement = document.querySelector(this.resetSearchSelector);
-
-        //page summary elements
-        this.pageIndexSummaryText = document.querySelector(this.pageIndexSummarySelector);
-        this.pageResultSummaryText = document.querySelector(this.pageResultSummarySelector);
-
-        //prev/next page btns
-        this.pageNextBtn = document.querySelector(`${this.pageControlsSelector} [data-page-next]`);
-        this.pagePreviousBtn = document.querySelector(`${this.pageControlsSelector} [data-page-previous]`);
-
-        //progress bar
-        this.pageProgressBar = document.querySelector(this.pageProgressSelector);
-
-        //setup listeners
+        //setup component listeners with elements
         this.setupListeners();
     }
 
+    getSearchElements() {
+        //search input field element
+        this.searchInputElement = this.searchContainerElement.querySelector(this.SEARCH_INPUT);
+        console.log(`Search Input: ${this.searchInputElement}`);
+
+        //clear search input element
+        this.clearSearchInputElement = this.searchContainerElement.querySelector(this.CLEAR_INPUT);
+        console.log(`Clear Search Input: ${this.clearSearchInputElement}`);
+
+        //filter toggle elements
+        this.searchFilterElements = Array.from(this.searchContainerElement.querySelectorAll(this.FILTER_TOGGLE));
+        console.log(`Search Filter Elements:`);
+        console.log(this.searchFilterElements);
+
+        //clear toggle category btns
+        this.clearToggleGroupElements = Array.from(this.searchContainerElement.querySelectorAll(this.CLEAR_FILTERS_GROUP));
+        console.log(`clear Toggle Group Elements:`);
+        console.log(this.clearToggleGroupElements);
+
+        //hide the clear toggle group buttons by default
+        this.clearToggleGroupElements.forEach(clearBtn => { 
+            clearBtn.classList.add("hide");
+        });
+
+        //clear all toggles btn
+        this.clearAllTogglesBtnElement = this.searchContainerElement.querySelector(this.CLEAR_ALL_FILTERS);
+        console.log(`Clear All Toggles Element: ${this.clearAllTogglesBtnElement}`);
+    }
+
+    getPaginationElements() {
+        //next page button
+        this.pageNextBtn = this.paginationControlsElement.querySelector(`${this.PAGE_NEXT}`);
+        console.log(`Pagination Next Button: ${this.pageNextBtn}`);
+
+        //previous page button
+        this.pagePreviousBtn = this.paginationControlsElement.querySelector(`${this.PAGE_PREV}`); 
+        console.log(`Pagination Previous Button: ${this.pagePreviousBtn}`);
+
+        //pagination progress bar element (optional)
+        this.paginationProgressElement = this.paginationProgressSelector ? document.querySelector(this.paginationProgressSelector) : null;
+        console.log(`Pagination Progress Bar: ${this.paginationProgressElement.id}`);
+    }
+
+    getSummaryElements() {
+        //page index summary text
+        this.pageIndexSummaryElement = this.pageIndexSummarySelector ? document.querySelector(this.pageIndexSummarySelector) : null;
+        console.log(`Page Index Summary Text: ${this.pageIndexSummaryElement.id}`);
+
+        //page results summary text
+        this.pageResultSummaryElement = this.pageResultSummarySelector ? document.querySelector(this.pageResultSummarySelector) : null;
+        console.log(`Page Results Summary Text: ${this.pageResultSummaryElement.id}`);
+
+        this.noResultsElement = this.noResultsSelector ? document.querySelector(this.noResultsSelector) : null;
+        console.log(`No Results Feedback: ${this.noResultsElement.id}`);
+        
+        //hide no results element by default
+        this.noResultsElement.style.display = "none";
+    }
+
+    /* 
+        SETUP LISTENER METHODS
+    */
+
     setupListeners() {
+        console.log("Faceted Search: Started Component Binding\n---");
+
         /*
          * Setup Listeners based on input flags
          */
 
         //handle enter key on form
-        this.querySelector('form').addEventListener('keydown', (e) => {
+        this.searchContainerElement.querySelector('form').addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
             }
@@ -226,7 +239,6 @@ customElements.define('advanced-search', class extends HTMLElement {
                 //set timer & perform search after wait
                 timer = setTimeout(() => {this.executeSearch(); }, this.debounceTime);
             });
-
 
             //clear search input btn
             if (this.clearInputBtnElement) {
@@ -306,10 +318,37 @@ customElements.define('advanced-search', class extends HTMLElement {
     }
 
     /* 
-        MINISEARCH / SEARCH JS METHODS
+        MINISEARCH / SEARCH METHODS
     */
-    initializeSearch(searchDocuments) {
-        //console.log("Component started with search docs:", this.searchDocs);
+    
+    setupSearchDocuments() {
+        if (!this.searchIndexElement) {
+            console.warn(`Faceted Search: Could not find script element with ID "${this.searchDataSelector}".`);
+            return;            
+        } else {
+            /* parse the JSON we get from searchIndexElement */
+            try {
+                //parse the given raw string into a js object array
+                const parsedJSON = JSON.parse(this.searchIndexElement.textContent);
+
+                //add an 'id' key to each entry in parsedJSON - minisearch needs id keys
+                this.searchDocs = parsedJSON.map((item, index) => ({
+                    ...item, 
+                    id: index
+                }));
+
+                //setup minisearch.js with our searchDocs array
+                this.initializeMiniSearch(this.searchDocs);
+
+            } catch(error) {
+                console.error('Faceted Search: Failed to parse JSON data.', error);
+            }
+        }
+    }
+
+    initializeMiniSearch(searchDocuments) {
+        console.log("Adding search documents to minisearch:");
+        console.log(this.searchDocs);
 
         //check we receieved an array to build the minisearch index map with
         if (Array.isArray(searchDocuments)) {
@@ -321,26 +360,26 @@ customElements.define('advanced-search', class extends HTMLElement {
         //get the input text and normalize it
         const query = this.searchInputElement.value.toLowerCase().trim();
 
-        //console.log(query);
-        //console.log("---Current Active Filters:", this.activeFilters);
+        console.log(query);
+        console.log("---Current Active Filters:", this.activeFilters);
 
         if (query === "") {
-            //skip minisearch and just match tags
+            //skip minisearch and just use custom filtering
             this.results = this.searchDocs.filter(item => {
                 //categry and tag match check
-                const hasTagMatch = this.checkResultAgainstActiveFilters(item);
+                const hasTagMatch = this.filterLogic(item, this.activeFilters);
 
                 //date match check
-                const hasDateMatch = this.checkResultsAgainstActiveDates(item);
+                //const hasDateMatch = this.checkResultsAgainstActiveDates(item);
 
-                if (hasTagMatch && hasDateMatch) {
+                if (hasTagMatch /*&& hasDateMatch*/) {
                     return true;
                 }
 
                 return false;
             });
         } else {
-            //use minisearch + match tags
+            //use minisearch + any custom filtering
             this.results = this.miniSearch.search(query, {
                 //use the filter option to match tags, check each result for tag matches
                 //each 'result' is an object with all its key/values from searchDocs
@@ -349,9 +388,9 @@ customElements.define('advanced-search', class extends HTMLElement {
                     const hasTagMatch = this.checkResultAgainstActiveFilters(result);
 
                     //date match check
-                    const hasDateMatch = this.checkResultsAgainstActiveDates(result);
+                    //const hasDateMatch = this.checkResultsAgainstActiveDates(result);
 
-                    if (hasTagMatch && hasDateMatch) {
+                    if (hasTagMatch /*&& hasDateMatch*/) {
                         return true;
                     }
 
@@ -361,50 +400,13 @@ customElements.define('advanced-search', class extends HTMLElement {
         }
 
         //build/update the search parameters endpoint
-        this.buildURLEndpoint();
+        //this.buildURLEndpoint();
 
         //toggle no results UI
-        this.toggleNoResults();
+        //this.toggleNoResults();
 
         //update pagination info
-        this.updatePaginationResults(this.results);
-    }
-
-    checkResultAgainstActiveFilters(result) {
-        //go through each entry in activeFilters object - destructure each as 'category' and 'tags'
-        return Object.entries(this.activeFilters).every(([category, activeTags]) => {
-            //skip empty categories and return true for this result
-            if (activeTags.length === 0)
-                return true;
-
-            //get the category tag array form this result
-            //these match up between active filters entries and resource keys in each result
-            const resultCategoryTags = result[category];
-
-            //check to make sure this field is an array, if it is see if there are any tag matches in that array
-            if (Array.isArray(resultCategoryTags)) {
-                //return ture/false if this array has _some_ tags that match active filters category tags
-                return resultCategoryTags.some(tag => activeTags.includes(tag));
-            }
-
-            //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
-            return activeTags.includes(resultCategoryTags);
-        });
-    }
-
-    checkResultsAgainstActiveDates(result) {
-        //apply year date range filter
-        const date = new Date(result.date).getFullYear();
-
-        //console.log(`${result.title}: ${date}`);
-        
-        if (this.activeDates.fromDate && date < new Date(this.activeDates.fromDate))
-            return false;
-
-        if (this.activeDates.toDate && date > new Date(this.activeDates.toDate))
-            return false;
-        
-        return true;
+        //this.updatePaginationResults(this.results);
     }
 
     setDefaultSearchFromURL() {
@@ -576,50 +578,7 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         //loop through results and render them using a template
         results.forEach(result => {
-            //clone template contents
-            const resultCard = this.resultTemplateElement.content.cloneNode(true);
-
-            //save a normalized version of type
-            const itemType = result.type.toLowerCase().trim();
-
-            //set card class type for styling
-            resultCard.querySelector("[data-serach-item]").classList.add(itemType);
-
-            //set title and title href
-            const titleElement = resultCard.querySelector("[data-item-title]");
-            titleElement.textContent = result.title;
-            titleElement.href = result.url;
-
-            //set type text
-            resultCard.querySelector("[data-item-type]").textContent = result.type;
-
-            //set type icon
-            const iconElement = resultCard.querySelector("[data-item-icon]");
-            const iconClasses = this.getResourceTypeIcon(itemType).split(",");
-
-            //set icon classes on icon
-            iconClasses.forEach(iconClass => { 
-                iconElement.classList.add(iconClass);
-            });
-
-            //set date label
-            //see: https://jordanbrennan.hashnode.dev/so-many-native-javascript-date-formats
-            //see: https://codingnomads.com/formatting-dates-and-times-javascript-intl
-            const [year, month, day] =  result.date.split("-");
-            const usDate = new Date(`${month}-${day}-${year}`);
-            const displayDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-
-            //set the data text
-            resultCard.querySelector("[data-item-date]").textContent = displayDateFormatter.format(usDate);
-
-            //set description text
-            resultCard.querySelector("[data-item-description]").textContent = result.description;
-
-            //set url href
-            resultCard.querySelector("[data-item-link]").href = result.url;
-
-            //append result card to page fragment
-            pageFragment.appendChild(resultCard);
+            this.renderLogic(result, pageFragment)
         });
 
         //append the page fragment to the search container
@@ -630,36 +589,6 @@ customElements.define('advanced-search', class extends HTMLElement {
 
         //update pagination UI
         this.updatePaginationSummary(startIndex, endIndex);
-    }
-
-    getResourceTypeIcon(type)
-    {
-        switch(type)
-        {
-            case "web-application":
-                return "fa-solid,fa-globe";
-                break;
-
-            case "data-and-code":
-                return "fa-solid,fa-database";
-                break;
-
-            case "publication":
-                return "fa-solid,fa-newspaper";
-                break;
-
-            case "code-repo":
-                return "fa-brands,fa-github";
-                break;
-
-            case "presentation":
-                return "fa-solid,fa-person-chalkboard";
-                break;
-
-            default:
-                return "fa-regular,fa-circle-question";
-                break;
-        }
     }
 
     goToNextPage() {
@@ -744,6 +673,36 @@ customElements.define('advanced-search', class extends HTMLElement {
         return this.clearToggleGroupElements.find(clearBtn => clearBtn.name === groupName) ?? null;
     }
 
+    getResourceTypeIcon(type)
+    {
+        switch(type)
+        {
+            case "web-application":
+                return "fa-solid,fa-globe";
+                break;
+
+            case "data-and-code":
+                return "fa-solid,fa-database";
+                break;
+
+            case "publication":
+                return "fa-solid,fa-newspaper";
+                break;
+
+            case "code-repo":
+                return "fa-brands,fa-github";
+                break;
+
+            case "presentation":
+                return "fa-solid,fa-person-chalkboard";
+                break;
+
+            default:
+                return "fa-regular,fa-circle-question";
+                break;
+        }
+    }
+
     /* 
         URL - SEARCH PARAMETER METHODS
     */    
@@ -794,4 +753,4 @@ customElements.define('advanced-search', class extends HTMLElement {
         //update the address bar without reloading
         window.history.replaceState(null, '', endpoint);
     }
-});
+}

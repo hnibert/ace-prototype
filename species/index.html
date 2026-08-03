@@ -1,6 +1,5 @@
 ---
-title: Resources
-permalink: /resources/
+title: Species Catalog
 layout: default
 
 js-preload-files-ext:
@@ -8,8 +7,9 @@ js-preload-files-ext:
    defer: false
 
 js-postload-files:
- - "/assets/scripts/components/advanced-search.min.js"
- - "/assets/scripts/components/range-slider.min.js"
+ #- "/assets/scripts/components/advanced-search.min.js"
+ - "/assets/scripts/components/faceted-search.js"
+
 ---
 
 {%- comment -%}
@@ -20,18 +20,28 @@ js-postload-files:
 {%- endcomment -%}
 <!-- Search Index Array type="application/json"-->
 <script id="search-data-raw" type="application/json">
-  {{ site.data.resources.entries | where: 'is_available', true | jsonify }}
+    [
+        {%- for data in site.species -%}
+        {
+            "slug": {{ data.slug | jsonify }},
+            "url": {{ data.url | relative_url | jsonify }},
+            "species_name": {{ data.species_name | jsonify }},
+            "species_type": {{data.species_type | jsonify }},
+            "tags": {{ data.tags | jsonify }},
+            "communities": {{ data.communities | jsonify }},
+            "is_species_of_concern": {{ data.is_species_of_concern | jsonify }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+    ]
 </script>
 
 <!-- Hero -->
 {%- include hero.html 
 is_header=true
-id="hero-resources"
+id="hero-species"
 hero_img_url="../assets/images/heroes/hero-resources.jpg"
-title="Our Resources" 
-lead="Explore a wide range of tools and data available through the ACE portal, developed by our team to support diverse needs and interests. Use the interactive filters below to discover resources by resource type, region, species, topic, and more.
-<hr>
-If you have a tool or dataset you’d like to see added to the ACE portal, please contact a member of the ACE Dashboard team." -%}
+title="Species Catalog" 
+lead="Browse and search a centralized inventory of species, including taxonomy, distributions, and associated metadata." -%}
 
 <!-- Breadcrumb -->
 {%- include breadcrumbs.html -%}
@@ -48,11 +58,14 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <advanced-search search-data="#search-data-raw" search-container="#resource-search-container" no-results="#no-results-feedback" result-template="#resource-card-template" results-per-page="5" page-summary="#page-index-summary" pagination-progress="#pagination-progress" results-summary="#page-results-summary" page-controls="#page-controls" reset-search="#reset-search">
-                <search>
+            <advanced-search search-data="#search-data-raw" search-container="#resource-search-container" 
+            no-results="#no-results-feedback" result-template="#resource-card-template"
+            results-per-page="5" page-summary="#page-index-summary" pagination-progress="#pagination-progress" results-summary="#page-results-summary" 
+            page-controls="#page-controls" reset-search="#reset-search">
+                <search id="species-search-container">
                     <form>
                         <!-- Search Title -->
-                        <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
+                        <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Species</h2>
                         <hr>
                         
                         <!-- Search Text Input Group -->
@@ -63,66 +76,25 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                             </button>
                         </div>
 
-                        <!-- Filter Years Title -->
-                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter by Year</h1>
-                        <hr>
-                        {%- comment -%}
-                            - Build an array of dates from the resources collection
-                            - Buil a string of just the years from the dates array separated by commas
-                            - Build an array of just years from the year string, splitting on commas, uniq to remove duplicates and sort to put in order of earliest to latest
-                            - Get minimum year and maximum year by grabbing the first and last years from the year array respectively
-                            - Set the default year range (max at max and minus two from max for a three year range)
-                            TODO: Set default year range from YAML/CMS
-                        {%- endcomment -%}
-                        
-                        {%- assign dates_array = site.data.resources.entries | map: 'date' -%}
-
-                        {%- capture years_string -%}
-                        {%- for date in dates_array -%}
-                            {{ date | date: '%Y' }}{%- unless forloop.last -%},{%- endunless -%}
-                        {%- endfor -%}
-                        {%- endcapture -%}
-
-                        {%- assign years_array = years_string | split: ',' | uniq | sort -%}
-                        {%- assign min_year = years_array.first -%}
-                        {%- assign max_year = years_array.last -%}
-
-                        {%- assign default_min = max_year | plus: 0 | minus: 2 -%}
-
-                        <!-- Year Range Slider -->
-                        <range-slider id="resource-date-range" class="pt-0" min="{{ min_year }}" max="{{ max_year }}" unit-default-label="year" unit-plural-label="years" unit-max-label="All Years" data-date-range>
-                            <input type="number" inputmode="numeric" pattern="[0-9]*" class="min-range" value="{{ default_min }}" min="{{ min_year }}" max="{{ max_year }}">
-                            <input type="number" inputmode="numeric" pattern="[0-9]*" class="max-range" value="{{ max_year }}" min="{{ min_year }}" max="{{ max_year }}">
-
-                            <div class="range">
-                                <input type="range" class="min-input" value="{{ default_min }}" min="{{ min_year }}" max="{{ max_year }}">
-                                <input type="range" class="max-input" value="{{ max_year }}" min="{{ min_year }}" max="{{ max_year }}">
-                                <div class="slider">
-                                    <div class="fill"></div>
-                                </div>
-                            </div>
-                            <output class="range-output ms-auto text-muted small"></output>
-                        </range-slider>
-                        
                         <!-- Filter Categories Title -->
-                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Resources</h1>
+                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Species</h1>
                         <hr>
 
                         <!-- Filters List -->
                         <ul class="list-unstyled list-group ps-0">
-                            <!-- Resource Type Filters -->
+                            <!-- Species Type Filters -->
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-nowrap fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-nowrap fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-type-collapse" aria-expanded="true">Species Type</button> 
                                     <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="type" data-clear-group-filters>
                                         <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                                             <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
                                         </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
                                     </button> 
                                 </div>
-                                <div id="resource-type-collapse" class="collapse show">
+                                <div id="species-type-collapse" class="collapse show">
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for type in site.data.tags.resources.resource_types.items -%}
+                                        {%- for type in site.data.tags.species.species_types.items -%}
                                         <li class="list-group-item d-flex align-items-start border-0">
                                             <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
                                             <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
@@ -131,8 +103,8 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                                     </ul> 
                                 </div> 
                             </li>
-                            
-                            <!-- Resource Region Filters -->
+
+                            <!-- Region Filters -->
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button>
@@ -154,71 +126,49 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                                 </div> 
                             </li>
 
-                            <!-- Resource Theme Filters -->
-                            <li class="list-group-item"> 
+                            <!-- Community Filters -->
+                            <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="themes" data-clear-group-filters>
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#community-collapse" aria-expanded="true">Community</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="communities" data-clear-group-filters>
                                         <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                                             <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
                                         </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
                                     </button>
-                                </div>
-                                <div id="theme-collapse" class="collapse show"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for theme in site.data.tags.resources.resource_themes.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="themes" value="{{ theme.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id | slugify }}">{{ theme.label }}</label>
-                                        </li>                                  
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
-
-                            <!-- Resource Species Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="search_species" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>
-                                </div>
-                                <div id="species-collapse" class="collapse"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for species in site.data.tags.resources.resource_species.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="search_species" value="{{ species.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id | slugify }}">{{ species.label }}</label>
-                                        </li>                                
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
-
-                            <!-- Resource Subtopic Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="subtopics" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>                                
-                                </div>
-                                <div id="subtopics-collapse" class="collapse"> 
+                                </div>                             
+                                <div id="community-collapse" class="collapse show"> 
                                     <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
-                                        {%- for subtopic in site.data.tags.resources.resource_subtopics.items -%}
+                                        {%- for community in site.communities -%}
                                         <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopics" value="{{ subtopic.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id | slugify }}">{{ subtopic.label }}</label>
-                                        </li>
+                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="communities" value="{{ community.community_name | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ region.community_name | slugify }}">{{ community.community_name }}</label>
+                                        </li> 
                                         {%- endfor -%}
                                     </ul> 
                                 </div> 
-                            </li> 
+                            </li>
+
+                            <!-- Classification Filters -->
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#classification-collapse" aria-expanded="true">Classification</button>
+                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="flags" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                    </button>
+                                </div>                             
+                                <div id="classification-collapse" class="collapse show"> 
+                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                        {%- for type in site.data.tags.species.species_flags.items -%}
+                                        <li class="list-group-item d-flex align-items-start border-0">
+                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="flags" value="{{ community.community_name | slugify }}" data-search-filter>
+                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ region.community_name | slugify }}">{{ community.community_name }}</label>
+                                        </li> 
+                                        {%- endfor -%}
+                                    </ul> 
+                                </div> 
+                            </li>
                         </ul>
                         <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button" data-clear-all-filters><i class="fa-solid fa-eraser"></i> Clear All Filters</button>
                     </form>
@@ -237,11 +187,11 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             <hr>
 
             <!-- Results List -->
-            <ul id="resource-search-container" class="list-unstyled vstack gap-4">
+            <ul id="species-results-container" class="list-unstyled vstack gap-4">
             </ul>
 
             <!-- No Results Feedback -->
-            <div class="px-4 my-5 text-center" id="no-results-feedback" role="alert">
+            <div id="no-results-feedback" class="px-4 my-5 text-center" role="alert">
                 <img class="d-block mx-auto mb-5 img-fluid floating-404" src="{{ '/assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="350" height="auto">
                 <h2 class="display-5 fw-bold text-body-emphasis">No Results Found</h2> 
                 <div class="mx-auto pb-5"> 
@@ -274,8 +224,8 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 </div>
 
 <!-- Templates -->
-<template id="resource-card-template">
-    <li class="card resource-card rounded-0 rounded-end border-0 border-start shadow-sm" data-serach-item>
+<template id="species-card-template">
+    <li class="card resource-card rounded-0 rounded-end border-0 border-start shadow-sm">
         <div class="card-body">
             <h5 class="card-title"><a href="#" target="_blank" rel="noopener noreferrer" class="text-decoration-none link-dark" data-item-title></a></h5>
             <div class="d-flex justify-content-between">
@@ -290,3 +240,83 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
         </div>
     </li>
 </template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const speciesSearch = new AdvancedSearch({
+            //raw json search index to use with minisearch 
+            searchData: '#search-data-raw',
+
+            //the template for rendering results
+            resultTemplate: '#species-card-template',
+            
+            //what filter fields make up active filters? (must match toggle group name fields)
+            filterFields: { 'type': [], 'regions': [], 'communities': [], 'flag': [] },
+
+            //search configs for minisearch
+            searchConfig: {
+                //minisearch: fields for minisearch to use for text searches (must match field names from yml/json)
+                msFields: ['species_name'],
+
+                //minisearch: return fields for minisearch results
+                msStoreFields: ['species_name', 'url', 'species_type', 'tags', 'communities', 'is_species_of_concern'], 
+                
+                //minisearch: boost fields object to define field names and values for minisearch
+                msBoostFields: { 'species_name': 2 },
+            },
+
+            //container selectors
+            containers: {
+                searchContainer: '#species-search-container',
+                resultsContainer: '#species-results-container'
+            },
+
+            //pagination configs
+            pagination: {
+                paginationControls: '#page-controls',
+                paginationProgressBar: '#pagination-progress',
+                resultsPerPage: 5
+            },
+
+            //summary elements
+            summary: {
+                pageIndexSummary: '#page-index-summary',
+                pageResultSummary: '#page-results-summary',
+                noResultsFeedback: '#no-results-feedback'
+            },
+
+            //custom logic for search & rendering
+            filterLogic: speciesFilterFunction,
+            renderLogic: speciesRenderFunction
+        });
+    });
+
+   const speciesFilterFunction = (result, activeFilters) => {
+        console.log(result);
+        console.log(activeFilters);
+
+        //go through each entry in activeFilters object - destructure each as 'category' and 'tags'
+        return Object.entries(activeFilters).every(([category, activeTags]) => {
+            //skip empty categories and return true for this result
+            if (activeTags.length === 0)
+                return true;
+
+            //get the category tag array form this result
+            //these match up between active filters entries and resource keys in each result
+            const resultCategoryTags = result[category];
+
+            //check to make sure this field is an array, if it is see if there are any tag matches in that array
+            if (Array.isArray(resultCategoryTags)) {
+                //return ture/false if this array has _some_ tags that match active filters category tags
+                return resultCategoryTags.some(tag => activeTags.includes(tag));
+            }
+
+            //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
+            return activeTags.includes(resultCategoryTags);
+        });
+   };
+
+   const speciesRenderFunction = (result, documentFragment) => {
+        console.log(`${result}:${documentFragment}`);
+   };
+</script>

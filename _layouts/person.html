@@ -97,7 +97,7 @@ js-postload-files:
     </div>
 </section>
 
-{%- assign related_resources = site.data.resources.entries | where: "is-available", true | where_exp: "item", "item.authors contains page.slug" -%}
+{%- assign related_resources = site.data.resources.entries | where: "is_available", true | where_exp: "item", "item.authors contains page.slug" -%}
 {%- if related_resources.size > 0 -%}
 <basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3" reset-search="#reset-search">
     <!-- Search-Filter Component -->

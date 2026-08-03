@@ -48,7 +48,7 @@ layout: default
                         <div class="d-flex flex-wrap justify-content-start align-items-center">
                             {%- if page.management_bodies.size > 0 -%}  
                             {%- for body in page.management_bodies -%}
-                            <span class="badge bg-light text-muted border me-2">{{ body }}</span>
+                            <span class="badge bg-light text-muted text-wrap border me-2">{{ body }}</span>
                             {%- endfor -%}
                             {%- else -%}
                             <p class="fst-italic text-start">No Management Body</p>
@@ -157,7 +157,7 @@ layout: default
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-landmark"></i> Cultural Significance</h5>
                         <hr>
-                        <p class="card-text">{{ page.cultural_significance }}</p>
+                        <p class="card-text">{{ page.cultural_significance | markdownify }}</p>
                         {%- if page.cultural_significance_notes -%}
                         <!-- Cultural Significance Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
