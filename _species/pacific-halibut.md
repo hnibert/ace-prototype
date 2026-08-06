@@ -6,15 +6,18 @@ imageURL:
 imageAlt:
 
 species_name: Pacific Halibut
-scientific-name: 
-other-names:
+scientific-name: Hippoglossus stenolepis
+other-names: chagix̂
 
 species_type:
 
 #Management
-management-structure:
-management-bodies: []
-management-body-notes:
+management-structure: Joint management 
+management-bodies:
+    -International Pacific Halibut Commission
+    -NOAA Fisheries
+    -North Pacific Fishery Management Council
+management-body-notes: Since 1923, the United States and Canada have coordinated Pacific halibut management through a bilateral commission, International Pacific Halibut Commission (IPHC). NOAA Fisheries and the North Pacific Fishery Management Councils are responsible for allocating allowable catch among harvesters in the Alaska fisheries." The U.S. tribes and Canadian First Nations have relationships with the federal governments, in some cases as part of treaty rights, or by federal regulations outside of the IPHC process" (Keith et al., 2014).
 
 #CDQ Community Development Group(s)
 cdq-groups: []
