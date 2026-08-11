@@ -6,13 +6,8 @@ img_url:
 image_alt:
 
 species_name: Pacific Halibut
-<<<<<<< Updated upstream
 scientific-name: Hippoglossus stenolepis
 other-names: Chagix̂
-=======
-scientific_name: Hippoglossus stenolepis
-other_names: chagix̂
->>>>>>> Stashed changes
 
 species_type: sea-and-river-animals
 
@@ -44,7 +39,7 @@ communities:
 #Protections (use a '>-' block scalar indicator for text below)
 protections: >-
     Northern Pacific Halibut Act of 1982
-protection-notes:
+protection-notes: null
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |
@@ -58,10 +53,10 @@ cultural-significance: |
     "Pacific halibut is an important source of spiritual and physical sustenance for Western Indian tribes and Alaska natives, and is caught in ceremonial and subsistence fisheries" <https://www.fisheries.noaa.gov/species/pacific-halibut>. 
     
     "Halibut fishing is an opportunity for community members to share and exchange knowledge, connect and experience culture and traditional ways of living in the marine environment, and subconsciously and consciously connect with family and ancestors" (Tran & Divine, 2021).; " Pacific halibut continues to be an important subsistence and ceremonial fish. Subsistence Pacific halibut is a traditional food that has always been relied on to feed the communities. Ceremonially, Pacific halibut is used to feed people at culturally important events like weddings, funerals, and naming ceremonies." (IPHC website)
-cultural-significance-notes:
+cultural-significance-notes: null
 
 #Spatial Data (use a '>-' block scalar indicator for text below)
-spatial-data: #>-
+spatial-data: >-
     Halibut are reported to be traveling farther north than in the past due to current warm waters recorded around the Pribilof Islands (Lestenkof et al.; Tran et al., 2021)
 spatial-data-notes:
 
