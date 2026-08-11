@@ -10,7 +10,7 @@ species_name: Bearded Seal
 scientific_name: "Erignathus barbatus nauticus (Beringia Stock)" 
 other_names: maklaks 
 
-species_type:
+species_type: sea-and-river-animals
 
 #Management
 management_structure: Co-management
