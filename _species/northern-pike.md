@@ -10,11 +10,11 @@ species_name: Northern pike
 scientific_name: Esox luciu
 other_names: Eleqruyak, Deg Xinag word for pike is giliqoy and in Holikachuk, k’oolqoy. 
 
-species_type:
+species_type: sea-and-river-animals
 
 #Management
 management_structure:
-management_bodies: Alaska Department of Fish and Game
+management_bodies: [Alaska Department of Fish and Game]
 management_body_notes:
 
 #CDQ Community Development Group(s)
@@ -41,8 +41,10 @@ protections: #>-
 protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
-justification: #>-
-    Selected as it is considered an important subsistence resource found in the region with deep cultural meaning tied to deliverance, medicine, and timing related to other subsistence species (Brown et al., 2005). As a piscivorous species, one concern as a subsistence species that may increase in human diets on the Yukon and Kuskokwim RIvers as salmon decline, is the amount of mercury that bioaccumulates in this species through the food chain (Jewett & Duffey, 2007).
+justification: |
+    This species was selected as a "Species of Concern" as it is considered an important subsistence resource found in the region with deep cultural meaning tied to deliverance, medicine, and timing related to other subsistence species (Brown et al., 2005). 
+    
+    As a piscivorous species, one concern as a subsistence species that may increase in human diets on the Yukon and Kuskokwim RIvers as salmon decline, is the amount of mercury that bioaccumulates in this species through the food chain (Jewett & Duffey, 2007).
 justification_notes:
 
 #Cultural Significance (use a '>-' block scalar indicator for text below)

@@ -98,9 +98,9 @@ layout: default
                         <hr>
 
                         <!-- Climate Change Vulnerability Label & Reference -->
-                        <label class="fw-bold" for="change-vulnerability">{{ page.ccv_label }}<small>{{ page.ccv_reference }}</small></label>
+                        <label class="fw-bold" for="change-vulnerability">{{ page.ccv_label }}<small>&nbsp;{{ page.ccv_reference }}</small></label>
 
-                        {%- if ccv_score -%}
+                        {%- if page.ccv_score -%}
                         <!-- Climate Change Vulnerability Score -->
                         <div id="change-vulnerability" class="progress" role="progressbar" aria-label="Climate change vulnerability scale in a progressbar" aria-valuenow="{{ page.ccv_score }}" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar bg-primary" style="width: {{ page.ccv_score }}%"></div>
@@ -140,7 +140,7 @@ layout: default
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Justification for Classification</h5>
                         <hr>
-                        <p class="card-text">{{ page.justification }}</p>
+                        <p class="card-text">{{ page.justification | markdownify }}</p>
                         {%- if page.justification_notes -%}
                         <!-- Justification Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
@@ -161,7 +161,7 @@ layout: default
                         {%- if page.cultural_significance_notes -%}
                         <!-- Cultural Significance Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.cultural_significance_notes }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.cultural_significance_notes | markdownify }}</small>
                         </p>
                         {%- endif -%}
                     </div>
@@ -210,7 +210,7 @@ layout: default
             <ol class="vstack gap-3">
                 {%- for reference in page.references -%}
                 <li>
-                    {{ reference }}
+                    {{ reference | markdownify }}
                 </li>
                 {%- endfor -%}
             </ol>

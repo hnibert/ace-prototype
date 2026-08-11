@@ -8,13 +8,13 @@ img_alt:
 #General
 species_name: Longnose sucker
 scientific_name: Catostomus catostomus
-other_names: tonhts’ix / toonts’ix
+other_names: (tonhts’ix / toonts’ix); "The native word for sucker, tonhts’ix, is literally translated as “stand still mouth,” suggesting the “tendency of the fish to remain unmoving in the water, whereas the last element takes cognizance of the peculiarly shaped mouth of the creature” (Osgood 1959:25).
 
-species_type:
+species_type: sea-and-river-animals
 
 #Management
 management_structure:
-management_bodies: Alaska Department of FIsh and Game
+management_bodies: [Alaska Department of FIsh and Game]
 management_body_notes:
 
 #CDQ Community Development Group(s)
@@ -40,7 +40,7 @@ protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: #>-
-    Selected due to its importance cultural fish in Grayliing, AK used for dog food and historically, the skins of sucker may have been sewn into over-parkas (Osgood, 1958). 
+    We selected the Longnose sucker as a "Species of Concern," as it is an importance cultural fish in Grayling, Alaska used for dog food and historically,  the skins of sucker may have been  sewn into over-parkas (Osgood, 1958)
 justification_notes:
 
 #Cultural Significance (use a '>-' block scalar indicator for text below)

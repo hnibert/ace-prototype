@@ -8,13 +8,13 @@ img_alt:
 #General
 species_name: Burbot
 scientific_name: lota lota
-other_names: loach, maniqnak, gidhiyh, gidhiyh
+other_names: Loach or Maniqnak; gidhiyh; gidhiyh
 
-species_type:
+species_type: sea-and-river-animals
 
 #Management
 management_structure:
-management_bodies: Alaska Department of Fish and Game
+management_bodies: [Alaska Department of Fish and Game]
 management_body_notes:
 
 #CDQ Community Development Group(s)
@@ -39,17 +39,19 @@ protections: #>-
 protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
-justification: #>-
-    Selected due to its importance as a subsistence resource for communities in the region. These species are important for both sport and subsistence fisheries.
+justification: >-
+    We selected Burbot as a "Species of Concern" due to its importance as a subsistence resource for communities in the region. Additionally, these species are important for both sport and subsistence fisheries.
 justification_notes:
 
 #Cultural Significance (use a '>-' block scalar indicator for text below)
-cultural_significance: #>-
-    Osgood documents historic taboos surrounding the harvest and handling of burbot, that seemingly not practiced any longer, demonstrate a cognizance of and respect for the social relationship between humans and burbot. In the historical literature, two practices concerning burbot are mentioned. First, loche apparently do not like the noise of cutting wood, therefore, it is taboo to chop wood and touch loche with one’s hands on the same day. Otherwise, the fisher will not catch loche. Finally, it was also considered bad luck to catch or keep any burbot caught in nets.
+cultural_significance: |
+    Osgood documents historic taboos surrounding the harvest and handling of burbot, that seemingly not practiced any longer, demonstrate a cognizance of and respect for the social relationship between humans and burbot. 
+
+    In the historical literature, two practices concerning burbot are mentioned. First, loche apparently do not like the noise of cutting wood, therefore, it is taboo to chop wood and touch loche with one’s hands on the same day. Otherwise, the fisher will not catch loche. Finally, it was also considered bad luck to catch or keep any burbot caught in nets.
 cultural_significance_notes:
 
 #Spatial Data (use a '>-' block scalar indicator for text below)
-spatial_data: #>-
+spatial_data: >-
     Refer to Brown et al., 2005 for Traditional Knowledge on spatial observations.
 spatial_data_notes:
 
