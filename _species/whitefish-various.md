@@ -15,8 +15,9 @@ species_type: sea-and-river-animals
 
 #Management
 management_structure: No agency
-management_bodies: Currently, no agency manages broad whitefish in Alaska. Commercial havest is tracked, but not regulated. The U. S. Fish and Wildlife Service and the Alaska Department of Fish and Game are together working on a broad whitefish management plan. 
-management_body_notes:
+management_bodies:
+management_body_notes: >-
+    Currently, no agency manages broad whitefish in Alaska. Commercial havest is tracked, but not regulated. The U.S. Fish and Wildlife Service and the Alaska Department of Fish and Game are together working on a broad whitefish management plan. 
 
 #CDQ Community Development Group(s)
 cdq_groups: []
@@ -43,7 +44,7 @@ protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |
-    This species was selected as a "Species of Concern" as Yup'ik subsistence fishers hold TK that supports "identification and nomenclature of whitefish species, seasonal patterns of migration and abundance, traditional activities of harvest and travel associated with whitefish, processing and consumption of whitefish, feeding behavior of Bering cisco, and apparent effects of changing beaver populations on whitefish." (Runfola et al., 2011). Whitefish, in turn, support many aspects of traditional and contemporary Yup’ik life, as Runfola et al. (2011) ellucidates knowledge held by these harvesters consisting of whitefish anatomy, feeding ecology, migrations, local physical and ecological phenomena, "traditional harvests, family history, seasonal movements between camps, food processing and consumption, sharing of food, respect of and dependence upon whitefish, sustainability of cultural and natural resources, and the education of young people (Runfola et al., 2011). 
+    This species was selected as a "Species of Concern" as Yup'ik subsistence fishers hold Tradtional Knowledge that supports "identification and nomenclature of whitefish species, seasonal patterns of migration and abundance, traditional activities of harvest and travel associated with whitefish, processing and consumption of whitefish, feeding behavior of Bering cisco, and apparent effects of changing beaver populations on whitefish." (Runfola et al., 2011). Whitefish, in turn, support many aspects of traditional and contemporary Yup’ik life, as Runfola et al. (2011) ellucidates knowledge held by these harvesters consisting of whitefish anatomy, feeding ecology, migrations, local physical and ecological phenomena, "traditional harvests, family history, seasonal movements between camps, food processing and consumption, sharing of food, respect of and dependence upon whitefish, sustainability of cultural and natural resources, and the education of young people (Runfola et al., 2011). 
     
     These discussions demonstrated the foundations of traditional Yup’ik ways of knowing. They were holistic in their approaches to understanding natural and human systems." Additionally, Runfola demonstrates the importance of  Bering cisco and other whitefish in food customs and people’s survival. For example, he states,  "Mary Ann Sundown, the eldest interview participant, described how her family’s annual cycle of migration between fish camps was guided by whitefish as an essential food resource. 'Imarpinraqs (Bering cisco) were our first dry fish in the spring. When we ran out of [salmon] they kept us from starving.' (Mary Ann Sundown)." (Runfola et al., 2011). 
     
