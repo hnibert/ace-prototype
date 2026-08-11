@@ -1,8 +1,5 @@
 class AdvancedSearch {
     constructor(options = {}) {
-        console.log("---New Faceted Search---");
-        console.log(`FS Options: ${Object.keys(options)}`);
-
         //filter toggle constants
         this.SEARCH_INPUT = '[data-search-input]';
         this.CLEAR_INPUT = '[data-clear-input]';
@@ -12,6 +9,7 @@ class AdvancedSearch {
         this.CLEAR_ALL_FILTERS = '[data-clear-all-filters]';
         this.CLEAR_FILTERS_GROUP = '[data-clear-group-filters]';
 
+        //pagination constants
         this.PAGE_NEXT = '[data-page-next]';
         this.PAGE_PREV = '[data-page-previous]';
 
@@ -19,7 +17,7 @@ class AdvancedSearch {
         this.searchDataSelector = options.searchData ?? '';
 
         //template element selector
-        this.resultTemplateSelector = options.resultTemplate ?? null;
+        this.resultTemplateSelector = options.resultTemplate ?? '';
 
         //filter fields (maps to activeFields)
         this.filterFields = options.filterFields ?? null;
@@ -27,17 +25,13 @@ class AdvancedSearch {
         //active fields (created from filterFields)
         this.activeFilters = this.filterFields ?? null;
 
-        console.log("Active Filters Object:");
-        console.log(this.activeFilters);
+        //range inputs & options
+        this.searchRanges = options.ranges ?? [];
 
         //minisearch config options
         this.msFields = options.searchConfig?.msFields ?? [];
         this.msStoreFields = options.searchConfig?.msStoreFields ?? [];
         this.msBoostFields = options.searchConfig?.msBoostFields ??  null;
-
-        //custom logic methods
-        this.filterLogic = options.filterLogic ?? null;
-        this.renderLogic = options.filterLogic ?? null;
 
         //container selectors
         this.searchContainerSelector = options.containers?.searchContainer ?? '';
@@ -46,7 +40,7 @@ class AdvancedSearch {
         //pagination selector & options
         this.paginationControlSelector = options.pagination?.paginationControls ?? '';
         this.paginationProgressSelector = options.pagination?.paginationProgressBar ?? '';
-        this.resultsPerPage = options.pagination?.resultsPagePer ?? 3;
+        this.resultsPerPage = options.pagination?.resultsPerPage ?? 3;
         this.currentPage = 1;
 
         //summary text selectors
@@ -54,16 +48,11 @@ class AdvancedSearch {
         this.pageResultSummarySelector = options.summary?.pageResultSummary ?? '';
         this.noResultsSelector = options.summary?.noResultsFeedback ?? '';
 
-        //get summary text elements
-        this.getSummaryElements();
-
         //get custom search filter logic
-        this.searchFilterMethod = options.filterLogic ?? null;
-        console.log(this.searchFilterMethod);
+        this.searchFilterMethod = options.filterLogic ?? this.defaultFilterLogic;
 
         //get custom  template render method
         this.renderTemplateMethod = options.renderLogic ?? null;
-        console.log(this.renderTemplateMethod);
 
         //setup minisearch and the component
         this.initialize();
@@ -71,7 +60,6 @@ class AdvancedSearch {
 
     initialize() {
         if (typeof MiniSearch !== 'undefined') {
-            console.log("MiniSearch is available!");
 
             //initialize minisearch with our options
             this.miniSearch = new window.MiniSearch({
@@ -88,9 +76,6 @@ class AdvancedSearch {
             console.error("Error: MiniSearch is not loaded on this page!");
         }
 
-        console.log("Faceted Search: Initialized");
-        console.log(`--Minisearch: ${this.miniSearch}\nFields: ${this.msFields}\nStore Fields: ${this.msStoreFields}\nBoost Fields: ${Object.entries(this.msBoostFields)}`);
-
         //setup component elements
         this.setupComponent();
     }
@@ -99,8 +84,6 @@ class AdvancedSearch {
         SETUP ELEMENT METHODS
     */
     setupComponent() {
-        console.log("Faceted Search: Started Component Setup\n---");
-
         //script holding raw json text string for search
         this.searchIndexElement = document.querySelector(this.searchDataSelector);
 
@@ -109,11 +92,9 @@ class AdvancedSearch {
 
         //get the result template element
         this.resultTemplate = this.resultTemplateSelector ? document.querySelector(this.resultTemplateSelector) : null;
-        console.log(`Results Template: ${this.resultTemplate.id}`);
 
         //get the search container element
         this.searchContainerElement = this.searchContainerSelector ? document.querySelector(this.searchContainerSelector) : null;
-        console.log(`Search Container: ${this.searchContainerElement.id}`);
         
         //get elements expected in the search container
         if (this.searchContainerElement) {
@@ -122,11 +103,9 @@ class AdvancedSearch {
 
         //get the results container element
         this.resultsContainerElement = this.resultsContainerSelector ? document.querySelector(this.resultsContainerSelector) : null;
-        console.log(`Results Container: ${this.resultsContainerElement.id}`);
 
         //get the pagination controls element
         this.paginationControlsElement = this.paginationControlSelector ? document.querySelector(this.paginationControlSelector) : null;
-        console.log(`Pagination Controls: ${this.paginationControlsElement.id}`);
 
         //get elements expected in the pagination controls
         if (this.paginationControlsElement) {
@@ -140,67 +119,76 @@ class AdvancedSearch {
          * Set flags based on what expected input elements were found
          */
         this.hasSearchInput = !!this.searchInputElement;
-        this.hasDateRange = !!this.dateRangeElement;
         this.hasFilters = this.searchFilterElements.length > 0;
+        this.hasRangeInputs = this.searchRanges.length > 0;
 
         //setup component listeners with elements
         this.setupListeners();
     }
 
     getSearchElements() {
+        /*
+            SEARCH INPUT
+        */
         //search input field element
         this.searchInputElement = this.searchContainerElement.querySelector(this.SEARCH_INPUT);
-        console.log(`Search Input: ${this.searchInputElement}`);
 
         //clear search input element
         this.clearSearchInputElement = this.searchContainerElement.querySelector(this.CLEAR_INPUT);
-        console.log(`Clear Search Input: ${this.clearSearchInputElement}`);
 
         //filter toggle elements
         this.searchFilterElements = Array.from(this.searchContainerElement.querySelectorAll(this.FILTER_TOGGLE));
-        console.log(`Search Filter Elements:`);
-        console.log(this.searchFilterElements);
 
+        /*
+            FILTER TOGGLES
+        */
         //clear toggle category btns
         this.clearToggleGroupElements = Array.from(this.searchContainerElement.querySelectorAll(this.CLEAR_FILTERS_GROUP));
-        console.log(`clear Toggle Group Elements:`);
-        console.log(this.clearToggleGroupElements);
 
         //hide the clear toggle group buttons by default
-        this.clearToggleGroupElements.forEach(clearBtn => { 
+        this.clearToggleGroupElements.forEach(clearBtn => {
             clearBtn.classList.add("hide");
         });
 
         //clear all toggles btn
         this.clearAllTogglesBtnElement = this.searchContainerElement.querySelector(this.CLEAR_ALL_FILTERS);
-        console.log(`Clear All Toggles Element: ${this.clearAllTogglesBtnElement}`);
+
+        /*
+            RANGE SLIDERS
+        */
+        if (this.searchRanges.length > 0) {
+            for (let i = 0; i < this.searchRanges.length; i++) {
+                //grab the range element from the DOM
+                const rangeElement = this.searchRanges[i].rangeInput ? this.searchContainerElement.querySelector(this.searchRanges[i].rangeInput) : null;
+                //console.log(this.searchRanges[i].rangeElement);
+
+                if (rangeElement) {
+                    //add this key to the search range object
+                    this.searchRanges[i].rangeElement = rangeElement;
+                }
+            }
+        }
     }
 
     getPaginationElements() {
         //next page button
         this.pageNextBtn = this.paginationControlsElement.querySelector(`${this.PAGE_NEXT}`);
-        console.log(`Pagination Next Button: ${this.pageNextBtn}`);
 
         //previous page button
         this.pagePreviousBtn = this.paginationControlsElement.querySelector(`${this.PAGE_PREV}`); 
-        console.log(`Pagination Previous Button: ${this.pagePreviousBtn}`);
 
         //pagination progress bar element (optional)
         this.paginationProgressElement = this.paginationProgressSelector ? document.querySelector(this.paginationProgressSelector) : null;
-        console.log(`Pagination Progress Bar: ${this.paginationProgressElement.id}`);
     }
 
     getSummaryElements() {
         //page index summary text
         this.pageIndexSummaryElement = this.pageIndexSummarySelector ? document.querySelector(this.pageIndexSummarySelector) : null;
-        console.log(`Page Index Summary Text: ${this.pageIndexSummaryElement.id}`);
 
         //page results summary text
         this.pageResultSummaryElement = this.pageResultSummarySelector ? document.querySelector(this.pageResultSummarySelector) : null;
-        console.log(`Page Results Summary Text: ${this.pageResultSummaryElement.id}`);
 
         this.noResultsElement = this.noResultsSelector ? document.querySelector(this.noResultsSelector) : null;
-        console.log(`No Results Feedback: ${this.noResultsElement.id}`);
         
         //hide no results element by default
         this.noResultsElement.style.display = "none";
@@ -211,14 +199,12 @@ class AdvancedSearch {
     */
 
     setupListeners() {
-        console.log("Faceted Search: Started Component Binding\n---");
-
         /*
          * Setup Listeners based on input flags
          */
 
-        //handle enter key on form
-        this.searchContainerElement.querySelector('form').addEventListener('keydown', (e) => {
+        //handle enter key on form if one exist
+        this.searchContainerElement.querySelector('form')?.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
             }
@@ -241,20 +227,35 @@ class AdvancedSearch {
             });
 
             //clear search input btn
-            if (this.clearInputBtnElement) {
-                this.clearInputBtnElement.addEventListener('click', () => {
+            if (this.clearSearchInputElement) {
+                this.clearSearchInputElement.addEventListener('click', () => {
                     this.clearSearchInput();
                 });
             }
         }
 
-        /* DATE RANGE INPUT */
-        if (this.hasDateRange) {
-            this.dateRangeElement.addEventListener('range-slider:change', (e) => {
-                this.activeDates.fromDate = e.detail.min;
-                this.activeDates.toDate = e.detail.max;
-                //console.log(`--Date Range Change Event: Min(${e.detail.min}) : Max(${e.detail.max})`);
-                this.executeSearch();
+        /* RANGE INPUTS */
+        if (this.hasRangeInputs) {
+            this.searchRanges.forEach(range => {
+                //ensure the range element exist before binding an event to it
+                if (range.rangeElement) {
+                    
+                    //initialize the range slider values
+                    if (typeof range.rangeInitiateMethod === 'function') {
+                        range.rangeInitiateMethod(range.rangeElement, range.rangeFields);
+                    }
+
+                    //add the event listener to the range element
+                    range.rangeElement.addEventListener(range.rangeEvent, (e) => {
+                        //pass the event and range fields to the event method, if it exist
+                        if (typeof range.rangeEventMethod === 'function') {
+                            range.rangeEventMethod(e, range.rangeFields);
+                        }
+
+                        //do the search with new search params
+                        this.executeSearch();
+                    });
+                }
             });
         }
 
@@ -347,8 +348,8 @@ class AdvancedSearch {
     }
 
     initializeMiniSearch(searchDocuments) {
-        console.log("Adding search documents to minisearch:");
-        console.log(this.searchDocs);
+        //console.log("Adding search documents to minisearch:");
+        //console.log(this.searchDocs);
 
         //check we receieved an array to build the minisearch index map with
         if (Array.isArray(searchDocuments)) {
@@ -360,23 +361,13 @@ class AdvancedSearch {
         //get the input text and normalize it
         const query = this.searchInputElement.value.toLowerCase().trim();
 
-        console.log(query);
-        console.log("---Current Active Filters:", this.activeFilters);
+        //console.log(query);
+        //console.log("---Current Active Filters:", this.activeFilters);
 
         if (query === "") {
             //skip minisearch and just use custom filtering
             this.results = this.searchDocs.filter(item => {
-                //categry and tag match check
-                const hasTagMatch = this.filterLogic(item, this.activeFilters);
-
-                //date match check
-                //const hasDateMatch = this.checkResultsAgainstActiveDates(item);
-
-                if (hasTagMatch /*&& hasDateMatch*/) {
-                    return true;
-                }
-
-                return false;
+                return this.filterSearchResult(item);
             });
         } else {
             //use minisearch + any custom filtering
@@ -384,29 +375,45 @@ class AdvancedSearch {
                 //use the filter option to match tags, check each result for tag matches
                 //each 'result' is an object with all its key/values from searchDocs
                 filter: (result) => {
-                    //categry and tag match check
-                    const hasTagMatch = this.checkResultAgainstActiveFilters(result);
-
-                    //date match check
-                    //const hasDateMatch = this.checkResultsAgainstActiveDates(result);
-
-                    if (hasTagMatch /*&& hasDateMatch*/) {
-                        return true;
-                    }
-
-                    return false;
+                    return this.filterSearchResult(result);
                 }
             });
         }
 
         //build/update the search parameters endpoint
-        //this.buildURLEndpoint();
+        this.buildURLEndpoint();
 
         //toggle no results UI
-        //this.toggleNoResults();
+        this.toggleNoResults();
 
         //update pagination info
-        //this.updatePaginationResults(this.results);
+        this.updatePaginationResults(this.results);
+    }
+
+    filterSearchResult(result) {
+        //category and tag match check
+        const hasTagMatch = this.searchFilterMethod(result, this.activeFilters);
+
+        const isRangeMatch = () => {
+            //range match check, if any ranges exist, 
+            //ensure every range is a match for this result
+            return this.searchRanges.every(range => {
+                if (range.rangeElement && typeof range.rangeFilterLogic === 'function') {
+                    return range.rangeFilterLogic(result, range.rangeFields);
+                }
+
+                //there was no range logic, just return true
+                return true;
+            });
+        };
+
+        const hasRangeMatch = this.hasRangeInputs ? isRangeMatch() : true;
+
+        if (hasTagMatch && hasRangeMatch) {
+            return true;
+        }
+
+        return false;
     }
 
     setDefaultSearchFromURL() {
@@ -447,6 +454,28 @@ class AdvancedSearch {
     /* 
         FILTER METHODS
     */
+    defaultFilterLogic(result, activeFilters) {
+        //go through each entry in activeFilters object - destructure each as 'category' and 'activeTags'
+        return Object.entries(activeFilters).every(([category, activeTags]) => {
+            //skip empty categories and return true for this result
+            if (activeTags.length === 0)
+                return true;
+
+            //get the category tag array form this result
+            //these match up between active filters entries and resource keys in each result
+            const resultCategoryTags = result[category];
+
+            //check to make sure this field is an array, if it is see if there are any tag matches in that array
+            if (Array.isArray(resultCategoryTags)) {
+                //return ture/false if this array has _some_ tags that match active filters category tags
+                return resultCategoryTags.some(tag => activeTags.includes(tag));
+            }
+
+            //otherwise it's not an array, just check if the active filters category 'tags' includes the result category value
+            return activeTags.includes(resultCategoryTags);
+        });
+    }
+
     updateActiveFilters(e) {
         //get the name and value from the toggle btn
         const { name, value } = e.currentTarget; 
@@ -540,6 +569,13 @@ class AdvancedSearch {
     }
 
     /* 
+        RANGE METHODS
+    */
+    defaultRangeLogic(result, activeRanges) {
+
+    }
+
+    /* 
         PAGINATION METHODS
         see: https://www.geeksforgeeks.org/javascript/create-a-pagination-using-html-css-and-javascript/?_x_tr_hist=true
     */ 
@@ -570,19 +606,19 @@ class AdvancedSearch {
     }
 
     renderPageResults(results, startIndex, endIndex) {
-        //clear any html in the search container
-        this.searchContainerElement.innerHTML = '';
+        //clear any html in the results container
+        this.resultsContainerElement.innerHTML = '';
 
         //page document fragment
         const pageFragment = new DocumentFragment();
 
         //loop through results and render them using a template
         results.forEach(result => {
-            this.renderLogic(result, pageFragment)
+            this.renderTemplateMethod(result, pageFragment, this.resultTemplate)
         });
 
-        //append the page fragment to the search container
-        this.searchContainerElement.appendChild(pageFragment);
+        //append the page fragment to the results container
+        this.resultsContainerElement.appendChild(pageFragment);
 
         //update pagination controls
         this.updatePaginationControls();
@@ -635,19 +671,19 @@ class AdvancedSearch {
         const resultsLength = this.results.length;
 
         //Showing (X - Y) of (Z) results
-        if (this.pageResultSummaryText)
-            this.pageResultSummaryText.textContent = (resultsLength >= 1) ? `Showing (${startIndex + 1} - ${endIndex}) of (${resultsLength}) results` : "No Results";
+        if (this.pageResultSummaryElement)
+            this.pageResultSummaryElement.textContent = (resultsLength >= 1) ? `Showing (${startIndex + 1} - ${endIndex}) of (${resultsLength}) results` : "No Results";
 
         //Page X of Y
-        if (this.pageIndexSummaryText)
-            this.pageIndexSummaryText.textContent = (resultsLength >= 1) ? `Page ${this.currentPage} of ${this.totalPages}` : "";
+        if (this.pageIndexSummaryElement)
+            this.pageIndexSummaryElement.textContent = (resultsLength >= 1) ? `Page ${this.currentPage} of ${this.totalPages}` : "";
 
         //pagination progress bar
-        if (this.pageProgressBar) {
-            const progressFill = this.pageProgressBar.querySelector(".progress-bar");
+        if (this.paginationProgressElement) {
+            const progressFill = this.paginationProgressElement.querySelector(".progress-bar");
             const progress = Math.floor((resultsLength >= 1) ? (this.currentPage / this.totalPages) * 100 : 0);
 
-            this.pageProgressBar.setAttribute("aria-valuenow", progress);
+            this.paginationProgressElement.setAttribute("aria-valuenow", progress);
             progressFill.style.width = `${progress}%`;
         }
     }
@@ -671,36 +707,6 @@ class AdvancedSearch {
     getClearToggleGroupBtn(groupName) {
         //return a button that has a name value that matches the group value, otherwise return null
         return this.clearToggleGroupElements.find(clearBtn => clearBtn.name === groupName) ?? null;
-    }
-
-    getResourceTypeIcon(type)
-    {
-        switch(type)
-        {
-            case "web-application":
-                return "fa-solid,fa-globe";
-                break;
-
-            case "data-and-code":
-                return "fa-solid,fa-database";
-                break;
-
-            case "publication":
-                return "fa-solid,fa-newspaper";
-                break;
-
-            case "code-repo":
-                return "fa-brands,fa-github";
-                break;
-
-            case "presentation":
-                return "fa-solid,fa-person-chalkboard";
-                break;
-
-            default:
-                return "fa-regular,fa-circle-question";
-                break;
-        }
     }
 
     /* 

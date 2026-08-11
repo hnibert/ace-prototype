@@ -2,16 +2,22 @@
 layout: species
 
 #Genereal
-imageURL:
-imageAlt:
+img_url:
+image_alt:
 
 species_name: Pacific Halibut
+<<<<<<< Updated upstream
 scientific-name: Hippoglossus stenolepis
 other-names: Chagix̂
+=======
+scientific_name: Hippoglossus stenolepis
+other_names: chagix̂
+>>>>>>> Stashed changes
 
 species_type: sea-and-river-animals
 
 #Management
+<<<<<<< Updated upstream
 management-structure: Joint management 
 management-bodies: [International Pacific Halibut Commission, NOAA Fisheries, North Pacific Fishery Management Council]
 management-body-notes: >-
@@ -37,6 +43,24 @@ ccv-label:
 ccv-reference:
 ccv-score:
 ccv-notes: Community surveys collected by Divine et al. (2022), while focused on Northern fur seals, revealed concerns over climate change- and fisheries-related impacts to a wide range of species, including Pacific halibut and the “entire food chain” of the Eastern Bering Sea. 
+=======
+management_structure: Joint management 
+management_bodies:
+    -International Pacific Halibut Commission
+    -NOAA Fisheries
+    -North Pacific Fishery Management Council
+management_body_notes: Since 1923, the United States and Canada have coordinated Pacific halibut management through a bilateral commission, International Pacific Halibut Commission (IPHC). NOAA Fisheries and the North Pacific Fishery Management Councils are responsible for allocating allowable catch among harvesters in the Alaska fisheries." The U.S. tribes and Canadian First Nations have relationships with the federal governments, in some cases as part of treaty rights, or by federal regulations outside of the IPHC process" (Keith et al., 2014).
+
+#CDQ Community Development Group(s)
+cdq_groups: []
+cdq_communities: []
+
+#Climate Change Vulnerability
+ccv_label:
+ccv_reference:
+ccv_score:
+ccv_notes:
+>>>>>>> Stashed changes
 
 #Data Tags (used in search)
 tags: subsistence, fish-invertebrates
@@ -45,6 +69,7 @@ communities:
     - scammon-bay
 
 #Protections (use a '>-' block scalar indicator for text below)
+<<<<<<< Updated upstream
 protections: >-
     Northern Pacific Halibut Act of 1982
 protection-notes:
@@ -67,6 +92,22 @@ cultural-significance-notes:
 spatial-data: #>-
     Halibut are reported to be traveling farther north than in the past due to current warm waters recorded around the Pribilof Islands (Lestenkof et al.; Tran et al., 2021)
 spatial-data-notes:
+=======
+protections: #>-
+protection_notes:
+
+#Justification for Classification (use a '>-' block scalar indicator for text below)
+justification: #>-
+justification_notes:
+
+#Cultural Significance (use a '>-' block scalar indicator for text below)
+cultural_significance: #>-
+cultural_significance_notes:
+
+#Spatial Data (use a '>-' block scalar indicator for text below)
+spatial_data: #>-
+spatial_data_notes:
+>>>>>>> Stashed changes
 
 #Is this a species of concern?
 is_species_of_concern: true
