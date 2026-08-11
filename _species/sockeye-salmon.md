@@ -14,7 +14,6 @@ species_type: sea-and-river-animals
 #Management
 management_structure: Joint management
 management_bodies: [NOAA Fisheries, North Pacific Fisheries Management Council, Alaska Department of Fish and Game]
-    - 
 management_body_notes:
 
 #CDQ Community Development Group(s)
@@ -44,8 +43,8 @@ protections: #>-
 protection_notes:
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
-justification: #>-
-    Sockeye salmon were selcted as a species of concern due to their cultural significance throughout many rural Alaskan communities. Sockeye salmon carry significant cultural significance that contributes to physical, spiritual, and mental well-being within the region bringing people together and connecting people to their heritage. In 2021, commercial landings of sockeye salmon totaled 272 million pounds and were valued at approximately $459 million, according to the NOAA Fisheries commercial fishing landings database. Almost all the sockeye salmon harvested in the United States comes from Alaska fisheries (https://www.fisheries.noaa.gov/species/sockeye-salmon).
+justification: >-
+    Sockeye salmon were selcted as a species of concern due to their cultural significance throughout many rural Alaskan communities. Sockeye salmon carry significant cultural significance that contributes to physical, spiritual, and mental well-being within the region bringing people together and connecting people to their heritage. In 2021, commercial landings of sockeye salmon totaled 272 million pounds and were valued at approximately $459 million, according to the NOAA Fisheries commercial fishing landings database. Almost all the sockeye salmon harvested in the United States comes from Alaska fisheries <https://www.fisheries.noaa.gov/species/sockeye-salmon>.
 justification_notes:
 
 #Cultural Significance (use a '>-' block scalar indicator for text below)
@@ -68,7 +67,6 @@ is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---
