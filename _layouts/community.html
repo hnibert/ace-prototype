@@ -401,7 +401,7 @@ css-files:
         <div class="col-lg-4 mx-auto pb-5"> 
             <p class="lead mb-0">{{ page.community_name }} has no related resources</p>
             <p>Check back later or return home</p>
-            <a href="{{ '/#regions' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
+            <a href="{{ '/' | relative_url }}" class="btn btn-ace-primary mt-3">Return Home</a>
         </div> 
     </div>
 </div>
@@ -424,8 +424,8 @@ css-files:
             </div>
 
             <div class="modal-body">
-                {%- capture community_data -%}/assets/data/community/{{ page.community_name | escape | slugify }}.json{%- endcapture -%}                
-                <calendar-viewer calendar-data="{{ community_data | relative_url }}" class="mb-0">
+                {%- capture community_data_url -%}/assets/data/community/{{ page.community_name | escape | slugify }}.json{%- endcapture -%}                
+                <calendar-viewer calendar-data="{{ community_data_url | relative_url }}" class="mb-0">
 
                     <!-- Calendar View Image -->
                     <div class="image-viewer" data-calendar-view>

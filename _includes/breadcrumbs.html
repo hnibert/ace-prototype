@@ -23,10 +23,6 @@
                     <li class="breadcrumb-item text-capitalize">
                         <a href="{{ '/#regions' | relative_url }}" class="text-decoration-none link-dark">Regions</a>
                     </li>
-                    {%- elsif crumb == 'species' -%}
-                    <li class="breadcrumb-item text-capitalize">
-                        <a href="{{ '/communities/#species-search' | relative_url }}" class="text-decoration-none link-dark">Species</a>
-                    </li>            
                     {%- else -%}
                     <li class="breadcrumb-item text-capitalize">
                         <a href="{{ site.baseurl }}{%- for path_crumb in breadcrumbs limit: crumb_limit -%}{{ path_crumb | append: '/' }}{%- endfor -%}" class="text-decoration-none link-dark">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>

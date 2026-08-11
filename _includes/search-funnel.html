@@ -1,0 +1,180 @@
+<!-- Search Funnel -->
+<section aria-labelledby="search-funnel-title">
+    <div class="container my-5">
+        <search class="card shadow-sm position-relative">
+            <div class="card-body">
+                <search-funnel>
+                    <form id="search-funnel-form">
+                        <!-- Search Title -->
+                        <div class="d-flex text-center position-absolute top-0 start-50 translate-middle z-3">
+                            <div class="search-title position-relative rounded-pill py-2 px-4 mx-auto">
+                                <h2 id="search-funnel-title" class="fs-5 fw-bold m-0">Search Your Way</h2>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="position-absolute top-100 start-50 translate-middle mt-1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-wrap user-select-none pe-none">
+                            <img class="img-fluid position-absolute rotate-10 opacity-05 user-select-none pe-none" src="{{ 'assets/images/other/lumpsucker.png' | relative_url }}" alt="" width="512" height="auto" style="top: -32px; right: -175px;">
+                        </div>
+
+                        <!-- Search Toggle Tabs -->
+                        <ul class="nav justify-content-center pt-2 mt-4 gap-2">
+                            <li class="nav-item" role="presentation">
+                                <button id="search-type-tab" class="nav-link search-link type link-dark fw-semibold position-relative active" data-bs-toggle="tab" data-bs-target="#type-tab-pane" type="button" role="tab" aria-controls="type-tab-pane" aria-selected="true">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-deep hide" data-group-name="type" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
+                                    <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                                        <i class="fa-solid fa-anchor fa-2xl mx-auto"></i>
+                                        <small>Type</small>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button id="search-region-tab" class="nav-link search-link region link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#region-tab-pane" type="button" role="tab" aria-controls="region-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-channel hide" data-group-name="regions" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
+                                    <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                                        <i class="fa-solid fa-map-location fa-2xl mx-auto"></i>
+                                        <small>Region</small>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button id="search-theme-tab" class="nav-link search-link theme link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#theme-tab-pane" type="button" role="tab" aria-controls="theme-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-reef hide" data-group-name="themes" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
+                                    <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                                        <i class="fa-solid fa-swatchbook fa-2xl mx-auto"></i>
+                                        <small>Theme</small>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button id="search-species-tab" class="nav-link search-link species link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#species-tab-pane" type="button" role="tab" aria-controls="species-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-cape hide" data-group-name="search_species" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
+                                    <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                                        <i class="fa-solid fa-fish fa-2xl mx-auto"></i>
+                                        <small>Species</small>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button id="search-subtopic-tab" class="nav-link search-link subtopic link-dark fw-semibold position-relative" data-bs-toggle="tab" data-bs-target="#subtopic-tab-pane" type="button" role="tab" aria-controls="subtopic-tab-pane" aria-selected="false">
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-ace-beacon hide" data-group-name="subtopics" data-tag-badge>0<span class="visually-hidden">filters selected</span></span>
+                                    <span class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                                        <i class="fa-solid fa-book-bookmark fa-2xl mx-auto"></i>
+                                        <small>Subtopic</small>
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <hr class="mt-0">
+
+                        <!-- Search Input Group -->
+                        <div class="input-group mb-4">
+                            <div class="form-floating">
+                                <input id="search-input" type="search" class="form-control" placeholder="Search Resources..." aria-label="Search Resources" data-search-input>
+                                <label for="search-input">Search Resources...</label>
+                            </div>
+                            <button id="clear-input" class="btn border bg-white focus-ring" type="button" aria-label="Clears typed search input" data-clear-input><i class="fa-solid fa-x"></i></button>
+                            <a href="#" class="btn btn-ace-primary d-flex align-items-center" type="button" data-submit-search>Search</a>
+                        </div>
+
+                        <!-- Toggle Content -->
+                        <div id="search-toggle-content" class="tab-content z-2">
+                            <div id="type-tab-pane" class="tab-pane fade show active" role="tabpanel" aria-labelledby="search-type-tab" tabindex="0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h2 class="d-inline-block fs-6 fw-semibold mb-3 after-line border-ace-deep">Resource Types</h2>
+                                    <button class="btn btn-outline-dark icon-link" type="button" name="type" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <small>Clear Filters</small>
+                                    </button> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap gap-2">
+                                        {%- for type in site.data.tags.resources.resource_types.items -%}
+                                        <button type="button" class="btn btn-sm rounded-pill bg-body-secondary text-center" data-bs-toggle="button" name="type" value="{{ type.id | slugify }}" data-search-filter>{{ type.label }}</button>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="region-tab-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="search-region-tab" tabindex="0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h2 class="d-inline-block fs-6 fw-semibold mb-3 after-line border-ace-channel">Regions</h2>
+                                    <button class="btn btn-outline-dark icon-link" type="button" name="regions" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <small>Clear Filters</small>
+                                    </button> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap gap-2">
+                                        {%- for region in site.regions -%}
+                                        <button type="button" class="btn btn-sm rounded-pill bg-body-secondary text-center" data-bs-toggle="button" name="regions" value="{{ region.region_name | slugify }}" data-search-filter>{{ region.region_name }}</button>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="theme-tab-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="search-theme-tab" tabindex="0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h2 class="d-inline-block fs-6 fw-semibold mb-3 after-line border-ace-reef">Themes</h2>
+                                    <button class="btn btn-outline-dark icon-link" type="button" name="themes" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <small>Clear Filters</small>
+                                    </button> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap gap-2">
+                                        {%- for theme in site.data.tags.resources.resource_themes.items -%}
+                                        <button type="button" class="btn btn-sm rounded-pill bg-body-secondary text-center" data-bs-toggle="button" name="themes" value="{{ theme.id | slugify }}" data-search-filter>{{ theme.label }}</button>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="species-tab-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="search-species-tab" tabindex="0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h2 class="d-inline-block fs-6 fw-semibold mb-3 after-line border-ace-cape">Species</h2>
+                                    <button class="btn btn-outline-dark icon-link" type="button" name="search_species" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <small>Clear Filters</small>
+                                    </button> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap gap-2">
+                                        {%- for species in site.data.tags.resources.resource_species.items -%}
+                                        <button type="button" class="btn btn-sm rounded-pill bg-body-secondary text-center" data-bs-toggle="button" name="search_species" value="{{ species.id | slugify }}" data-search-filter>{{ species.label }}</button>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="subtopic-tab-pane" class="tab-pane fade" role="tabpanel" aria-labelledby="search-subtopic-tab" tabindex="0">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h2 class="d-inline-block fs-6 fw-semibold mb-3 after-line border-ace-beacon">Subtopics</h2>
+                                    <button class="btn btn-outline-dark icon-link" type="button" name="subtopics" data-clear-group-filters>
+                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                        </svg> <small>Clear Filters</small>
+                                    </button> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-wrap gap-2">
+                                        {%- for subtopic in site.data.tags.resources.resource_subtopics.items -%}
+                                        <button type="button" class="btn btn-sm rounded-pill bg-body-secondary text-center" data-bs-toggle="button" name="subtopics" value="{{ subtopic.id | slugify }}" data-search-filter>{{ subtopic.label }}</button>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </search-funnel>
+            </div>
+        </search>
+    </div>
+</section>

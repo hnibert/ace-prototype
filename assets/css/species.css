@@ -1,0 +1,40 @@
+    .species-card {
+        background-image: url('../images/svg/magnifying-glass-solid-full.svg');
+        background-color: #545b5d;
+        background-repeat: no-repeat;
+        background-position: right -24px top -6px;
+        background-size: 148px;
+        color: white;
+        border: none;
+    }
+
+    .species-card .card-title {
+        text-wrap: balance;
+    }
+
+    .species-card.land-animals {
+        background-image: url('../images/svg/mountain-solid-full.svg');
+        background-color: #f7786b;
+        background-position: right -24px top -6px;
+        background-size: 148px;
+        color: white;
+        border: none;
+    }
+
+    .species-card.sea-and-river-animals {
+        background-image: url('../images/svg/droplet-solid-full.svg');
+        background-color: #58abf6;
+        background-position: right -36px top -6px;
+        background-size: 164px;
+        color: white;
+        border: none;
+    }
+
+    .species-card.plants {
+        background-image: url('../images/svg/leaf-solid-full.svg');
+        background-color: #2cdab1;
+        background-position: right -24px top -6px;
+        background-size: 164px;
+        color: white;
+        border: none;
+    }

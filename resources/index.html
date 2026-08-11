@@ -8,8 +8,9 @@ js-preload-files-ext:
    defer: false
 
 js-postload-files:
- - "/assets/scripts/components/advanced-search.min.js"
+ #- "/assets/scripts/components/advanced-search.min.js"
  - "/assets/scripts/components/range-slider.min.js"
+ - "/assets/scripts/components/faceted-search.js"
 ---
 
 {%- comment -%}
@@ -48,8 +49,8 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <advanced-search search-data="#search-data-raw" search-container="#resource-search-container" no-results="#no-results-feedback" result-template="#resource-card-template" results-per-page="5" page-summary="#page-index-summary" pagination-progress="#pagination-progress" results-summary="#page-results-summary" page-controls="#page-controls" reset-search="#reset-search">
-                <search>
+            <advanced-search search-data="#search-data-raw" search-container="#resource-results-container" no-results="#no-results-feedback" result-template="#resource-card-template" results-per-page="5" page-summary="#page-index-summary" pagination-progress="#pagination-progress" results-summary="#page-results-summary" page-controls="#page-controls" reset-search="#reset-search">
+                <search id="resource-search-container">
                     <form>
                         <!-- Search Title -->
                         <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
@@ -237,7 +238,7 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
             <hr>
 
             <!-- Results List -->
-            <ul id="resource-search-container" class="list-unstyled vstack gap-4">
+            <ul id="resource-results-container" class="list-unstyled vstack gap-4">
             </ul>
 
             <!-- No Results Feedback -->
@@ -268,7 +269,6 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
                     </ul>
                 </nav>           
             </div>
-
         </div>
     </div>
 </div>
@@ -290,3 +290,168 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
         </div>
     </li>
 </template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const speciesSearch = new AdvancedSearch({
+            //raw json search index to use with minisearch 
+            searchData: '#search-data-raw',
+
+            //the template for rendering results
+            resultTemplate: '#resource-card-template',
+            
+            //what filter fields make up active filters? (must match toggle group name fields)
+            filterFields: { 'type': [], 'regions': [], 'themes': [], 'search_species': [], 'subtopics': [] },
+
+            //define any ranges used in this search
+            ranges: [
+                {
+                    rangeInput: "#resource-date-range",
+                    rangeEvent: 'range-slider:change',
+                    rangeFields: { fromDate: 0, toDate: 0 },
+                    rangeInitiateMethod: initiateDateRange,
+                    rangeEventMethod: resourceDateChangeEvent,
+                    rangeFilterLogic: resourceDateFilter
+                }
+            ],
+
+            //search configs for minisearch
+            searchConfig: {
+                //minisearch: fields for minisearch to use for text searches (must match field names from yml/json)
+                msFields: ['title', 'description'],
+
+                //minisearch: return fields for minisearch results
+                msStoreFields: ['title', 'type', 'description', 'date', 'url', 'regions', 'themes', 'search_species', 'subtopics'], 
+                
+                //minisearch: boost fields object to define field names and values for minisearch
+                msBoostFields: { 'title': 2 },
+            },
+
+            //container selectors
+            containers: {
+                searchContainer: '#resource-search-container',
+                resultsContainer: '#resource-results-container'
+            },
+
+            //pagination configs
+            pagination: {
+                paginationControls: '#page-controls',
+                paginationProgressBar: '#pagination-progress',
+                resultsPerPage: 10
+            },
+
+            //summary elements
+            summary: {
+                pageIndexSummary: '#page-index-summary',
+                pageResultSummary: '#page-results-summary',
+                noResultsFeedback: '#no-results-feedback'
+            },
+
+            //custom logic for search & rendering
+            filterLogic: null,
+            renderLogic: resourceRenderFunction
+        });
+    });
+
+    const resourceRenderFunction = (result, documentFragment, resultTemplate) => {
+        //clone template contents
+        const resultCard = resultTemplate.content.cloneNode(true);
+
+        //save a normalized version of type
+        const itemType = result.type.toLowerCase().trim();
+
+        //set card class type for styling
+        resultCard.querySelector("[data-serach-item]").classList.add(itemType);
+
+        //set title and title href
+        const titleElement = resultCard.querySelector("[data-item-title]");
+        titleElement.textContent = result.title;
+        titleElement.href = result.url;
+
+        //set type text
+        resultCard.querySelector("[data-item-type]").textContent = result.type.replaceAll("-", " ").replaceAll("and", "&");
+
+        //set type icon
+        const iconElement = resultCard.querySelector("[data-item-icon]");
+        const iconClasses = getResourceTypeIcon(itemType).split(",");
+
+        //set icon classes on icon
+        iconClasses.forEach(iconClass => { 
+            iconElement.classList.add(iconClass);
+        });
+
+        //set date label
+        //see: https://jordanbrennan.hashnode.dev/so-many-native-javascript-date-formats
+        //see: https://codingnomads.com/formatting-dates-and-times-javascript-intl
+        const [year, month, day] =  result.date.split("-");
+        const usDate = new Date(`${month}-${day}-${year}`);
+        const displayDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+        //set the data text
+        resultCard.querySelector("[data-item-date]").textContent = displayDateFormatter.format(usDate);
+
+        //set description text
+        resultCard.querySelector("[data-item-description]").textContent = result.description;
+
+        //set url href
+        resultCard.querySelector("[data-item-link]").href = result.url;
+
+        //append result card to page fragment
+        documentFragment.appendChild(resultCard);
+    };
+
+    const resourceDateChangeEvent = (event, rangeFields) => {
+        rangeFields.fromDate = event.detail.min;
+        rangeFields.toDate = event.detail.max;
+    }
+
+    const resourceDateFilter = (result, rangeFields) => {
+        //apply year date range filter
+        const date = new Date(result.date).getFullYear();
+
+        //console.log(`${rangeFields.fromDate} : ${rangeFields.toDate}`);
+
+        if (rangeFields.fromDate && date < new Date(rangeFields.fromDate))
+            return false;
+
+        if (rangeFields.toDate && date > new Date(rangeFields.toDate))
+            return false;
+        
+        return true;
+    }
+
+    const initiateDateRange = (rangeElement, rangeFields) => {
+        const rangeValues = rangeElement.getNumberInputRangeValues();
+
+        rangeFields.fromDate = rangeValues.min;
+        rangeFields.toDate = rangeValues.max;
+    }
+
+    function getResourceTypeIcon(type) {
+        switch(type) {
+            case "web-application":
+                return "fa-solid,fa-globe";
+                break;
+
+            case "data-and-code":
+                return "fa-solid,fa-database";
+                break;
+
+            case "publication":
+                return "fa-solid,fa-newspaper";
+                break;
+
+            case "code-repo":
+                return "fa-brands,fa-github";
+                break;
+
+            case "presentation":
+                return "fa-solid,fa-person-chalkboard";
+                break;
+
+            default:
+                return "fa-regular,fa-circle-question";
+                break;
+        }
+    }
+</script>

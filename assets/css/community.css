@@ -20,6 +20,10 @@
   background-color: var(--sea-animal-color-primary);
 }
 
+.bg-sea-and-river-animals {
+  background-color: var(--sea-animal-color-primary);
+}
+
 .bg-plants {
   background-color: var(--plant-color-primary);
 }
