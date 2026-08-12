@@ -36,9 +36,9 @@ tags:
 communities: []
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: >-
-    Eastern distinct population segment (DPS) (east of 144°W longitude) was listed as threatened until 2013; Protected under Marine Mammal Protection Act throughout its range;   Western DPS (west of 144°W longitude) is listed as endangered under the Endangered Species Act (ESA) (U.S. Federal Register 1997).
-protection_notes:
+protections: [Marine Mammal Protection Act]
+protection_notes: |
+    Eastern distinct population segment (DPS) (east of 144°W longitude) was listed as threatened until 2013. Protected under Marine Mammal Protection Act throughout its range. Western DPS (west of 144°W longitude) is listed as endangered under the Endangered Species Act (ESA) (U.S. Federal Register 1997).
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |

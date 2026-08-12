@@ -35,11 +35,10 @@ tags:
     - subsistence
     - marine-mammals
 
-communities: 
-    - 
+communities: []
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: "Endangered Species Act (77 FR 76740), Marine Mammal Protection Act (Muto et al., 2022)"
+protections: [Endangered Species Act (77 FR 76740), Marine Mammal Protection Act (Muto et al., 2022)]
 protection_notes: >-
     In 2012, NOAA Fisheries listed Beringia distinct population segment (DPS) bearded seal as threatened under the Endangered Species Act (77 FR 76740). Listed as depleted under Marine Mammal Protection Act. (Muto et al., 2022)
 

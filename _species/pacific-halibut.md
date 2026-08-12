@@ -28,7 +28,10 @@ ccv_score:
 ccv_notes:
 
 #Data Tags (used in search)
-tags: subsistence, fish-invertebrates
+tags: 
+    - subsistence, 
+    - commercial 
+    - fish-invertebrates
 communities:
     - togiak 
     - scammon-bay

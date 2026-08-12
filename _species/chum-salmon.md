@@ -37,10 +37,9 @@ tags:
 communities: 
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: >-
-    Magnuson-Stevens Act to minimize bycatch. 
+protections: [Magnuson-Stevens Act] 
 protection_notes: >-
-    Revisions to the federal fishery management plan in 2010 and 2016 for Bering Sea and Aleutian Islands Management Area (Amendment 91) and the Incentive Plan Agreements to help reduce salmon incidental catch. Amendment 110 to reduce bycatch.
+    Magnuson-Stevens Act to minimize bycatch. Revisions to the federal fishery management plan in 2010 and 2016 for Bering Sea and Aleutian Islands Management Area (Amendment 91) and the Incentive Plan Agreements to help reduce salmon incidental catch. Amendment 110 to reduce bycatch.
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |

@@ -22,22 +22,22 @@ cdq_groups: []
 cdq_communities: []
 
 #Climate Change Vulnerability
-ccv_label:
-ccv_reference:
-ccv_score:
-ccv_notes:
+ccv_label: null
+ccv_reference: null
+ccv_score: null
+ccv_notes: null
 
 #Data Tags (used in search)
 tags: 
     - subsistence
-    - fish-invertebrates
+    - marine-mammals
 
-communities: 
+communities: []
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: >-
-    Protected under Marine Mammal Protection Act throughout its range. 
-protection_notes: “No harbor seal stocks in Alaska are designated as depleted under the Marine Mammal Protection Act (MMPA) or listed as threatened or endangered under the Endangered Species Act” (Muto et al., 2022)
+protections: [Marine Mammal Protection Act]
+protection_notes: |
+    Protected under Marine Mammal Protection Act throughout its range. “No harbor seal stocks in Alaska are designated as depleted under the Marine Mammal Protection Act (MMPA) or listed as threatened or endangered under the Endangered Species Act” (Muto et al., 2022)
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |

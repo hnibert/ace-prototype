@@ -30,6 +30,7 @@ ccv_notes: Community surveys collected by Divine et al. (2022), while focused on
 #Data Tags (used in search)
 tags: 
     - subsistence
+    - commercial
     - fish-invertebrates
 
 communities: 
@@ -39,9 +40,8 @@ communities:
     - naknek
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: >-
-    Management of coho salmon must also comply with laws such as the Endangered Species Act
-protection_notes:
+protections: [Endangered Species Act]
+protection_notes: Management of coho salmon must also comply with laws such as the Endangered Species Act
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: #>-

@@ -33,7 +33,7 @@ tags:
     - subsistence
     - fish-invertebrates
 
-communities: 
+communities: []
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-

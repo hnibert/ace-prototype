@@ -31,6 +31,7 @@ ccv_notes: Community surveys collected by Divine et al. (2022), while focused on
 #Data Tags (used in search)
 tags: 
     - subsistence
+    - commercial
     - fish-invertebrates
 
 communities: 
@@ -39,13 +40,15 @@ communities:
     - naknek
 
 #Protections (use a '>-' block scalar indicator for text below)
-protections: #>-
-    Magnuson-Stevens Act to minimize bycatch through Protected Species Catch Limits. In 2011, first Chinook salmon cap in the Bering Sea Aleutians pollock fishery is put into place. Revisions to the federal fishery management plan in 2010 and 2016 for Bering Sea and Aleutian Islands Management Area (Amendment 91) and the Incentive Plan Agreements to help reduce salmon incidental catch. Amendment 110 to reduce bycatch; “Prohibited Species” under Community Development Quota (CDQ) Operations.
-protection_notes:
+protections: [Magnuson-Stevens Act]
+protection_notes: |
+    Magnuson-Stevens Act to minimize bycatch through Protected Species Catch Limits. In 2011, first Chinook salmon cap in the Bering Sea Aleutians pollock fishery is put into place. 
+    
+    Revisions to the federal fishery management plan in 2010 and 2016 for Bering Sea and Aleutian Islands Management Area (Amendment 91) and the Incentive Plan Agreements to help reduce salmon incidental catch. Amendment 110 to reduce bycatch; “Prohibited Species” under Community Development Quota (CDQ) Operations.
 
 #Justification for Classification (use a '>-' block scalar indicator for text below)
 justification: |
-    Selected due to their cultural significance throughout many rural Alaskan communities including those along the lower Yukon River Drainage network. Chinook salmon carry significant cultural significance that contributes to physical, spiritual, and mental well-being within the region bringing people together and connecting people to their heritage. In addition, this species is tied to greater ecosystem health as it plays a role within the greater system. 
+    Chinook salmon were selected as a species of concern due to their cultural significance throughout many rural Alaskan communities including those along the lower Yukon River Drainage network. Chinook salmon carry significant cultural significance that contributes to physical, spiritual, and mental well-being within the region bringing people together and connecting people to their heritage. In addition, this species is tied to greater ecosystem health as it plays a role within the greater system. 
     
     The decline of this species raises great food security concerns within the region. Lastly, concerns over bycatch of this species exists in commercial groundfish/pollock fisheries, and many subsistence closures have occurred in recent years leading to the need to focus on this species in the face of climate change, uncertainty, and continued commercial pelagic trawling practices. Additionally, in 2021, U.S. commercial landings of Chinook salmon totaled 8 million pounds and were valued at $43.8 million, according to the NOAA Fisheries commercial fishing landings database.
 justification_notes:

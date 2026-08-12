@@ -32,8 +32,10 @@ ccv_notes: Concerns over climate change impacting predator species revealed in 2
 #Data Tags (used in search)
 tags: 
     - subsistence
+    - commercial
+    - fish-invertebrates
 
-communities: 
+communities: []
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
