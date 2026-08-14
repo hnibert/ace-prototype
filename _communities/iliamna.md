@@ -6,10 +6,10 @@ community_name: Iliamna
 
 #Native Name & Pronunciation
 show_info_bar: true
-native_name: Nuch'ak'dalitnu
-native_pronunciation: Noo-chahk-dah-leet-noo
+native_name: "Nuch'ak'dalitnu"
+native_pronunciation: "Noo-chahk-dah-leet-noo"
 native_pronunciation_audio: null
-native_language: Dena’ina
+native_language: "Dena’ina"
 native_language_iso: tfn
 
 #Hero
@@ -22,7 +22,7 @@ hero_data:
   lead: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
 #Summary
-summary_img_url: assets/images/communities/iliamna-funnel.jpg
+summary_img_url: "assets/images/communities/iliamna-funnel.jpg"
 summary_img_alt: null
 summary_title: A Subtitle Goes Here
 summary_lead: >-
@@ -42,15 +42,16 @@ calendar_about: >-
 
 #Meet the Artist
 artist_data:
-  name: 
+  name: Sarah Shrod
+  img_url:
   email:
   about: #>-
 
 #Calendar - Images
-calendar_display_img_url: assets/images/communities/iliamna-calendar-display.png
+calendar_display_img_url: "assets/images/communities/iliamna-calendar-display.png"
 calendar_display_alt: null
 
-calendar_view_img_url: assets/images/communities/iliamna-view.webp
+calendar_view_img_url: "assets/images/communities/iliamna-view.webp"
 calendar_view_alt: null
 
 #calendar - Legend
