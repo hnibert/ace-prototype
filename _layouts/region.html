@@ -1,7 +1,7 @@
 ---
 layout: default
 js-postload-files:
- - "/assets/scripts/components/basic-search.js"
+ - "/assets/scripts/components/basic-search.min.js"
 ---
 
 <!-- Hero -->
@@ -27,6 +27,7 @@ js-postload-files:
     </div>
 </section>
 
+{%- if site.show_beta_features == true -%}
 {%- unless page.google_maps_url == nil or page.key_geographical_points.size <= 0 -%}
 <!-- Geospatial Overview -->
 <section aria-labelledby="geospatial-title">
@@ -82,6 +83,7 @@ js-postload-files:
     </div>
 </section>
 {%- endunless -%}
+{%- endif -%}
 
 {%- if page.points_of_contact.size > 0 -%}
 <!-- Points of Contact -->
@@ -123,7 +125,11 @@ js-postload-files:
                         {%- endif -%}
 
                         <!-- Profile Link -->
-                        <a href="{{ author_item.url | relative_url }}" class="icon-link icon-link-hover text-decoration-none fw-semibold link-dark">Profile <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/></svg></a>
+                        <a href="{{ author_item.url | relative_url }}" class="icon-link icon-link-hover text-decoration-none fw-semibold link-dark">Profile 
+                            <svg class="bi mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                <path d="M471.1 297.4C483.6 309.9 483.6 330.2 471.1 342.7L279.1 534.7C266.6 547.2 246.3 547.2 233.8 534.7C221.3 522.2 221.3 501.9 233.8 489.4L403.2 320L233.9 150.6C221.4 138.1 221.4 117.8 233.9 105.3C246.4 92.8 266.7 92.8 279.2 105.3L471.2 297.3z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </li>
@@ -133,7 +139,7 @@ js-postload-files:
 </section>
 {%- endif -%}
 
-{%- assign region_resources = site.data.resources.entries | where_exp: "item", "item.regions contains page.slug" -%}
+{%- assign region_resources = site.data.resources.entries | where: 'is_available', true | where_exp: "item", "item.regions contains page.slug" -%}
 {%- if region_resources.size > 0 -%}
 <basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" reset-search="#reset-search" paginate-controls="#paginate-controls" results-per-page="3">
     <!-- Search-Filter Component -->
@@ -185,7 +191,7 @@ js-postload-files:
             <!-- Species Filters -->
             <div class="row">
                 <div class="col-12 d-flex flex-wrap gap-2">
-                    {%- assign resource_types = site.data.tags.resource_types.items -%}
+                    {%- assign resource_types = site.data.tags.resources.resource_types.items -%}
                     {%- for type in resource_types -%}
                     <button type="button" class="btn rounded-pill bg-body-secondary" data-bs-toggle="button" data-search-filter data-filter-for="{{ type.id | slugify }}">{{ type.label }}</button>
                     {%- endfor -%}

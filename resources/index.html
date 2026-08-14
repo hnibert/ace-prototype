@@ -8,9 +8,8 @@ js-preload-files-ext:
    defer: false
 
 js-postload-files:
- #- "/assets/scripts/components/advanced-search.min.js"
  - "/assets/scripts/components/range-slider.min.js"
- - "/assets/scripts/components/faceted-search.js"
+ - "/assets/scripts/components/faceted-search.min.js"
 ---
 
 {%- comment -%}
@@ -49,182 +48,180 @@ If you have a tool or dataset you’d like to see added to the ACE portal, pleas
 
         <!-- Search Column -->
         <div class="col-12 col-lg-3 mb-4">
-            <advanced-search search-data="#search-data-raw" search-container="#resource-results-container" no-results="#no-results-feedback" result-template="#resource-card-template" results-per-page="5" page-summary="#page-index-summary" pagination-progress="#pagination-progress" results-summary="#page-results-summary" page-controls="#page-controls" reset-search="#reset-search">
-                <search id="resource-search-container">
-                    <form>
-                        <!-- Search Title -->
-                        <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
-                        <hr>
-                        
-                        <!-- Search Text Input Group -->
-                        <div class="input-group mb-4">
-                            <input id="search-input" type="search" class="form-control" placeholder="Search" aria-label="Search" data-search-input>
-                            <button id="clear-input" class="btn bg-clear border focus-ring" type="button" aria-label="Clears typed search input" data-clear-input>
-                                <i class="fa-solid fa-x"></i>
-                            </button>
-                        </div>
+            <search id="resource-search-container">
+                <form>
+                    <!-- Search Title -->
+                    <h2 id="resourse-search-title" class="fs-5 fw-semibold">Search Resources</h2>
+                    <hr>
+                    
+                    <!-- Search Text Input Group -->
+                    <div class="input-group mb-4">
+                        <input id="search-input" type="search" class="form-control" placeholder="Search" aria-label="Search" data-search-input>
+                        <button id="clear-input" class="btn bg-clear border focus-ring" type="button" aria-label="Clears typed search input" data-clear-input>
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </div>
 
-                        <!-- Filter Years Title -->
-                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter by Year</h1>
-                        <hr>
-                        {%- comment -%}
-                            - Build an array of dates from the resources collection
-                            - Buil a string of just the years from the dates array separated by commas
-                            - Build an array of just years from the year string, splitting on commas, uniq to remove duplicates and sort to put in order of earliest to latest
-                            - Get minimum year and maximum year by grabbing the first and last years from the year array respectively
-                            - Set the default year range (max at max and minus two from max for a three year range)
-                            TODO: Set default year range from YAML/CMS
-                        {%- endcomment -%}
-                        
-                        {%- assign dates_array = site.data.resources.entries | map: 'date' -%}
+                    <!-- Filter Years Title -->
+                    <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter by Year</h1>
+                    <hr>
+                    {%- comment -%}
+                        - Build an array of dates from the resources collection
+                        - Buil a string of just the years from the dates array separated by commas
+                        - Build an array of just years from the year string, splitting on commas, uniq to remove duplicates and sort to put in order of earliest to latest
+                        - Get minimum year and maximum year by grabbing the first and last years from the year array respectively
+                        - Set the default year range (max at max and minus two from max for a three year range)
+                        TODO: Set default year range from YAML/CMS
+                    {%- endcomment -%}
+                    
+                    {%- assign dates_array = site.data.resources.entries | map: 'date' -%}
 
-                        {%- capture years_string -%}
-                        {%- for date in dates_array -%}
-                            {{ date | date: '%Y' }}{%- unless forloop.last -%},{%- endunless -%}
-                        {%- endfor -%}
-                        {%- endcapture -%}
+                    {%- capture years_string -%}
+                    {%- for date in dates_array -%}
+                        {{ date | date: '%Y' }}{%- unless forloop.last -%},{%- endunless -%}
+                    {%- endfor -%}
+                    {%- endcapture -%}
 
-                        {%- assign years_array = years_string | split: ',' | uniq | sort -%}
-                        {%- assign min_year = years_array.first -%}
-                        {%- assign max_year = years_array.last -%}
+                    {%- assign years_array = years_string | split: ',' | uniq | sort -%}
+                    {%- assign min_year = years_array.first -%}
+                    {%- assign max_year = years_array.last -%}
 
-                        {%- assign default_min = max_year | plus: 0 | minus: 2 -%}
+                    {%- assign default_min = max_year | plus: 0 | minus: 2 -%}
 
-                        <!-- Year Range Slider -->
-                        <range-slider id="resource-date-range" class="pt-0" min="{{ min_year }}" max="{{ max_year }}" unit-default-label="year" unit-plural-label="years" unit-max-label="All Years" data-date-range>
-                            <input type="number" inputmode="numeric" pattern="[0-9]*" class="min-range" value="{{ default_min }}" min="{{ min_year }}" max="{{ max_year }}">
-                            <input type="number" inputmode="numeric" pattern="[0-9]*" class="max-range" value="{{ max_year }}" min="{{ min_year }}" max="{{ max_year }}">
+                    <!-- Year Range Slider -->
+                    <range-slider id="resource-date-range" class="pt-0" min="{{ min_year | default: 0 }}" max="{{ max_year | default: 100 }}" unit-default-label="year" unit-plural-label="years" unit-max-label="All Years" data-date-range>
+                        <input type="number" inputmode="numeric" pattern="[0-9]*" class="min-range" value="{{ default_min | default: 50 }}" min="{{ min_year | default: 0 }}" max="{{ max_year | default: 100 }}">
+                        <input type="number" inputmode="numeric" pattern="[0-9]*" class="max-range" value="{{ max_year | default: 100 }}" min="{{ min_year | default: 0 }}" max="{{ max_year | default: 100 }}">
 
-                            <div class="range">
-                                <input type="range" class="min-input" value="{{ default_min }}" min="{{ min_year }}" max="{{ max_year }}">
-                                <input type="range" class="max-input" value="{{ max_year }}" min="{{ min_year }}" max="{{ max_year }}">
-                                <div class="slider">
-                                    <div class="fill"></div>
-                                </div>
+                        <div class="range">
+                            <input type="range" class="min-input" value="{{ default_min }}" min="{{ min_year }}" max="{{ max_year }}">
+                            <input type="range" class="max-input" value="{{ max_year }}" min="{{ min_year }}" max="{{ max_year }}">
+                            <div class="slider">
+                                <div class="fill"></div>
                             </div>
-                            <output class="range-output ms-auto text-muted small"></output>
-                        </range-slider>
+                        </div>
+                        <output class="range-output ms-auto text-muted small"></output>
+                    </range-slider>
+                    
+                    <!-- Filter Categories Title -->
+                    <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Resources</h1>
+                    <hr>
+
+                    <!-- Filters List -->
+                    <ul class="list-unstyled list-group ps-0">
+                        <!-- Resource Type Filters -->
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-nowrap fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Type</button> 
+                                <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="type" data-clear-group-filters>
+                                    <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                        <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                    </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                </button> 
+                            </div>
+                            <div id="resource-type-collapse" class="collapse show">
+                                <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                    {%- for type in site.data.tags.resources.resource_types.items -%}
+                                    <li class="list-group-item d-flex align-items-start border-0">
+                                        <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
+                                        <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
+                                    </li>                                
+                                    {%- endfor -%}
+                                </ul> 
+                            </div> 
+                        </li>
                         
-                        <!-- Filter Categories Title -->
-                        <h1 id="resourse-filter-title" class="fs-6 fw-semibold">Filter Resources</h1>
-                        <hr>
+                        <!-- Resource Region Filters -->
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button>
+                                <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="regions" data-clear-group-filters>
+                                    <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                        <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                    </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                </button>
+                            </div>                             
+                            <div id="region-collapse" class="collapse show"> 
+                                <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                    {%- for region in site.regions -%}
+                                    <li class="list-group-item d-flex align-items-start border-0">
+                                        <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="regions" value="{{ region.region_name | slugify }}" data-search-filter>
+                                        <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
+                                    </li> 
+                                    {%- endfor -%}
+                                </ul> 
+                            </div> 
+                        </li>
 
-                        <!-- Filters List -->
-                        <ul class="list-unstyled list-group ps-0">
-                            <!-- Resource Type Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-nowrap fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#resource-type-collapse" aria-expanded="true">Resource Type</button> 
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="type" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button> 
-                                </div>
-                                <div id="resource-type-collapse" class="collapse show">
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for type in site.data.tags.resources.resource_types.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ type.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="type" value="{{ type.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ type.id | slugify }}">{{ type.label }}</label>
-                                        </li>                                
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
-                            
-                            <!-- Resource Region Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#region-collapse" aria-expanded="true">Region</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="regions" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>
-                                </div>                             
-                                <div id="region-collapse" class="collapse show"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
-                                        {%- for region in site.regions -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ region.region_name | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="regions" value="{{ region.region_name | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ region.region_name | slugify }}">{{ region.region_name }}</label>
-                                        </li> 
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
+                        <!-- Resource Theme Filters -->
+                        <li class="list-group-item"> 
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button>
+                                <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="themes" data-clear-group-filters>
+                                    <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                        <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                    </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                </button>
+                            </div>
+                            <div id="theme-collapse" class="collapse show"> 
+                                <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                    {%- for theme in site.data.tags.resources.resource_themes.items -%}
+                                    <li class="list-group-item d-flex align-items-start border-0">
+                                        <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="themes" value="{{ theme.id | slugify }}" data-search-filter>
+                                        <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id | slugify }}">{{ theme.label }}</label>
+                                    </li>                                  
+                                    {%- endfor -%}
+                                </ul> 
+                            </div> 
+                        </li>
 
-                            <!-- Resource Theme Filters -->
-                            <li class="list-group-item"> 
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#theme-collapse" aria-expanded="true" aria-controls="theme-collapse">Theme</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="themes" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>
-                                </div>
-                                <div id="theme-collapse" class="collapse show"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for theme in site.data.tags.resources.resource_themes.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ theme.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="themes" value="{{ theme.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ theme.id | slugify }}">{{ theme.label }}</label>
-                                        </li>                                  
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
+                        <!-- Resource Species Filters -->
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button>
+                                <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="search_species" data-clear-group-filters>
+                                    <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                        <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                    </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                </button>
+                            </div>
+                            <div id="species-collapse" class="collapse"> 
+                                <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
+                                    {%- for species in site.data.tags.resources.resource_species.items -%}
+                                    <li class="list-group-item d-flex align-items-start border-0">
+                                        <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="search_species" value="{{ species.id | slugify }}" data-search-filter>
+                                        <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id | slugify }}">{{ species.label }}</label>
+                                    </li>                                
+                                    {%- endfor -%}
+                                </ul> 
+                            </div> 
+                        </li>
 
-                            <!-- Resource Species Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#species-collapse" aria-expanded="false">Species</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="search_species" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>
-                                </div>
-                                <div id="species-collapse" class="collapse"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small"> 
-                                        {%- for species in site.data.tags.resources.resource_species.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ species.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="search_species" value="{{ species.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ species.id | slugify }}">{{ species.label }}</label>
-                                        </li>                                
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li>
-
-                            <!-- Resource Subtopic Filters -->
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button>
-                                    <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="subtopics" data-clear-group-filters>
-                                        <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                                            <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
-                                        </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
-                                    </button>                                
-                                </div>
-                                <div id="subtopics-collapse" class="collapse"> 
-                                    <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
-                                        {%- for subtopic in site.data.tags.resources.resource_subtopics.items -%}
-                                        <li class="list-group-item d-flex align-items-start border-0">
-                                            <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopics" value="{{ subtopic.id | slugify }}" data-search-filter>
-                                            <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id | slugify }}">{{ subtopic.label }}</label>
-                                        </li>
-                                        {%- endfor -%}
-                                    </ul> 
-                                </div> 
-                            </li> 
-                        </ul>
-                        <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button" data-clear-all-filters><i class="fa-solid fa-eraser"></i> Clear All Filters</button>
-                    </form>
-                </search>
-            </advanced-search>
+                        <!-- Resource Subtopic Filters -->
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#subtopics-collapse" aria-expanded="false">Subtopics</button>
+                                <button class="btn d-inline-flex align-items-center rounded border-0 fw-normal text-dark-emphasis btn-highlight icon-link" type="button" name="subtopics" data-clear-group-filters>
+                                    <svg class="bi" aria-label="Clear Category Tags" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                        <path d="M210.5 480L333.5 480L398.8 414.7L225.3 241.2L98.6 367.9L210.6 479.9zM256 544L210.5 544C193.5 544 177.2 537.3 165.2 525.3L49 409C38.1 398.1 32 383.4 32 368C32 352.6 38.1 337.9 49 327L295 81C305.9 70.1 320.6 64 336 64C351.4 64 366.1 70.1 377 81L559 263C569.9 273.9 576 288.6 576 304C576 319.4 569.9 334.1 559 345L424 480L544 480C561.7 480 576 494.3 576 512C576 529.7 561.7 544 544 544L256 544z"/>
+                                    </svg> <span class="d-block d-lg-none d-xl-block small">Clear</span>
+                                </button>                                
+                            </div>
+                            <div id="subtopics-collapse" class="collapse"> 
+                                <ul class="btn-toggle-nav list-unstyled list-group fw-normal pb-1 small">
+                                    {%- for subtopic in site.data.tags.resources.resource_subtopics.items -%}
+                                    <li class="list-group-item d-flex align-items-start border-0">
+                                        <input id="filter-{{ subtopic.id | slugify }}" class="form-check-input filter-checkbox" type="checkbox" name="subtopics" value="{{ subtopic.id | slugify }}" data-search-filter>
+                                        <label class="form-check-label mt-1 ms-1" for="filter-{{ subtopic.id | slugify }}">{{ subtopic.label }}</label>
+                                    </li>
+                                    {%- endfor -%}
+                                </ul> 
+                            </div> 
+                        </li> 
+                    </ul>
+                    <button class="btn btn-outline-dark text-decoration-none mt-3 w-100" type="button" data-clear-all-filters><i class="fa-solid fa-eraser"></i> Clear All Filters</button>
+                </form>
+            </search>
         </div>
 
         <!-- Resource List, Summaries & Control -->

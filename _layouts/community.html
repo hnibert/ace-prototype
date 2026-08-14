@@ -177,10 +177,12 @@ css-files:
             <!-- Tag/Filter Cloud -->
             <div class="row">
                 <div class="col-12 d-flex flex-wrap gap-2">
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="fish-invertebrates">Fish & Invertebrates</button>
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="marine-mammal">Marine Mammals</button>
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="subsistence">Subsistence</button>
-                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="commercial">Commercial</button>
+                    {%- assign species_groups = site.data.tags.species.species_groups.items -%}
+                    {%- assign species_usage = site.data.tags.species.species_usage.items -%}
+                    {%- assign filters = species_groups | concat: species_usage -%}
+                    {%- for filter in filters -%}
+                    <button type="button" class="btn rounded-pill bg-body-secondary focus-ring" data-bs-toggle="button" data-search-filter data-filter-for="{{ filter.id | slugify }}">{{ filter.label }}</button>
+                    {%- endfor -%}
                 </div>
             </div>
         </div>
@@ -202,7 +204,7 @@ css-files:
         {%- for animal in species_of_concern -%}
         {%- assign animal_tags = animal.tags | uniq -%}
         {%- assign animal_regions = animal.region | uniq -%}
-        <li class="card tile-item hover-shadow" data-species-tags="{{ animal_tags }}" data-species-region="{{ animal_regions }}" data-search-item>
+        <li class="card tile-item hover-shadow" data-species-tags="{{ animal_tags | join: ', ' }}" data-species-region="{{ animal_regions | join: ', ' }}" data-search-item>
             <div class="card-body">
                 <a class="text-decoration-none link-light stretched-link" href="{{ animal.url | relative_url }}" data-search-text>{{ animal.species_name }}</a>
             </div>
@@ -272,7 +274,7 @@ css-files:
 </section>
 {%- endif -%}
 
-{%- assign community_resources = site.data.resources.entries | where_exp: "item", "item.communities contains page.slug" -%}
+{%- assign community_resources = site.data.resources.entries | where: 'is_available', true | where_exp: "item", "item.communities contains page.slug" -%}
 {%- if community_resources.size > 0 -%}
 <basic-search search-container="#resource-container" search-filter-data="data-resource-type" summary-text="#results-summary" paginate-summary="#results-remaining-summary" no-results="#no-results-feedback" paginate-controls="#paginate-controls" results-per-page="3" reset-search="#reset-search">
     <!-- Search-Filter Component -->
@@ -321,10 +323,10 @@ css-files:
                 </div>
             </div>
 
-            <!-- Species Filters -->
+            <!-- Resource Filters -->
             <div class="row">
                 <div class="col-12 d-flex flex-wrap gap-2">
-                    {%- assign resource_types = site.data.tags.resource_types.items -%}
+                    {%- assign resource_types = site.data.tags.resources.resource_types.items -%}
                     {%- for type in resource_types -%}
                     <button type="button" class="btn rounded-pill bg-body-secondary" data-bs-toggle="button" data-search-filter data-filter-for="{{ type.id | slugify }}">{{ type.label }}</button>
                     {%- endfor -%}
@@ -377,7 +379,6 @@ css-files:
         <!-- Remaining Results Summary -->
         <div class="d-flex justify-content-between">
             <output id="results-remaining-summary" class="text-muted small my-0"></output>
-            <button class="btn text-muted btn-sm">Show All</button>
         </div>
 
         <!-- Show More Button -->

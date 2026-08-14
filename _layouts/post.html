@@ -1,6 +1,11 @@
 ---
 layout: default
+
+js-preload-files-ext:
+ - url: "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"
+   defer: false
 ---
+
 {%- comment -%} Page Variables {%- endcomment -%}
 {%- assign page_type_slug = page.type | slugify -%}
 {%- assign author_slug = page.author | slugify -%}
@@ -289,7 +294,7 @@ layout: default
                         <hr class="mt-0">
                         <ul class="social-links list-unstyled d-flex gap-2 justify-content-start mb-0">
                             <li class="social-link border">
-                                <button id="copy-post-url" class="btn btn-link text-decoration-none text-muted p-3" aria-label="Copy URL to clipboard"><i class="fa-solid fa-copy fa-lg"></i></button>
+                                <button id="copy-post-url" class="btn btn-link text-decoration-none text-muted p-3" aria-label="Copy URL to clipboard" data-clipboard-text="{{ page.url | absolute_url }}"><i class="fa-solid fa-copy fa-lg"></i></button>
                             </li>
                             <li class="social-link border">
                                 <a href="mailto:?subject={{ page.title }}&body={{ page.url | absolute_url }}" class="text-decoration-none text-muted p-3" aria-label="Email to"><i class="fa-solid fa-paper-plane fa-lg"></i></a>
@@ -312,3 +317,8 @@ layout: default
         </div>
     </div>
 </section>
+
+<script>
+    const clipboard = new ClipboardJS('#copy-post-url');
+    console.log(clipboard);
+</script>

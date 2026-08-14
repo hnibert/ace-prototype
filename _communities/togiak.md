@@ -42,9 +42,6 @@ calendar_about: >-
 calendar_subtitle: Togiak
 
 #Calendar - Images
-calendar_card_img_url: assets/images/communities/togiak-sq.jpg
-calendar_card_img_alt: null
-
 calendar_display_img_url: assets/images/communities/togiak-calendar-display.png
 calendar_display_alt: null
 

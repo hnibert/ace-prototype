@@ -42,9 +42,6 @@ calendar_about: >-
 calendar_subtitle: Naknek, South Naknek, King Salmon
 
 #Calendar - Images
-calendar_card_img_url: assets/images/communities/naknek-sq.jpg
-calendar_card_img_alt: null
-
 calendar_display_img_url: assets/images/communities/naknek-calendar-display.png
 calendar_display_alt: null
 

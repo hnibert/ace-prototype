@@ -1,3 +1,5 @@
+---
+---
 /*--------------
   GLOBAL      
 -------------- */
@@ -63,12 +65,11 @@ a {
   color: var(--bs-white);
 }
 
-/*
 .bg-ace-shoal {
   background-color: var(--ace-hex-shoal) !important;
   color: var(--bs-white);
 }
-*/
+
 .bg-ace-beacon {
   background-color: var(--ace-hex-beacon) !important;
   color: var(--bs-white);
@@ -99,12 +100,10 @@ a {
   --util-color: var(--ace-hex-reef);
 }
 
-/*
 .border-ace-shoal {
   border-color: var(--ace-hex-shoal) !important;
   --util-color: var(--ace-hex-shoal);
 }
-*/
 
 .border-ace-beacon {
   border-color: var(--ace-hex-beacon) !important;
@@ -114,6 +113,11 @@ a {
 .border-ace-cape {
   border-color: var(--ace-hex-cape) !important;
   --util-color: var(--ace-hex-cape);
+}
+
+.border-ace-cove {
+  border-color: var(--ace-hex-cove) !important;
+  --util-color: var(--ace-hex-cove);
 }
 
 /* https://stackoverflow.com/questions/33054514/how-to-apply-linear-gradient-to-input-border */
@@ -141,6 +145,21 @@ a {
   --bs-btn-active-color: var(--bs-btn-hover-color);
   --bs-btn-active-bg: var(--ace-hex-cove);
   --bs-btn-active-border-color: var(--ace-hex-cove);
+  transition: opacity 0.35s ease-in-out;
+}
+
+.btn-ace-beacon {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--ace-hex-beacon);
+  --bs-btn-border-color: var(--ace-hex-beacon);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--ace-hex-beacon);
+  --bs-btn-hover-border-color: var(--ace-hex-beacon);
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: var(--ace-hex-beacon);
+  --bs-btn-active-border-color: var(--ace-hex-beacon);
   transition: opacity 0.35s ease-in-out;
 }
 
@@ -626,6 +645,7 @@ range-slider .range .slider .fill {
   position:relative;
   display: block;
   width: 100%;
+  height: 100%;
   border-radius: 0;
   color: white;
   padding: 12px 0;
@@ -648,6 +668,8 @@ range-slider .range .slider .fill {
   justify-content: center;
   text-align: center;
   background: #2e3d56;
+  box-sizing: border-box; 
+  border: 8px solid var(--ace-hex-cove); 
   border-radius: 50%; 
   clip-path: inset(0 0 50% 0);
   z-index: 1;
@@ -744,6 +766,14 @@ range-slider .range .slider .fill {
   background-color: var(--util-color, #ccc);;
   margin-top: 0.5rem;
   text-align: center;  
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+   text-wrap: pretty;
 }
 
 /* Cutout Text */

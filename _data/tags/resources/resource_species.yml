@@ -12,7 +12,7 @@ items:
     label: "Salmon"
 
   - id: pacific-cod
-    label: "Pacific Cod"
+    label: "Cod"
 
   - id: multiple
     label: "Multiple Species"

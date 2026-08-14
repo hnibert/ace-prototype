@@ -14,51 +14,58 @@ layout: default
             <div class="col-12 col-md-4 mb-3 mb-md-0 vstack gap-4">
                 <!-- Species Summary Card --> 
                 <div class="card">
-                    <img src="{{ page.img_url }}" class="img-fluid mx-auto my-3 shadow" width="200" height="auto" alt="{{ page.img_alt }}">
-                    <div class="card-body text-center">
-                        <!-- Official Name, Scientific -->
-                        <h3 id="species-title" class="card-title fw-bold species-name">{{ page.species_name }}</h3>
-                        <p class="card-text fst-italic">{{ page.scientific_name }}</p>
+                    <img src="{{ page.img_url | relative_url }}" class="img-fluid mx-auto my-3 shadow" width="200" height="auto" alt="{{ page.img_alt }}">
+                    <div class="card-body">
+                        <!-- Common Name -->
+                        <h3 id="species-title" class="card-title fw-bold text-center">{{ page.species_name }}</h3>
+
+                        <!-- Scientific Name -->
+                        <p class="card-text fst-italic text-center">{{ page.scientific_name }}</p>
                         
                         <!-- Other Names -->
-                        <h6 class="card-text text-start fw-semibold">Other Names</h6>
+                        <h6 class="card-text fw-semibold">Other Names</h6>
                         <hr class="mt-0">
-                        <p class="card-text text-start">
+                        <p class="card-text">
                             {%- if page.other_names -%}
                             {{ page.other_names }}
                             {%- else -%}
-                            <p class="fst-italic text-start">No Other Names</p>
+                            <p class="fst-italic">No Other Names</p>
                             {%- endif -%}
                         </p>
 
                         <!-- Management Structure -->
-                        <h6 class="card-text text-start fw-semibold">Management Structure</h6>
+                        <h6 class="card-text fw-semibold">Management Structure</h6>
                         <hr class="mt-0">
-                        <p class="card-text text-start">
+                        <p class="card-text">
                             {%- if page.management_structure -%}
                             {{ page.management_structure }}
                             {%- else -%}
-                            <p class="fst-italic text-start">No Management Structure</p>
+                            <p class="fst-italic">No Management Structure</p>
                             {%- endif -%}
                         </p>
                       
                         <!-- Management Body -->
-                        <h6 class="card-title text-start fw-semibold">Management Body</h6>
+                        {%- if page.management_bodies.size > 1 -%} 
+                        {%- assign body_plural = 'Bodies' -%}
+                        {%- else -%}
+                        {%- assign body_plural = 'Body' -%}
+                        {%- endif -%}
+                        <h6 class="card-title fw-semibold">Management {{ body_plural }}</h6>
                         <hr class="mt-0">
-                        <div class="d-flex flex-wrap justify-content-start align-items-center">
+                        <div class="d-flex flex-wrap justify-content-start align-items-center gap-2">
                             {%- if page.management_bodies.size > 0 -%}  
                             {%- for body in page.management_bodies -%}
-                            <span class="badge bg-light text-muted text-wrap border me-2">{{ body }}</span>
+                            <span class="badge bg-light text-muted text-wrap border">{{ body }}</span>
                             {%- endfor -%}
                             {%- else -%}
-                            <p class="fst-italic text-start">No Management Body</p>
+                            <p class="fst-italic">No Management {{ body_plural }}</p>
                             {%- endif -%}
                         </div>
 
                         {%- if page.management_body_notes -%}
                         <!-- Management Body Notes -->
-                        <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.management_body_notes }}</a></small>
+                        <p class="card-text fs-6 mt-3">
+                            <small><b>Note:&nbsp;</b>{{ page.management_body_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>
@@ -76,12 +83,16 @@ layout: default
                         <!-- Community Development Quota Group(s) -->
                         <h6 class="card-text text-start fw-semibold">Community Development Quota Group</h6>
                         <hr class="mt-0">
-                        <p class="card-text">Norton Sound Economic Development Corporation (NSEDC)</p>
+                        <p class="card-text">
+
+                        </p>
 
                         <!-- Community Development Quota Communities -->
                         <h6 class="card-text text-start fw-semibold">Member Communities</h6>
                         <hr class="mt-0">
-                        <p class="card-text">Diomede, Golovin, Nome, Wales, Brevig Mission, Teller, White Mountain, Elim, Unalakleet, Koyuk, Shaktoolik, Stebbins, St. Michael, Savoonga, Gambell</p>
+                        <p class="card-text">
+
+                        </p>
                     </div>
                 </div>
                 {%- endif -%}

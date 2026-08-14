@@ -8,10 +8,6 @@
         border: none;
     }
 
-    .species-card .card-title {
-        text-wrap: balance;
-    }
-
     .species-card.land-animals {
         background-image: url('../images/svg/mountain-solid-full.svg');
         background-color: #f7786b;
