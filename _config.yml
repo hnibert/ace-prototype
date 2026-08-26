@@ -28,7 +28,7 @@ socials:
    url: null
 
 #build settings
-show_beta_features: true
+show_beta_features: false
 
 #Newsletter
 #...

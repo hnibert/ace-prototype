@@ -146,7 +146,7 @@ css-files:
     </div>
 </section>
 
-{%- assign species_of_concern = site.species | where: 'is_species_of_concern', true | where_exp: "item", "item.communities contains page.slug" -%}
+{%- assign species_of_concern = site.species | where_exp: "item", "item.status contains 'species-of-concern'" | where_exp: "item", "item.communities contains page.slug" -%}
 {%- if species_of_concern.size > 0 -%}
 <!-- Search-Filter Component (Species of Concern Search) -->
  <basic-search search-container="#species-search-container" search-selector-data="data-species-region" search-filter-data="data-species-tags" summary-text="#species-search-summary" no-results="#no-results-feedback">

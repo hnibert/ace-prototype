@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes: "The 2013 status review of the ribbon seal under the Endangered Species Act concluded that it is likely that ongoing and projected changes in sea ice (and possible changes to their prey base related to changes in ocean conditions) will result in a gradual decline in seal abundance."
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act]
@@ -58,7 +65,6 @@ is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

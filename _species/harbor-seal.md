@@ -27,12 +27,19 @@ ccv_reference: null
 ccv_score: null
 ccv_notes: null
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act]
@@ -56,12 +63,8 @@ spatial_data: >-
     One stock includes the Pribilof Islands stock, which occurs on Saint Paul and Saint George Islands, as well as on Otter and Walrus Islands (Muto et al., 2022).
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

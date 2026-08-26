@@ -31,12 +31,19 @@ ccv_reference:
 ccv_score:
 ccv_notes:
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - commercial
-    - fish-invertebrates
+
+#Species Groups
+groups:
+    - fish
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
@@ -55,12 +62,8 @@ cultural_significance_notes:
 spatial_data: #>-
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

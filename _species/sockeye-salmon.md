@@ -26,17 +26,24 @@ ccv_reference: "(Spencer, 2019)"
 ccv_score: 35
 ccv_notes: Community surveys collected by Divine et al. (2022), while focused on Northern fur seals, revealed concerns over climate change- and fisheries-related impacts to a wide range of species, including Salmon spp. and the “entire food chain.”
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
     - commercial
-    - fish-invertebrates
+
+#Species Groups
+groups:
+    - fish
 
 communities: 
     - togiak 
     - scammon-bay
     - iliamna
     - naknek
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
@@ -61,9 +68,6 @@ cultural_significance_notes:
 #Spatial Data (use a '>-' block scalar indicator for text below)
 spatial_data: #>-
 spatial_data_notes:
-
-#Is this a species of concern?
-is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:

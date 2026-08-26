@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes:
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act]
@@ -54,12 +61,8 @@ spatial_data: |
     "In Alaska, harbor porpoises are found from Point Barrow, along the Alaska coast (including the Aleutian Islands) down through Southeast Alaska. Harbor porpoises are often found in fjords, bays, harbors, estuaries, and large rivers, usually with depths of less than 300 feet, but will occasionally travel to deeper offshore waters in the winter." (Alaska Department Fish and Game)
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

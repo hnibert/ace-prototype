@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes: Community surveys collected by Divine et al. (2022), while focused on Northern fur seals, revealed concerns over climate change- and fisheries-related impacts to a wide range of species, including Pacific herring and the “entire food chain” of the Eastern Bering Sea.
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - commercial
-    - fish-invertebrates
+
+#Species Groups
+groups:
+    - fish
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
@@ -56,9 +63,6 @@ cultural_significance_notes:
 #Spatial Data (use a '>-' block scalar indicator for text below)
 spatial_data: #>-
 spatial_data_notes:
-
-#Is this a species of concern?
-is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:

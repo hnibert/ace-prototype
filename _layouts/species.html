@@ -71,8 +71,8 @@ layout: default
                     </div>
                 </div>
 
-                {%- if page.cdq_groups.size > 0 -%}
-                <!-- Community Development -->
+                {%- if page.cdq_groups and page.cdq_groups.size > 0 -%}
+                <!-- Community Development Quota Groups (CDQ) -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-users"></i> Community Development</h5>
@@ -80,19 +80,45 @@ layout: default
                         <!-- Summary of CDQ -->
                         <p class="card-text fs-6 mt-3 text-start">These entities are the cornerstone of the federal CDQ Program, managing fisheries investments to alleviate poverty and generate sustainable economic development in rural, remote Native villages.</p>
                         
+                        {%- if page.cdq_groups.size > 1 -%} 
+                        {%- assign group_plural = 'Groups' -%}
+                        {%- else -%}
+                        {%- assign group_plural = 'Group' -%}
+                        {%- endif -%}
+
                         <!-- Community Development Quota Group(s) -->
-                        <h6 class="card-text text-start fw-semibold">Community Development Quota Group</h6>
+                        <h6 class="card-text text-start fw-semibold">Community Development Quota {{ group_plural }}</h6>
                         <hr class="mt-0">
-                        <p class="card-text">
 
+                        <div id="cdq-groups-accordion" class="accordion accordion-flush">
+                            {%- for cdq in page.cdq_groups -%}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cdq-{{ forloop.index }}" aria-expanded="false" aria-controls="cdq-{{ forloop.index }}">
+                                        <span class="text-balance fw-semibold">{{ cdq.group }}</span>
+                                    </button>
+                                </h2>
+                                <div id="cdq-{{ forloop.index }}" class="accordion-collapse collapse" data-bs-parent="#cdq-groups-accordion">
+                                    <div class="accordion-body" style="white-space: pre-wrap; word-break: break-word">
+                                        {%- if cdq.communities and cdq.communities.size > 0 -%}
+                                        <ul class="list-inline">
+                                            {%- for community in cdq.communities -%}
+                                            <li class="list-inline-item badge bg-light text-muted text-wrap border m-1">{{ community }}</li>
+                                            {%- endfor -%}
+                                        </ul>
+                                        {%- endif -%}
+                                    </div>
+                                </div>
+                            </div>
+                            {%- endfor -%}
+                        </div>
+
+                        {%- if page.cdq_notes -%}
+                        <!-- CDQ Notes -->
+                        <p class="card-text fs-6 mt-3">
+                            <small><b>Note:&nbsp;</b>{{ page.cdq_notes }}</small>
                         </p>
-
-                        <!-- Community Development Quota Communities -->
-                        <h6 class="card-text text-start fw-semibold">Member Communities</h6>
-                        <hr class="mt-0">
-                        <p class="card-text">
-
-                        </p>
+                        {%- endif -%}
                     </div>
                 </div>
                 {%- endif -%}
@@ -151,7 +177,7 @@ layout: default
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Justification for Classification</h5>
                         <hr>
-                        <p class="card-text">{{ page.justification | markdownify }}</p>
+                        <p class="card-text">{{ page.justification | newline_to_br }}</p>
                         {%- if page.justification_notes -%}
                         <!-- Justification Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
@@ -168,11 +194,12 @@ layout: default
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-landmark"></i> Cultural Significance</h5>
                         <hr>
-                        <p class="card-text">{{ page.cultural_significance | markdownify }}</p>
+                        <p class="card-text">{{ page.cultural_significance | newline_to_br }}</p>
+
                         {%- if page.cultural_significance_notes -%}
                         <!-- Cultural Significance Notes -->
                         <p class="card-text fs-6 mt-3 text-start">
-                            <small><b>Note:&nbsp;</b>{{ page.cultural_significance_notes | markdownify }}</small>
+                            <small><b>Note:&nbsp;</b>{{ page.cultural_significance_notes }}</small>
                         </p>
                         {%- endif -%}
                     </div>

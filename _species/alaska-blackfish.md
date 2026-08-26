@@ -27,14 +27,21 @@ ccv_reference:
 ccv_score:
 ccv_notes:
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
-    - fish-invertebrates
+
+#Species Groups
+groups:
+    - fish
 
 communities: 
     - togiak
     - scammon-bay
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
@@ -52,15 +59,13 @@ cultural_significance: |
     After telling the story, the elder stated that in order to survive, you have to remember that no matter how or where you get stuck, there is always a way to get out of it. According to this elder, stories like this one about checking the blackfish traps in the middle of winter were meant to encourage thought about survival in all aspects of interrelated subsistence activities and to provide information about proper conduct towards the environment." (Brown et al., 2005). 
     
     Elders report that "if you thaw a blackfish after it has been frozen it will 'come back to life.'"
-cultural_significance_notes: <https://www.adfg.alaska.gov/index.cfm?adfg=wildlifenews.view_article&articles_id=207>
+cultural_significance_notes: >-
+    <a href="https://www.adfg.alaska.gov/index.cfm?adfg=wildlifenews.view_article&articles_id=207">https://www.adfg.alaska.gov/index.cfm?adfg=wildlifenews.view_article&articles_id=207</a>
 
 #Spatial Data (use a '>-' block scalar indicator for text below)
 spatial_data: >-
     Refer to Brown et al., 2005 for Traditional Knowledge on spatial observations
 spatial_data_notes:
-
-#Is this a species of concern?
-is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:

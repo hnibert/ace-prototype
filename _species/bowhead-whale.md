@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes:
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: >-
@@ -61,12 +68,8 @@ spatial_data: |
     Additonal spatial data supported by Tradtional Knowledge for Barrow and Kaktovik can be found in Huntiongton & Quakenbush, 2009.
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

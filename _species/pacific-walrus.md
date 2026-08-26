@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes: On St. Lawrence Island, spring ice melt and other physical factors such as wind patterns caused by climate change is impacting harvesters' access to hunting grounds for Pacific Walrus (Huntington et al., 2013). Additionally, as ice is melting, more individuals are congrating on land haul outs increasing exposure to mortality for juveniles when disturbed by humans or predators. (Huntington, et al., 2013). Additionally, increasing industrial activity in the Chuckchi Sea is a potential stressor on these populations (Huntington, et. al., 2013). 
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
-    - marine-mammals 
 
-communities: 
+#Species Groups
+groups:
+    - marine-mammals
+
+communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act]
@@ -55,9 +62,6 @@ cultural_significance_notes:
 #Spatial Data (use a '>-' block scalar indicator for text below)
 spatial_data: #>-
 spatial_data_notes:
-
-#Is this a species of concern?
-is_species_of_concern: true
 
 #References (use a '- |' for each entry)
 references:

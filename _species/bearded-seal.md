@@ -30,12 +30,19 @@ ccv_notes: |
     
     (Muto et al., 2022) (Laidre et al.,2008) identified bearded seals worldwide as highly sensitive to climate change, based on an analysis of various life-history features that could be affected by climate. 
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Endangered Species Act (77 FR 76740), Marine Mammal Protection Act (Muto et al., 2022)]
@@ -61,12 +68,8 @@ spatial_data: |
     Bearded seals “more typically migrate south ahead of ice formation in the fall” (Burns et al. 1981).
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

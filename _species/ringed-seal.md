@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes: “Ringed seals are associated with higher ice concentrations in winter than bearded seals and changes in sea ice retreat in spring may have greater impact on ringed seal habitat use because they are more likely to haul out on ice in spring.” (Grbya et al., 2021)
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
-communities: 
+communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Endangered Species Act, Marine Mammal Protection Act]
@@ -62,12 +69,8 @@ spatial_data: |
     Proposed critical habitat shapefiles can be found at NOAA Fisheries link to the right. Spatial data for denning habitat as supported TK can be found in Lindsay et al. (2023).
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

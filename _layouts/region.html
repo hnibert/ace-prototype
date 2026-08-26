@@ -271,7 +271,7 @@ js-postload-files:
     </div>
 </div>
 {%- endif -%}
-
+{%- if site.show_beta_features == true -%}
 <script>
     const button = document.querySelector('#expand-btn');
 
@@ -301,3 +301,4 @@ js-postload-files:
         }
     });
 </script>
+{%- endif -%}

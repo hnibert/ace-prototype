@@ -35,7 +35,6 @@ usage:
 #Species Groups
 groups:
     - fish
-    - invertebrates
 
 #Communities
 communities:

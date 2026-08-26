@@ -28,12 +28,19 @@ ccv_score:
 ccv_notes: |
     "Most notably, the timing and distribution of zooplankton prey is largely governed by sea ice coverage and could change dramatically with altered oceanographic conditions. Changes in zooplankton distribution could lead to nutritional stress and diminished reproduction for North Pacific right whales. Additionally, changing water temperature and currents could impact the timing of environmental cues important for navigation and migration, and the location of critical habitat within the North Pacific right whale range. Changes in ice extent, density, and persistence could alter the dynamics of the Bering Sea shelf zooplankton community, and in turn, affect the foraging behavior and success of right whales."
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Endangered Species Act]
@@ -55,12 +62,8 @@ cultural_significance_notes:
 spatial_data: #>-
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

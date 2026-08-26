@@ -31,12 +31,19 @@ ccv_notes: |
 
     Research suggests pollock distribution and productivity has been and will continue to be impacted by climate change [76,77,78].” (Divine et al., 2022); “Climate change could alter the abundance, distribution, and makeup of available prey for northern fur seals in the Bering Sea as a result of reduced sea ice and warming temperatures. These changes could differentially impact the survival and reproduction of individuals and breeding aggregations on the three islands; however, the exact mechanisms are unknown and there are no clear management actions that could be taken to address the impacts on northern fur seals.” (Muto et al., 2022). Marine heatwaves have already shown to reduce fur seal survival (NOAA Fisheries).
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act, North Pacific Fur Seal Commission Treaty]
@@ -60,12 +67,8 @@ spatial_data: >-
     Current: “Northern fur seal satellite tracking and diet studies conducted on the Pribilof Islands suggest that “rookery complexes’’ associated with distinct at-sea foraging areas exist on the western and eastern coasts of St. Paul Island, and to a lesser extent on the northern and southern coasts of St. George Island [Robson et al., 2004; Zeppelin et al.,2006; Call et al., 2008; Kuhn et al., 2014]” (in Divine, 2022).
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

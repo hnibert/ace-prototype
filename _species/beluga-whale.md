@@ -27,12 +27,19 @@ ccv_reference:
 ccv_score:
 ccv_notes: “Ice-associated animals, such as the beluga whale, are sensitive to changes in arctic weather, sea-surface temperatures, and ice extent, and the concomitant effect on prey availability. Decreases in seasonal sea ice may also increase the risk of killer whale predation (O’Corry-Crowe et al. 2016)” (Muto, et al., 2022)
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
+
+#Species Groups
+groups:
     - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act, Endangered Species Act]
@@ -59,12 +66,8 @@ spatial_data: |
     There are insufficient data to make reliable predictions of the effects of arctic climate change on beluga whales; however, Laidre et al. (2008) and Heide-Jørgensen et al. (2010) concluded that on a worldwide basis beluga whales were likely to be less sensitive to climate change than other arctic cetaceans because of their wide distribution and flexible behavior.” (Muto et al., 2022)
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

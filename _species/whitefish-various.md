@@ -29,14 +29,21 @@ ccv_reference:
 ccv_score:
 ccv_notes:
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
-    - fish-invertebrates
+
+#Species Groups
+groups:
+    - fish
 
 communities: 
     - togiak
     - scammon-bay
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: #>-
@@ -63,12 +70,8 @@ spatial_data: #>-
     Refer to Georgette, S. and Shiedt, A. (2005). Whitefish Traditional Ecological Knowledge and Subsistence Fishing in the Kotzebue Sound Region, Alaska. Alaska Department of Fish and Game. Manilaq Association. Technical Paper No. 290.; Also refer to Brown et al., 2005 for Tradtional Knowledge on spatial observations.
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---

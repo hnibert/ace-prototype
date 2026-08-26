@@ -28,12 +28,19 @@ ccv_score:
 ccv_notes: | 
     ""In U.S. waters, spotted seals migrate south from the Chukchi Sea through the Bering Strait from October to November ahead of advancing sea ice. They spend the winter in the Bering Sea in the annual pack ice over the continental shelf. During spring, they migrate to coastal habitats after the sea ice retreats." (NOAA Fisheries)"
 
-#Data Tags (used in search)
-tags: 
+#Usage
+usage:
     - subsistence
-    - marine-mammals 
+
+#Species Groups
+groups:
+    - marine-mammals
 
 communities: []
+
+#Status
+status:
+    - species-of-concern
 
 #Protections (use a '>-' block scalar indicator for text below)
 protections: [Marine Mammal Protection Act]
@@ -54,12 +61,8 @@ cultural_significance_notes:
 spatial_data: #>-
 spatial_data_notes:
 
-#Is this a species of concern?
-is_species_of_concern: true
-
 #References (use a '- |' for each entry)
 references:
-    -  
 # - |
 # citation goes here with html structure
 ---
