@@ -232,10 +232,16 @@ customElements.define('calendar-viewer', class extends HTMLElement {
                     const tabName = tab.name.toLowerCase().trim();
 
                     //check for matches between tab and key
-                    if (tabName === keyName) {
-                        if (value.size === 0) {
-                            tab.disabled = true;
+                    if (tabName !== keyName) {
+                        return;
+                    } else {
+                        console.log(`${keyName} : ${tabName}`);
+                        console.log(value);
+
+                        if (value.length === 0) {
+                            tab.setAttribute('disabled', '');
                         } else {
+                            tab.removeAttribute('disabled');
                             this.updateTabPanels(key, value);
                         }
                     }

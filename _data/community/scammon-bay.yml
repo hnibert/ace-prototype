@@ -1,0 +1,543 @@
+
+- id: 1
+  name: January
+  short: Jan
+  season: Winter
+  resources:
+    land_animals:
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: full
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ring Seals (Uggtag)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: 
+      type: 
+      fill_class: 
+
+- id: 2
+  name: February
+  short: Feb
+  season: Winter
+  resources:
+    land_animals:
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: full
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Needlefish
+      type: Changing Conditions
+      fill_class: full
+    - name: Ring Seals (Uggtag)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Walruses
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: 
+      type: 
+      fill_class: 
+
+- id: 3
+  name: March
+  short: Mar
+  season: Spring
+  resources:
+    land_animals:
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: full
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Needlefish
+      type: Changing Conditions
+      fill_class: full
+    - name: Ring Seals (Uggtag)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Walruses
+      type: Traditional Harvest
+      fill_class: full
+    plants: []
+
+- id: 4
+  name: April
+  short: Apr
+  season: Spring
+  resources:
+    land_animals:
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs
+      type: Traditional Harvest
+      fill_class: end-50
+    sea_animals:
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ring Seals (Uggtag)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pike
+      type: Traditional Harvest
+      fill_class: full
+    - name: Walruses
+      type: Traditional Harvest
+      fill_class: full
+    plants: []
+
+- id: 5
+  name: May
+  short: May
+  season: Spring
+  resources:
+    land_animals:
+    - name: Bird Eggs
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Herring
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ring Seals (Uggtag)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Walruses
+      type: Traditional Harvest
+      fill_class: full
+    plants: []
+
+- id: 6
+  name: June
+  short: Jun
+  season: Summer
+  resources:
+    land_animals:
+    - name: Bird Eggs
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Herring
+      type: Traditional Harvest
+      fill_class: start-25
+    - name: Halibut
+      type: Traditional Harvest
+      fill_class: full
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Walruses
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Sourdock (Quagciq)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wild Celery
+      type: Traditional Harvest
+      fill_class: start-25
+
+- id: 7
+  name: July
+  short: Jul
+  season: Summer
+  resources:
+    land_animals:
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: full
+    - name: Swans
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmon Eggs
+      type: Traditional Harvest
+      fill_class: full
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: full
+    - name: Halibut
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Sourdock (Quagciq)
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: end-50
+
+- id: 8
+  name: August
+  short: Aug
+  season: Summer
+  resources:
+    land_animals:
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Swans
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmon Eggs
+      type: Traditional Harvest
+      fill_class: full
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: start-25
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Labrador Tea (Iyuq)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sourdock (Quagciq)
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Redberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: start-50
+      
+- id: 9
+  name: September
+  short: Sep
+  season: Fall
+  resources:
+    land_animals:
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    - name: Black Bears
+      type: Traditional Harvest
+      fill_class: end-50
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Needlefish
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Salmon Eggs
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Whitefish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Labrador Tea (Iyuq)
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Redberries
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 10
+  name: October
+  short: Oct
+  season: Fall
+  resources:
+    land_animals:
+    - name: Snow Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Black Bears
+      type: Traditional Harvest
+      fill_class: start-50
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Needlefish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Whitefish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bearded Seals (Mukluk)
+      type: Traditional Harvest
+      fill_class: start-50
+    plants:
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Blackberries
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Redberries
+      type: Traditional Harvest
+      fill_class: start-50
+
+- id: 11
+  name: November
+  short: Nov
+  season: Fall
+  resources:
+    land_animals:
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: full
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    plants: []
+
+- id: 12
+  name: December
+  short: Dec
+  season: Winter
+  resources:
+    land_animals:
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    - name: Snowshoe Rabbits
+      type: Traditional Harvest
+      fill_class: full
+    - name: Arctic Hare
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Burbot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tomcods
+      type: Traditional Harvest
+      fill_class: full
+    plants: []

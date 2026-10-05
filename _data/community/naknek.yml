@@ -1,0 +1,885 @@
+
+- id: 1
+  name: January
+  short: Jan
+  season: Winter
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Foxes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Lynx (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Marten (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolverines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Variable
+      fill_class: full
+    - name: Dolly Varden
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 2
+  name: February
+  short: Feb
+  season: Winter
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Foxes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Lynx (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Marten (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolverines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Variable
+      fill_class: full
+    - name: Dolly Varden
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+  
+- id: 3
+  name: March
+  short: Mar
+  season: Spring
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Foxes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Lynx (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Marten (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolverines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Harbor Seals
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Variable
+      fill_class: full
+    - name: Dolly Varden
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 4
+  name: April
+  short: Apr
+  season: Spring
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: full    
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranes
+      type: Traditional Harvest
+      fill_class: full
+    - name: Swans
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Harbor Seals
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Variable
+      fill_class: full
+    - name: Dolly Varden
+      type: Variable
+      fill_class: full
+    plants:
+    - name: Birch Sap
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coltsfoot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 5
+  name: May
+  short: May
+  season: Spring
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: full   
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: end-75
+    - name: Herring 
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bird Eggs
+      type: Traditional Harvest
+      fill_class: full
+    - name: Harbor Seals
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    - name: Halibut
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Birch Sap
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coltsfoot
+      type: Traditional Harvest
+      fill_class: full
+    - name: Fiddleheads
+      type: Traditional Harvest
+      fill_class: full
+    - name: Fireweed
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cottonwood Buds
+      type: Traditional Harvest
+      fill_class: full
+    - name: Morels
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 6
+  name: June
+  short: Jun
+  season: Summer
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: full   
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Clams
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Herring 
+      type: Traditional Harvest
+      fill_class: start-50
+    - name: Bird Eggs
+      type: Traditional Harvest
+      fill_class: full
+    - name: Alaska Blackfish
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    - name: Halibut
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Cythlook
+      type: Traditional Harvest
+      fill_class: full
+    - name: Boletes
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Fiddleheads
+      type: Traditional Harvest
+      fill_class: full
+    - name: Fireweed
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cottonwood Buds
+      type: Traditional Harvest
+      fill_class: full
+    - name: Morels
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 7
+  name: July
+  short: Jul
+  season: Summer
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Geese
+      type: Traditional Harvest
+      fill_class: full
+    - name: Ducks
+      type: Traditional Harvest
+      fill_class: full   
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    - name: Halibut
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Watermelon Berries
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: end-25
+    - name: Cythlook
+      type: Traditional Harvest
+      fill_class: full
+    - name: Boletes
+      type: Traditional Harvest
+      fill_class: start-75
+    - name: Sourdock
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Spruce Roots
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 8
+  name: August
+  short: Aug
+  season: Summer
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Watermelon Berries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cythlook
+      type: Traditional Harvest
+      fill_class: full
+    - name: Mouse Food
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sourdock
+      type: Traditional Harvest
+      fill_class: full
+    - name: Spruce Roots
+      type: Traditional Harvest
+      fill_class: full 
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+      
+- id: 9
+  name: September
+  short: Sep
+  season: Fall
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Watermelon Berries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Mouse Food
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 10
+  name: October
+  short: Oct
+  season: Fall
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Chinook Salmon (Kings)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Coho Salmon (Silvers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Sockeye Salmon (Reds)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Pink Salmon (Pinks)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Chum Salmon (Chums)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Red Fish
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Crowberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Salmonberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Blueberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Watermelon Berries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Cranberries
+      type: Traditional Harvest
+      fill_class: full
+    - name: Mouse Food
+      type: Traditional Harvest
+      fill_class: full
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 11
+  name: November
+  short: Nov
+  season: Fall
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Bears
+      type: Traditional Harvest
+      fill_class: full
+    - name: Foxes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Lynx (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Marten (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolverines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
+
+- id: 12
+  name: December
+  short: Dec
+  season: Winter
+  resources:
+    land_animals:
+    - name: Ptarmigan
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines
+      type: Traditional Harvest
+      fill_class: full
+    - name: Hares
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beavers
+      type: Traditional Harvest
+      fill_class: full
+    - name: Caribou
+      type: Traditional Harvest
+      fill_class: full
+    - name: Moose
+      type: Traditional Harvest
+      fill_class: end-50
+    - name: Foxes (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolves (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Lynx (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Marten (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Porcupines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    - name: Wolverines (Furbearers)
+      type: Traditional Harvest
+      fill_class: full
+    sea_animals:
+    - name: Belugas
+      type: Traditional Harvest
+      fill_class: full
+    - name: Smelts
+      type: Traditional Harvest
+      fill_class: full
+    - name: Trout
+      type: Traditional Harvest
+      fill_class: full
+    - name: Dolly Varden
+      type: Traditional Harvest
+      fill_class: full
+    plants:
+    - name: Tundra Tea
+      type: Traditional Harvest
+      fill_class: full
+    - name: Beach Grass
+      type: Traditional Harvest
+      fill_class: full
