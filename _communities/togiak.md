@@ -37,7 +37,15 @@ calendar_summary: >-
   
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 
-  and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder
+  and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder.
+
+#Meet the Artist
+artist_data: 
+  name: Sarah Schroeder
+  img_url: "/assets/images/people/sarah-schroeder.png"
+  email: sarahschroeder77@gmail.com
+  about: >- 
+    Cama-i! My name is Sarah Schroeder, and I am from the small town of Dillingham located in the Bristol Bay region of Southwest Alaska. I am Yup’ik and Unangan (Aleut), and was fortunate to grow up heavily influenced by my culture’s traditions and living off the land. As Alaskan Native people we have a special relationship with our land and wildlife and have been taught to respect all aspects of nature and what the land provides. I always have so much fun creating pieces that incorporate these aspects of our lives here in our region! 
 
 #Calendar - Images
 calendar_display_img_url: assets/images/communities/togiak-calendar-display.png
