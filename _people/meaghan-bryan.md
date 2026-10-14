@@ -2,7 +2,7 @@
 layout: person
 full_name: Meaghan Bryan
 
-main_img_url: assets/images/people/meaghan-bryan.jpg
+main_img_url: assets/images/people/meaghan-bryan.png
 main_img_alt: A profile photo of Meaghan Bryan
 
 email: meaghan.bryan@noaa.gov

@@ -2,7 +2,7 @@
 layout: person
 full_name: Sarah Wise
 
-main_img_url: assets/images/people/sarah-wise.jpg
+main_img_url: assets/images/people/sarah-wise.png
 main_img_alt: A profile photo of Sarah Wise
 
 email: sarah.wise@noaa.gov

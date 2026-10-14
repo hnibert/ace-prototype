@@ -2,7 +2,7 @@
 layout: person
 full_name: Julia Indivero
 
-main_img_url: assets/images/people/julia-indivero.jpg
+main_img_url: assets/images/people/julia-indivero.png
 main_img_alt: A profile photo of Julia Indivero
 
 email: jindiv@uw.edu

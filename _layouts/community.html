@@ -67,7 +67,7 @@ css-files:
             </div>
             <div class="col-12 col-lg-8">
                 <h1 id="community-summary-title" class="block-text small fw-semibold text-uppercase">{{ page.community_name }}</h1>
-                <p id="community-summary-subtitle" class="display-5 fw-bold mb-3">{{ page.summary_title }}</p> 
+                <p id="community-summary-subtitle" class="display-5 fw-bold text-balance mb-3">{{ page.summary_title }}</p> 
                 <p class="lead">{{ page.summary_lead }}</p> 
             </div>
         </div>
@@ -107,7 +107,7 @@ css-files:
             <!-- Calendar Summary & Meet the Artist -->
             <div class="col-12 col-lg-6">
                 <h3 id="subsistence-title" class="fw-bold">Subsistence Calendar</h3>
-                <p class="lead">{{ page.calendar_summary }}</p>
+                <p class="lead">{{ page.calendar_summary | newline_to_br }}</p>
                 <hr class="mt-0">
                 <h4 class="fw-bold">About this Calendar</h4>
                 <p class="body-text">{{ page.calendar_about }}</p>

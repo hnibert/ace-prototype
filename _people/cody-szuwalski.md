@@ -2,7 +2,7 @@
 layout: person
 full_name: Cody Szuwalski
 
-main_img_url: assets/images/people/cody-szuwalski.jpg
+main_img_url: assets/images/people/cody-szuwalski.png
 main_img_alt: A profile photo of Cody Szuwalski
 
 email: cody.szuwalski@noaa.gov

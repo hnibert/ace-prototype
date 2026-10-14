@@ -3,7 +3,7 @@ layout: person
 
 full_name: Alberto Rovellini
 
-main_img_url: assets/images/people/alberto-rovellini.jpg
+main_img_url: assets/images/people/alberto-rovellini.png
 main_img_alt: A profile photo of Alberto Rovellini
 
 email: arovel@uw.edu

@@ -2,7 +2,7 @@
 layout: person
 full_name: André E Punt
 
-main_img_url: assets/images/people/andre-epunt.jpg
+main_img_url: assets/images/people/andre-epunt.png
 main_img_alt: A profile photo of André E Punt
 
 email: aepunt@uw.edu

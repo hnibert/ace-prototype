@@ -2,7 +2,7 @@
 layout: person
 full_name: Raquel Ruiz Diaz
 
-main_img_url: assets/images/people/raquel-diaz.jpg
+main_img_url: assets/images/people/raquel-diaz.png
 main_img_alt: A profile photo of Raquel Ruiz Diaz
 
 email: raquelrd@uw.edu

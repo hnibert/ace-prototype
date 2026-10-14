@@ -2,7 +2,7 @@
 layout: person
 full_name: Heather Nibert
 
-main_img_url: assets/images/people/heather-nibert.jpg
+main_img_url: assets/images/people/heather-nibert.png
 main_img_alt: A profile photo of Heather Nibert
 
 email: hnibert@uw.edu

@@ -2,7 +2,7 @@
 layout: person
 full_name: Kelly Kearney
 
-main_img_url: assets/images/people/kelly-kearney.jpg
+main_img_url: assets/images/people/kelly-kearney.png
 main_img_alt: A profile photo of Kelly Kearney
 
 email: kelly.kearney@noaa.gov

@@ -2,7 +2,7 @@
 layout: person
 full_name: Cheryl Barnes
 
-main_img_url: assets/images/people/cheryl-barnes.jpg
+main_img_url: assets/images/people/cheryl-barnes.png
 main_img_alt: A profile photo of Cheryl Barnes
 
 email: cheryl.barnes@oregonstate.edu

@@ -17,23 +17,21 @@ hero_data:
   is_header: true
   img_url: null
   img_alt: null
-  title: Scammon Bay
-  lead: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+  title: "Scammon Bay<br><small class='fst-italic'>Community Research</small>"
+  lead: Along the Bering Sea coast in the Yukon–Kuskokwim Delta, Scammon Bay’s subsistence harvesting centers on fish (primarily salmon, whitefish, Pacific cod and halibut), moose, birds, berries, and plants.
 
 #Summary
 summary_img_url: assets/images/communities/scammon-bay-funnel.jpg
 summary_img_alt: null
-summary_title: A Subtitle Goes Here
+summary_title: Food Security & Sovereignty Research
 summary_lead: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  As a coastal Yup’ik community along the Bering Sea, Scammon Bay’s subsistence harvesting centers on fish (primarily salmon, whitefish, Pacific cod, and halibut), moose, birds, berries, and other plants. Harvested foods are processed, shared, and exchanged throughout the community, highlighting the role of subsistence practices in local food access and community food systems. 
 
 #Calendar - General
-calendar_summary: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+calendar_summary: |-
+  Seasonal harvesting calendars were created with workshop participants as part of the Envisioning Future Ocean grant. Workshop participants were asked about the species they harvested currently and in the past, and what environmental changes and changes in harvesting they saw. 
+  
+  Participants self-assembled into regional groups and hand drew the seasonal harvest and corresponding environmental changes on template posters. Post workshop, a graphic designer created an illustrated image of the harvesting calendars specific to each sub-region. Poster-sized calendars were distributed to each community. 
   
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 

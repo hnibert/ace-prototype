@@ -18,27 +18,24 @@ hero_data:
   is_header: true
   img_url: null
   img_alt: null
-  title: "Iliamna: Community Research"
-  lead: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+  title: "Iliamna<br><small class='fst-italic'>Community Research</small>"
+  lead: Situated near the northwestern shore of Lake Iliamna in the Kvichak watershed, Iliamna’s subsistence harvesting centers on salmon, moose, caribou, birds, berries, and plants.
 
 #Summary
 summary_img_url: "assets/images/communities/iliamna-funnel.jpg"
 summary_img_alt: null
-summary_title: A Subtitle Goes Here
+summary_title: Food Security & Sovereignty Research
 summary_lead: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Iliamna is an inland Bristol Bay community near the northwestern shore of Lake Iliamna, within the Kvichak River watershed. Subsistence harvesting contributes to local food security by providing households with salmon from the lake and connected rivers, as well as freshwater fish, moose, caribou, migratory birds, berries, and other wild plants throughout the year. These foods support household dietary needs and preferences and are processed, shared, and exchanged throughout the community, helping maintain access to locally harvested foods.
 
 #Calendar - General
-calendar_summary: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+calendar_summary: |-
+  Seasonal harvesting calendars were created with workshop participants as part of the Envisioning Future Ocean grant. Workshop participants were asked about the species they harvested currently and in the past, and what environmental changes and changes in harvesting they saw. 
+  
+  Participants self-assembled into regional groups and hand drew the seasonal harvest and corresponding environmental changes on template posters. Post workshop, a graphic designer created an illustrated image of the harvesting calendars specific to each sub-region. Poster-sized calendars were distributed to each community. 
 
 calendar_about: >-
-  This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 
-  and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder.
+  This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder.
 
 #Meet the Artist
 artist_data: 

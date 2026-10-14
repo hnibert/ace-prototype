@@ -2,7 +2,7 @@
 layout: person
 full_name: Carey McGilliard
 
-main_img_url: assets/images/people/carey-mcgilliard.jpg
+main_img_url: assets/images/people/carey-mcgilliard.png
 main_img_alt: A profile photo of Carey McGilliard
 
 email: carey.mcgilliard@noaa.gov

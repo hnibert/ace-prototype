@@ -17,23 +17,21 @@ hero_data:
   is_header: true
   img_url: null
   img_alt: null
-  title: Togiak
-  lead: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+  title: "Togiak<br><small class='fst-italic'>Community Research</small>"
+  lead: Located on Togiak Bay near the mouth of the Togiak River in western Bristol Bay, the community’s subsistence harvests center on salmon and other fish, moose, birds, seals, walrus, and berries.
 
 #Summary
 summary_img_url: assets/images/communities/togiak-funnel.jpg
 summary_img_alt: null
-summary_title: A Subtitle Goes Here
+summary_title: Food Security & Sovereignty Research
 summary_lead: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Togiak’s food resources are closely connected to the surrounding waters and lands of western Bristol Bay. Subsistence harvesting includes salmon and other fish, moose, birds, seals, walrus, and berries. These foods contribute to local food access and are processed, shared, and exchanged through the community, reflecting the importance of subsistence practices to community food systems and food sovereignty. 
 
 #Calendar
-calendar_summary: >-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+calendar_summary: |-
+  Seasonal harvesting calendars were created with workshop participants as part of the Envisioning Future Ocean grant. Workshop participants were asked about the species they harvested currently and in the past, and what environmental changes and changes in harvesting they saw. 
+  
+  Participants self-assembled into regional groups and hand drew the seasonal harvest and corresponding environmental changes on template posters. Post workshop, a graphic designer created an illustrated image of the harvesting calendars specific to each sub-region. Poster-sized calendars were distributed to each community. 
   
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 

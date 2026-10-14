@@ -2,7 +2,7 @@
 layout: person
 full_name: Maurice Goodman
 
-main_img_url: assets/images/people/maurice-goodman.jpg
+main_img_url: assets/images/people/maurice-goodman.png
 main_img_alt: A profile photo of Maurice Goodman
 
 email: maurice.goodman@noaa.gov
