@@ -10,14 +10,14 @@ hero_data:
   img_url: assets/images/regions/eastern-bering-sea-hero.jpg
   img_alt: An image of the Eastern Bering Sea
   title: Eastern Bering Sea
-  lead: "A highly productive marine ecosystem, supporting rich fisheries and diverse wildlife, including pollock, crab and cod."
+  lead: "A highly productive marine ecosystem, supporting abundant marine life, commercial and subsistence fisheries such as crab, pollock, cod, and salmon, and the communities that depend on them."
 
 #Summary
 summary_img_url: assets/images/regions/eastern-bering-sea-summary.jpg
 summary_img_alt:
 summary_title: Northern Pacific Shelf
 summary_lead: >-
-  The Eastern Bering Sea is a highly productive continental shelf ecosystem characterized by seasonal sea ice and nutrient-rich waters that support diverse marine species and some of the world’s largest commercial fisheries. Characterized by complex oceanographic processes, including seasonal sea ice cover, nutrient upwelling, and dynamic water mass interactions, it supports high primary productivity and sustains diverse marine communities.
+  An ecologically important continental shelf ecosystem—roughly the size of California—is characterized by seasonal sea ice and nutrient-rich waters that support diverse marine species and about 40% of U.S. commercial fisheries, valued at more than $3 billion each year. Characterized by complex oceanographic processes, including seasonal sea ice cover, nutrient cycling, and dynamic mixing of ocean waters, it supports basic ecological functions including primary productivity to sustain diverse marine species and the humans that depend on them.
 
 #Geospatial Data
 google_maps_url: "https://www.google.com/maps/d/embed?mid=1GAnmYSZ9u6TBMUG7DijUS8kn0QA_BXc&ehbc=2E312F&noprof=1"
