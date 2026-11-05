@@ -18,7 +18,7 @@ hero_data:
   img_url: null
   img_alt: null
   title: "Naknek<br><small class='fst-italic'>Community Research</small>"
-  lead: On the north bank of the Naknek River near northeastern Bristol Bay, the community’s subsistence harvests center on salmon and other fish, moose, birds, and berries.  
+  lead: Located along the northern bank of the Naknek River in northeastern Bristol Bay. 
 
 #Summary
 summary_img_url: assets/images/communities/naknek-funnel.jpg

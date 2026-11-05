@@ -18,7 +18,7 @@ hero_data:
   img_url: null
   img_alt: null
   title: "Scammon Bay<br><small class='fst-italic'>Community Research</small>"
-  lead: Along the Bering Sea coast in the Yukon–Kuskokwim Delta, Scammon Bay’s subsistence harvesting centers on fish (primarily salmon, whitefish, Pacific cod and halibut), moose, birds, berries, and plants.
+  lead: Located along the Bering Sea coast in the Yukon–Kuskokwim Delta.
 
 #Summary
 summary_img_url: assets/images/communities/scammon-bay-funnel.jpg

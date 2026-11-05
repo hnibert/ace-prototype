@@ -19,7 +19,7 @@ hero_data:
   img_url: null
   img_alt: null
   title: "Iliamna<br><small class='fst-italic'>Community Research</small>"
-  lead: Situated near the northwestern shore of Lake Iliamna in the Kvichak watershed, Iliamna’s subsistence harvesting centers on salmon, moose, caribou, birds, berries, and plants.
+  lead: Situated along the northwestern shore of Lake Iliamna within the Kvichak watershed.
 
 #Summary
 summary_img_url: "assets/images/communities/iliamna-funnel.jpg"

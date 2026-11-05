@@ -18,7 +18,7 @@ hero_data:
   img_url: null
   img_alt: null
   title: "Togiak<br><small class='fst-italic'>Community Research</small>"
-  lead: Located on Togiak Bay near the mouth of the Togiak River in western Bristol Bay, the community’s subsistence harvests center on salmon and other fish, moose, birds, seals, walrus, and berries.
+  lead: Situated on Togiak Bay near the mouth of the Togiak River in western Bristol Bay.
 
 #Summary
 summary_img_url: assets/images/communities/togiak-funnel.jpg
