@@ -4,43 +4,67 @@ brand:
 
 navbar:
   - title: Home
+    is_beta: false
     url: "/"
 
   - title: Resources
+    is_beta: false
     url: "/resources/"
 
   - title: Tools
+    is_beta: false
     url: "/tools/"
     dropdown:
       - title: All
         url: "/tools/"
+        is_beta: false
+
       - divider: true
+        is_beta: false
+
       - title: SDM Explorers
         url: "/tools/sdm-explorers/"
+        is_beta: false
+
       - title: Species Catalog
         url: "/species/"
+        is_beta: true
 
   - title: Regions
+    is_beta: false
     url: "/regions/"
     dropdown:
       - collection: regions
+        is_beta: false
 
   - title: Communities
+    is_beta: false
     url: "/communities/"
     dropdown:
       - title: All
         url: "/communities/"
+        is_beta: false
+
       - divider: true
+        is_beta: false
+
       - collection: communities
+        is_beta: false
 
   - title: ACE
+    is_beta: false
     url: null
     dropdown:
       - title: About
+        is_beta: false
         url: "/about/"
+
       - title: People
+        is_beta: false
         url: "/people/"
+
       - title: News
+        is_beta: true
         url: "/news/"
 
 footer:
@@ -52,21 +76,33 @@ footer:
       - title: Home
         url: "/"
         external: false
+        is_beta: false
+
       - title: Resources
         url: "/resources/"
         external: false
+        is_beta: false
+
       - title: All Tools
         url: "/tools/"
         external: false 
+        is_beta: false
+
       - title: About Us
         url: "/about/"
         external: false
+        is_beta: false
+
       - title: Our People
         url: "/people/"
         external: false 
+        is_beta: false
+
       - title: News
         url: "/news/"
         external: false
+        is_beta: false
+
     collection: null
 
   - title: Resources
@@ -74,18 +110,28 @@ footer:
       - title: Web Applications
         url: "/resources/?type=web-application"
         external: false
+        is_beta: false
+
       - title: Technical Documentation
         url: "/resources/?type=tech-doc"
         external: false
+        is_beta: false
+
       - title: Data & Code
         url: "/resources/?type=data-and-code"
         external: false
+        is_beta: false
+
       - title: Presentations
         url: "/resources/?type=presentation"
         external: false
+        is_beta: false
+
       - title: Publications
         url: "/resources/?type=publication"
         external: false  
+        is_beta: false
+
     collection: null
 
   - title: Regions

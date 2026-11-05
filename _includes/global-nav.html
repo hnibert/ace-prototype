@@ -6,7 +6,8 @@
         </button>
         <div id="navbar-main" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {%- for nav_item in site.data.navigation.navbar -%}
+                {%- assign nav_links = site.data.navigation.navbar | where: 'is_beta' : 'false' -%}
+                {%- for nav_item in nav_links -%}
                     {%- if nav_item.dropdown != nil -%}
                         {%- assign is_active = false -%}
                     {%- if page.url contains nav_item.url -%}
@@ -15,7 +16,8 @@
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle {% if is_active %}active{% endif %}" {% if is_active %}aria-current="page"{% endif %} role="button" data-bs-toggle="dropdown">{{ nav_item.title }}</button>
                         <ul class="dropdown-menu border-0" data-bs-theme="dark">
-                            {% for dropdown_item in nav_item.dropdown -%}
+                            {%- assign nav_drops = nav_item.dropdown | where: 'is_beta' : 'false' -%}
+                            {%- for dropdown_item in nav_drops -%}
                                 {%- if dropdown_item.collection -%}
                                 {%- assign collection = site[dropdown_item.collection] -%}
                                 {%- for collection_item in collection -%}

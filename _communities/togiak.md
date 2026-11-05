@@ -17,7 +17,8 @@ hero_data:
   is_header: true
   img_url: null
   img_alt: null
-  title: "Togiak<br><small class='fst-italic'>Community Research</small>"
+  badge: "Community Research"
+  title: "Togiak"
   lead: Situated on Togiak Bay near the mouth of the Togiak River in western Bristol Bay.
 
 #Summary
@@ -35,7 +36,9 @@ calendar_summary: |-
   
 calendar_about: >-
   This subsistence harvest calendar was created as part of a food sovereignty workshop with 22 participants in Naknek, Alaska, in April 2025. The workshop was convened by University of Washington 
-  and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder.
+  and NOAA Alaska Fisheries Science Center and funded through the Cooperative Intitute for Climate, Ocean & Ecosystem Studies (Cooperative Agreement NA20OAR4320271). Artwork by Sarah Schroeder.<br><br><strong>To request posters and printed copies for community distribution, please reach out to research contacts.</strong>
+
+calendar_rights: "All rights reserved. Please use the suggested citation when reproducing or referencing this calendar."
 
 #Meet the Artist
 artist_data: 

@@ -83,7 +83,14 @@ css-files:
                 <div class="text-center">
                     <h1 id="subsistence-title">Seasonal Harvesting Calendar</h1>
                     <h2 class="fs-4">{{ page.community_name }}</h2>
-                    <img src="{{ page.calendar_display_img_url | relative_url }}" class="img-fluid rounded mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.calendar_display_alt }}">
+                    <figure class="figure">
+                        <img src="{{ page.calendar_display_img_url | relative_url }}" class="img-fluid rounded mb-4 mb-lg-0" width="100%" height="auto" alt="{{ page.calendar_display_alt }}">
+                        {%- if page.calendar_rights -%}
+                        <figcaption class="figure-caption text-start ps-2 text-secondary border-start border-3">
+                            &copy; {{ site.time | date: "%Y" }} NOAA Fisheries.<br><small>{{ page.calendar_rights }}</small>
+                        </figcaption>
+                        {%- endif -%}
+                    </figure>
                 </div>
                 <div class="d-flex justify-content-end gap-2 border-top pt-2">
                     <button class="btn btn-ace-primary icon-link" data-bs-toggle="modal" data-bs-target="#calendar-modal">
@@ -146,6 +153,7 @@ css-files:
     </div>
 </section>
 
+{%- if site.show_beta_features == true -%}
 {%- assign species_of_concern = site.species | where_exp: "item", "item.status contains 'species-of-concern'" | where_exp: "item", "item.communities contains page.slug" -%}
 {%- if species_of_concern.size > 0 -%}
 <!-- Search-Filter Component (Species of Concern Search) -->
@@ -242,13 +250,14 @@ css-files:
     </div>
 </section>
 {%- endif -%}
+{%- endif -%}
 
 {%- if page.points_of_contact.size > 0 -%}
 <!-- Points of Contact -->
 <section aria-labelledby="contacts-title">
     <div class="container mb-5">
         <!-- POC Title -->
-        <h4 id="contacts-title" class="fw-bold">{% if page.points_of_contact.size > 1 %}Points{% else %}Point{% endif %} of Contact</h4>
+        <h4 id="contacts-title" class="fw-bold">Research {% if page.points_of_contact.size > 1 %}Contacts{% else %}Contact{% endif %}</h4>
         <hr class="mt-0">
         <ul class="list-unstyled row d-flex justify-content-start align-items-center flex-wrap gap-3">
             {%- for contact in page.points_of_contact -%}
